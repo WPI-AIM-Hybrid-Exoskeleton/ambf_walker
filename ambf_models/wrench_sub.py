@@ -7,13 +7,18 @@ from ambf_msgs.msg import RigidBodyState
 
 def callback_leg(front, back):
 
+    print(front.name)
     print(front.wrench)
+    print(back.name)
     print(back.wrench)
 
 def callback_foot(sensor1, sensor2, sensor3):
 
+    print(sensor1.name)
     print(sensor1.wrench)
+    print(sensor2.name)
     print(sensor2.wrench)
+    print(sensor3.name)
     print(sensor3.wrench)
 
 
