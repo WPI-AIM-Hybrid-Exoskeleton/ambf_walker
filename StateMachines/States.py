@@ -270,3 +270,58 @@ class LowerBody(smach.State):
             self._model.handle.set_rpy(0.25, 0, 0)
             self._model.handle.set_force(0.0, 0.0, 0.0)
             return "Lowered"
+
+
+
+class Standing(smach.State):
+
+    def __init__(self, model, outcomes=['Standing', 'Stood']):
+
+        smach.State.__init__(self, outcomes=outcomes)
+        self._model = model
+        self.rate = rospy.Rate(100)
+        tf = 6.0
+        dt = 0.01
+        self.hip, self.knee, self.ankle = self._model.standing_state(tf=tf, dt=dt)
+        self.msg = DesiredJoints()
+        self.pub = rospy.Publisher("set_points", DesiredJoints, queue_size=1)
+
+        self.total = tf / dt
+        self.count = 0
+
+        self.final_height = 0
+
+    def execute(self, userdata):
+
+        self._model.handle.set_rpy(-0.4, 0, 0)
+        self._model.handle.set_pos(0, 0, -0.2)
+
+        if self.count <= self.total - 1:
+
+            q = np.array([self.hip["q"][self.count].item(), self.knee["q"][self.count].item(),
+                          self.ankle["q"][self.count].item(),
+                          self.hip["q"][self.count].item(), self.knee["q"][self.count].item(),
+                          self.ankle["q"][self.count].item(), 0.0])
+
+            qd = np.array([self.hip["qd"][self.count].item(), self.knee["qd"][self.count].item(),
+                           self.ankle["qd"][self.count].item(),
+                           self.hip["qd"][self.count].item(), self.knee["qd"][self.count].item(),
+                           self.ankle["qd"][self.count].item(), 0.0])
+
+            qdd = np.array([self.hip["qdd"][self.count].item(), self.knee["qdd"][self.count].item(),
+                            self.ankle["qdd"][self.count].item(),
+                            self.hip["qdd"][self.count].item(), self.knee["qdd"][self.count].item(),
+                            self.ankle["qdd"][self.count].item(), 0.0])
+
+            self.count += 1
+            self.msg.q = q
+            self.msg.qd = qd
+            self.msg.qdd = qdd
+            self.msg.controllers = ["PD", "PD", "PD", "PD", "PD", "PD", "PD"]
+            self.rate.sleep()
+            self.pub.publish(self.msg)
+            return 'Standing'
+        else:
+            return "Stood"
+
+        

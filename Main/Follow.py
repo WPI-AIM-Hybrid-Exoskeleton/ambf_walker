@@ -2,8 +2,8 @@
 
 #!/usr/bin/env python
 import sys
-# from os import sys, path
-# sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+from os import sys, path
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 import numpy as np
 from StateMachines import StateMachine
 from Controller import ControllerNode
