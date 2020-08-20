@@ -234,8 +234,15 @@ class Exoskeleton(Model.Model):
         ankle = Model.get_traj(-0.349, -0.1, 0.0, 0.0, tf, dt)
         return hip, knee, ankle
 
+    def standing_state(self, tf=2, dt=0.01):
+
+        hip = Model.get_traj(-0.2, -0.3, 0.0, 0.0, tf, dt)
+        knee = Model.get_traj(0.20, 0.40, 0.0, 0., tf, dt)
+        ankle = Model.get_traj(-0.1, -0.1, 0.0, 0.0, tf, dt)
+        return hip, knee, ankle
+
     def get_runner(self):
-        return TPGMMRunner.TPGMMRunner("/home/nathaniel/catkin_ws/src/ambf_walker/config/gotozero.pickle")
+        return TPGMMRunner.TPGMMRunner("/home/kamerider/catkin_ws/src/ambf_walker/config/gotozero.pickle")
 
 
     def linearize(self):

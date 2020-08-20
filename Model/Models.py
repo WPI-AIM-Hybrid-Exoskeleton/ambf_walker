@@ -1,12 +1,14 @@
-
+import sys
+from os import sys, path
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 import abc
 import numpy as np
 import rbdl
 import time
 import rospy
 from threading import Thread
-from GaitCore.Bio import Joint, Leg
-from GaitCore.Core import Point
+from lib.GaitCore.Bio import Joint, Leg
+from lib.GaitCore.Core import Point
 from std_msgs.msg import Float32MultiArray
 from sensor_msgs.msg import JointState
 
@@ -112,7 +114,17 @@ class Model(object):
     def calculate_dynamics(self, qdd):
         pass
 
+    def get_right_leg(self):
+        """
+        :return:
+        """
+        return self._right_leg
 
+    def get_left_leg(self):
+        """
+        :return:
+        """
+        return self._left_leg
 
 
 def get_traj(q0, qf, v0, vf, tf, dt):
@@ -122,11 +134,6 @@ def get_traj(q0, qf, v0, vf, tf, dt):
                   [0.0, 1.0, 0.0, 0.0],
                   [1.0, 0.0, tf ** 2, tf ** 3],
                   [0.0, 0.0, 2 * tf, 3 * tf * 2]])
-
-    # A = np.array([[1.0, 0.0, 0.0, 0.0],
-    #               [0.0, 1.0, 0.0, 0.0],
-    #               [1.0, tf, tf ** 2, tf ** 3],
-    #               [0.0, 1.0, 2 * tf, 3 * tf ** 2]])
 
     x = np.linalg.solve(A, b)
     q = []
