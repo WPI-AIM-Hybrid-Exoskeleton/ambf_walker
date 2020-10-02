@@ -160,6 +160,7 @@ class Exoskeleton(Model.Model):
         mass["right_foot"] = 0.86
         mass["left_foot"] = 0.86
         parent_dist = {}
+
         parent_dist["hip"] = np.array([0.0, 0.0, 0.0])
 
         parent_dist["left_thigh"] = np.array([0.237, -0.124, -0.144])
@@ -199,7 +200,7 @@ class Exoskeleton(Model.Model):
         xtrans.E = np.eye(3)
 
         self.hip = model.AddBody(0, xtrans, rbdl.Joint.fromJointType("JointTypeFixed"), hip_body,"hip")
-        joint_rot_z =  rbdl.Joint.fromJointType("JointTypeRevoluteX")
+        joint_rot_z = rbdl.Joint.fromJointType("JointTypeRevoluteX")
 
         xtrans.r = parent_dist["left_thigh"]
         self.left_thigh = model.AddBody(self.hip, xtrans, joint_rot_z, bodies["left_thigh"], "left_thigh")
@@ -257,8 +258,7 @@ class Exoskeleton(Model.Model):
         data = rbdl.CalcBodyToBaseCoordinates(self._model, self.q, self.left_foot, point_local)
         fk["left_ankle"] = Point.Point(data[0], data[1], data[2])
 
-        data = rbdl.CalcBodyToBaseCoordinates\
-            (self._model, self.q, self.right_thigh, point_local)
+        data = rbdl.CalcBodyToBaseCoordinates(self._model, self.q, self.right_thigh, point_local)
         fk["right_hip"] = Point.Point(data[0], data[1], data[2])
         data = rbdl.CalcBodyToBaseCoordinates(self._model, self.q, self.right_shank, point_local)
         fk["right_knee"] = Point.Point(data[0], data[1], data[2])
@@ -296,7 +296,7 @@ class Exoskeleton(Model.Model):
         return hip, knee, ankle
 
     def get_runner(self):
-        return TPGMMRunner.TPGMMRunner("/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/config/gotozero.pickle")
+        return TPGMMRunner.TPGMMRunner("/home/jack/catkin_ws/src/ambf_walker/config/gotozero.pickle")
 
     def linearize(self):
         pass

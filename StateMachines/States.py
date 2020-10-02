@@ -10,7 +10,10 @@ from Model import Model
 from std_msgs.msg import Empty,String
 
 from ambf_walker.srv import DesiredJointsCmdRequest, DesiredJointsCmd
-
+from ilqr.controller import RecedingHorizonController
+from ilqr.cost import PathQsRCost
+from ilqr import iLQR
+from ilqr.dynamics import FiniteDiffDynamics
 
 class Initialize(smach.State):
 
@@ -328,7 +331,7 @@ class MPC(smach.State):
 
 class MPC2(smach.State):
 
-    def __init__(self, model, outcomes=["MPCing", "MPCed"]):
+    def __init__(self, model, outcomes=["MPC2ing", "MPC2ed"]):
         smach.State.__init__(self, outcomes=outcomes)
         rospy.wait_for_service('joint_cmd')
         self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
@@ -339,6 +342,65 @@ class MPC2(smach.State):
         self.pub = rospy.Publisher("set_points", DesiredJoints, queue_size=1)
         self.count = 0
 
+    def execute(self, userdata):
+
+        msg = DesiredJoints()
+        msg.controller = "MPC"
+
+        if self.count < self.runner.get_length():
+            x = self.runner.x
+            dx = self.runner.dx
+            ddx = self.runner.ddx
+            q = np.append(x, [0.0])
+            qd = np.append(dx, [0.0])
+            qdd = np.append(ddx, [0.0])
+            self.send(q, qd, qdd, "MPC", [self.count])
+            return "MPC2ing"
+        else:
+            return "MPC2ed"
+
+            pass
+
+class LQR(smach.State):
+
+    def __init__(self, model, outcomes=["LQRing", "LQRed"]):
+        smach.State.__init__(self, outcomes=outcomes)
+        rospy.wait_for_service('joint_cmd')
+        self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
+        self._model = model
+        self.rate = rospy.Rate(100)
+        file = "/home/jack/test.npy"
+        with open(file, 'rb') as f:
+            self.us2 = np.load(f)
+        self.pub = rospy.Publisher("set_points", DesiredJoints, queue_size=1)
+        self.count = 0
+
+    def execute(self, userdata):
+
+        if self.count < 199:
+            q = np.array(7*[0.0])
+            qd = np.array(7*[0.0])
+            qdd = np.append(self.us2[self.count], [0.0])
+            self.send(q, qd, qdd, "Temp", [self.count])
+            self.rate.sleep()
+            self.count += 1
+            return "LQRing"
+        else:
+            return "LQRed"
+
+
+class Temp(smach.State):
+
+    def __init__(self, model, outcomes=["Temping", "Temped"]):
+        smach.State.__init__(self, outcomes=outcomes)
+        rospy.wait_for_service('joint_cmd')
+        self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
+        self.runner = TPGMMRunner.TPGMMRunner("/home/jack/catkin_ws/src/ambf_walker/Train/gotozero.pickle")
+        self._model = model
+        self.runner = model.get_runner()
+        self.rate = rospy.Rate(1000)
+        #self.setup()
+
     def setup(self):
 
         J_hist = []
@@ -348,7 +410,12 @@ class MPC2(smach.State):
             info = "converged" if converged else ("accepted" if accepted else "failed")
             print("iteration", iteration_count, info, J_opt)
 
+        max_bounds = 8.0
+        min_bounds = -8.0
         def f(x, u, i):
+            diff = (max_bounds - min_bounds) / 2.0
+            mean = (max_bounds + min_bounds) / 2.0
+            u = diff * np.tanh(u) + mean
             y = Model.runge_integrator(self._model.get_rbdl_model(), x, 0.01, u)
             return np.array(y)
 
@@ -362,7 +429,6 @@ class MPC2(smach.State):
             count += 1
             self.runner.step()
             u_path.append(self.runner.ddx.flatten().tolist())
-            self.x.append(self.runner.x.flatten())
             x = self.runner.x.flatten().tolist() + self.runner.dx.flatten().tolist()
             x_path.append(x)
 
@@ -386,93 +452,31 @@ class MPC2(smach.State):
         self.cntrl = RecedingHorizonController(x0, ilqr2)
 
     def execute(self, userdata):
-
-        msg = DesiredJoints()
-        msg.controller = "MPC"
-
-        for  xs, us in self.cntrl(self.u_path):
-            pass
-
-class LQR(smach.State):
-
-    def __init__(self, model, outcomes=["LQRing", "LQRed"]):
-        smach.State.__init__(self, outcomes=outcomes)
-        rospy.wait_for_service('joint_cmd')
-        self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
-        self._model = model
-        self.runner = model.get_runner()
-        self.rate = rospy.Rate(100)
-        self.msg = DesiredJoints()
-        self.pub = rospy.Publisher("set_points", DesiredJoints, queue_size=1)
-        self.count = 0
-
-    def execute(self, userdata):
-
-
-        if self.count < self.runner.get_length()-1:
-
-            self.runner.step()
-            x = self.runner.x
-            dx = self.runner.dx
-            ddx = self.runner.ddx
-            q = np.append(x, [0.0])
-            qd = np.append(dx, [0.0])
-            qdd = np.append(ddx, [0.0])
-            msg = DesiredJoints()
-            # msg.q = q
-            # msg.qd = qd
-            # msg.qdd = qdd
-            # msg.controller = "LQR"
-            # msg.other = [self.count]
-            # self.pub.publish(msg)
-
-            self.send(q, qd, qdd, "LQR", [self.count])
+        count = 0
+        for xs2, us2 in self.cntrl.control(self.u_path):
+            q = np.array([0.0]*7)
+            qd = np.array([0.0]*7)
+            qdd = np.append(us2, [0.0])
+            print(qdd)
+            self.send(q, qd, qdd, "Temp", [count])
             self.rate.sleep()
-            self.count += 1
-            return "LQRing"
-        else:
-            # while 1:
-            #     q = [-0.7, 0.5, -0.2, -0.7, 0.5, -0.2, 0.0]
-            #     qd = [0.0]*7
-            #     qdd = [0.0]*7
-            #     self.send(q, qd, qdd, "Dyn", [self.count])
-            return "LQRed"
+            count += 1
+            print(count)
 
 
-class Temp(smach.State):
-
-    def __init__(self, model, outcomes=["Temping", "Temped"]):
-        smach.State.__init__(self, outcomes=outcomes)
-        rospy.wait_for_service('joint_cmd')
-        self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
-        self._model = model
-        self.runner = model.get_runner()
-        self.rate = rospy.Rate(100)
-        self.msg = DesiredJoints()
-        self.pub = rospy.Publisher("set_points", DesiredJoints, queue_size=1)
-        file = "/home/nathanielgoldfarb/linearize_model/test.npy"
-        with open(file, 'rb') as f:
-            self.us = np.load(f)
-
-        self.count = 0
-
-    def execute(self, userdata):
-
-
-        if self.count < self.runner.get_length()-1:
-            print(self.count)
-            self.runner.step()
-            x = self.runner.x
-            dx = self.runner.dx
-            ddx = self.runner.ddx
-            q = np.append(x, [0.0])
-            qd = np.append(dx, [0.0])
-            qdd = np.append( self.us[self.count], [0.0])
-            msg = DesiredJoints()
-            self.send(q, qd, qdd, "Temp", [self.count])
-            self.rate.sleep()
-            self.count += 1
-            return "Temping"
-        else:
-            self.count = 0
-            return "Temped"
+        # if self.count < self.runner.get_length()-1:
+        #     print(self.count)
+        #     self.runner.step()
+        #     x = self.runner.x
+        #     dx = self.runner.dx
+        #     ddx = self.runner.ddx
+        #     q = np.append(x, [0.0])
+        #     qd = np.append(dx, [0.0])
+        #     qdd = np.append( self.us[self.count], [0.0])
+        #     self.send(q, qd, qdd, "Temp", [self.count])
+        #     self.rate.sleep()
+        #     self.count += 1
+        #     return "Temping"
+        # else:
+        #     self.count = 0
+        #    return "Temped"
