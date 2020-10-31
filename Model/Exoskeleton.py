@@ -357,8 +357,8 @@ class Exoskeleton(Model.Model):
         ankle = Model.get_traj(-0.349, -0.2, 0.0, 0.0, tf, dt)
         return hip, knee, ankle
 
-    # def get_runner(self):
-    #     return TPGMMRunner.TPGMMRunner("/home/jack/catkin_ws/src/ambf_walker/config/gotozero.pickle")
+    def get_runner(self):
+        return TPGMMRunner.TPGMMRunner("/home/jack/catkin_ws/src/ambf_walker/config/gotozero.pickle")
 
     def get_walker(self):
         return TPGMMRunner.TPGMMRunner("/home/jack/backup/leg1.pickle")  ################# changed !!!!!!!
