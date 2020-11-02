@@ -3013,7 +3013,7 @@ SENSOR RightFootProx:
   type: Proximity
   location:
     orientation: {p: 0.0, r: 0.0, y: 0.0}
-    position: {x: 0.08, y: -0.3, z: -0.02}
+    position: {x: 0.08, y: -0.3, z: -0.04}
   array:
     -
       offset: {x: 0.1, y: 0.2, z: -0.01}
@@ -3027,7 +3027,7 @@ SENSOR LeftFootProx:
   type: Proximity
   location:
     orientation: {p: 0.0, r: 0.0, y: 0.0}
-    position: {x: -0.08, y: -0.3, z: -0.02}
+    position: {x: -0.08, y: -0.3, z: -0.04}
   array:
     -
       offset: {x: -0.1, y: 0.2, z: -0.01}

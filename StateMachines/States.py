@@ -420,7 +420,7 @@ class LQR(smach.State):
         self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
         self._model = model
         self.rate = rospy.Rate(100)
-        file = "/home/nathanielgoldfarb/linearize_model/test.npy"
+        file = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/config/tau.npy"
         self.runner = self._model.get_walker()
         with open(file, 'rb') as f:
             self.us2 = np.load(f)
@@ -614,6 +614,15 @@ class StairDMP(smach.State):
             plt.show()
 
         if self.count < self.runnerY.get_length()-2:
+
+            left_force = np.array([0.0, 0.0])
+            right_force = np.array([0.0, 0.0])
+            if self._model.check_left_foot_collision():
+                left_force[0] = self._model.get_right_foot_collision_force()
+
+            if self._model.check_right_foot_collision():
+                right_force[0] = self._model.get_left_foot_collision_force()
+
 
             # self.runnerZ.step()
             # self.runnerY.step()

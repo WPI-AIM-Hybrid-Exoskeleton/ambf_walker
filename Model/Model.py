@@ -15,7 +15,6 @@ class Model(object):
 
     def __init__(self, client, joint_names ):
 
-
         self._client = client
         self._q = np.array([])
         self._qd = np.array([])
@@ -111,6 +110,7 @@ class Model(object):
             self._joint_num = self.q.size
             q_msg.data = self.q
             self.q_pub.publish(q_msg)
+            self.update_other()
             if self._enable_control:
                 joints_idx = []
                 for joint in self._selected_joint_names:
@@ -118,6 +118,10 @@ class Model(object):
                         joints_idx.append(self._joints_names.index(joint))
                 self.handle.set_multiple_joint_effort(self.tau, joints_idx)
             rate.sleep()
+
+    @abc.abstractmethod
+    def update_other(self):
+        pass
 
     @abc.abstractmethod
     def ambf_to_dyn(self, q):

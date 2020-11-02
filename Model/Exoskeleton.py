@@ -106,7 +106,14 @@ class Exoskeleton(Model.Model):
         self._foot_sensor_cb.registerCallback(self.foot_sensor_callback)
         self._right_foot_prox = SensorState()
         self._left_foot_prox = SensorState()
+        self.K = 0.5
         self._updater.start()
+
+    def update_other(self):
+        if self.check_right_foot_collision():
+            rospy.loginfo(self.get_right_foot_collision_force())
+        if self.check_left_foot_collision():
+            rospy.loginfo( self.get_left_foot_collision_force())
 
     def left_foot_prox_callback(self, msg):
         self._left_foot_prox = msg
@@ -114,10 +121,10 @@ class Exoskeleton(Model.Model):
     def right_foot_prox_callback(self, msg):
         self._right_foot_prox = msg
 
-    def check_foot_collision(self):
+    def check_left_foot_collision(self):
         return any(self._left_foot_prox.triggered)
 
-    def check_foot_collision(self):
+    def check_right_foot_collision(self):
         return any(self._left_foot_prox.triggered)
 
     def get_right_foot_collision_distance(self):
@@ -129,6 +136,14 @@ class Exoskeleton(Model.Model):
         dist = self._right_foot_prox.measurement
         raduis = self._right_foot_prox.range[0]
         return dist[0] - raduis
+
+    def get_right_foot_collision_force(self):
+        delta = self.get_right_foot_collision_distance()
+        return -self.K * delta
+
+    def get_left_foot_collision_force(self):
+        delta = self.get_left_foot_collision_distance()
+        return -self.K * delta
 
     def prox_callback(self, msg):
 
@@ -230,8 +245,6 @@ class Exoskeleton(Model.Model):
         parent_dist["right_thigh"] = np.array([-0.237, -0.124,  -0.144])
         parent_dist["right_shank"] = np.array([0.033, -0.03,  -0.436])
         parent_dist["right_foot"] = np.array([0.02, -0.027,  -0.39])
-
-
 
         inertia["hip"] = np.diag([ 0.0,0.0,0.0])
 
