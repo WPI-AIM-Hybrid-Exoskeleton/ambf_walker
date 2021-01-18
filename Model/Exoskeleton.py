@@ -147,8 +147,8 @@ class Exoskeleton(Model.Model):
             else:
                 r = rad
             point.y = (raduis - r) * np.cos(angle) + pos.position.y
-            point.z = (raduis - r) * np.sin(angle) + pos.position.z
-            point.x = pos.position.x
+            point.z =  (raduis - r) * np.sin(angle) + pos.position.z
+            point.x =  pos.position.x
             cloud.points.append(point)
 
         cloud.header.stamp = rospy.Time.now()

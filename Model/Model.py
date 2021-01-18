@@ -189,6 +189,7 @@ self.rbdl_model = self.dynamic_model()
 #
 #     return res
 
+
 def get_traj(q0, qf, v0, vf, tf, dt):
 
     b = np.array([q0, v0, qf, vf]).reshape((-1,1))

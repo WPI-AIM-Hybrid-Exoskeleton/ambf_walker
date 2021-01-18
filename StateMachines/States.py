@@ -40,7 +40,7 @@ class Initialize(smach.State):
     def execute(self, userdata):
 
         self._model.handle.set_rpy(0.25, 0, 0)
-        self._model.handle.set_pos(0.0, 0, 1.0)
+        self._model.handle.set_pos(0.0, 0, 3.0)
 
         if self.count <= self.total - 1:
 
@@ -345,7 +345,7 @@ class LowerBody(smach.State):
         self._model = model
         self.rate = rospy.Rate(1)
         self.step = 0.00000000001
-        self.final_height = -0.38
+        self.final_height = 1.5-0.38
 
     def execute(self, userdata):
 
