@@ -69,7 +69,7 @@ def camera_callback(msg):
 
 
 if __name__ == '__main__':
-    rospy.init_node("listener")
+    rospy.init_node("frametransformer")
     rospy.Subscriber("/ambf/env/ExoHip/State", RigidBodyState, body_callback )
     rospy.Subscriber("/ambf/env/cameras/depth_camera/State", CameraState, camera_callback  )
     rospy.spin()

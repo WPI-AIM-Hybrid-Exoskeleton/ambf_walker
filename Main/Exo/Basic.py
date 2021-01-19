@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 import sys
-from os import sys, path
-sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+# from os import sys, path
+# sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 import numpy as np
+
 
 from Controller import ControllerNode
 from Model import Exoskeleton, Human
