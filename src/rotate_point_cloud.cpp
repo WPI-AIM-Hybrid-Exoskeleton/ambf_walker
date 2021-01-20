@@ -1,37 +1,26 @@
-
-#include "ros/ros.h"
-#include <sensor_msgs/PointCloud2.h>
-
-#include "pcl/point_cloud.h"
-#include <pcl_ros/transforms.h>
-
 #include <ros/ros.h>
-#include <ros/console.h>
+#include <sensor_msgs/PointCloud2.h>
+#include <pcl/point_cloud.h>
+#include <pcl_ros/transforms.h>
 // PCL specific includes
 #include <tf2_ros/transform_broadcaster.h>
 #include <sensor_msgs/PointCloud2.h>
 #include <pcl_conversions/pcl_conversions.h>
 #include <pcl/point_cloud.h>
 #include <pcl/point_types.h>
-#include <pcl/ModelCoefficients.h>
-#include <pcl/io/pcd_io.h>
-#include <pcl/point_types.h>
-#include <pcl/filters/extract_indices.h>
-#include <pcl/sample_consensus/method_types.h>
-#include <pcl/sample_consensus/model_types.h>
-#include <pcl/segmentation/sac_segmentation.h>
-#include <pcl_ros/transforms.h>
+#include <string>
 
 
 ros::Publisher pub;
 tf::StampedTransform transform;
+std::string parent;
+std::string child;
 
 void cloud_callback (const sensor_msgs::PointCloud2ConstPtr& input)
 {
     // Create a container for the data.
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_transformed(new pcl::PointCloud<pcl::PointXYZ>);
-    pcl::PointCloud<pcl::PointXYZ>::Ptr temp_cloud(new pcl::PointCloud<pcl::PointXYZ>);
-
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_transformed(new pcl::PointCloud<pcl::PointXYZRGB>);
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr temp_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
     pcl::PCLPointCloud2 pcl_pc2;
     pcl_conversions::toPCL(*input, pcl_pc2);
     pcl::fromPCLPointCloud2(pcl_pc2,*temp_cloud);
@@ -39,7 +28,7 @@ void cloud_callback (const sensor_msgs::PointCloud2ConstPtr& input)
     sensor_msgs::PointCloud2 cloud_publish;
     pcl::toROSMsg(*cloud_transformed,cloud_publish);
     cloud_publish.header = input->header;
-    cloud_publish.header.frame_id = "/AMBF_camera";
+    cloud_publish.header.frame_id = child;
     pub.publish(cloud_publish);
 
 }
@@ -52,6 +41,7 @@ int main (int argc, char** argv)
 
     ros::init (argc, argv, "point_cloud_transform");
     ros::NodeHandle nh;
+    ros::Rate rate(1000); // ROS Rate at 5Hz
 
     // Create a ROS subscriber for the input point cloud
     ros::Subscriber sub = nh.subscribe ("/ambf/env/cameras/depth_camera/DepthData", 1, cloud_callback);
@@ -67,14 +57,17 @@ int main (int argc, char** argv)
     pitch = -0.5*M_PI;
     yaw = 0;
 
+    parent = "/depth_camera";
+    child = "/AMBF_camera";
+
     while (ros::ok() )
     {
         transform.setOrigin( tf::Vector3(0.0, 0.0, 0.0) );
         transform.setRotation( tf::Quaternion(roll, pitch, yaw) );
         geometry_msgs::TransformStamped transformStamped;
         transformStamped.header.stamp = ros::Time::now();
-        transformStamped.header.frame_id = "/depth_camera";
-        transformStamped.child_frame_id = "/AMBF_camera";
+        transformStamped.header.frame_id = parent;
+        transformStamped.child_frame_id = child;
         transformStamped.transform.translation.x = 0.0;
         transformStamped.transform.translation.y = 0.0;
         transformStamped.transform.translation.z = 0.0;
@@ -85,8 +78,8 @@ int main (int argc, char** argv)
         transformStamped.transform.rotation.z = q.z();
         transformStamped.transform.rotation.w = q.w();
         br.sendTransform(transformStamped);
-
         ros::spinOnce();
+        rate.sleep();
     }
 
 
