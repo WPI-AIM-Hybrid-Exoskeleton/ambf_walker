@@ -9,11 +9,17 @@ project(ambf_walker)
 ## is used, also find other catkin packages
 
 find_package(catkin REQUIRED COMPONENTS
-
+  roscpp
   rospy
+  pcl_conversions 
+  pcl_ros
   std_msgs
+  tf
   message_generation
+
 )
+
+find_package( PCL REQUIRED )
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -42,6 +48,17 @@ generate_messages(
    std_msgs
  )
 
-catkin_package(
-  CATKIN_DEPENDS  rospy std_msgs message_runtime
+ catkin_package(
+  CATKIN_DEPENDS  roscpp rospy std_msgs message_runtime
 )
+
+include_directories(
+  ${catkin_INCLUDE_DIRS}
+  ${PCL_INCLUDE_DIRS}
+  )
+  link_directories(${PCL_LIBRARY_DIRS})
+  add_definitions(${PCL_DEFINITIONS})
+
+add_executable(rotate_point_cloud src/rotate_point_cloud.cpp)
+target_link_libraries(rotate_point_cloud   ${PCL_LIBRARIES} ${catkin_LIBRARIES})
+# add_dependencies(rotate_point_cloud beginner_tutorials_generate_messages_cpp)
