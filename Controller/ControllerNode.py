@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import rospy
 from threading import Thread, Lock
 from sensor_msgs.msg import JointState

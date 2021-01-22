@@ -58,18 +58,18 @@ def camera_callback(msg):
     orientation_q = msg.pose.orientation
     orientation_list = [orientation_q.x, orientation_q.y, orientation_q.z, orientation_q.w]
     (roll, pitch, yaw) = euler_from_quaternion(orientation_list)
-    quat = quaternion_from_euler(roll+1.57, -pitch-1.57,  -1.57+yaw)
+    quat = quaternion_from_euler(roll, pitch,  yaw)
 
-    t.transform.rotation.x = quat[0]
-    t.transform.rotation.y = quat[1]
-    t.transform.rotation.z = quat[2]
-    t.transform.rotation.w = quat[3]
+    t.transform.rotation.x = orientation_list[0]
+    t.transform.rotation.y = orientation_list[1]
+    t.transform.rotation.z = orientation_list[2]
+    t.transform.rotation.w = orientation_list[3]
 
     br.sendTransform(t)
 
 
 if __name__ == '__main__':
-    rospy.init_node("listener")
+    rospy.init_node("frametransformer")
     rospy.Subscriber("/ambf/env/ExoHip/State", RigidBodyState, body_callback )
     rospy.Subscriber("/ambf/env/cameras/depth_camera/State", CameraState, camera_callback  )
     rospy.spin()

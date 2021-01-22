@@ -1,3 +1,4 @@
+#!/bin/bash
 source ~/.bashrc
 source ~/ambf/build/devel/setup.bash
 cd ~/ambf/bin/lin-x86_64
