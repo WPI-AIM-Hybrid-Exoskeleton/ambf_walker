@@ -1,7 +1,7 @@
 """
 This should be moved to a separate repo later
 """
-
+#!/usr/bin/env python3
 import abc
 import numpy as np
 import rbdl
