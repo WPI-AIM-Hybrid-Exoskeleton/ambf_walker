@@ -71,12 +71,12 @@ class Human(Model.Model):
         segments = ["thigh", "shank", "foot"]
 
         mass["hip"] = 5
-        mass["right_thigh"] = 2.11
-        mass["left_thigh"] = 2.11
-        mass["right_shank"] = 1.28
-        mass["left_shank"] = 1.28
-        mass["right_foot"] = 0.866
-        mass["left_foot"] = 0.866
+        mass["right_thigh"] = 0.1416*self._mass
+        mass["left_thigh"] = 0.1416*self._mass
+        mass["right_shank"] = 0.433*self._mass
+        mass["left_shank"] = 0.433*self._mass
+        mass["right_foot"] = 0.0137*self._mass
+        mass["left_foot"] = 0.0137*self._mass
 
         parent_dist = {}
         parent_dist["hip"] = np.array([0.0, 0.0, 0.0])
