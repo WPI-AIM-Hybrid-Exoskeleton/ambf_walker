@@ -58,7 +58,7 @@ if __name__ == '__main__':
     #           'Hip-RobRightThigh', 'RobRightThigh-RobRightShank', 'RobRightShank-RobRightFoot',  'Hip-Crutches']
 
     #LARRY = Human.Human(_client, "human", body_joints, 0, 0)
-    LARRE = Exoskeleton.Exoskeleton(_client, "exo", robot_joints, 56, 1.56)
+    LARRE = Exoskeleton.Exoskeleton(_client, "exo", robot_joints, file_path)
     # LARRE.handle.set_rpy(0.25, 0, 0)
     # LARRE.handle.set_pos(0, 0, 1.0)
     Dyn = DynController.DynController(LARRE, Kp, Kd)

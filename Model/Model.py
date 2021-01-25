@@ -168,9 +168,10 @@ class Model():
 
         names = self._joints_names
         joints_aligned = [0.0]*len(names)
-        
+
         for ii, name in enumerate(names):
-            index = self._joint_map[name]
+            index = self._joint_map[name] - 1
+            print(index)
             joints_aligned[index] = q[ii]
 
         return joints_aligned
@@ -179,11 +180,15 @@ class Model():
         """
         reverse the order of the AMBF
         """
-        values = self._joint_map.items()
+        print("my values ")
+        values = list(self._joint_map.values())
+        print(values)
+        print(q)
+        print("--------------------------")
         q_new = [0.0]*len(values)
 
-        for ii, val in values:
-            q_new[ii] = val
+        for ii, val in enumerate(values):
+            q_new[ii] = q[val-1]
         
         return q_new
 

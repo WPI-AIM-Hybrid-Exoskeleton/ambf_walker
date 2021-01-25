@@ -1,6 +1,4 @@
  #include "ros/ros.h"
-
-
 #include "Eigen/Core"
 #include "rbdl_server/RBDLServer.h"
 #include "boost/shared_ptr.hpp"

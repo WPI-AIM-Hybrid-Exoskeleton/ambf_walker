@@ -189,34 +189,26 @@ class Exoskeleton(Model.Model):
         self.right_foot_force_sensor = [force_rf1, force_rf2, force_rf3]
 
     def calculate_dynamics(self, qdd):
-        tau = np.asarray([0.0] * self._joint_num)
+        
         #rbdl.InverseDynamics(self.rbdl_model, self.q[0:6], self.qd[0:6], qdd[0:6], tau)
         
         q = self.ambf_to_rbdl(self.q)
         qd = self.ambf_to_rbdl(self.qd)
         qdd = self.ambf_to_rbdl(qdd)
-        tau = None
-
+        print(q)
+        print(qd)
+        print(qdd)
+        tau = np.asarray([0.0] * self._joint_num)
         try:
-            dyn_srv = rospy.ServiceProxy('Inverseinimatics', RBDLInverseDynamics)
-            resp1 = dyn_srv(q,qd,qdd)
-            tau = resp1.tau
+            dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
+            resp1 = dyn_srv(self.model_name, q, qd, qdd)
+            tau = resp1.tau   
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
-
+        print("my tau")
+        print(tau)
+        
         return  np.array(self.rbdl_to_ambf(tau))
-
-
-    # @abc.abstractmethod
-    # def ambf_to_dyn(self, q):
-    #     ambf_name = 
-    #     pass
-
-    # def grav(self, q ):
-    #     tau = np.asarray([0.0] * self._joint_num)
-    #     qd = qdd = np.asarray([0.0] * self._joint_num)
-    #     rbdl.InverseDynamics(self.rbdl_model, q, qd, qdd, tau)
-    #     return tau
 
     def dynamic_model(self):
         """
