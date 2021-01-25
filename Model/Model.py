@@ -59,7 +59,7 @@ class Model():
         self.rbdl_model = self.dynamic_model()
         :type tau: List
         """
-        self.tau = self.rbdl_to_ambf(tau)
+        self.tau = tau
         self._enable_control = True
 
     # def get_rbdl_model(self):
@@ -175,17 +175,12 @@ class Model():
             index = self._joint_map[name] - 1
             joints_aligned[index] = q[ii]
 
-        for ii, name in enumerate(names):
-            index = self._joint_map[name] - 1
-            q_new[ii] = joints_aligned[index]
-
         return joints_aligned
 
     def rbdl_to_ambf(self, q):
         """
         reverse the order of the AMBF
         """
-        
         
         names = self._joints_names
         joints_aligned = [0.0]*len(names)
