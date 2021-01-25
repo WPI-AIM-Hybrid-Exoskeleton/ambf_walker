@@ -27,7 +27,8 @@ class Human(Model.Model):
         self._height = height
 
         self.handle = self._client.get_obj_handle('Hip')
-        self.rbdl_model = self.dynamic_model()
+        model_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/human/human.yaml"
+        self.make_dynamic_model(model_name, model_path )
         # num_of_segments should be initialized with the dynamical model, which is created in the constructor
         self.num_joints = len(self.handle.get_joint_names())
         self.q = self.num_joints * [0.0]
@@ -48,19 +49,11 @@ class Human(Model.Model):
     def state(self, value):
         self._state = np.concatenate(value)
 
-    # @q.setter
-    # def q(self, value):
-    #     # TODO: transform AMBF to RBDL
-    #     self._q = np.asarray(value)
-    #
-    # @qd.setter
-    # def qd(self, value):
-    #     # TODO: transform RBDL to AMBF
-    #     value[2] *= -1
-    #     value[5] *= -1
-    #     self._qd = np.asarray(value)
 
     def dynamic_model(self):
+        """
+        depreciated
+        """
         model = rbdl.Model()
         bodies = {}
         mass = {}
@@ -153,29 +146,3 @@ class Human(Model.Model):
 
     def update_state(self, q, qd):
         pass
-
-    def calculate_torque(self):
-        pass
-        # left_leg_force, right_leg_force = model.get_leg_sensors()
-        #
-        # front_left_thigh_tab_force = [left_leg_force[0].x, left_leg_force[0].y, left_leg_force[0].z]
-        # front_left_shank_tab_force = [left_leg_force[1].x, left_leg_force[1].y, left_leg_force[1].z]
-        # front_right_thigh_tab_force = [right_leg_force[0].x, right_leg_force[0].y, right_leg_force[0].z]
-        # front_right_shank_tab_force = [right_leg_force[1].x, right_leg_force[1].y, right_leg_force[1].z]
-        # forces = [front_left_thigh_tab_force, front_left_shank_tab_force, front_right_thigh_tab_force, front_right_shank_tab_force]
-        #
-        # # Sensor point locations
-        # # add back sensor logic
-        # front_left_thigh_tab_location = np.array([0.1229, -0.2401, -0.1364])
-        # front_right_thigh_tab_location = np.array([-0.1229, -0.2401, -0.1364])
-        # front_left_shank_tab_location = np.array([0.1229, -0.184, -0.5801])
-        # front_right_shank_tab_location = np.array([-0.1236, -0.184, -0.5801])
-        # locations = [front_left_thigh_tab_location, front_left_shank_tab_location, front_right_thigh_tab_location, front_right_shank_tab_location]
-        #
-        # J = np.zeros((3, 6))
-        #
-        # # need proper body_ids
-        # rbdl.CalcPointJacobian(self.rbdl_model, self.q, 1, front_left_thigh_tab_location, J)
-        # J_t = np.transpose(J)
-        # print(J_t)
-        # print(J_t*forces[0])

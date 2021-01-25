@@ -20,7 +20,7 @@ from GaitAnaylsisToolkit.LearningTools.Runner import TPGMMRunner
 from geometry_msgs.msg import Point32
 from sensor_msgs.msg import PointCloud
 from os.path import dirname, join
-
+from rbdl_server.srv import RBDLInverseDynamics
 
 
 class Exoskeleton(Model.Model):
@@ -35,8 +35,8 @@ class Exoskeleton(Model.Model):
         time.sleep(4)
         self._mass = mass
         self._height = height
-
-        self.rbdl_model = self.dynamic_model()
+        model_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
+        self.make_dynamic_model(model_name, model_path )
         left_joints = {}
         right_joints = {}
 
@@ -192,16 +192,38 @@ class Exoskeleton(Model.Model):
 
     def calculate_dynamics(self, qdd):
         tau = np.asarray([0.0] * self._joint_num)
-        rbdl.InverseDynamics(self.rbdl_model, self.q[0:6], self.qd[0:6], qdd[0:6], tau)
-        return tau
+        #rbdl.InverseDynamics(self.rbdl_model, self.q[0:6], self.qd[0:6], qdd[0:6], tau)
+        
+        q = self.ambf_to_rbdl(self.q[0:6])
+        qd = self.ambf_to_rbdl(self.qd[0:6])
+        qdd = self.ambf_to_rbdl(qdd[0:6])
+        tau = None
 
-    def grav(self, q ):
-        tau = np.asarray([0.0] * self._joint_num)
-        qd = qdd = np.asarray([0.0] * self._joint_num)
-        rbdl.InverseDynamics(self.rbdl_model, q, qd, qdd, tau)
-        return tau
+        try:
+            dyn_srv = rospy.ServiceProxy('Inverseinimatics', RBDLInverseDynamics)
+            resp1 = dyn_srv(q,qd,qdd)
+            tau = resp1.tau
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
+
+        return  np.array(self.rbdl_to_ambf(tau))
+
+
+    # @abc.abstractmethod
+    # def ambf_to_dyn(self, q):
+    #     ambf_name = 
+    #     pass
+
+    # def grav(self, q ):
+    #     tau = np.asarray([0.0] * self._joint_num)
+    #     qd = qdd = np.asarray([0.0] * self._joint_num)
+    #     rbdl.InverseDynamics(self.rbdl_model, q, qd, qdd, tau)
+    #     return tau
 
     def dynamic_model(self):
+        """
+        depreciated
+        """
         # add in mass and height params
         model = rbdl.Model()
         bodies = {}
@@ -373,35 +395,6 @@ class Exoskeleton(Model.Model):
         config_path = join(project_root, 'config/walk2.pickle')
         return TPGMMRunner.TPGMMRunner(config_path)
 
-    def linearize(self):
-        pass
-
-    def state(self, q, qd ):
-        self.get_left_leg.hip.angle.z = q[0]
-        self.get_left_leg.knee.angle.z = q[1]
-        self.get_left_leg.ankle.angle.z = q[2]
-
-        self.get_right_leg.hip.angle.z = q[3]
-        self.get_right_leg.knee.angle.z = q[4]
-        self.get_right_leg.ankle.angle.z = q[5]
-
-    def get_right_leg(self):
-        """
-        :return:
-        """
-        return self._right_leg
-
-    def get_left_leg(self):
-        """
-        :return:
-        """
-        return self._left_leg
-
-
-    # def get_leg_sensors(self):
-    #     left_leg_sensors = [self._left_leg.hip.force, self._left_leg.knee.force]
-    #     right_leg_sensors = [self._right_leg.hip.force, self._right_leg.knee.force]
-    #     return left_leg_sensors, right_leg_sensors
 
     @property
     def left_foot_force_sensor(self):
