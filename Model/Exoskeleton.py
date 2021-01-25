@@ -195,9 +195,7 @@ class Exoskeleton(Model.Model):
         q = self.ambf_to_rbdl(self.q)
         qd = self.ambf_to_rbdl(self.qd)
         qdd = self.ambf_to_rbdl(qdd)
-        print(q)
-        print(qd)
-        print(qdd)
+    
         tau = np.asarray([0.0] * self._joint_num)
         try:
             dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
@@ -205,8 +203,7 @@ class Exoskeleton(Model.Model):
             tau = resp1.tau   
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
-        print("my tau")
-        print(tau)
+
         
         return  np.array(self.rbdl_to_ambf(tau))
 

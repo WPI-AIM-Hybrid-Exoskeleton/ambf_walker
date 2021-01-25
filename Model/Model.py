@@ -114,7 +114,7 @@ class Model():
         self._state = np.concatenate(value)
 
     @abc.abstractmethod
-    def make_dynamic_model(self, name, model_path):
+    def make_dynamic_model(self, name, model_path): 
         """"
         use the RBDL server to create the model 
         """
@@ -168,11 +168,16 @@ class Model():
 
         names = self._joints_names
         joints_aligned = [0.0]*len(names)
+        values = list(self._joint_map.values())
+        q_new = [0.0]*len(names)
 
         for ii, name in enumerate(names):
             index = self._joint_map[name] - 1
-            print(index)
             joints_aligned[index] = q[ii]
+
+        for ii, name in enumerate(names):
+            index = self._joint_map[name] - 1
+            q_new[ii] = joints_aligned[index]
 
         return joints_aligned
 
@@ -180,16 +185,17 @@ class Model():
         """
         reverse the order of the AMBF
         """
-        print("my values ")
-        values = list(self._joint_map.values())
-        print(values)
-        print(q)
-        print("--------------------------")
-        q_new = [0.0]*len(values)
-
-        for ii, val in enumerate(values):
-            q_new[ii] = q[val-1]
         
+        
+        names = self._joints_names
+        joints_aligned = [0.0]*len(names)
+        values = list(self._joint_map.values())
+        q_new = [0.0]*len(names)
+
+        for ii, name in enumerate(names):
+            index = self._joint_map[name] - 1
+            q_new[ii] = q[index]
+
         return q_new
 
 
