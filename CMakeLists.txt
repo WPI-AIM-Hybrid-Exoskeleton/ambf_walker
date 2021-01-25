@@ -16,6 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   tf
   message_generation
+  rbdl_server
 
 )
 
@@ -62,3 +63,8 @@ include_directories(
 add_executable(rotate_point_cloud src/rotate_point_cloud.cpp)
 target_link_libraries(rotate_point_cloud   ${PCL_LIBRARIES} ${catkin_LIBRARIES})
 # add_dependencies(rotate_point_cloud beginner_tutorials_generate_messages_cpp)
+
+
+add_executable (dynamic_server src/dynamic_server.cpp)
+add_dependencies (dynamic_server ${catkin_EXPORTED_TARGETS})
+target_link_libraries(dynamic_server ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)

@@ -53,6 +53,7 @@ if __name__ == '__main__':
     robot_joints = ['ExoLeftHip', 'ExoLeftKnee', 'ExoLeftAnkle',
                     'ExoRightHip', 'ExoRightKnee', 'ExoRightAnkle',  'ExoHipCrutches']
 
+    file_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/plain_exo/default.yaml"
     # robot_joints = ['Hip-RobLeftThigh', 'RobLeftThigh-RobLeftShank', 'RobLeftShank-RobLeftFoot',
     #           'Hip-RobRightThigh', 'RobRightThigh-RobRightShank', 'RobRightShank-RobRightFoot',  'Hip-Crutches']
 

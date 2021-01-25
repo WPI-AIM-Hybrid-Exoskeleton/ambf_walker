@@ -20,16 +20,15 @@ from GaitAnaylsisToolkit.LearningTools.Runner import TPGMMRunner
 
 class Human(Model.Model):
 
-    def __init__(self, client, model_name, joint_names, mass, height):
+    def __init__(self, client, model_name, joint_names, mass, height, model_path):
         # inits dynamic model and joints for leg
-        super(Human, self).__init__(client, model_name=model_name, joint_names=joint_names)
+        super(Human, self).__init__(client, model_name=model_name, joint_names=joint_names, model_path=model_path)
         self._mass = mass
         self._height = height
-
         self.handle = self._client.get_obj_handle('Hip')
-        model_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/human/human.yaml"
-        self.make_dynamic_model(model_name, model_path )
-        # num_of_segments should be initialized with the dynamical model, which is created in the constructor
+        # model_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/human/human.yaml"
+        # self.make_dynamic_model(model_name, model_path )
+        # # num_of_segments should be initialized with the dynamical model, which is created in the constructor
         self.num_joints = len(self.handle.get_joint_names())
         self.q = self.num_joints * [0.0]
         self.qd = self.num_joints * [0.0]

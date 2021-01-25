@@ -13,11 +13,13 @@ from rbdl_server.srv import RBDLModel, RBDLModelAlignment
 
 class Model():
 
-    def __init__(self, client, model_name, joint_names):
+    def __init__(self, client, model_name, joint_names, model_path):
 
         self._rbdl_model = None
         self._client = client
         self._model_name = model_name
+        #"/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
+        self.make_dynamic_model(model_name, model_path )
         self._q = np.array([])
         self._qd = np.array([])
         self.tau = np.array([])

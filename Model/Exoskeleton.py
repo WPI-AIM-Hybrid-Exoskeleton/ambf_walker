@@ -25,18 +25,16 @@ from rbdl_server.srv import RBDLInverseDynamics
 
 class Exoskeleton(Model.Model):
 
-    def __init__(self, client, model_name, joints, mass, height):
-        super(Exoskeleton, self).__init__(client, model_name=model_name, joint_names=joints)
+    def __init__(self, client, model_name, joints, model_path):
+        super(Exoskeleton, self).__init__(client, model_name=model_name, joint_names=joints, model_path=model_path)
         self._handle = self._client.get_obj_handle('ExoHip')
         # Update to current
         self.prox = {}
         self.prox["LeftSideProx"] = rospy.Publisher('left_leg', PointCloud, queue_size=10)
         self.prox["RightSideProx"] = rospy.Publisher('right_leg', PointCloud, queue_size=10)
         time.sleep(4)
-        self._mass = mass
-        self._height = height
-        model_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
-        self.make_dynamic_model(model_name, model_path )
+        # model_path = file_path  #"/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
+        # self.make_dynamic_model(model_name, model_path )
         left_joints = {}
         right_joints = {}
 
@@ -194,9 +192,9 @@ class Exoskeleton(Model.Model):
         tau = np.asarray([0.0] * self._joint_num)
         #rbdl.InverseDynamics(self.rbdl_model, self.q[0:6], self.qd[0:6], qdd[0:6], tau)
         
-        q = self.ambf_to_rbdl(self.q[0:6])
-        qd = self.ambf_to_rbdl(self.qd[0:6])
-        qdd = self.ambf_to_rbdl(qdd[0:6])
+        q = self.ambf_to_rbdl(self.q)
+        qd = self.ambf_to_rbdl(self.qd)
+        qdd = self.ambf_to_rbdl(qdd)
         tau = None
 
         try:
