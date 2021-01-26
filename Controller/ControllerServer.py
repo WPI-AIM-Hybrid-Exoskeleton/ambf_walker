@@ -61,15 +61,7 @@ class ControllerServer(object):
             self._updater.start()
         return DesiredJointsCmdResponse(True)
 
-            #self._updater.join()
-        # return True
-        #
-        # joints = DesiredJoints()
-        # joints.q = msg.q
-        # joints.qd = msg.qd
-        # joints.qdd = msg.qdd
-        # joints.controller = msg.controller
-        # good = self.update_set_point(joints)
+    
 
     def set_torque(self):
         self._enable_control = True
@@ -91,8 +83,8 @@ class ControllerServer(object):
                 msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
                 msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd) )
                 msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd) )
-                msg.actual.positions = self._model.get_q_rbdl()
-                msg.actual.velocities = self._model.get_qd_rbdl()
+                msg.actual.positions = self._model.ambf_to_rbdl(self._model.q)
+                msg.actual.velocities = self._model.ambf_to_rbdl(self._model.qd)
                 
                 try:
                     resp1 = self.controller_srv(msg)

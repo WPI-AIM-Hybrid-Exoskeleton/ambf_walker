@@ -30,7 +30,7 @@ void DynController::calculate_torque(const trajectory_msgs::JointTrajectoryPoint
     dyn_msg.request.qd = actual.velocities;
     dyn_msg.request.qdd = qdd;
 
-    dyn_msg.request.model_name = "exo";
+    dyn_msg.request.model_name = model_name;
     if(client_ID.call(dyn_msg))
     {
         ROS_INFO("Dynamics Controller Calculated the dynamics");

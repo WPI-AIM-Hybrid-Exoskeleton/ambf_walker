@@ -99,12 +99,6 @@ class ModelServer(Model.Model):
                 my_joints.append(value[self._joints_names.index(joint)])
         self._q = self.q_filter.update(np.asarray(my_joints))
 
-    def get_q_rbdl(self):
-        return  self.ambf_to_rbdl(self._q)
-
-    def get_qd_rbdl(self):
-        return  self.ambf_to_rbdl(self._qd)
-
 
     @qd.setter
     def qd(self, value):
