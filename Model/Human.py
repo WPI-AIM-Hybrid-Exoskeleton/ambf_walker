@@ -27,7 +27,7 @@ class Human(Model.Model):
         self._height = height
 
         self.handle = self._client.get_obj_handle('Hip')
-        self.rbdl_model = self.dynamic_model()
+        self.rbdl_model = self.make_dynamic_model()
         # num_of_segments should be initialized with the dynamical model, which is created in the constructor
         self.num_joints = len(self.handle.get_joint_names())
         self.q = self.num_joints * [0.0]
@@ -60,7 +60,7 @@ class Human(Model.Model):
     #     value[5] *= -1
     #     self._qd = np.asarray(value)
 
-    def dynamic_model(self):
+    def make_dynamic_model(self):
         model = rbdl.Model()
         bodies = {}
         mass = {}

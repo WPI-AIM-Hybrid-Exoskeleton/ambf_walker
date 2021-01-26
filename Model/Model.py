@@ -113,7 +113,8 @@ self.rbdl_model = self.dynamic_model()
         self._state = np.concatenate(value)
 
     @abc.abstractmethod
-    def dynamic_model(self):
+    def make_dynamic_model(self):
+        NotImplementedError
         pass
 
     def update(self):

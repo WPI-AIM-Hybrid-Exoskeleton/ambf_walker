@@ -36,7 +36,7 @@ class Exoskeleton(Model.Model):
         self._mass = mass
         self._height = height
 
-        self.rbdl_model = self.dynamic_model()
+        self.rbdl_model = self.make_dynamic_model()
         left_joints = {}
         right_joints = {}
 
@@ -201,7 +201,7 @@ class Exoskeleton(Model.Model):
         rbdl.InverseDynamics(self.rbdl_model, q, qd, qdd, tau)
         return tau
 
-    def dynamic_model(self):
+    def make_dynamic_model(self):
         # add in mass and height params
         model = rbdl.Model()
         bodies = {}

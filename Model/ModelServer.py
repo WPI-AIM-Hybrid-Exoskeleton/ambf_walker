@@ -15,26 +15,9 @@ from . import Model
 class ModelServer(Model.Model):
 
     def __init__(self, client, model_name, joint_names, model_path):
-
-        self._rbdl_model = None
-        self._client = client
-        self._model_name = model_name
-        #"/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
-        self.make_dynamic_model(model_name, model_path )
-        self._q = np.array([])
-        self._qd = np.array([])
-        self.tau = np.array([])
-        self._joint_map = {}
-        self._state = np.array([])
-        self._handle = None
-        self._joints_names = []
-        self._selected_joint_names = joint_names
-        self._updater = Thread(target=self.update)
-        self._enable_control = False
-        self.qd_filter = MeanFilter.MeanFilter(1)
-        self.q_filter = MeanFilter.MeanFilter(1)
-        self.sub_torque = rospy.Subscriber(self.model_name + "_joint_torque", JointState, self.torque_cb)
-        self.q_pub = rospy.Publisher(self.model_name + "_q", Float32MultiArray, queue_size=1)
+        
+        super(ModelServer, self).__init__(client=client, model_name=model_name, joint_names=joint_names)
+       
         self.dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
 
     # @property
@@ -45,13 +28,7 @@ class ModelServer(Model.Model):
     # def rbdl_model(self, value):
     #     self._rbdl_model = value
 
-    @property
-    def model_name(self):
-        return self._model_name
-
-    @model_name.setter
-    def model_name(self, value):
-        self._model_name = value
+  
 
     def torque_cb(self, tau):
         self.update_torque(list(tau.effort))
@@ -67,56 +44,8 @@ class ModelServer(Model.Model):
     # def get_rbdl_model(self):
     #     return self._model
 
-    @property
-    def enable_control(self):
-        return self._enable_control
-
-    @enable_control.setter
-    def enable_control(self, value):
-        self._enable_control = value
-
-    @property
-    def handle(self):
-        return self._handle
-
-    @handle.setter
-    def handle(self, value):
-        self._handle = value
-
-    @property
-    def q(self):
-        return self._q
     
-    @property
-    def qd(self):
-        return self._qd
 
-    @q.setter
-    def q(self, value):
-        my_joints = []
-        for joint in self._selected_joint_names:
-            if joint in self._joints_names:
-                my_joints.append(value[self._joints_names.index(joint)])
-        self._q = self.q_filter.update(np.asarray(my_joints))
-
-
-    @qd.setter
-    def qd(self, value):
-        my_joints = []
-        for joint in self._selected_joint_names:
-            if joint in self._joints_names:
-                my_joints.append(value[self._joints_names.index(joint)])
-        self._qd = self.qd_filter.update(np.asarray(my_joints))
-
-    @property
-    def state(self):
-        return self._state
-
-    @state.setter
-    def state(self, value):
-        self._state = np.concatenate(value)
-
-    @abc.abstractmethod
     def make_dynamic_model(self, name, model_path): 
         """"
         use the RBDL server to create the model 
