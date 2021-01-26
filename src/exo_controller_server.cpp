@@ -41,7 +41,7 @@ int main(int argc, char **argv)
     PDController pd(Kp,Kd);
     boost::shared_ptr<ControllerBase> my_controller(new  DynController("exo", &n, &pd) );
 
-    // manager.addController("PD", my_controller);
+    manager.addController("Dyn", my_controller);
 
     ros::spin();
 
