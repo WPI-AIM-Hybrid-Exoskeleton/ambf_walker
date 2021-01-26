@@ -26,6 +26,7 @@ from rbdl_server.srv import RBDLInverseDynamics
 class Exoskeleton(Model.Model):
 
     def __init__(self, client, model_name, joints, model_path):
+        
         super(Exoskeleton, self).__init__(client, model_name=model_name, joint_names=joints, model_path=model_path)
         self._handle = self._client.get_obj_handle('ExoHip')
         # Update to current
@@ -197,6 +198,7 @@ class Exoskeleton(Model.Model):
         qdd = self.ambf_to_rbdl(qdd)
     
         tau = np.asarray([0.0] * self._joint_num)
+        rospy.wait_for_service("InverseDynamics")
         try:
             dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
             resp1 = dyn_srv(self.model_name, q, qd, qdd)

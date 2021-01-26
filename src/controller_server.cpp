@@ -6,13 +6,17 @@
 #include "controller_modules/PDController.h"
 #include "controller_modules/JointControl.h"
 #include "controller_modules/ControllerBase.h"
+#include "trajectory_msgs/JointTrajectoryPoint.h"
+#include "sensor_msgs/JointState.h"
+
+
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "Dynamic_Server");
+    ros::init(argc, argv, "Controller_Server");
     ros::NodeHandle n;
    
-    RBDLServer my_server(&n);       
+    ControllerManager manager = ControllerManager(&n);
 
     ros::spin();
 

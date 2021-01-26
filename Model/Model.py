@@ -10,6 +10,7 @@ from GaitCore.Core import Point
 from std_msgs.msg import Float32MultiArray
 from sensor_msgs.msg import JointState
 from rbdl_server.srv import RBDLModel, RBDLModelAlignment
+from rbdl_server.srv import RBDLInverseDynamics
 
 class Model():
 
@@ -34,14 +35,15 @@ class Model():
         self.q_filter = MeanFilter.MeanFilter(1)
         self.sub_torque = rospy.Subscriber(self.model_name + "_joint_torque", JointState, self.torque_cb)
         self.q_pub = rospy.Publisher(self.model_name + "_q", Float32MultiArray, queue_size=1)
+        self.dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
 
-    @property
-    def rbdl_model(self):
-        return self._rbdl_model
+    # @property
+    # def rbdl_model(self):
+    #     return self._rbdl_model
 
-    @rbdl_model.setter
-    def rbdl_model(self, value):
-        self._rbdl_model = value
+    # @rbdl_model.setter
+    # def rbdl_model(self, value):
+    #     self._rbdl_model = value
 
     @property
     def model_name(self):

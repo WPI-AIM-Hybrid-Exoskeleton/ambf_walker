@@ -17,7 +17,8 @@ find_package(catkin REQUIRED COMPONENTS
   tf
   message_generation
   rbdl_server
-
+  controller_modules
+  trajectory_msgs
 )
 
 find_package( PCL REQUIRED )
@@ -53,6 +54,11 @@ generate_messages(
   CATKIN_DEPENDS  roscpp rospy std_msgs message_runtime
 )
 
+FIND_PACKAGE (Eigen3 3.0.0 REQUIRED)
+include_directories(${Eigen3_INCLUDE_DIRS})
+
+
+
 include_directories(
   ${catkin_INCLUDE_DIRS}
   ${PCL_INCLUDE_DIRS}
@@ -67,4 +73,9 @@ target_link_libraries(rotate_point_cloud   ${PCL_LIBRARIES} ${catkin_LIBRARIES})
 
 add_executable (dynamic_server src/dynamic_server.cpp)
 add_dependencies (dynamic_server ${catkin_EXPORTED_TARGETS})
-target_link_libraries(dynamic_server ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
+target_link_libraries(dynamic_server ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
+
+
+add_executable (controller_server src/controller_server.cpp)
+add_dependencies (controller_server ${catkin_EXPORTED_TARGETS})
+target_link_libraries(controller_server ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
