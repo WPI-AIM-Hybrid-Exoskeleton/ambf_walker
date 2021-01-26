@@ -61,7 +61,7 @@ class ModelServer(Model.Model):
         self.rbdl_model = self.dynamic_model()
         :type tau: List
         """
-        self.tau = tau
+        self.tau = self.rbdl_to_ambf(tau)
         self._enable_control = True
 
     # def get_rbdl_model(self):
@@ -86,6 +86,10 @@ class ModelServer(Model.Model):
     @property
     def q(self):
         return self._q
+    
+    @property
+    def qd(self):
+        return self._qd
 
     @q.setter
     def q(self, value):
@@ -95,9 +99,12 @@ class ModelServer(Model.Model):
                 my_joints.append(value[self._joints_names.index(joint)])
         self._q = self.q_filter.update(np.asarray(my_joints))
 
-    @property
-    def qd(self):
-        return self._qd
+    def get_q_rbdl(self):
+        return  self.ambf_to_rbdl(self._q)
+
+    def get_qd_rbdl(self):
+        return  self.ambf_to_rbdl(self._qd)
+
 
     @qd.setter
     def qd(self, value):
@@ -158,7 +165,9 @@ class ModelServer(Model.Model):
             self._joint_num = self.q.size
             q_msg.data = self.q
             self.q_pub.publish(q_msg)
+
             if self._enable_control: 
+              
                self.handle.set_multiple_joint_effort(self.tau, joints_idx)
                 #set multiple joint pos
             rate.sleep()
@@ -176,7 +185,7 @@ class ModelServer(Model.Model):
         for ii, name in enumerate(names):
             index = self._joint_map[name] - 1
             joints_aligned[index] = q[ii]
-
+        
         return joints_aligned
 
     def rbdl_to_ambf(self, q):

@@ -1,26 +1,27 @@
 {
-  "configurations": [
-    {
-      "browse": {
-        "databaseFilename": "",
-        "limitSymbolsToIncludedHeaders": true
-      },
-      "includePath": [
-        "/home/nathanielgoldfarb/catkin_ws/devel/include/**",
-        "/home/nathanielgoldfarb/ambf/build/devel/include/**",
-        "/opt/ros/melodic/include/**",
-        "/home/nathanielgoldfarb/ambf/ambf_controller/ambf_client/include/**",
-        "/home/nathanielgoldfarb/ambf/ambf_controller/ambf_client_app/include/**",
-        "/home/nathanielgoldfarb/ambf/ambf_controller/ambf_client_test/include/**",
-        "/home/nathanielgoldfarb/ambf/ambf_ros_modules/ambf_comm/include/**",
-        "/home/nathanielgoldfarb/ambf/ambf_ros_modules/dvrk_arm/include/**",
-        "/home/nathanielgoldfarb/catkin_ws/src/PlotJuggler/include/**",
-        "/home/nathanielgoldfarb/catkin_ws/src/ambf_controller_testing/rbdl_model_test/include/**",
-        "/home/nathanielgoldfarb/catkin_ws/src/test_tread/include/**",
-        "/usr/include/**"
-      ],
-      "name": "ROS"
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/nathanielgoldfarb/catkin_ws/devel/include/**",
+                "/home/nathanielgoldfarb/ambf/build/devel/include/**",
+                "/opt/ros/melodic/include/**",
+                "/home/nathanielgoldfarb/ambf/ambf_controller/ambf_client/include/**",
+                "/home/nathanielgoldfarb/ambf/ambf_controller/ambf_client_app/include/**",
+                "/home/nathanielgoldfarb/ambf/ambf_controller/ambf_client_test/include/**",
+                "/home/nathanielgoldfarb/ambf/ambf_ros_modules/ambf_comm/include/**",
+                "/home/nathanielgoldfarb/ambf/ambf_ros_modules/dvrk_arm/include/**",
+                "/home/nathanielgoldfarb/catkin_ws/src/PlotJuggler/include/**",
+                "/home/nathanielgoldfarb/catkin_ws/src/ambf_controller_testing/rbdl_model_test/include/**",
+                "/home/nathanielgoldfarb/catkin_ws/src/test_tread/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
 }

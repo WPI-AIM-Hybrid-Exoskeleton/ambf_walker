@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 
     ControllerManager manager = ControllerManager(&n);
     PDController pd(Kp,Kd);
-    boost::shared_ptr<ControllerBase> my_controller(new  DynController("exo", &n, &pd) );
+    boost::shared_ptr<ControllerBase> my_controller(new  DynController("Dyn", &n, &pd) );
 
     manager.addController("Dyn", my_controller);
 
