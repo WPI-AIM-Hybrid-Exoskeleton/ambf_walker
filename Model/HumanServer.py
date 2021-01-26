@@ -12,17 +12,17 @@ from GaitCore.Core import Point
 from GaitCore.Core import utilities
 from std_msgs.msg import Float32MultiArray
 from threading import Thread
-from . import Model
+from . import ModelServer
 from GaitCore.Bio import Leg, Joint
 import rospy
 from ambf_msgs.msg import RigidBodyState
 from GaitAnaylsisToolkit.LearningTools.Runner import TPGMMRunner
 
-class Human(Model.Model):
+class HumanServer(ModelServer.ModelServer):
 
     def __init__(self, client, model_name, joint_names, mass, height, model_path):
         # inits dynamic model and joints for leg
-        super(Human, self).__init__(client, model_name=model_name, joint_names=joint_names, model_path=model_path)
+        super(HumanServer, self).__init__(client, model_name=model_name, joint_names=joint_names, model_path=model_path)
         self._mass = mass
         self._height = height
         self.handle = self._client.get_obj_handle('Hip')

@@ -12,10 +12,7 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 
 class ControllerServer(object):
 
-    def __init__(self, model, controllers):
-
-        self._model = model
-        self._controllers = controllers
+    def __init__(self):
         self.lock = Lock()
         self.controller = self._controllers["Dyn"]
         self._updater = Thread(target=self.set_torque)

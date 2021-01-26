@@ -12,7 +12,7 @@ from GaitCore.Core import Point
 from GaitCore.Core import utilities
 from std_msgs.msg import Float32MultiArray
 from threading import Thread
-from . import Model
+from . import ModelServer
 from GaitCore.Bio import Leg, Joint
 import rospy
 from ambf_msgs.msg import RigidBodyState, SensorState
@@ -23,11 +23,11 @@ from os.path import dirname, join
 from rbdl_server.srv import RBDLInverseDynamics
 
 
-class Exoskeleton(Model.Model):
+class ExoskeletonServer(ModelServer.ModelServer):
 
     def __init__(self, client, model_name, joints, model_path):
         
-        super(Exoskeleton, self).__init__(client, model_name=model_name, joint_names=joints, model_path=model_path)
+        super(ExoskeletonServer, self).__init__(client, model_name=model_name, joint_names=joints, model_path=model_path)
         self._handle = self._client.get_obj_handle('ExoHip')
         # Update to current
         self.prox = {}
