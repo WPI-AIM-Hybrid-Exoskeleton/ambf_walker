@@ -363,15 +363,15 @@ class ExoskeletonServer(ModelServer.ModelServer):
         return fk
 
     def stance_trajectory(self, tf=2, dt=0.01):
-        hip = Model.get_traj(0.0, -0.5, 0.0, 0.0, tf, dt)
-        knee = Model.get_traj(0.0, 0.50, 0.0, 0., tf, dt)
-        ankle = Model.get_traj(-0.349, -0.2, 0.0, 0.0, tf, dt)
+        hip = ModelServer.get_traj(0.0, -0.5, 0.0, 0.0, tf, dt)
+        knee = ModelServer.get_traj(0.0, 0.50, 0.0, 0., tf, dt)
+        ankle = ModelServer.get_traj(-0.349, -0.2, 0.0, 0.0, tf, dt)
         return hip, knee, ankle
 
     def walk_init_trajectory(self, tf=2, dt=0.01):
-        hip = Model.get_traj(0.0, 0.3234, 0.0, 0.0, tf, dt)
-        knee = Model.get_traj(0.0, 0.815, 0.0, 0., tf, dt)
-        ankle = Model.get_traj(-0.349, 0.07, 0.0, 0.0, tf, dt)
+        hip = ModelServer.get_traj(0.0, 0.3234, 0.0, 0.0, tf, dt)
+        knee = ModelServer.get_traj(0.0, 0.815, 0.0, 0., tf, dt)
+        ankle = ModelServer.get_traj(-0.349, 0.07, 0.0, 0.0, tf, dt)
         return hip, knee, ankle
 
     def get_runner(self):

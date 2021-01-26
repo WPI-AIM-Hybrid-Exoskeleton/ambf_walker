@@ -53,12 +53,11 @@ if __name__ == '__main__':
     robot_joints = ['ExoLeftHip', 'ExoLeftKnee', 'ExoLeftAnkle',
                     'ExoRightHip', 'ExoRightKnee', 'ExoRightAnkle',  'ExoHipCrutches']
 
-    file_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/plain_exo/default.yaml"
     # robot_joints = ['Hip-RobLeftThigh', 'RobLeftThigh-RobLeftShank', 'RobLeftShank-RobLeftFoot',
     #           'Hip-RobRightThigh', 'RobRightThigh-RobRightShank', 'RobRightShank-RobRightFoot',  'Hip-Crutches']
 
     #LARRY = Human.Human(_client, "human", body_joints, 0, 0)
-    LARRE = Exoskeleton.Exoskeleton(_client, "exo", robot_joints, file_path)
+    LARRE = Exoskeleton.Exoskeleton(_client, "exo", robot_joints, 56, 1.56)
     # LARRE.handle.set_rpy(0.25, 0, 0)
     # LARRE.handle.set_pos(0, 0, 1.0)
     Dyn = DynController.DynController(LARRE, Kp, Kd)
