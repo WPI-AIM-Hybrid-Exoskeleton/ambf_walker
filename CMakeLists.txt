@@ -99,9 +99,9 @@ add_dependencies (dynamic_server ${catkin_EXPORTED_TARGETS})
 target_link_libraries(dynamic_server ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
 
 
-add_executable (controller_server src/controller_server.cpp)
-add_dependencies (controller_server ${catkin_EXPORTED_TARGETS})
-target_link_libraries(controller_server ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
+add_executable (exo_controller_server src/exo_controller_server.cpp)
+add_dependencies (exo_controller_server ${catkin_EXPORTED_TARGETS})
+target_link_libraries(exo_controller_server ${PROJECT_NAME}  ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
 
 
 

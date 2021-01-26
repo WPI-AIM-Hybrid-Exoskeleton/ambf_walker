@@ -4,6 +4,7 @@
 #include "boost/shared_ptr.hpp"
 #include "controller_modules/ControllerManager.h"
 #include "controller_modules/PDController.h"
+#include "ambf_walker/DynController.h"
 #include "controller_modules/JointControl.h"
 #include "controller_modules/ControllerBase.h"
 #include "trajectory_msgs/JointTrajectoryPoint.h"
@@ -37,9 +38,10 @@ int main(int argc, char **argv)
     Kd(6,6) = 0.40;
 
     ControllerManager manager = ControllerManager(&n);
+    PDController pd(Kp,Kd);
+    boost::shared_ptr<ControllerBase> my_controller(new  DynController("exo", &n, &pd) );
 
-    boost::shared_ptr<ControllerBase> my_controller(new PDController(Kp,Kd));
-    manager.addController("PD", my_controller);
+    // manager.addController("PD", my_controller);
 
     ros::spin();
 
