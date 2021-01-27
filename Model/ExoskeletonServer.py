@@ -407,6 +407,38 @@ class ExoskeletonServer(ModelServer.ModelServer):
     #     return left_foot_sensors, right_foot_sensors
 
 
+    def ambf_to_rbdl(self, q):
+        """
+        make the order of the joints for the dynamics
+        """
+
+        names = self._joints_names
+        joints_aligned = [0.0]*len(names)
+        values = list(self._joint_map.values())
+        q_new = [0.0]*len(names)
+
+        for ii, name in enumerate(names):
+            index = self._joint_map[name] - 1
+            joints_aligned[index] = q[ii]
+        
+        return joints_aligned
+
+    def rbdl_to_ambf(self, q):
+        """
+        reverse the order of the AMBF
+        """
+        
+        names = self._joints_names
+        joints_aligned = [0.0]*len(names)
+        values = list(self._joint_map.values())
+        q_new = [0.0]*len(names)
+
+        for ii, name in enumerate(names):
+            index = self._joint_map[name] - 1
+            q_new[ii] = q[index]
+
+        return q_new
+
     def leg_inverse_kinimatics(self, toe, hip_location):
 
         l1 = 436.0

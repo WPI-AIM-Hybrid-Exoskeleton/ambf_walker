@@ -17,18 +17,14 @@ class ModelServer(Model.Model):
     def __init__(self, client, model_name, joint_names, model_path):
         
         super(ModelServer, self).__init__(client=client, model_name=model_name, joint_names=joint_names)
-       
+        
+
+        #"/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
+        self.make_dynamic_model(model_name, model_path )
+        self._joint_map = {}
+        self._selected_joint_names = joint_names
         self.dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
 
-    # @property
-    # def rbdl_model(self):
-    #     return self._rbdl_model
-
-    # @rbdl_model.setter
-    # def rbdl_model(self, value):
-    #     self._rbdl_model = value
-
-  
 
     def torque_cb(self, tau):
         self.update_torque(list(tau.effort))
@@ -41,10 +37,6 @@ class ModelServer(Model.Model):
         self.tau = self.rbdl_to_ambf(tau)
         self._enable_control = True
 
-    # def get_rbdl_model(self):
-    #     return self._model
-
-    
 
     def make_dynamic_model(self, name, model_path): 
         """"
@@ -94,38 +86,6 @@ class ModelServer(Model.Model):
                self.handle.set_multiple_joint_effort(self.tau, joints_idx)
                 #set multiple joint pos
             rate.sleep()
-
-    def ambf_to_rbdl(self, q):
-        """
-        make the order of the joints for the dynamics
-        """
-
-        names = self._joints_names
-        joints_aligned = [0.0]*len(names)
-        values = list(self._joint_map.values())
-        q_new = [0.0]*len(names)
-
-        for ii, name in enumerate(names):
-            index = self._joint_map[name] - 1
-            joints_aligned[index] = q[ii]
-        
-        return joints_aligned
-
-    def rbdl_to_ambf(self, q):
-        """
-        reverse the order of the AMBF
-        """
-        
-        names = self._joints_names
-        joints_aligned = [0.0]*len(names)
-        values = list(self._joint_map.values())
-        q_new = [0.0]*len(names)
-
-        for ii, name in enumerate(names):
-            index = self._joint_map[name] - 1
-            q_new[ii] = q[index]
-
-        return q_new
 
 
     @abc.abstractmethod

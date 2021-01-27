@@ -25,7 +25,7 @@ from os.path import dirname, join
 
 class Exoskeleton(Model.Model):
 
-    def __init__(self, client, model_name, joints, mass, height):
+    def __init__(self, client, model_name, joints):
         super(Exoskeleton, self).__init__(client, model_name=model_name, joint_names=joints)
         self._handle = self._client.get_obj_handle('ExoHip')
         # Update to current
@@ -33,8 +33,7 @@ class Exoskeleton(Model.Model):
         self.prox["LeftSideProx"] = rospy.Publisher('left_leg', PointCloud, queue_size=10)
         self.prox["RightSideProx"] = rospy.Publisher('right_leg', PointCloud, queue_size=10)
         time.sleep(4)
-        self._mass = mass
-        self._height = height
+
 
         self.rbdl_model = self.make_dynamic_model()
         left_joints = {}
