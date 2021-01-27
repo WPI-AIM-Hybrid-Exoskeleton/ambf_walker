@@ -27,6 +27,10 @@ class Exoskeleton(Model.Model):
 
     def __init__(self, client, model_name, joints):
         super(Exoskeleton, self).__init__(client, model_name=model_name, joint_names=joints)
+        self.__initlize()
+
+
+    def __initlize(self):
         self._handle = self._client.get_obj_handle('ExoHip')
         # Update to current
         self.prox = {}
@@ -76,9 +80,9 @@ class Exoskeleton(Model.Model):
         self._right_shank_sensorF_sub = message_filters.Subscriber("/ambf/env/FrontSensorRightShank/State", RigidBodyState)
         self._right_shank_sensorB_sub = message_filters.Subscriber("/ambf/env/BackSensorRightShank/State", RigidBodyState)
         self._leg_sensor_ls = [self._left_thigh_sensorF_sub, self._left_thigh_sensorB_sub,
-                               self._left_shank_sensorF_sub, self._left_shank_sensorB_sub,
-                               self._right_thigh_sensorF_sub, self._right_thigh_sensorB_sub,
-                               self._right_shank_sensorF_sub, self._right_shank_sensorB_sub]
+                                self._left_shank_sensorF_sub, self._left_shank_sensorB_sub,
+                                self._right_thigh_sensorF_sub, self._right_thigh_sensorB_sub,
+                                self._right_shank_sensorF_sub, self._right_shank_sensorB_sub]
         self._leg_sensor_cb = message_filters.TimeSynchronizer(self._leg_sensor_ls, 1)
         self._leg_sensor_cb.registerCallback(self.leg_sensor_callback)
 
@@ -106,6 +110,8 @@ class Exoskeleton(Model.Model):
         self._right_foot_prox = SensorState()
         self._left_foot_prox = SensorState()
         self._updater.start()
+
+
 
     def left_foot_prox_callback(self, msg):
         self._left_foot_prox = msg
@@ -349,6 +355,12 @@ class Exoskeleton(Model.Model):
         fk["right_heel"].z = fk["right_ankle"].z - 0.05 + 0.2 * (8.0 / 100.0) * self._height * np.sin(q_right)
 
         return fk
+    
+   
+        
+        
+        
+        
 
     def stance_trajectory(self, tf=2, dt=0.01):
         hip = Model.get_traj(0.0, -0.5, 0.0, 0.0, tf, dt)
