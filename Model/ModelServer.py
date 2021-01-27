@@ -131,6 +131,35 @@ class ModelServer(Model.Model):
         :return:
         """
         return self._left_leg
+    
+    def ambf_to_rbdl(self, q):
+        """
+        make the order of the joints for the dynamics
+        """
+
+        names = self._selected_joint_names
+        joints_aligned = [0.0]*len(names)
+        values = list(self._joint_map_selected.values())
+        q_new = [0.0]*len(names)
+        for ii, name in enumerate(names):
+            index = self._joint_map_selected[name] 
+            joints_aligned[index] = q[ii]
+
+        return joints_aligned
+
+    def rbdl_to_ambf(self, q):
+        """
+        reverse the order of the AMBF
+        """
+        
+        names = self._selected_joint_names
+        joints_aligned = [0.0]*len(names)
+        q_new = [0.0]*len(names)
+        for ii, name in enumerate(names):
+            index = self._joint_map_selected[name] 
+            q_new[ii] = q[index]
+
+        return q_new
 
 
 

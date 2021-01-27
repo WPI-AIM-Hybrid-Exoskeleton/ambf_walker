@@ -401,45 +401,10 @@ class ExoskeletonServer(ModelServer.ModelServer):
     def right_foot_force_sensor(self, value):
         self._right_foot_force_sensor = value
 
-    # def get_foot_sensors(self):
-    #     left_foot_sensors = [self._left_foot_sensor1, self._left_foot_sensor2, self._left_foot_sensor3]
-    #     right_foot_sensors = [self._right_foot_sensor1, self._right_foot_sensor2, self._right_foot_sensor3]
-    #     return left_foot_sensors, right_foot_sensors
-
-
-
-
-    def ambf_to_rbdl(self, q):
-        """
-        make the order of the joints for the dynamics
-        """
-
-
-        names = self._selected_joint_names
-        joints_aligned = [0.0]*len(names)
-        values = list(self._joint_map_selected.values())
-        q_new = [0.0]*len(names)
-        for ii, name in enumerate(names):
-            index = self._joint_map_selected[name] 
-            joints_aligned[index] = q[ii]
-        
-        return joints_aligned
-
-    def rbdl_to_ambf(self, q):
-        """
-        reverse the order of the AMBF
-        """
-        
-        names = self._selected_joint_names
-        joints_aligned = [0.0]*len(names)
-        q_new = [0.0]*len(names)
-        for ii, name in enumerate(names):
-            index = self._joint_map_selected[name] 
-            q_new[ii] = q[index]
-
-        return q_new
-
-
+    def get_foot_sensors(self):
+        left_foot_sensors = [self._left_foot_sensor1, self._left_foot_sensor2, self._left_foot_sensor3]
+        right_foot_sensors = [self._right_foot_sensor1, self._right_foot_sensor2, self._right_foot_sensor3]
+        return left_foot_sensors, right_foot_sensors
 
 
     # def ambf_to_rbdl(self, q):
