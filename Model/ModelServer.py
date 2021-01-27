@@ -22,6 +22,7 @@ class ModelServer(Model.Model):
         #"/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
         self.make_dynamic_model(model_name, model_path )
         self._joint_map = {}
+        self._joint_map_selected = {}
         self._selected_joint_names = joint_names
         self.dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
 
@@ -66,11 +67,16 @@ class ModelServer(Model.Model):
             print("Service call failed: %s"%e)
 
         self._joint_map = {resp1.names[i]: resp1.ids[i] for i in range(len(resp1.names))}
+       
         joints_idx = []
             # print(self._joints_names)
+        index = 0
         for joint in self._selected_joint_names:
             if joint in self._joints_names:
                 joints_idx.append(self._joints_names.index(joint))
+                self._joint_map_selected[joint] = index
+                index+=1
+                
         # loop through and get the joint values
         # set the torques 
         while 1:
@@ -82,7 +88,7 @@ class ModelServer(Model.Model):
             self.q_pub.publish(q_msg)
 
             if self._enable_control: 
-              
+
                self.handle.set_multiple_joint_effort(self.tau, joints_idx)
                 #set multiple joint pos
             rate.sleep()
