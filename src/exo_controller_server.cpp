@@ -46,6 +46,14 @@ int main(int argc, char **argv)
     Kd(5,5) = 4.0;
     Kd(6,6) = 4.0;
 
+    // Kd(0,0) = 4.0;
+    // Kd(1,1) = 4.0;
+    // Kd(2,2) = 4.0;
+    // Kd(3,3) = 4.0;
+    // Kd(4,4) = 4.0;
+    // Kd(5,5) = 4.0;
+    // Kd(6,6) = 4.0;
+
     ControllerManager manager = ControllerManager(&n);
     PDController pd(Kp,Kd);
     boost::shared_ptr<ControllerBase> my_controller(new  DynController("exo", &n, &pd) );

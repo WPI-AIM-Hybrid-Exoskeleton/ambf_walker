@@ -143,11 +143,15 @@ class ModelServer(Model.Model):
         """
 
         names = self._selected_joint_names
+        ambf_joints_names = self.handle.get_joint_names()
         joints_aligned = [0.0]*len(names)
-        values = list(self._joint_map_selected.values())
         q_new = [0.0]*len(names)
+
         for ii, name in enumerate(names):
-            index = self._joint_map_selected[name] 
+            if(len(names) > len(ambf_joints_names)):
+                index = self._joint_map_selected[name]
+            else:
+                index = self._joint_map[name] - 1
             joints_aligned[index] = q[ii]
 
         return joints_aligned
@@ -158,10 +162,15 @@ class ModelServer(Model.Model):
         """
         
         names = self._selected_joint_names
+        ambf_joints_names = self.handle.get_joint_names()
         joints_aligned = [0.0]*len(names)
         q_new = [0.0]*len(names)
         for ii, name in enumerate(names):
-            index = self._joint_map_selected[name] 
+            if(len(names) > len(ambf_joints_names)):
+                index = self._joint_map_selected[name]
+            else:
+                index = self._joint_map[name] - 1
+            
             q_new[ii] = q[index]
 
         return q_new

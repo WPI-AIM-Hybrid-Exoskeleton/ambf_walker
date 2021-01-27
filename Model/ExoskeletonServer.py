@@ -51,16 +51,7 @@ class ExoskeletonServer(ModelServer.ModelServer):
         self._right_leg = Leg.Leg(right_joints["Hip"], right_joints["Knee"], right_joints["Ankle"])
 
         self._state = (self._q, self._qd)
-
-        # START ATTEMPT
-        # self._left_thigh_sensorF = Point.Point(0, 0, 0)
-        # self._left_thigh_sensorB = Point.Point(0, 0, 0)
-        # self._left_shank_sensorF = Point.Point(0, 0, 0)
-        # self._left_shank_sensorB = Point.Point(0, 0, 0)
-        # self._right_thigh_sensorF = Point.Point(0, 0, 0)
-        # self._right_thigh_sensorB = Point.Point(0, 0, 0)
-        # self._right_shank_sensorF = Point.Point(0, 0, 0)
-        # self._right_shank_sensorB = Point.Point(0, 0, 0)
+        
         rospy.Subscriber("/ambf/env/LeftSideProx/State", SensorState, self.prox_callback)
         rospy.Subscriber("/ambf/env/RightSideProx/State", SensorState, self.prox_callback)
 
@@ -169,15 +160,6 @@ class ExoskeletonServer(ModelServer.ModelServer):
         self._right_leg.hip.force = force_frt
         self._right_leg.knee.force = force_frs
 
-        # self._left_thigh_sensorF = force_flt
-        # self._left_thigh_sensorB = force_blt
-        # self._left_shank_sensorF = force_fls
-        # self._left_shank_sensorB = force_bls
-        # self._right_thigh_sensorF = force_frt
-        # self._right_thigh_sensorB = force_brt
-        # self._right_shank_sensorF = force_frs
-        # self._right_shank_sensorB = force_brs
-
     def foot_sensor_callback(self, lf1, lf2, lf3, rf1, rf2, rf3):
         force_lf1 = Point.Point(lf1.wrench.force.x, lf1.wrench.force.y, lf1.wrench.force.z)
         force_lf2 = Point.Point(lf2.wrench.force.x, lf2.wrench.force.y, lf2.wrench.force.z)
@@ -233,6 +215,39 @@ class ExoskeletonServer(ModelServer.ModelServer):
         left_foot_sensors = [self._left_foot_sensor1, self._left_foot_sensor2, self._left_foot_sensor3]
         right_foot_sensors = [self._right_foot_sensor1, self._right_foot_sensor2, self._right_foot_sensor3]
         return left_foot_sensors, right_foot_sensors
+    
+    
+    
+    
+    # def ambf_to_rbdl(self, q):
+    #     """
+    #     make the order of the joints for the dynamics
+    #     """
+
+    #     names = self._joints_names
+    #     joints_aligned = [0.0]*len(names)
+    #     q_new = [0.0]*len(names)
+
+    #     for ii, name in enumerate(names):
+    #         index = self._joint_map[name] - 1
+    #         joints_aligned[index] = q[ii]
+
+    #     return joints_aligned
+
+    # def rbdl_to_ambf(self, q):
+    #     """
+    #     reverse the order of the AMBF
+    #     """
+        
+    #     names = self._joints_names
+    #     q_new = [0.0]*len(names)
+
+    #     for ii, name in enumerate(names):
+    #         index = self._joint_map[name] - 1
+    #         q_new[ii] = q[index]
+
+    #     return q_new
+
 
     def leg_inverse_kinimatics(self, toe, hip_location):
 
