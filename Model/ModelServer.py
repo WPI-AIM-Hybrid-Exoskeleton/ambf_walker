@@ -86,9 +86,7 @@ class ModelServer(Model.Model):
             self._joint_num = self.q.size
             q_msg.data = self.q
             self.q_pub.publish(q_msg)
-
             if self._enable_control: 
-
                self.handle.set_multiple_joint_effort(self.tau, joints_idx)
                 #set multiple joint pos
             rate.sleep()
@@ -102,23 +100,30 @@ class ModelServer(Model.Model):
     def update_state(self, q, qd):
         self.state = q + qd
 
-    @abc.abstractmethod
+   
     def calculate_dynamics(self, qdd):
-        pass
+        
+        q = self.ambf_to_rbdl(self.q)
+        qd = self.ambf_to_rbdl(self.qd)
+        qdd = self.ambf_to_rbdl(qdd)
 
+        tau = np.asarray([0.0] * self._joint_num)
+        rospy.wait_for_service("InverseDynamics")
+        try:
+            dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
+            resp1 = dyn_srv(self.model_name, q, qd, qdd)
+            tau = resp1.tau   
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
+
+        
+        return  np.array(self.rbdl_to_ambf(tau))
+
+   
     @abc.abstractmethod
     def calculate_torque(self):
         pass
 
-
-    # def state(self, q, qd ):
-    #     self.get_left_leg.hip.angle.z = q[0]
-    #     self.get_left_leg.knee.angle.z = q[1]
-    #     self.get_left_leg.ankle.angle.z = q[2]
-
-    #     self.get_right_leg.hip.angle.z = q[3]
-    #     self.get_right_leg.knee.angle.z = q[4]
-    #     self.get_right_leg.ankle.angle.z = q[5]
 
     def get_right_leg(self):
         """
