@@ -32,7 +32,7 @@ if __name__ == '__main__':
     human_file_path = "/home/nathaniel/catkin_ws/src/ambf_walker/ambf_models/human/human.yaml"
    
     LARRE = ExoskeletonServer.ExoskeletonServer(_client, "exo", robot_joints, exo_file_path)
-    LARRY = ExoskeletonServer.ExoskeletonServer(_client, "human", body_joints, human_file_path)
+    #LARRY = ExoskeletonServer.ExoskeletonServer(_client, "human", body_joints, human_file_path)
     exo_controller_server = ControllerServer.ControllerServer(LARRE)
     human_controller_server = ControllerServer.ControllerServer(LARRY)
    

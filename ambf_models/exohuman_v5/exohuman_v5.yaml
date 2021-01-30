@@ -15,6 +15,8 @@ bodies:
 - BODY HumanRightShank
 - BODY HumanRightFoot
 joints:
+- JOINT Exo-Human_LeftFoot
+- JOINT Exo-Human_RightFoot
 - JOINT ExoHip-HumanTorso
 - JOINT ExoHipCrutches
 - JOINT ExoLeftKnee
@@ -132,6 +134,10 @@ BODY ExoHip:
   name: ExoHip
   mesh: ExoHip.STL
   mass: 5.0
+  inertia:
+    ix: 0.4004
+    iy: 0.4587
+    iz: 0.1307
   collision margin: 0.001
   scale: 1.0
   location:
@@ -195,6 +201,10 @@ BODY ExoLeftThigh:
   name: ExoLeftThigh
   mesh: ExoLeftThigh.STL
   mass: 2.11
+  inertia:
+    ix: 0.0873
+    iy: 0.0883
+    iz: 0.0045
   collision margin: 0.001
   scale: 1.0
   location:
@@ -258,6 +268,10 @@ BODY ExoLeftShank:
   name: ExoLeftShank
   mesh: ExoLeftShank.STL
   mass: 1.28
+  inertia:
+    ix: 0.0303
+    iy: 0.0303
+    iz: 0.0019
   collision margin: 0.001
   scale: 1.0
   location:
@@ -271,9 +285,9 @@ BODY ExoLeftShank:
       y: 0.0
   inertial offset:
     position:
-      x: -0.0028
+      x: -0.0238
       y: -0.0001
-      z: -0.011
+      z: 0.058
     orientation:
       r: 0
       p: 0
@@ -321,6 +335,10 @@ BODY ExoLeftFoot:
   name: ExoLeftFoot
   mesh: ExoLeftFoot.STL
   mass: 0.866
+  inertia:
+    ix: 0.0142
+    iy: 0.0126
+    iz: 0.0185
   collision margin: 0.001
   scale: 1.0
   location:
@@ -334,9 +352,9 @@ BODY ExoLeftFoot:
       y: 0.0
   inertial offset:
     position:
-      x: -0.0133
-      y: -0.0013
-      z: -0.0832
+      x: -0.0733
+      y: -0.0583
+      z: 0.0458
     orientation:
       r: 0
       p: 0
@@ -384,6 +402,10 @@ BODY ExoRightThigh:
   name: ExoRightThigh
   mesh: ExoRightThigh.STL
   mass: 2.11
+  inertia:
+    ix: 0.0873
+    iy: 0.0884
+    iz: 0.0045
   collision margin: 0.001
   scale: 1.0
   location:
@@ -447,6 +469,10 @@ BODY ExoRightShank:
   name: ExoRightShank
   mesh: ExoRightShank.STL
   mass: 1.28
+  inertia:
+    ix: 0.0345
+    iy: 0.0352
+    iz: 0.0027
   collision margin: 0.001
   scale: 1.0
   location:
@@ -509,7 +535,11 @@ BODY ExoRightShank:
 BODY ExoRightFoot:
   name: ExoRightFoot
   mesh: ExoRightFoot.STL
-  mass: 1.0
+  mass: 0.866
+  inertia:
+    ix: 0.0142
+    iy: 0.0126
+    iz: 0.0185
   collision margin: 0.001
   scale: 1.0
   location:
@@ -523,9 +553,9 @@ BODY ExoRightFoot:
       y: 0.0
   inertial offset:
     position:
-      x: 0.0133
-      y: -0.0013
-      z: -0.0832
+      x: 0.0734
+      y: -0.0582
+      z: 0.0457
     orientation:
       r: 0
       p: 0
@@ -582,6 +612,10 @@ BODY HumanTorso:
   name: HumanTorso
   mesh: HumanTorso.STL
   mass: 40.32
+  inertia:
+    ix: 5.1288
+    iy: 5.5083
+    iz: 0.4958
   collision margin: 0.001
   scale: 1.0
   location:
@@ -597,7 +631,7 @@ BODY HumanTorso:
     position:
       x: -0.0
       y: -0.0094
-      z: -0.3298
+      z: -0.2033
     orientation:
       r: 0
       p: 0
@@ -700,9 +734,9 @@ BODY HumanLeftShank:
   mesh: HumanLeftShank.STL
   mass: 3.848
   inertia:
-    ix: 0.2628
-    iy: 0.2648
-    iz: 0.015
+    ix: 0.2918
+    iy: 0.2942
+    iz: 0.0158
   collision margin: 0.001
   scale: 1.0
   location:
@@ -756,9 +790,9 @@ BODY HumanLeftFoot:
   mesh: HumanLeftFoot.STL
   mass: 1.032
   inertia:
-    ix: 0.0082
-    iy: 0.0032
-    iz: 0.0075
+    ix: 0.0069
+    iy: 0.0026
+    iz: 0.0063
   collision margin: 0.001
   scale: 1.0
   location:
@@ -902,9 +936,9 @@ BODY HumanRightShank:
       y: 0.0
   inertial offset:
     position:
-      x: 0.0305
-      y: 0.0174
-      z: -0.2118
+      x: 0.0278
+      y: 0.0159
+      z: -0.1933
     orientation:
       r: 0
       p: 0
@@ -951,9 +985,9 @@ BODY HumanRightFoot:
   mesh: HumanRightFoot.STL
   mass: 1.032
   inertia:
-    ix: 0.0082
-    iy: 0.0032
-    iz: 0.0075
+    ix: 0.0148
+    iy: 0.004
+    iz: 0.0149
   collision margin: 0.001
   scale: 1.0
   location:
@@ -1011,6 +1045,82 @@ BODY HumanRightFoot:
       P: 50.0
       I: 0.5
       D: 0.5
+JOINT Exo-Human_LeftFoot:
+  name: Exo-Human_LeftFoot
+  parent: BODY ExoLeftFoot
+  child: BODY HumanLeftFoot
+  parent axis:
+    x: 0.0
+    y: 0.0
+    z: 1.0
+  parent pivot:
+    x: -0.1196
+    y: -0.0727
+    z: -0.0105
+  child axis:
+    x: 0.0
+    y: 0.0
+    z: 1.0
+  child pivot:
+    x: -0.0217
+    y: -0.094
+    z: -0.0679
+  joint limits:
+    high: 1.2
+    low: -1.2
+  enable feedback: false
+  passive: true
+  body rotation:
+    xx: 1.0
+    xy: 0.0
+    xz: 0.0
+    yx: 0.0
+    yy: 1.0
+    yz: 0.0
+    zx: 0.0
+    zy: 0.0
+    zz: 1.0
+  detached: true
+  type: fixed
+  damping: 0.0
+JOINT Exo-Human_RightFoot:
+  name: Exo-Human_RightFoot
+  parent: BODY ExoRightFoot
+  child: BODY HumanRightFoot
+  parent axis:
+    x: 0.0
+    y: 0.0
+    z: 1.0
+  parent pivot:
+    x: 0.1189
+    y: -0.0727
+    z: -0.0105
+  child axis:
+    x: 0.0
+    y: 0.0
+    z: 1.0
+  child pivot:
+    x: 0.0296
+    y: -0.094
+    z: -0.0679
+  joint limits:
+    high: 1.2
+    low: -1.2
+  enable feedback: false
+  passive: true
+  body rotation:
+    xx: 1.0
+    xy: 0.0
+    xz: 0.0
+    yx: 0.0
+    yy: 1.0
+    yz: 0.0
+    zx: 0.0
+    zy: 0.0
+    zz: 1.0
+  detached: true
+  type: fixed
+  damping: 0.0
 JOINT ExoHip-HumanTorso:
   name: ExoHip-HumanTorso
   parent: BODY ExoHip
@@ -1073,7 +1183,7 @@ JOINT ExoHipCrutches:
     high: 1.2
     low: -1.2
   enable feedback: false
-  passive: true
+  passive: false
   body rotation:
     xx: 1.0
     xy: 0.0
