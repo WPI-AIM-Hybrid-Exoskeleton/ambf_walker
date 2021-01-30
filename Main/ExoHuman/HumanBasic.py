@@ -28,8 +28,8 @@ if __name__ == '__main__':
     body_joints = ['HumanLeftHip', 'HumanLeftKnee', 'HumanLeftAnkle',
                    'HumanRightHip', 'HumanRightKnee', 'HumanRightAnkle']
 
-    exo_file_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
-    human_file_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/human/human.yaml"
+    exo_file_path = "/home/nathaniel/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
+    human_file_path = "/home/nathaniel/catkin_ws/src/ambf_walker/ambf_models/human/human.yaml"
    
     LARRE = ExoskeletonServer.ExoskeletonServer(_client, "exo", robot_joints, exo_file_path)
     LARRY = ExoskeletonServer.ExoskeletonServer(_client, "human", body_joints, human_file_path)

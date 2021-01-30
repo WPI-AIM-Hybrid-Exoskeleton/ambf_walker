@@ -34,7 +34,7 @@ class ExoskeletonServer(ModelServer.ModelServer):
         self.prox["LeftSideProx"] = rospy.Publisher('left_leg', PointCloud, queue_size=10)
         self.prox["RightSideProx"] = rospy.Publisher('right_leg', PointCloud, queue_size=10)
         time.sleep(4)
-        # model_path = file_path  #"/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
+        # model_path = file_path  #"/home/nathaniel/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
         # self.make_dynamic_model(model_name, model_path )
         left_joints = {}
         right_joints = {}

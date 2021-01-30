@@ -36,13 +36,36 @@ int main(int argc, char **argv)
     exo_Kd(4,4) = 4.0;
     exo_Kd(5,5) = 4.0;
     exo_Kd(6,6) = 4.0;
+
+
+
+    Eigen::MatrixXd FF_Kp = Eigen::MatrixXd::Ones(7,7);
+    Eigen::MatrixXd FF_Kd = Eigen::MatrixXd::ones(7,7);
+    
+    exo_Kp(0,0) = 500.0;
+    exo_Kp(1,1) = 500.0;
+    exo_Kp(2,2) = 500.0;
+    exo_Kp(3,3) = 500.0;
+    exo_Kp(4,4) = 500.0;
+    exo_Kp(5,5) = 500.0;
+    exo_Kp(6,6) = 500.0;
+
+    exo_Kd(0,0) = 0.40;
+    exo_Kd(1,1) = 0.40;
+    exo_Kd(2,2) = 0.40;
+    exo_Kd(3,3) = 0.40;
+    exo_Kd(4,4) = 0.40;
+    exo_Kd(5,5) = 0.40;
+    exo_Kd(6,6) = 0.40;
   
 
     ControllerManager manager = ControllerManager(&n);
-    PDController exo(exo_Kp,exo_Kd);
-    boost::shared_ptr<ControllerBase> my_controller(new  DynController("exo", &n, &exo) );
+    PDController exo(exo_Kp, exo_Kd);
+    boost::shared_ptr<ControllerBase> Dyn_controller(new  DynController("exo", &n, &exo) );
+    boost::shared_ptr<ControllerBase> FF_controller(new  PDController(FF_Kp, FF_Kd ) );
 
-    manager.addController("Dyn", my_controller);
+    manager.addController("Dyn", Dyn_controller);
+    manager.addController("FF", FF_controller);
 
     ros::spin();
 
