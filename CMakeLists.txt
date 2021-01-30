@@ -104,4 +104,12 @@ add_dependencies (exo_controller_server ${catkin_EXPORTED_TARGETS})
 target_link_libraries(exo_controller_server ${PROJECT_NAME}  ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
 
 
+add_executable (lumped_controller_server src/lumped_controller_server.cpp)
+add_dependencies (lumped_controller_server ${catkin_EXPORTED_TARGETS})
+target_link_libraries(lumped_controller_server ${PROJECT_NAME}  ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
+
+
+
+
+
 

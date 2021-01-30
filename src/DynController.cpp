@@ -55,27 +55,3 @@ void DynController::update(const trajectory_msgs::JointTrajectoryPoint& actual, 
     torque = my_tau;
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

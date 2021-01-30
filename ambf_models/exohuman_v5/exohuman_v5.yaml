@@ -39,6 +39,10 @@ BODY Crutches:
   name: Crutches
   mesh: Crutches.STL
   mass: 1.0
+  inertia:
+    ix: 0.4163
+    iy: 0.6188
+    iz: 0.2043
   collision margin: 0.001
   scale: 1.0
   location:
@@ -52,9 +56,9 @@ BODY Crutches:
       y: 0.0
   inertial offset:
     position:
-      x: 0.0
+      x: -0.0
       y: 0.0
-      z: 0.0
+      z: -0.1164
     orientation:
       r: 0
       p: 0
@@ -269,9 +273,9 @@ BODY ExoLeftShank:
   mesh: ExoLeftShank.STL
   mass: 1.28
   inertia:
-    ix: 0.0303
-    iy: 0.0303
-    iz: 0.0019
+    ix: 0.0345
+    iy: 0.0352
+    iz: 0.0027
   collision margin: 0.001
   scale: 1.0
   location:
@@ -381,7 +385,7 @@ BODY ExoLeftFoot:
     position:
       x: -0.0733
       y: -0.0583
-      z: 0.0518
+      z: 0.0458
     orientation:
       r: 0.0
       p: 0.0
@@ -582,7 +586,7 @@ BODY ExoRightFoot:
     position:
       x: 0.0734
       y: -0.0582
-      z: 0.0518
+      z: 0.0457
     orientation:
       r: 0.0
       p: 0.0
@@ -613,9 +617,9 @@ BODY HumanTorso:
   mesh: HumanTorso.STL
   mass: 40.32
   inertia:
-    ix: 5.1288
-    iy: 5.5083
-    iz: 0.4958
+    ix: 5.278
+    iy: 5.6026
+    iz: 0.8491
   collision margin: 0.001
   scale: 1.0
   location:
@@ -652,14 +656,14 @@ BODY HumanTorso:
   - 3
   collision shape: BOX
   collision geometry:
-    x: 0.3609
-    y: 0.1274
-    z: 0.4514
+    x: 0.4179
+    y: 0.2774
+    z: 0.9984
   collision offset:
     position:
       x: -0.0
       y: -0.0094
-      z: -0.2068
+      z: -0.2033
     orientation:
       r: 0.0
       p: 0.0
@@ -734,9 +738,9 @@ BODY HumanLeftShank:
   mesh: HumanLeftShank.STL
   mass: 3.848
   inertia:
-    ix: 0.2918
-    iy: 0.2942
-    iz: 0.0158
+    ix: 0.2628
+    iy: 0.2648
+    iz: 0.015
   collision margin: 0.001
   scale: 1.0
   location:
@@ -790,9 +794,9 @@ BODY HumanLeftFoot:
   mesh: HumanLeftFoot.STL
   mass: 1.032
   inertia:
-    ix: 0.0069
-    iy: 0.0026
-    iz: 0.0063
+    ix: 0.0148
+    iy: 0.004
+    iz: 0.0149
   collision margin: 0.001
   scale: 1.0
   location:
@@ -920,9 +924,9 @@ BODY HumanRightShank:
   mesh: HumanRightShank.STL
   mass: 3.848
   inertia:
-    ix: 0.2918
-    iy: 0.2942
-    iz: 0.0158
+    ix: 0.2628
+    iy: 0.2648
+    iz: 0.015
   collision margin: 0.001
   scale: 1.0
   location:
@@ -1070,6 +1074,10 @@ JOINT Exo-Human_LeftFoot:
     low: -1.2
   enable feedback: false
   passive: true
+  controller:
+    P: 500.0
+    I: 5.0
+    D: 5.0
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1108,6 +1116,10 @@ JOINT Exo-Human_RightFoot:
     low: -1.2
   enable feedback: false
   passive: true
+  controller:
+    P: 500.0
+    I: 5.0
+    D: 5.0
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1146,6 +1158,10 @@ JOINT ExoHip-HumanTorso:
     low: -1.2
   enable feedback: false
   passive: true
+  controller:
+    P: 500.0
+    I: 5.0
+    D: 5.0
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1184,6 +1200,10 @@ JOINT ExoHipCrutches:
     low: -1.2
   enable feedback: false
   passive: false
+  controller:
+    P: 500.0
+    I: 5.0
+    D: 5.0
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1222,6 +1242,10 @@ JOINT ExoLeftKnee:
     low: 0.0
   enable feedback: true
   passive: false
+  controller:
+    P: 74.1333
+    I: 0.7413
+    D: 0.7413
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1262,9 +1286,9 @@ JOINT ExoLeftAnkle:
   enable feedback: true
   passive: false
   controller:
-    P: 2135.3999
-    I: 5.0
-    D: 4.271
+    P: 21.2769
+    I: 0.2128
+    D: 0.2128
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1304,6 +1328,10 @@ JOINT ExoLeftHip:
     low: -1.92
   enable feedback: true
   passive: false
+  controller:
+    P: 546.682
+    I: 5.4668
+    D: 5.4668
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1344,9 +1372,9 @@ JOINT ExoRightKnee:
   enable feedback: true
   passive: false
   controller:
-    P: 3394.2
-    I: 5.0
-    D: 6.788
+    P: 74.1049
+    I: 0.741
+    D: 0.741
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1387,9 +1415,9 @@ JOINT ExoRightAnkle:
   enable feedback: true
   passive: false
   controller:
-    P: 2135.3999
-    I: 5.0
-    D: 4.271
+    P: 21.2714
+    I: 0.2127
+    D: 0.2127
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1429,6 +1457,10 @@ JOINT ExoRightHip:
     low: -1.92
   enable feedback: true
   passive: false
+  controller:
+    P: 546.7115
+    I: 5.4671
+    D: 5.4671
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1469,9 +1501,9 @@ JOINT HumanLeftHip:
   enable feedback: true
   passive: false
   controller:
-    P: 4481.5
-    I: 5.0
-    D: 8.96
+    P: 41165.0391
+    I: 411.6504
+    D: 411.6504
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1512,9 +1544,9 @@ JOINT HumanLeftKnee:
   enable feedback: true
   passive: false
   controller:
-    P: 3394.2
-    I: 5.0
-    D: 6.79
+    P: 2064.3936
+    I: 20.6439
+    D: 20.6439
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1555,9 +1587,9 @@ JOINT HumanLeftAnkle:
   enable feedback: true
   passive: false
   controller:
-    P: 2135.3999
-    I: 5.0
-    D: 4.27
+    P: 170.5522
+    I: 1.7055
+    D: 1.7055
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1598,9 +1630,9 @@ JOINT HumanRightHip:
   enable feedback: true
   passive: false
   controller:
-    P: 4481.5
-    I: 5.0
-    D: 8.96
+    P: 41164.9961
+    I: 411.65
+    D: 411.65
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1641,9 +1673,9 @@ JOINT HumanRightKnee:
   enable feedback: true
   passive: false
   controller:
-    P: 3394.2
-    I: 5.0
-    D: 6.79
+    P: 2064.3926
+    I: 20.6439
+    D: 20.6439
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -1684,9 +1716,9 @@ JOINT HumanRightAnkle:
   enable feedback: true
   passive: false
   controller:
-    P: 2135.3999
-    I: 5.0
-    D: 4.27
+    P: 170.5514
+    I: 1.7055
+    D: 1.7055
   body rotation:
     xx: 1.0
     xy: 0.0

@@ -23,6 +23,10 @@ BODY Crutches:
   name: Crutches
   mesh: Crutches.STL
   mass: 1.0
+  inertia:
+    ix: 0.4027
+    iy: 0.6052
+    iz: 0.2043
   collision margin: 0.001
   scale: 1.0
   location:
@@ -521,9 +525,9 @@ BODY ExoRightFoot:
   mesh: ExoRightFoot.STL
   mass: 1.898
   inertia:
-    ix: 0.0339
-    iy: 0.0269
-    iz: 0.0242
+    ix: 0.0312
+    iy: 0.0276
+    iz: 0.0405
   collision margin: 0.001
   scale: 1.0
   location:

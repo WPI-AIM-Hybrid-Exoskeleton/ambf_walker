@@ -1183,7 +1183,7 @@ JOINT ExoHipCrutches:
     high: 1.2
     low: -1.2
   enable feedback: false
-  passive: true
+  passive: false
   body rotation:
     xx: 1.0
     xy: 0.0

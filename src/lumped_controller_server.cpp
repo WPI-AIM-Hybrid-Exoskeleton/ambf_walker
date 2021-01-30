@@ -19,7 +19,7 @@ int main(int argc, char **argv)
    
 
     Eigen::MatrixXd exo_Kp = Eigen::MatrixXd::Ones(7,7);
-    Eigen::MatrixXd exo_Kd = Eigen::MatrixXd::ones(7,7);
+    Eigen::MatrixXd exo_Kd = Eigen::MatrixXd::Ones(7,7);
     
     exo_Kp(0,0) = 1000.0;
     exo_Kp(1,1) = 1000.0;
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 
 
     Eigen::MatrixXd FF_Kp = Eigen::MatrixXd::Ones(7,7);
-    Eigen::MatrixXd FF_Kd = Eigen::MatrixXd::ones(7,7);
+    Eigen::MatrixXd FF_Kd = Eigen::MatrixXd::Ones(7,7);
     
     exo_Kp(0,0) = 500.0;
     exo_Kp(1,1) = 500.0;
