@@ -118,6 +118,10 @@ BODY ExoHip:
   name: ExoHip
   mesh: ExoHip.STL
   mass: 45.32
+  inertia:
+    ix: 5.9172
+    iy: 6.1912
+    iz: 1.4393
   collision margin: 0.001
   scale: 1.0
   location:
@@ -132,8 +136,8 @@ BODY ExoHip:
   inertial offset:
     position:
       x: 0.0001
-      y: -0.0232
-      z: 0.1836
+      y: -0.0785
+      z: 0.2803
     orientation:
       r: 0
       p: 0
@@ -181,6 +185,10 @@ BODY ExoLeftThigh:
   name: ExoLeftThigh
   mesh: ExoLeftThigh.STL
   mass: 13.934
+  inertia:
+    ix: 0.5435
+    iy: 0.6347
+    iz: 0.1249
   collision margin: 0.001
   scale: 1.0
   location:
@@ -194,9 +202,9 @@ BODY ExoLeftThigh:
       y: 0.0
   inertial offset:
     position:
-      x: 0.0223
-      y: 0.0006
-      z: -0.0857
+      x: -0.0833
+      y: -0.0198
+      z: -0.0678
     orientation:
       r: 0
       p: 0
@@ -244,6 +252,10 @@ BODY ExoLeftShank:
   name: ExoLeftShank
   mesh: ExoLeftShank.STL
   mass: 5.128
+  inertia:
+    ix: 0.1365
+    iy: 0.1843
+    iz: 0.0562
   collision margin: 0.001
   scale: 1.0
   location:
@@ -257,9 +269,9 @@ BODY ExoLeftShank:
       y: 0.0
   inertial offset:
     position:
-      x: -0.0028
-      y: -0.0001
-      z: -0.011
+      x: -0.0968
+      y: 0.0078
+      z: 0.0547
     orientation:
       r: 0
       p: 0
@@ -307,6 +319,10 @@ BODY ExoLeftFoot:
   name: ExoLeftFoot
   mesh: ExoLeftFoot.STL
   mass: 1.898
+  inertia:
+    ix: 0.0312
+    iy: 0.0276
+    iz: 0.0405
   collision margin: 0.001
   scale: 1.0
   location:
@@ -320,9 +336,9 @@ BODY ExoLeftFoot:
       y: 0.0
   inertial offset:
     position:
-      x: -0.0133
-      y: -0.0013
-      z: -0.0832
+      x: -0.0733
+      y: -0.0583
+      z: 0.0458
     orientation:
       r: 0
       p: 0
@@ -370,6 +386,10 @@ BODY ExoRightThigh:
   name: ExoRightThigh
   mesh: ExoRightThigh.STL
   mass: 13.934
+  inertia:
+    ix: 0.5435
+    iy: 0.625
+    iz: 0.1152
   collision margin: 0.001
   scale: 1.0
   location:
@@ -383,9 +403,9 @@ BODY ExoRightThigh:
       y: 0.0
   inertial offset:
     position:
-      x: -0.0223
-      y: 0.0009
-      z: -0.0859
+      x: 0.079
+      y: -0.0198
+      z: -0.0678
     orientation:
       r: 0
       p: 0
@@ -433,6 +453,10 @@ BODY ExoRightShank:
   name: ExoRightShank
   mesh: ExoRightShank.STL
   mass: 5.128
+  inertia:
+    ix: 0.1365
+    iy: 0.182
+    iz: 0.0539
   collision margin: 0.001
   scale: 1.0
   location:
@@ -446,9 +470,9 @@ BODY ExoRightShank:
       y: 0.0
   inertial offset:
     position:
-      x: 0.0237
-      y: -0.0001
-      z: 0.058
+      x: 0.0945
+      y: 0.0078
+      z: 0.0547
     orientation:
       r: 0
       p: 0
@@ -496,6 +520,10 @@ BODY ExoRightFoot:
   name: ExoRightFoot
   mesh: ExoRightFoot.STL
   mass: 1.898
+  inertia:
+    ix: 0.0339
+    iy: 0.0269
+    iz: 0.0242
   collision margin: 0.001
   scale: 1.0
   location:
@@ -509,9 +537,9 @@ BODY ExoRightFoot:
       y: 0.0
   inertial offset:
     position:
-      x: 0.0133
-      y: -0.0013
-      z: -0.0832
+      x: 0.0734
+      y: -0.0582
+      z: 0.0457
     orientation:
       r: 0
       p: 0
