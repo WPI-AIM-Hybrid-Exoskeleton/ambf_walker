@@ -87,8 +87,8 @@ BODY HumanTorso:
   mesh: HumanTorso.STL
   mass: 40.32
   inertia:
-    ix: 6.5263
-    iy: 6.8517
+    ix: 5.284
+    iy: 5.6093
     iz: 0.8601
   collision margin: 0.001
   scale: 1.0
@@ -128,12 +128,12 @@ BODY HumanTorso:
   collision geometry:
     x: 0.42
     y: 0.2802
-    z: 0.7466
+    z: 0.9985
   collision offset:
     position:
       x: -0.0
       y: -0.0094
-      z: -0.3298
+      z: -0.2033
     orientation:
       r: 0.0
       p: 0.0
@@ -480,9 +480,9 @@ JOINT HumanLeftHip:
   enable feedback: true
   passive: false
   controller:
-    P: 1902.5343
-    I: 19.0253
-    D: 19.0253
+    P: 41168.6367
+    I: 411.6864
+    D: 411.6864
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -523,9 +523,9 @@ JOINT HumanLeftKnee:
   enable feedback: true
   passive: false
   controller:
-    P: 1876.252
-    I: 18.7625
-    D: 18.7625
+    P: 2064.1311
+    I: 20.6413
+    D: 20.6413
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -566,9 +566,9 @@ JOINT HumanLeftAnkle:
   enable feedback: true
   passive: false
   controller:
-    P: 139.8221
-    I: 1.3982
-    D: 1.3982
+    P: 170.5534
+    I: 1.7055
+    D: 1.7055
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -609,9 +609,9 @@ JOINT HumanRightHip:
   enable feedback: true
   passive: false
   controller:
-    P: 1902.5342
-    I: 19.0253
-    D: 19.0253
+    P: 41168.6367
+    I: 411.6864
+    D: 411.6864
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -652,9 +652,9 @@ JOINT HumanRightKnee:
   enable feedback: true
   passive: false
   controller:
-    P: 1876.2524
-    I: 18.7625
-    D: 18.7625
+    P: 2031.7831
+    I: 20.3178
+    D: 20.3178
   body rotation:
     xx: 1.0
     xy: 0.0
@@ -695,9 +695,9 @@ JOINT HumanRightAnkle:
   enable feedback: true
   passive: false
   controller:
-    P: 139.8218
-    I: 1.3982
-    D: 1.3982
+    P: 139.1734
+    I: 1.3917
+    D: 1.3917
   body rotation:
     xx: 1.0
     xy: 0.0
