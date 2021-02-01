@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+ gazebo_ros:
+ container_name: mavdrive_sim_gazebo_ros
+ image: mavdrive_sim/gazebo_ros:1.0
+ build: .
+ volumes:
+ - ./mavdrive_gazebo:/root/catkin_ws/src/mavdrive_gazebo
+ - ../../mavdrive_description:/root/catkin_ws/src/mavdrive_description
+ - ../../mavdrive_ros_msgs:/root/catkin_ws/src/mavdrive_ros_msgs
+ - /tmp/.X11-unix:/tmp/.X11-unix:rw # For displaying
+ # For attaching shells
+ stdin_open: true # docker run -i
+ tty: true # docker run -t
+ # Set up GPU
+ runtime: nvidia
+ # Environment Variables
+ environment:
+ - DISPLAY
+ - QT_X11_NO_MITSHM=1
+ - NVIDIA_VISIBLE_DEVICES=all
+ - NVIDIA_DRIVER_CAPABILITIES=all
+ # Environment variables for On-Demand Graphics. 
+ # Disable if you want to use Intel Graphics
+ - __NV_PRIME_RENDER_OFFLOAD=1 
+ - __GLX_VENDOR_LIBRARY_NAME=nvidia
+ # Startup Command
+ network_mode: "host"
+ command: bash -c
+ " catkin_make 
+ && source devel/setup.bash
+ && roslaunch mavdrive_gazebo mavdrive_emptyworld.launch"
+# Make sure to open the xserver: xhost +local:root
+# To close, run: xhost -local:root

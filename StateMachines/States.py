@@ -93,8 +93,8 @@ class WalkInit(smach.State):
 
     def execute(self, userdata):
 
-        self._model.handle.set_rpy(0.25, 0, 0)
-        self._model.handle.set_pos(0.0, 0, 1.0)
+        # self._model.handle.set_rpy(0.25, 0, 0)
+        # self._model.handle.set_pos(0.0, 0, 3.0)
 
         if self.count <= self.total - 1:
 
@@ -175,16 +175,13 @@ class DMP(smach.State):
             start = []
             for q in self._model.q[0:6]:
                 start.append(np.array([q]))
-            print(start)
-            print(self.runner.x)
-            self.runner.update_start(start)
+                self.runner.update_start(start)
 
         if count < self.runner.get_length():
 
             self.runner.step()
             x = self.runner.x
             dx = self.runner.dx
-            print(dx)
             ddx = self.runner.ddx
             q = np.append(x, [0.0])
             qd = np.append(dx, [0.0])
@@ -201,10 +198,6 @@ class DMP(smach.State):
         else:
             self.count = 0
             return "stepped"
-
-
-
-
 
 
 class Walk(smach.State):

@@ -1,0 +1,714 @@
+bodies:
+- BODY HumanLeftFoot
+- BODY HumanTorso
+- BODY HumanLeftThigh
+- BODY HumanLeftShank
+- BODY HumanRightThigh
+- BODY HumanRightShank
+- BODY HumanRightFoot
+joints:
+- JOINT HumanLeftHip
+- JOINT HumanLeftKnee
+- JOINT HumanLeftAnkle
+- JOINT HumanRightHip
+- JOINT HumanRightKnee
+- JOINT HumanRightAnkle
+high resolution path: ./high_res/
+low resolution path: ./low_res/
+ignore inter-collision: true
+namespace: /ambf/env/
+BODY HumanLeftFoot:
+  name: HumanLeftFoot
+  mesh: HumanLeftFoot.STL
+  mass: 1.032
+  inertia:
+    ix: 0.0148
+    iy: 0.004
+    iz: 0.0148
+  collision margin: 0.001
+  scale: 1.0
+  location:
+    position:
+      x: 0.1446
+      y: -0.1037
+      z: -0.7757
+    orientation:
+      r: 0.0
+      p: -0.0
+      y: 0.0
+  inertial offset:
+    position:
+      x: -0.0292
+      y: -0.0797
+      z: -0.0235
+    orientation:
+      r: 0
+      p: 0
+      y: 0
+  passive: true
+  color: random
+  publish children names: false
+  publish joint names: false
+  publish joint positions: false
+  friction:
+    rolling: 0.5
+    static: 0.5
+  restitution: 0.1
+  damping:
+    angular: 0.1
+    linear: 0.5
+  collision groups:
+  - 2
+  collision shape: BOX
+  collision geometry:
+    x: 0.1152
+    y: 0.2699
+    z: 0.1271
+  collision offset:
+    position:
+      x: -0.0292
+      y: -0.0797
+      z: -0.0235
+    orientation:
+      r: 0.0
+      p: 0.0
+      y: 0.0
+  controller:
+    linear:
+      P: 500.0
+      I: 5.0
+      D: 5.0
+    angular:
+      P: 50.0
+      I: 0.5
+      D: 0.5
+BODY HumanTorso:
+  name: HumanTorso
+  mesh: HumanTorso.STL
+  mass: 40.32
+  inertia:
+    ix: 5.284
+    iy: 5.6093
+    iz: 0.8601
+  collision margin: 0.001
+  scale: 1.0
+  location:
+    position:
+      x: 0.0
+      y: -0.1273
+      z: 0.6837
+    orientation:
+      r: 0.0
+      p: -0.0
+      y: 0.0
+  inertial offset:
+    position:
+      x: -0.0
+      y: -0.0094
+      z: -0.2033
+    orientation:
+      r: 0
+      p: 0
+      y: 0
+  passive: false
+  color: random
+  publish children names: false
+  publish joint names: false
+  publish joint positions: false
+  friction:
+    rolling: 0.01
+    static: 0.5
+  restitution: 0.0
+  damping:
+    angular: 0.5
+    linear: 0.5
+  collision groups:
+  - 3
+  collision shape: BOX
+  collision geometry:
+    x: 0.42
+    y: 0.2802
+    z: 0.9985
+  collision offset:
+    position:
+      x: -0.0
+      y: -0.0094
+      z: -0.2033
+    orientation:
+      r: 0.0
+      p: 0.0
+      y: 0.0
+BODY HumanLeftThigh:
+  name: HumanLeftThigh
+  mesh: HumanLeftThigh.STL
+  mass: 11.824
+  inertia:
+    ix: 1.0231
+    iy: 1.1462
+    iz: 0.2002
+  collision margin: 0.001
+  scale: 1.0
+  location:
+    position:
+      x: -0.0043
+      y: -0.1536
+      z: 0.056
+    orientation:
+      r: 0.0
+      p: -0.0
+      y: 0.0
+  inertial offset:
+    position:
+      x: 0.1024
+      y: 0.0089
+      z: -0.2004
+    orientation:
+      r: 0
+      p: 0
+      y: 0
+  passive: true
+  color: random
+  publish children names: false
+  publish joint names: false
+  publish joint positions: false
+  friction:
+    rolling: 0.01
+    static: 0.5
+  restitution: 0.0
+  damping:
+    angular: 0.1
+    linear: 0.5
+  collision groups:
+  - 0
+  collision shape: CAPSULE
+  collision geometry:
+    axis: Z
+    height: 0.5911
+    radius: 0.1069
+  collision offset:
+    position:
+      x: 0.1024
+      y: 0.0089
+      z: -0.2004
+    orientation:
+      r: 0.0
+      p: 0.0
+      y: 0.0
+  controller:
+    linear:
+      P: 0.0
+      I: 5.0
+      D: 0.0
+    angular:
+      P: 0.0
+      I: 0.5
+      D: 0.0
+BODY HumanLeftShank:
+  name: HumanLeftShank
+  mesh: HumanLeftShank.STL
+  mass: 3.848
+  inertia:
+    ix: 0.2634
+    iy: 0.2654
+    iz: 0.0152
+  collision margin: 0.001
+  scale: 1.0
+  location:
+    position:
+      x: 0.1402
+      y: -0.1305
+      z: -0.3875
+    orientation:
+      r: 0.0
+      p: -0.0
+      y: 0.0
+  inertial offset:
+    position:
+      x: -0.0278
+      y: 0.0159
+      z: -0.1933
+    orientation:
+      r: 0
+      p: 0
+      y: 0
+  passive: true
+  color: random
+  publish children names: false
+  publish joint names: false
+  publish joint positions: false
+  friction:
+    rolling: 0.01
+    static: 0.5
+  restitution: 0.0
+  damping:
+    angular: 0.1
+    linear: 0.5
+  collision groups:
+  - 1
+  collision shape: CAPSULE
+  collision geometry:
+    axis: Z
+    height: 0.501
+    radius: 0.0735
+  collision offset:
+    position:
+      x: -0.0278
+      y: 0.0159
+      z: -0.1933
+    orientation:
+      r: 0.0
+      p: 0.0
+      y: 0.0
+BODY HumanRightThigh:
+  name: HumanRightThigh
+  mesh: HumanRightThigh.STL
+  mass: 11.824
+  inertia:
+    ix: 1.0225
+    iy: 1.1456
+    iz: 0.1993
+  collision margin: 0.001
+  scale: 1.0
+  location:
+    position:
+      x: -0.0043
+      y: -0.1536
+      z: 0.056
+    orientation:
+      r: 0.0
+      p: -0.0
+      y: 0.0
+  inertial offset:
+    position:
+      x: -0.1024
+      y: 0.0089
+      z: -0.2004
+    orientation:
+      r: 0
+      p: 0
+      y: 0
+  passive: true
+  color: random
+  publish children names: false
+  publish joint names: false
+  publish joint positions: false
+  friction:
+    rolling: 0.01
+    static: 0.5
+  restitution: 0.0
+  damping:
+    angular: 0.1
+    linear: 0.5
+  collision groups:
+  - 0
+  collision shape: CAPSULE
+  collision geometry:
+    axis: Z
+    height: 0.5915
+    radius: 0.1063
+  collision offset:
+    position:
+      x: -0.1024
+      y: 0.0089
+      z: -0.2004
+    orientation:
+      r: 0.0
+      p: 0.0
+      y: 0.0
+  controller:
+    linear:
+      P: 500.0
+      I: 5.0
+      D: 5.0
+    angular:
+      P: 50.0
+      I: 0.5
+      D: 0.5
+BODY HumanRightShank:
+  name: HumanRightShank
+  mesh: HumanRightShank.STL
+  mass: 3.464
+  inertia:
+    ix: 0.2367
+    iy: 0.2385
+    iz: 0.0133
+  collision margin: 0.001
+  scale: 1.0
+  location:
+    position:
+      x: -0.1488
+      y: -0.1305
+      z: -0.3875
+    orientation:
+      r: 0.0
+      p: -0.0
+      y: 0.0
+  inertial offset:
+    position:
+      x: 0.0278
+      y: 0.0159
+      z: -0.1933
+    orientation:
+      r: 0
+      p: 0
+      y: 0
+  passive: true
+  color: random
+  publish children names: false
+  publish joint names: false
+  publish joint positions: false
+  friction:
+    rolling: 0.01
+    static: 0.5
+  restitution: 0.0
+  damping:
+    angular: 0.1
+    linear: 0.5
+  collision groups:
+  - 11
+  collision shape: CAPSULE
+  collision geometry:
+    axis: Z
+    height: 0.5016
+    radius: 0.0723
+  collision offset:
+    position:
+      x: 0.0278
+      y: 0.0159
+      z: -0.1933
+    orientation:
+      r: 0.0
+      p: 0.0
+      y: 0.0
+  controller:
+    linear:
+      P: 500.0
+      I: 5.0
+      D: 5.0
+    angular:
+      P: 50.0
+      I: 0.5
+      D: 0.5
+BODY HumanRightFoot:
+  name: HumanRightFoot
+  mesh: HumanRightFoot.STL
+  mass: 1.032
+  inertia:
+    ix: 0.0148
+    iy: 0.004
+    iz: 0.0149
+  collision margin: 0.001
+  scale: 1.0
+  location:
+    position:
+      x: -0.1532
+      y: -0.1037
+      z: -0.7757
+    orientation:
+      r: 0.0
+      p: -0.0
+      y: 0.0
+  inertial offset:
+    position:
+      x: 0.0292
+      y: -0.0797
+      z: -0.0235
+    orientation:
+      r: 0
+      p: 0
+      y: 0
+  passive: true
+  color: random
+  publish children names: false
+  publish joint names: false
+  publish joint positions: false
+  friction:
+    rolling: 0.5
+    static: 0.5
+  restitution: 0.1
+  damping:
+    angular: 0.1
+    linear: 0.5
+  collision groups:
+  - 12
+  collision shape: BOX
+  collision geometry:
+    x: 0.1169
+    y: 0.2699
+    z: 0.1268
+  collision offset:
+    position:
+      x: 0.0292
+      y: -0.0797
+      z: -0.0235
+    orientation:
+      r: 0.0
+      p: 0.0
+      y: 0.0
+  controller:
+    linear:
+      P: 500.0
+      I: 5.0
+      D: 5.0
+    angular:
+      P: 50.0
+      I: 0.5
+      D: 0.5
+JOINT HumanLeftHip:
+  name: HumanLeftHip
+  parent: BODY HumanTorso
+  child: BODY HumanLeftThigh
+  parent axis:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  parent pivot:
+    x: 0.0061
+    y: -0.0263
+    z: -0.6277
+  child axis:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  child pivot:
+    x: 0.0104
+    y: 0.0
+    z: 0.0
+  joint limits:
+    high: 0.5236
+    low: -1.9199
+  enable feedback: true
+  passive: false
+  controller:
+    P: 41168.6367
+    I: 411.6864
+    D: 411.6864
+  body rotation:
+    xx: 1.0
+    xy: 0.0
+    xz: 0.0
+    yx: 0.0
+    yy: 1.0
+    yz: 0.0
+    zx: 0.0
+    zy: 0.0
+    zz: 1.0
+  detached: true
+  type: revolute
+  max motor impulse: 0.05000000074505806
+  damping: 0.5
+JOINT HumanLeftKnee:
+  name: HumanLeftKnee
+  parent: BODY HumanLeftThigh
+  child: BODY HumanLeftShank
+  parent axis:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  parent pivot:
+    x: 0.1445
+    y: 0.0231
+    z: -0.4364
+  child axis:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  child pivot:
+    x: 0.0
+    y: 0.0
+    z: 0.0071
+  joint limits:
+    high: 1.9199
+    low: 0.0
+  enable feedback: true
+  passive: false
+  controller:
+    P: 2064.1311
+    I: 20.6413
+    D: 20.6413
+  body rotation:
+    xx: 1.0
+    xy: 0.0
+    xz: 0.0
+    yx: 0.0
+    yy: 1.0
+    yz: 0.0
+    zx: 0.0
+    zy: 0.0
+    zz: 1.0
+  detached: true
+  type: revolute
+  max motor impulse: 0.05000000074505806
+  damping: 0.5
+JOINT HumanLeftAnkle:
+  name: HumanLeftAnkle
+  parent: BODY HumanLeftShank
+  child: BODY HumanLeftFoot
+  parent axis:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  parent pivot:
+    x: 0.0
+    y: 0.0268
+    z: -0.3881
+  child axis:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  child pivot:
+    x: -0.0044
+    y: 0.0
+    z: 0.0001
+  joint limits:
+    high: 0.5236
+    low: -0.7854
+  enable feedback: true
+  passive: false
+  controller:
+    P: 170.5534
+    I: 1.7055
+    D: 1.7055
+  body rotation:
+    xx: 1.0
+    xy: 0.0
+    xz: 0.0
+    yx: 0.0
+    yy: 1.0
+    yz: 0.0
+    zx: 0.0
+    zy: 0.0
+    zz: 1.0
+  detached: true
+  type: revolute
+  max motor impulse: 0.05000000074505806
+  damping: 0.5
+JOINT HumanRightHip:
+  name: HumanRightHip
+  parent: BODY HumanTorso
+  child: BODY HumanRightThigh
+  parent axis:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  parent pivot:
+    x: -0.0061
+    y: -0.0263
+    z: -0.6277
+  child axis:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  child pivot:
+    x: -0.0018
+    y: 0.0
+    z: 0.0
+  joint limits:
+    high: 0.5236
+    low: -1.9199
+  enable feedback: true
+  passive: false
+  controller:
+    P: 41168.6367
+    I: 411.6864
+    D: 411.6864
+  body rotation:
+    xx: 1.0
+    xy: 0.0
+    xz: 0.0
+    yx: 0.0
+    yy: 1.0
+    yz: 0.0
+    zx: 0.0
+    zy: 0.0
+    zz: 1.0
+  detached: true
+  type: revolute
+  max motor impulse: 0.05000000074505806
+  damping: 0.5
+JOINT HumanRightKnee:
+  name: HumanRightKnee
+  parent: BODY HumanRightThigh
+  child: BODY HumanRightShank
+  parent axis:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  parent pivot:
+    x: -0.1445
+    y: 0.0231
+    z: -0.4364
+  child axis:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  child pivot:
+    x: 0.0
+    y: 0.0
+    z: 0.0071
+  joint limits:
+    high: 1.9199
+    low: 0.0
+  enable feedback: true
+  passive: false
+  controller:
+    P: 2031.7831
+    I: 20.3178
+    D: 20.3178
+  body rotation:
+    xx: 1.0
+    xy: 0.0
+    xz: 0.0
+    yx: 0.0
+    yy: 1.0
+    yz: 0.0
+    zx: 0.0
+    zy: 0.0
+    zz: 1.0
+  detached: true
+  type: revolute
+  max motor impulse: 0.05000000074505806
+  damping: 0.5
+JOINT HumanRightAnkle:
+  name: HumanRightAnkle
+  parent: BODY HumanRightShank
+  child: BODY HumanRightFoot
+  parent axis:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  parent pivot:
+    x: 0.0
+    y: 0.0268
+    z: -0.3881
+  child axis:
+    x: 1.0
+    y: 0.0
+    z: 0.0
+  child pivot:
+    x: 0.0044
+    y: 0.0
+    z: 0.0001
+  joint limits:
+    high: 0.5236
+    low: -0.7854
+  enable feedback: true
+  passive: false
+  controller:
+    P: 139.1734
+    I: 1.3917
+    D: 1.3917
+  body rotation:
+    xx: 1.0
+    xy: 0.0
+    xz: 0.0
+    yx: 0.0
+    yy: 1.0
+    yz: 0.0
+    zx: 0.0
+    zy: 0.0
+    zz: 1.0
+  detached: true
+  type: revolute
+  max motor impulse: 0.05000000074505806
+  damping: 0.5

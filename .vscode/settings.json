@@ -3,5 +3,16 @@
         "/home/nathanielgoldfarb/catkin_ws/devel/lib/python2.7/dist-packages",
         "/home/nathanielgoldfarb/ambf/build/devel/lib/python2.7/dist-packages",
         "/opt/ros/melodic/lib/python2.7/dist-packages"
-    ]
+    ],
+    "python.analysis.extraPaths": [
+        "/home/nathanielgoldfarb/catkin_ws/devel/lib/python2.7/dist-packages",
+        "/home/nathanielgoldfarb/ambf/build/devel/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ],
+    "python.pythonPath": "/usr/bin/python3",
+    "files.associations": {
+        "core": "cpp",
+        "numericaldiff": "cpp",
+        "iostream": "cpp"
+    }
 }
