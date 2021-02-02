@@ -23,9 +23,9 @@ class Initialize(smach.State):
     def __init__(self, model, outcomes=['Initializing', 'Initialized']):
 
         smach.State.__init__(self, outcomes=outcomes)
-        rospy.wait_for_service('joint_cmd')
+        rospy.wait_for_service(model.model_name + '_joint_cmd')
 
-        self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
+        self.send = rospy.wait_for_service(model.model_name + '_joint_cmd')
         self._model = model
         self.rate = rospy.Rate(100)
         tf = 2.0
@@ -77,9 +77,9 @@ class WalkInit(smach.State):
     def __init__(self, model, outcomes=['WalkInitializing', 'WalkInitialized']):
 
         smach.State.__init__(self, outcomes=outcomes)
-        rospy.wait_for_service('joint_cmd')
+        rospy.wait_for_service(model.model_name + '_joint_cmd')
 
-        self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
+        self.send = rospy.wait_for_service(model.model_name + '_joint_cmd')
         self._model = model
         self.rate = rospy.Rate(100)
         tf = 2.0
@@ -131,9 +131,9 @@ class Main(smach.State):
     def __init__(self, model,outcomes=["Poly"]):
         smach.State.__init__(self, outcomes=outcomes)
         rospy.Subscriber("Mode", String, callback=self.mode_cb)
-        rospy.wait_for_service('joint_cmd')
+        rospy.wait_for_service(model.model_name + '_joint_cmd')
 
-        self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
+        self.send = rospy.wait_for_service(model.model_name + '_joint_cmd')
         self._model = model
         self.have_msg = False
         self.msg = String
@@ -158,8 +158,8 @@ class DMP(smach.State):
 
     def __init__(self, model,outcomes=["stepping", "stepped"]):
         smach.State.__init__(self, outcomes=outcomes)
-        rospy.wait_for_service('joint_cmd')
-        self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
+        rospy.wait_for_service(model.model_name + '_joint_cmd')
+        self.send = rospy.wait_for_service(model.model_name + '_joint_cmd')
         self._model = model
         self.runner = self._model.get_runner()
         self.rate = rospy.Rate(100)
@@ -204,8 +204,8 @@ class Walk(smach.State):
 
     def __init__(self, model,outcomes=["walking", "walked"]):
         smach.State.__init__(self, outcomes=outcomes)
-        rospy.wait_for_service('joint_cmd')
-        self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
+        rospy.wait_for_service(model.model_name + '_joint_cmd')
+        self.send = rospy.wait_for_service(model.model_name + '_joint_cmd')
         self._model = model
         self.runner = self._model.get_walker()
         self.rate = rospy.Rate(10)
@@ -289,8 +289,8 @@ class Follow(smach.State):
                               input_keys=['q'],
                               output_keys=['q'])
 
-        rospy.wait_for_service('joint_cmd')
-        self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
+        rospy.wait_for_service(model.model_name + '_joint_cmd')
+        self.send = rospy.wait_for_service(model.model_name + '_joint_cmd')
         self._model = model
         self.rate = rospy.Rate(100)
 
@@ -359,8 +359,8 @@ class LQR(smach.State):
 
     def __init__(self, model, outcomes=["LQRing", "LQRed"]):
         smach.State.__init__(self, outcomes=outcomes)
-        rospy.wait_for_service('joint_cmd')
-        self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
+        rospy.wait_for_service(model.model_name + '_joint_cmd')
+        self.send = rospy.wait_for_service(model.model_name + '_joint_cmd')
         self._model = model
         self.rate = rospy.Rate(100)
         project_root = dirname(dirname(__file__))
@@ -405,8 +405,8 @@ class StairDMP(smach.State):
 
     def __init__(self, model,outcomes=["stairing", "staired"]):
         smach.State.__init__(self, outcomes=outcomes)
-        rospy.wait_for_service('joint_cmd')
-        self.send = rospy.ServiceProxy('joint_cmd', DesiredJointsCmd)
+        rospy.wait_for_service(model.model_name + '_joint_cmd')
+        self.send = rospy.wait_for_service(model.model_name + '_joint_cmd')
         self._model = model
         project_root = dirname(dirname(__file__))
         fileZ = join(project_root, 'config/toeZ_all.pickle')

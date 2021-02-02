@@ -21,7 +21,7 @@ class ExoControllerServer():
         self.traj_pub = rospy.Publisher(self.model.model_name + "_trajectory", Float32MultiArray, queue_size=1)
         self.error_pub = rospy.Publisher(self.model.model_name + "_Error", Float32MultiArray, queue_size=1)
         self.controller_srv = rospy.ServiceProxy('CalcTau', JointControl)
-        self.service = rospy.Service('joint_cmd', DesiredJointsCmd, self.joint_cmd_server)
+        self.service = rospy.Service(model.model_name + '_joint_cmd', DesiredJointsCmd, self.joint_cmd_server)
         self._enable_control = False
         self.ctrl_list = []
         self.msg = None
@@ -84,9 +84,12 @@ class ExoControllerServer():
                 msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
                 msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd) )
                 msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd) )
-                msg.actual.positions = self._model.ambf_to_rbdl(self._model.q)
-                msg.actual.velocities = self._model.ambf_to_rbdl(self._model.qd)
-                error_msg.data = abs((msg.desired.positions - msg.actual.positions)/msg.desired.positions)
+                q = self._model.q
+                qd = self._model.qd
+                msg.actual.positions = self._model.ambf_to_rbdl(q)
+                msg.actual.velocities = self._model.ambf_to_rbdl(qd)
+            
+                error_msg.data = np.abs((local_msg.q - q)/local_msg.q)
                 self.error_pub.publish(error_msg)
                 
                 try:
