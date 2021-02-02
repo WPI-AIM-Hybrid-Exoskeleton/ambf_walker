@@ -59,13 +59,65 @@ int main(int argc, char **argv)
     exo_Kd(6,6) = 0.40;
   
 
+
+    Eigen::MatrixXd FES_Kp = Eigen::MatrixXd::Ones(18,6);
+    Eigen::MatrixXd FES_Kd = Eigen::MatrixXd::Ones(18,6);
+
+    /**
+     *   H  K  A
+     *0: 1  0  0
+     *1: 1  0  0
+     *2: 1  1  0
+     *3: 0  1  0  
+     *4: 1  1  0
+     *5: 0  1  0 
+     *6: 0  1  1
+     *7: 0  0  1
+     *8: 0  0  1
+    */
+
+
+
+    FES_Kp(0, 0) = 500.0;
+    FES_Kp(1, 0) = 500.0;
+    FES_Kp(2, 0) = 500.0;
+    FES_Kp(3, 0) = 500.0;
+
+    FES_Kp(2, 1) = 500.0;
+    FES_Kp(3, 1) = 500.0;
+    FES_Kp(4, 1) = 500.0;
+    FES_Kp(5, 1) = 500.0;
+    FES_Kp(6, 1) = 500.0;
+
+    FES_Kp(6, 2) = 500.0;
+    FES_Kp(7, 2) = 500.0;
+    FES_Kp(8, 2) = 500.0;
+    
+    FES_Kd(0, 0) = 0.01;
+    FES_Kd(1, 0) = 0.01;
+    FES_Kd(2, 0) = 0.01;
+    FES_Kd(3, 0) = 0.01;
+
+    FES_Kd(2, 1) = 0.01;
+    FES_Kd(3, 1) = 0.01;
+    FES_Kd(4, 1) = 0.01;
+    FES_Kd(5, 1) = 0.01;
+    FES_Kd(6, 1) = 0.01;
+
+    FES_Kd(6, 2) = 0.01;
+    FES_Kd(7, 2) = 0.01;
+    FES_Kd(8, 2) = 0.01;
+    
     ControllerManager manager = ControllerManager(&n);
     PDController exo(exo_Kp, exo_Kd);
     boost::shared_ptr<ControllerBase> Dyn_controller(new  DynController("exo", &n, &exo) );
     boost::shared_ptr<ControllerBase> FF_controller(new  PDController(FF_Kp, FF_Kd ) );
+    boost::shared_ptr<ControllerBase> FES_controller(new  PDController(FES_Kp, FES_Kd ) );
+
 
     manager.addController("Dyn", Dyn_controller);
     manager.addController("FF", FF_controller);
+    manager.addController("FES", FF_controller);
 
     ros::spin();
 
