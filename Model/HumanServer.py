@@ -17,6 +17,7 @@ from GaitCore.Bio import Leg, Joint
 import rospy
 from ambf_msgs.msg import RigidBodyState
 from GaitAnaylsisToolkit.LearningTools.Runner import TPGMMRunner
+from Muscles import RienerMuscles
 
 class HumanServer(ModelServer.ModelServer):
 
@@ -29,26 +30,35 @@ class HumanServer(ModelServer.ModelServer):
         self.make_dynamic_model(model_name, model_path )
         # # num_of_segments should be initialized with the dynamical model, which is created in the constructor
         self.num_joints = len(self.handle.get_joint_names())
-        left_joints = {}
-        right_joints = {}
-
-        for joint in (left_joints, right_joints):
-            for output in ["Hip", "Knee", "Ankle"]:
-                angle = Point.Point(0, 0, 0)
-                force = Point.Point(0, 0, 0)
-                moment = Point.Point(0, 0, 0)
-                power = Point.Point(0, 0, 0)
-                joint[output] = Joint.Joint(angle, moment, power, force)
-
-        self._left_leg = Leg.Leg(left_joints["Hip"], left_joints["Knee"], left_joints["Ankle"])
-        self._right_leg = Leg.Leg(right_joints["Hip"], right_joints["Knee"], right_joints["Ankle"])
-
+       
+        self._left_muscle = RienerMuscles.Riener_Muscle()
+        self._right_muscle = RienerMuscles.Riener_Muscle()
+        self.freq = np.array([30,30,30,30,30,30,30,30,30])
         time.sleep(2)
+
         self._state = (self._q, self._qd)
         self._updater.start()  # start update thread
 
-        self.ambf_order_crutch_left = {'crutch': 0, 'hip': 1, 'ankle': 2, 'knee': 3, 'elbow': 4, 'shoulder': 5, 'wrist': 6, 'neck': 7}
-        self.ambf_order_crutch_right = {'crutch': 8, 'hip': 9, 'ankle': 10, 'knee': 11, 'elbow': 12, 'shoulder': 13, 'wrist': 14, 'neck': 7}
+    def torque_cb(self, tau):
+        
+        self.update_torque(list(tau.effort))
+
+    def update_torque(self, PW):
+        """
+        self.rbdl_model = self.dynamic_model()
+        :type tau: List
+        """
+        time = 0.0
+        if not self._enable_control:
+            self.last_time = rospy.get_time() 
+            time = 0.0
+        else:
+            time = rospy.get_time() - self.last_time
+        left_tau = self._left_muscle.calc_moment(PW[:9],  self.freq, time, self.q[:3], self.qd[:3])
+        right_tau = self._right_muscle.calc_moment(PW[9:], self.freq, time, self.q[3:], self.qd[3:])
+        
+        self.tau =  np.concatenate([left_tau, right_tau])
+        self._enable_control = True
 
 
 

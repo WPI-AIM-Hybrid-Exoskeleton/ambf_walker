@@ -4,7 +4,7 @@ import numpy as np
 
 class Riener_Muscle():
 
-    def __init__(self, joints, d = [122.0,487.0], k = [0.02*10**(6), 0.00938*10**(6)]):
+    def __init__(self, joints=[0, 0, 0], d = [122.0,487.0], k = [0.02*10**(6), 0.00938*10**(6)]):
 
         self.d_sat = d[0]
         self.d_thr = d[1]
@@ -41,7 +41,7 @@ class Riener_Muscle():
                 active_moments[joint] += muscle_force[i] *ma[i][joint]
 
         for i, joint in enumerate(self.joints):
-            total_toque[i] = active_moments[joint]   + M_ela[joint] #+ M_vis[joint]
+            total_toque[i] = active_moments[joint]  + M_ela[joint] + M_vis[joint]
 
         self.prev_ma = ma
 

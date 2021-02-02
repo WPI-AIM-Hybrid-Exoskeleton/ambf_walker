@@ -36,20 +36,7 @@ class ExoskeletonServer(ModelServer.ModelServer):
         time.sleep(4)
         # model_path = file_path  #"/home/nathaniel/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
         # self.make_dynamic_model(model_name, model_path )
-        left_joints = {}
-        right_joints = {}
-
-        for joint in (left_joints, right_joints):
-            for output in ["Hip", "Knee", "Ankle"]:
-                angle = Point.Point(0, 0, 0)
-                force = Point.Point(0, 0, 0)
-                moment = Point.Point(0, 0, 0)
-                power = Point.Point(0, 0, 0)
-                joint[output] = Joint.Joint(angle, moment, power, force)
-
-        self._left_leg = Leg.Leg(left_joints["Hip"], left_joints["Knee"], left_joints["Ankle"])
-        self._right_leg = Leg.Leg(right_joints["Hip"], right_joints["Knee"], right_joints["Ankle"])
-
+        
         self._state = (self._q, self._qd)
         
         rospy.Subscriber("/ambf/env/LeftSideProx/State", SensorState, self.prox_callback)

@@ -10,7 +10,7 @@ from ambf_walker.srv import DesiredJointsCmd, DesiredJointsCmdResponse
 from controller_modules.srv import JointControl, JointControlRequest
 from trajectory_msgs.msg import JointTrajectoryPoint
 
-class ControllerServer(object):
+class ExoControllerServer():
 
     def __init__(self, model):
         self.lock = Lock()
@@ -18,6 +18,7 @@ class ControllerServer(object):
         self._updater = Thread(target=self.set_torque)
         self.sub_set_points = rospy.Subscriber(self.model.model_name + "_set_points", DesiredJoints, self.update_set_point)
         self.tau_pub = rospy.Publisher(self.model.model_name + "_joint_torque", JointState, queue_size=1)
+        self.required_tau_pub = rospy.Publisher("required_human", JointState, queue_size=1)
         self.traj_pub = rospy.Publisher(self.model.model_name + "_trajectory", Float32MultiArray, queue_size=1)
         self.error_pub = rospy.Publisher(self.model.model_name + "_Error", Float32MultiArray, queue_size=1)
         self.controller_srv = rospy.ServiceProxy('CalcTau', JointControl)
@@ -72,19 +73,17 @@ class ControllerServer(object):
 
         while 1:
             with self.lock:
+
                 local_msg = self.msg
-                # q = np.array(local_msg.q)
-                # qd = np.array(local_msg.qd)
-                # qdd = np.array(local_msg.qdd)
-                # other = np.array(local_msg.other)
                 rospy.wait_for_service('CalcTau')
+                
                 msg = JointControlRequest()
                 msg.controller_name = local_msg.controller
-                msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
-                msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd) )
-                msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd) )
-                msg.actual.positions = self._model.ambf_to_rbdl(self._model.q)
-                msg.actual.velocities = self._model.ambf_to_rbdl(self._model.qd)
+                msg.desired.positions = np.array(local_msg.q) 
+                msg.desired.velocities = np.array(local_msg.qd) 
+                msg.desired.accelerations = np.array(local_msg.qdd) 
+                msg.actual.positions = self._model.q
+                msg.actual.velocities = self._model.qd
                 
                 try:
                     resp1 = self.controller_srv(msg)
@@ -93,11 +92,30 @@ class ControllerServer(object):
                     self.tau_pub.publish(tau_msg)
                 except rospy.ServiceException as e:
                     print("Service call failed: %s"%e)
-                        
-                # controller = self._controllers[local_msg.controller]
-                # tau = controller.calc_tau(q, qd, qdd, other)
                 
                 
+                
+                msg = JointControlRequest()
+                msg.controller_name = local_msg.controller
+                msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
+                msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd) )
+                msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd) )
+                msg.actual.positions = self._model.ambf_to_rbdl(self._model.q)
+                msg.actual.velocities = self._model.ambf_to_rbdl(self._model.qd)
+                error_msg.data = abs((msg.desired.positions - msg.actual.positions)/msg.desired.positions)
+                self.error_pub.publish(error_msg)
+                
+                try:
+                    resp1 = self.controller_srv(msg)
+                    tau = resp1.control_output.effort
+                    tau_msg.effort = tau
+                    self.required_tau_pub.publish(tau_msg)
+                except rospy.ServiceException as e:
+                    print("Service call failed: %s"%e)
+                                        
               
+
+
+
             rate.sleep()
 

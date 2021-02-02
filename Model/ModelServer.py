@@ -18,7 +18,19 @@ class ModelServer(Model.Model):
         
         super(ModelServer, self).__init__(client=client, model_name=model_name, joint_names=joint_names)
         
+        left_joints = {}
+        right_joints = {}
+        
+        for joint in (left_joints, right_joints):
+            for output in ["Hip", "Knee", "Ankle"]:
+                angle = Point.Point(0, 0, 0)
+                force = Point.Point(0, 0, 0)
+                moment = Point.Point(0, 0, 0)
+                power = Point.Point(0, 0, 0)
+                joint[output] = Joint.Joint(angle, moment, power, force)
 
+        self._left_leg = Leg.Leg(left_joints["Hip"], left_joints["Knee"], left_joints["Ankle"])
+        self._right_leg = Leg.Leg(right_joints["Hip"], right_joints["Knee"], right_joints["Ankle"])
         #"/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
         self.make_dynamic_model(model_name, model_path )
         self._joint_map = {}
@@ -82,7 +94,7 @@ class ModelServer(Model.Model):
         while 1:
             self.q = self.handle.get_all_joint_pos()
             self.qd = self.handle.get_all_joint_vel()
-            self.state = (self.q, self.qd)
+            self.update_state(self.q, self.qd)
             self._joint_num = self.q.size
             q_msg.data = self.q
             self.q_pub.publish(q_msg)
@@ -96,8 +108,8 @@ class ModelServer(Model.Model):
     def fk(self):
         pass
 
-    @abc.abstractmethod
     def update_state(self, q, qd):
+        self._left_leg.hip.angle.x = q[self._joint_map_selected[joint]]
         self.state = q + qd
 
    
