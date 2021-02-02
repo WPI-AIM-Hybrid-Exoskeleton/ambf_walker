@@ -18,6 +18,8 @@ import rospy
 from ambf_msgs.msg import RigidBodyState
 from GaitAnaylsisToolkit.LearningTools.Runner import TPGMMRunner
 from Muscles import RienerMuscles
+from sensor_msgs.msg import JointState
+
 
 class HumanServer(ModelServer.ModelServer):
 
@@ -30,7 +32,8 @@ class HumanServer(ModelServer.ModelServer):
         self.make_dynamic_model(model_name, model_path )
         # # num_of_segments should be initialized with the dynamical model, which is created in the constructor
         self.num_joints = len(self.handle.get_joint_names())
-       
+        self.human_required_sub = rospy.Subscriber("required_human", JointState, self.required_human_cb)
+        self.torque_error_pub = rospy.Publisher("human_torque_error", Float32MultiArray, queue_size=1)
         self._left_muscle = RienerMuscles.Riener_Muscle()
         self._right_muscle = RienerMuscles.Riener_Muscle()
         self.freq = np.array([30,30,30,30,30,30,30,30,30])
@@ -42,6 +45,15 @@ class HumanServer(ModelServer.ModelServer):
     def torque_cb(self, tau):
         
         self.update_torque(list(tau.effort))
+
+    
+    def required_human_cb(self, tau):
+        msg = Float32MultiArray()
+        tau = self.calculate_dynamics(tau.effort)
+        if self.enable_control:
+            msg.data = tau - self.tau
+            self.torque_error_pub.publish(msg)
+
 
     def update_torque(self, PW):
         """

@@ -20,6 +20,8 @@ class HUmanControllerServer(object):
         self.tau_pub = rospy.Publisher(self.model.model_name + "_joint_torque", JointState, queue_size=1)
         self.traj_pub = rospy.Publisher(self.model.model_name + "_trajectory", Float32MultiArray, queue_size=1)
         self.error_pub = rospy.Publisher(self.model.model_name + "_Error", Float32MultiArray, queue_size=1)
+        self.required_tau_pub = rospy.Publisher("required_human", JointState, queue_size=1)
+
         self.controller_srv = rospy.ServiceProxy('CalcTau', JointControl)
         self.service = rospy.Service('joint_cmd', DesiredJointsCmd, self.joint_cmd_server)
         self._enable_control = False
@@ -63,7 +65,7 @@ class HUmanControllerServer(object):
 
     
 
-    def set_torque(self):
+   def set_torque(self):
         self._enable_control = True
         rate = rospy.Rate(1000)
         tau_msg = JointState()
@@ -72,12 +74,28 @@ class HUmanControllerServer(object):
 
         while 1:
             with self.lock:
+
                 local_msg = self.msg
-                # q = np.array(local_msg.q)
-                # qd = np.array(local_msg.qd)
-                # qdd = np.array(local_msg.qdd)
-                # other = np.array(local_msg.other)
                 rospy.wait_for_service('CalcTau')
+                
+                msg = JointControlRequest()
+                msg.controller_name = local_msg.controller
+                msg.desired.positions = np.array(local_msg.q) 
+                msg.desired.velocities = np.array(local_msg.qd) 
+                msg.desired.accelerations = np.array(local_msg.qdd) 
+                msg.actual.positions = self._model.q
+                msg.actual.velocities = self._model.qd
+                
+                try:
+                    resp1 = self.controller_srv(msg)
+                    tau = resp1.control_output.effort
+                    tau_msg.effort = tau
+                    self.tau_pub.publish(tau_msg)
+                except rospy.ServiceException as e:
+                    print("Service call failed: %s"%e)
+                
+                
+                
                 msg = JointControlRequest()
                 msg.controller_name = local_msg.controller
                 msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
@@ -92,10 +110,12 @@ class HUmanControllerServer(object):
                     resp1 = self.controller_srv(msg)
                     tau = resp1.control_output.effort
                     tau_msg.effort = tau
-                    self.tau_pub.publish(tau_msg)
+                    self.required_tau_pub.publish(tau_msg)
                 except rospy.ServiceException as e:
                     print("Service call failed: %s"%e)
                                         
               
-            rate.sleep()
 
+
+
+            rate.sleep()

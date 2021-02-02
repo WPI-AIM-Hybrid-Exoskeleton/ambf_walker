@@ -109,7 +109,6 @@ class ModelServer(Model.Model):
         pass
 
     def update_state(self, q, qd):
-        self._left_leg.hip.angle.x = q[self._joint_map_selected[joint]]
         self.state = q + qd
 
    
