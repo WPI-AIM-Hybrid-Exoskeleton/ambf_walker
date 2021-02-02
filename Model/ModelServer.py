@@ -94,7 +94,7 @@ class ModelServer(Model.Model):
         while 1:
             self.q = self.handle.get_all_joint_pos()
             self.qd = self.handle.get_all_joint_vel()
-            self.update_state(self.q, self.qd)
+            self.state = (self.q, self.qd)
             self._joint_num = self.q.size
             q_msg.data = self.q
             self.q_pub.publish(q_msg)

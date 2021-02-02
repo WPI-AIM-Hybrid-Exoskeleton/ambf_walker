@@ -556,3 +556,6 @@ class StairDMP(smach.State):
             plt.show()
             return "staired"
 
+
+
+

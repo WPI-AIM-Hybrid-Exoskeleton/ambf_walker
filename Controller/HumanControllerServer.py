@@ -10,7 +10,7 @@ from ambf_walker.srv import DesiredJointsCmd, DesiredJointsCmdResponse
 from controller_modules.srv import JointControl, JointControlRequest
 from trajectory_msgs.msg import JointTrajectoryPoint
 
-class HUmanControllerServer(object):
+class HumanControllerServer(object):
 
     def __init__(self, model):
         self.lock = Lock()
@@ -23,7 +23,7 @@ class HUmanControllerServer(object):
         self.required_tau_pub = rospy.Publisher("required_human", JointState, queue_size=1)
 
         self.controller_srv = rospy.ServiceProxy('CalcTau', JointControl)
-        self.service = rospy.Service('joint_cmd', DesiredJointsCmd, self.joint_cmd_server)
+        self.service = rospy.Service(self.model.model_name + '_joint_cmd', DesiredJointsCmd, self.joint_cmd_server)
         self._enable_control = False
         self.ctrl_list = []
         self.msg = None
