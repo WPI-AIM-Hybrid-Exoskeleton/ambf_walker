@@ -66,8 +66,8 @@ class HumanServer(ModelServer.ModelServer):
             time = 0.0
         else:
             time = rospy.get_time() - self.last_time
-        left_tau = self._left_muscle.calc_moment(PW[:9],  self.freq, time, self.q[:3], self.qd[:3])
-        right_tau = self._right_muscle.calc_moment(PW[9:], self.freq, time, self.q[3:], self.qd[3:])
+        left_tau = self._left_muscle.calc_moment(np.abs(np.clip(PW[:9], 0, 500)) ,  self.freq, time, np.rad2deg(self.q[:3]), np.rad2deg(self.qd[:3]))
+        right_tau = self._right_muscle.calc_moment(np.abs(np.clip(PW[9:], 0, 500)), self.freq, time, np.rad2deg(self.q[3:]), np.rad2deg(self.qd[3:]))
         
         self.tau =  np.concatenate([left_tau, right_tau])
         self._enable_control = True

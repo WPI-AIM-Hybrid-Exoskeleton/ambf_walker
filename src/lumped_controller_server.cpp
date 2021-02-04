@@ -78,35 +78,37 @@ int main(int argc, char **argv)
 
 
 
-    FES_Kp(0, 0) = 500.0;
-    FES_Kp(1, 0) = 500.0;
-    FES_Kp(2, 0) = 500.0;
-    FES_Kp(3, 0) = 500.0;
+    FES_Kp(0, 0) = 600.0;
+    FES_Kp(1, 0) = 200.0;
+    FES_Kp(2, 0) =  0.0;
+    FES_Kp(5, 0) = 250.0;
 
     FES_Kp(2, 1) = 500.0;
-    FES_Kp(3, 1) = 500.0;
-    FES_Kp(4, 1) = 500.0;
+    FES_Kp(3, 1) = 100.0;
+    FES_Kp(4, 1) = 100.0;
     FES_Kp(5, 1) = 500.0;
-    FES_Kp(6, 1) = 500.0;
+    FES_Kp(6, 1) = 0.0;
 
-    FES_Kp(6, 2) = 500.0;
-    FES_Kp(7, 2) = 500.0;
-    FES_Kp(8, 2) = 500.0;
+    FES_Kp(6, 2) = 10.0;
+    FES_Kp(7, 2) = 10.0;
+    FES_Kp(8, 2) = 10.0;
     
-    FES_Kd(0, 0) = 0.01;
-    FES_Kd(1, 0) = 0.01;
-    FES_Kd(2, 0) = 0.01;
-    FES_Kd(3, 0) = 0.01;
 
-    FES_Kd(2, 1) = 0.01;
-    FES_Kd(3, 1) = 0.01;
-    FES_Kd(4, 1) = 0.01;
-    FES_Kd(5, 1) = 0.01;
-    FES_Kd(6, 1) = 0.01;
+    FES_Kd(0, 0) = 0.8;
+    FES_Kd(1, 0) = 0.8;
+    FES_Kd(2, 0) = 0.8;
+    FES_Kd(5, 0) = 0.8;
 
-    FES_Kd(6, 2) = 0.01;
-    FES_Kd(7, 2) = 0.01;
-    FES_Kd(8, 2) = 0.01;
+    FES_Kd(2, 1) = 0.8;
+    FES_Kd(3, 1) = 0.8;
+    FES_Kd(4, 1) = 0.8;
+    FES_Kd(5, 1) = 0.0;
+    FES_Kd(6, 1) = 0.0;
+
+    FES_Kd(6, 2) = 0.0;
+    FES_Kd(7, 2) = 0.0;
+    FES_Kd(8, 2) = 0.0;
+    
     
     ControllerManager manager = ControllerManager(&n);
     PDController exo(exo_Kp, exo_Kd);

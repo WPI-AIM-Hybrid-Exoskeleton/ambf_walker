@@ -79,13 +79,13 @@ class HumanControllerServer(object):
                 rospy.wait_for_service('CalcTau')
                 
                 msg = JointControlRequest()
-                msg.controller_name = local_msg.controller
-                msg.desired.positions = np.array(local_msg.q) 
-                msg.desired.velocities = np.array(local_msg.qd) 
+                msg.controller_name = "FES"
+                msg.actual.positions = np.rad2deg(self._model.q)
+                msg.actual.velocities = np.rad2deg(self._model.qd)
+                msg.desired.positions =  np.rad2deg(local_msg.q) 
+                msg.desired.velocities = np.rad2deg(local_msg.qd) 
                 msg.desired.accelerations = np.array(local_msg.qdd) 
-                msg.actual.positions = self._model.q
-                msg.actual.velocities = self._model.qd
-                
+
                 try:
                     resp1 = self.controller_srv(msg)
                     tau = resp1.control_output.effort
@@ -97,7 +97,7 @@ class HumanControllerServer(object):
                 
                 
                 msg = JointControlRequest()
-                msg.controller_name = local_msg.controller
+                msg.controller_name = "HumanPD"
                 msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
                 msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd) )
                 msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd) )
@@ -113,9 +113,5 @@ class HumanControllerServer(object):
                     self.required_tau_pub.publish(tau_msg)
                 except rospy.ServiceException as e:
                     print("Service call failed: %s"%e)
-                                        
-              
-
-
-
+            
             rate.sleep()
