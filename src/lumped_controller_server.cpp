@@ -17,7 +17,6 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "Controller_Server");
     ros::NodeHandle n;
    
-
     Eigen::MatrixXd exo_Kp = Eigen::MatrixXd::Ones(7,7);
     Eigen::MatrixXd exo_Kd = Eigen::MatrixXd::Ones(7,7);
     
@@ -60,8 +59,8 @@ int main(int argc, char **argv)
   
 
 
-    Eigen::MatrixXd FES_Kp = Eigen::MatrixXd::Ones(18,6);
-    Eigen::MatrixXd FES_Kd = Eigen::MatrixXd::Ones(18,6);
+    Eigen::MatrixXd FES_Kp = Eigen::MatrixXd::Zero(18,6);
+    Eigen::MatrixXd FES_Kd = Eigen::MatrixXd::Zero(18,6);
 
     /**
      *   H  K  A
@@ -108,6 +107,39 @@ int main(int argc, char **argv)
     FES_Kd(6, 2) = 0.0;
     FES_Kd(7, 2) = 0.0;
     FES_Kd(8, 2) = 0.0;
+
+
+
+    FES_Kp(0+9, 0+3) = 600.0;
+    FES_Kp(1+9, 0+3) = 200.0;
+    FES_Kp(2+9, 0+3) =  0.0;
+    FES_Kp(5+9, 0+3) = 250.0;
+
+    FES_Kp(2+9, 1+3) = 500.0;
+    FES_Kp(3+9, 1+3) = 100.0;
+    FES_Kp(4+9, 1+3) = 100.0;
+    FES_Kp(5+9, 1+3) = 500.0;
+    FES_Kp(6+9, 1+3) = 0.0;
+
+    FES_Kp(6+9, 2+3) = 10.0;
+    FES_Kp(7+9, 2+3) = 10.0;
+    FES_Kp(8+9, 2+3) = 10.0;
+    
+
+    FES_Kd(0+9, 0+3) = 0.8;
+    FES_Kd(1+9, 0+3) = 0.8;
+    FES_Kd(2+9, 0+3) = 0.8;
+    FES_Kd(5+9, 0+3) = 0.8;
+
+    FES_Kd(2+9, 1+3) = 0.8;
+    FES_Kd(3+9, 1+3) = 0.8;
+    FES_Kd(4+9, 1+3) = 0.8;
+    FES_Kd(5+9, 1+3) = 0.0;
+    FES_Kd(6+9, 1+3) = 0.0;
+
+    FES_Kd(6+9, 2+3) = 0.0;
+    FES_Kd(7+9, 2+3) = 0.0;
+    FES_Kd(8+9, 2+3) = 0.0;
     
     
     ControllerManager manager = ControllerManager(&n);

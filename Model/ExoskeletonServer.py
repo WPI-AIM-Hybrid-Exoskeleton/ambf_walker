@@ -107,6 +107,24 @@ class ExoskeletonServer(ModelServer.ModelServer):
         raduis = self._right_foot_prox.range[0]
         return dist[0] - raduis
 
+
+    def calc_gravity(self):
+
+        q = self.ambf_to_rbdl(self.q)
+        qd = self.ambf_to_rbdl(self.qd)
+        qdd = np.array(7*[0.0] * self._joint_num)
+        tau = np.asarray([0.0] * self._joint_num)
+        rospy.wait_for_service("InverseDynamics")
+        try:
+            dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
+            resp1 = dyn_srv("exo", q, qd, qdd)
+            tau = resp1.tau   
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
+
+        self.grav_tau = np.array(self.rbdl_to_ambf(tau))
+
+
     def prox_callback(self, msg):
 
         pos = msg.pose

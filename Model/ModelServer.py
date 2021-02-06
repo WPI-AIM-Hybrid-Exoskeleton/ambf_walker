@@ -20,7 +20,7 @@ class ModelServer(Model.Model):
         
         left_joints = {}
         right_joints = {}
-        
+        self.grav_tau = np.array([])
         for joint in (left_joints, right_joints):
             for output in ["Hip", "Knee", "Ankle"]:
                 angle = Point.Point(0, 0, 0)
@@ -99,13 +99,22 @@ class ModelServer(Model.Model):
             q_msg.data = self.q
             self.q_pub.publish(q_msg)
             if self._enable_control: 
-               self.handle.set_multiple_joint_effort(self.tau, joints_idx)
+                self.calc_gravity()
+                tau = self.tau
+                if self.tau.size == self.grav_tau.size: 
+                    tau+=self.grav_tau 
+                self.handle.set_multiple_joint_effort(tau, joints_idx)
                 #set multiple joint pos
             rate.sleep()
 
 
     @abc.abstractmethod
     def fk(self):
+        pass
+
+
+    @abc.abstractmethod
+    def calc_gravity(self):
         pass
 
     def update_state(self, q, qd):
