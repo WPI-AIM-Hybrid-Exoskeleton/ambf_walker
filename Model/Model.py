@@ -53,7 +53,7 @@ class Model(object):
 
     def update_torque(self, tau):
         """
-self.rbdl_model = self.dynamic_model()
+        self.rbdl_model = self.dynamic_model()
         :type tau: List
         """
         self.tau = tau

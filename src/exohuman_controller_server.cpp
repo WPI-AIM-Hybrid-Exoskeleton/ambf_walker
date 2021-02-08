@@ -144,7 +144,7 @@ int main(int argc, char **argv)
     
     ControllerManager manager = ControllerManager(&n);
     PDController exo(exo_Kp, exo_Kd);
-    boost::shared_ptr<ControllerBase> Dyn_controller(new  DynController("exohuman", &n, &exo) );
+    boost::shared_ptr<ControllerBase> Dyn_controller(new  DynController("exo", &n, &exo) );
     boost::shared_ptr<ControllerBase> FF_controller(new  PDController(FF_Kp, FF_Kd ) );
     boost::shared_ptr<ControllerBase> FES_controller(new  PDController(FES_Kp, FES_Kd ) );
 

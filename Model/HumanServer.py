@@ -23,7 +23,7 @@ from sensor_msgs.msg import JointState
 
 class HumanServer(ModelServer.ModelServer):
 
-    def __init__(self, client, model_name, joint_names, mass, height, model_path):
+    def __init__(self, client, model_name, joint_names, model_path):
         # inits dynamic model and joints for leg
         super(HumanServer, self).__init__(client, model_name=model_name, joint_names=joint_names, model_path=model_path)
        
@@ -43,7 +43,6 @@ class HumanServer(ModelServer.ModelServer):
         self._updater.start()  # start update thread
 
     def torque_cb(self, tau):
-        
         self.update_torque(list(tau.effort))
 
     

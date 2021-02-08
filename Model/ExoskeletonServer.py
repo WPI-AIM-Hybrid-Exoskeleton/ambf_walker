@@ -33,10 +33,9 @@ class ExoskeletonServer(ModelServer.ModelServer):
         self.prox = {}
         self.prox["LeftSideProx"] = rospy.Publisher('left_leg', PointCloud, queue_size=10)
         self.prox["RightSideProx"] = rospy.Publisher('right_leg', PointCloud, queue_size=10)
+        self.make_dynamic_model("exo","/home/nathaniel/catkin_ws/src/ambf_walker/ambf_models/plain_exo/default.yaml")
         time.sleep(4)
-        # model_path = file_path  #"/home/nathaniel/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
-        # self.make_dynamic_model(model_name, model_path )
-        
+
         self._state = (self._q, self._qd)
         
         rospy.Subscriber("/ambf/env/LeftSideProx/State", SensorState, self.prox_callback)
@@ -221,8 +220,7 @@ class ExoskeletonServer(ModelServer.ModelServer):
         right_foot_sensors = [self._right_foot_sensor1, self._right_foot_sensor2, self._right_foot_sensor3]
         return left_foot_sensors, right_foot_sensors
     
-    
-    
+
     
     # def ambf_to_rbdl(self, q):
     #     """
