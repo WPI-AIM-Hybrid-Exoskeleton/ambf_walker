@@ -27,7 +27,7 @@ class WalkState(smach.State):
 
         self.runner.update_start(userdata.q)
 
-        while count < self.runner.get_length():
+        while self.count < self.runner.get_length():
 
             self.runner.step()
             msg = DesiredJoints()

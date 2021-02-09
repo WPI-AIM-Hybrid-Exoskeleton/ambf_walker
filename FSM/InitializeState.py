@@ -10,37 +10,42 @@ from Model import Model
 from std_msgs.msg import Empty,String
 import matplotlib.pyplot as plt
 from ambf_walker.srv import DesiredJointsCmdRequest, DesiredJointsCmd
-#from ilqr.controller import RecedingHorizonController
-#from ilqr.cost import PathQsRCost
-#from ilqr import iLQR
-#from ilqr.dynamics import FiniteDiffDynamics
 from GaitAnaylsisToolkit.LearningTools.Runner import GMMRunner
-import numpy.polynomial.polynomial as poly
-from os.path import dirname, join
+from ambf_walker.msg import DesiredPosCmd
+from Utlities import trajectories
+
 
 class Initialize(smach.State):
 
-    def __init__(self, model, outcomes=['Initialized']):
+    def __init__(self, model_name, outcomes=['Initialized']):
 
         smach.State.__init__(self, outcomes=outcomes)
-        self._model = model
+        self._model_name = model_name
         self.rate = rospy.Rate(100)
         tf = 2.0
         dt = 0.01
-        self.hip, self.knee, self.ankle = self._model.stance_trajectory(tf=tf, dt=dt)
-        self.msg = DesiredJoints()
-        self.pub = rospy.Publisher(self._model.model_name + "_set_points", DesiredJoints, queue_size=1)
-
+        self.joint_cb = rospy.Subscriber(model_name + "_jointstate", JointState, self.joint_callback)
+        self.pub_joints = rospy.Publisher(self._model_name + "_set_points", DesiredJointsCmd, queue_size=1)
+        self.pub_pos = rospy.Publisher(self._model_name + "set_pos_cmd", DesiredPosCmd, queue_size=1)
         self.total = tf / dt
         self.count = 0
+    
 
     def execute(self, userdata):
 
-        self._model.handle.set_rpy(0.25, 0, 0)
-        self._model.handle.set_pos(0.0, 0, 3.0)
+        msg_pos = DesiredPosCmd() 
+        msg_pos.pos.x = 0.0
+        msg_pos.pos.y = 0.0
+        msg_pos.pos.z = 3.0
+        msg_pos.rpy.x = 0.25
+        msg_pos.rpy.y = 0.0
+        msg_pos.rpy.z = 0.0
 
+        self.pub_pos.publish(msg_pos)
+        self.hip, self.knee, self.ankle = trajectories.stance_trajectory()
+   
         while self.count <= self.total - 1:
-
+            msg = DesiredJoints()
             q = np.array([self.hip["q"][self.count].item(), self.knee["q"][self.count].item(),
                           self.ankle["q"][self.count].item(),
                           self.hip["q"][self.count].item(), self.knee["q"][self.count].item(),
@@ -57,11 +62,16 @@ class Initialize(smach.State):
                             self.ankle["qdd"][self.count].item(), 0.0])
 
             self.count += 1
-            self.msg.q = q
-            self.msg.qd = qd
-            self.msg.qdd = qdd
-            self.msg.controller = "Dyn"
-            self.pub.publish(self.msg)
+            msg.q = q
+            msg.qd = qd
+            msg.qdd = qdd
+            msg.controller = "Dyn"
+            self.pub_joints.publish(msg)
             self.rate.sleep()
 
         return "Initialized"
+    
+
+
+    def joint_callback(self, msg):
+        self.joint_state = msg

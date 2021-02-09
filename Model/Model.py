@@ -32,7 +32,7 @@ class Model(object):
         self.q_filter = MeanFilter.MeanFilter(1)
         self.sub_torque = rospy.Subscriber(self.model_name + "_joint_torque", JointState, self.torque_cb)
         self.q_pub = rospy.Publisher(self.model_name + "_jointstate", JointState, queue_size=1)
-        self.pos_sub = rospy.Subscriber(self.model_name + "_body_pos", DesiredPosCmd, self.set_body_pos )
+        self.pos_sub = rospy.Subscriber(self.model_name + "_set_body_pos", DesiredPosCmd, self.set_body_pos )
 
         
     @property
@@ -169,6 +169,8 @@ class Model(object):
     def set_body_pos(self, msg):
         self.handle.set_rpy(msg.pos.x, msg.pos.y, msg.pos.z)
         self.handle.set_pos(msg.rpy.x, msg.rpy.y, msg.rpy.z)
+
+
 # def runge_integrator(model, t, y, h, tau):
 #
 #     k1 = rhs(model, y,tau)
