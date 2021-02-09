@@ -10,7 +10,7 @@ from GaitCore.Core import Point
 from std_msgs.msg import Float32MultiArray
 from sensor_msgs.msg import JointState
 from ambf_walker.msg import DesiredPosCmd
-
+from geometry_msgs.msg import Wrench
 
 class Model(object):
 
@@ -33,6 +33,7 @@ class Model(object):
         self.sub_torque = rospy.Subscriber(self.model_name + "_joint_torque", JointState, self.torque_cb)
         self.q_pub = rospy.Publisher(self.model_name + "_jointstate", JointState, queue_size=1)
         self.pos_sub = rospy.Subscriber(self.model_name + "_set_body_pos", DesiredPosCmd, self.set_body_pos )
+        self.force_sub = rospy.Subscriber(self.model_name + "_set_body_force", Wrench ,self.set_body_force )
 
         
     @property
@@ -169,7 +170,11 @@ class Model(object):
     def set_body_pos(self, msg):
         self.handle.set_rpy(msg.pos.x, msg.pos.y, msg.pos.z)
         self.handle.set_pos(msg.rpy.x, msg.rpy.y, msg.rpy.z)
+    
 
+    def set_body_force(self, msg):
+        self.handle.set_force(msg.force.x, msg.force.x, msg.force.x)
+        
 
 # def runge_integrator(model, t, y, h, tau):
 #

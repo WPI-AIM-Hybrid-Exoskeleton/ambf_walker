@@ -26,7 +26,7 @@ class Initialize(smach.State):
         dt = 0.01
         self.joint_cb = rospy.Subscriber(model_name + "_jointstate", JointState, self.joint_callback)
         self.pub_joints = rospy.Publisher(self._model_name + "_set_points", DesiredJointsCmd, queue_size=1)
-        self.pub_pos = rospy.Publisher(self._model_name + "set_pos_cmd", DesiredPosCmd, queue_size=1)
+        self.pub_pos = rospy.Publisher(self._model_name + "_set_pos_cmd", DesiredPosCmd, queue_size=1)
         self.total = tf / dt
         self.count = 0
     

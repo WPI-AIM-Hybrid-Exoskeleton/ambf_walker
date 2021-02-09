@@ -13,6 +13,7 @@ class WalkState(smach.State):
         smach.State.__init__(self, outcomes=outcomes)
         self.runner = self._get_walker()
         self.joint_state = JointState()
+        self.joint_cb = rospy.Subscriber(model_name+ "_jointstate", JointState, self.joint_callback)
         self.rate = rospy.Rate(10)
         self._controller_name = controller_name
         self.pub = rospy.Publisher(model_name + "_set_points", DesiredJoints, queue_size=1)
@@ -34,9 +35,10 @@ class WalkState(smach.State):
             q = self.runner.x
             qd = self.runner.dx
             qdd = self.runner.ddx
-            # q = np.append(x, [0.0])
-            # qd = np.append(dx, [0.0])
-            # qdd = np.append(ddx, [0.0])
+            size_diff = abs(len(q) - len(self.joint_state.position))
+            q = np.append(q, size_diff*[0.0])
+            qd = np.append(qd, size_diff*[0.0])
+            qdd = np.append(qdd, size_diff*[0.0])
             msg.q = q
             msg.qd = qd
             msg.qdd = qdd
@@ -47,4 +49,8 @@ class WalkState(smach.State):
             self.rate.sleep()
             
         return "walking"
+    
+
+    def joint_callback(self, msg):
+        self.joint_state = msg
         

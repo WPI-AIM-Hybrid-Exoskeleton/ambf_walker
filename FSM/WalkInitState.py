@@ -55,6 +55,7 @@ class WalkInit(smach.State):
             self.rate.sleep()
 
         userdata.q = self.joint_state.position
+        userdata.qd = self.joint_state.velocity
         return "WalkInitialized"
 
     
