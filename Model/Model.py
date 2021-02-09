@@ -30,7 +30,7 @@ class Model(object):
         self.qd_filter = MeanFilter.MeanFilter(1)
         self.q_filter = MeanFilter.MeanFilter(1)
         self.sub_torque = rospy.Subscriber(self.model_name + "_joint_torque", JointState, self.torque_cb)
-        self.q_pub = rospy.Publisher(self.model_name + "_q", Float32MultiArray, queue_size=1)
+        self.q_pub = rospy.Publisher(self.model_name + "_q", JointState, queue_size=1)
 
     @property
     def rbdl_model(self):
@@ -123,13 +123,14 @@ class Model(object):
         :return:
         """
         rate = rospy.Rate(1000)  # 1000hz
-        q_msg = Float32MultiArray()
+        q_msg = JointState()
         while 1:
             self.q = self.handle.get_all_joint_pos()
             self.qd = self.handle.get_all_joint_vel()
             self.state = (self.q, self.qd)
             self._joint_num = self.q.size
-            q_msg.data = self.q
+            q_msg.position = self.q
+            q_msg.velocity = self.qd
             self.q_pub.publish(q_msg)
             if self._enable_control:
                 joints_idx = []
