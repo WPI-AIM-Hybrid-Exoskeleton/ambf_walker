@@ -18,6 +18,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   rbdl_server
   controller_modules
+  geometry_msgs
   trajectory_msgs
 )
 
@@ -37,17 +38,20 @@ catkin_python_setup()
  add_message_files(
  FILES
  DesiredJoints.msg
+ DesiredPosCmd.msg
  )
 
 add_service_files(
   FILES
   DesiredJointsCmd.srv
+ 
 )
 
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
    DEPENDENCIES
    std_msgs
+   geometry_msgs
  )
 
  catkin_package(

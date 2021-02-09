@@ -5,13 +5,14 @@ import numpy as np
 from os.path import dirname, join
 from ambf_msgs.msg import RigidBodyState, SensorState
 from GaitAnaylsisToolkit.LearningTools.Runner import TPGMMRunner
+from sensor_msgs.msg import JointState
 
-
-class ExoWalkState(smach.State):
+class WalkState(smach.State):
 
     def __init__(self, model_name, controller_name, model,outcomes=["walking"]):
         smach.State.__init__(self, outcomes=outcomes)
         self.runner = self._get_walker()
+        self.joint_state = JointState()
         self.rate = rospy.Rate(10)
         self._controller_name = controller_name
         self.pub = rospy.Publisher(model_name + "_set_points", DesiredJoints, queue_size=1)
@@ -24,16 +25,8 @@ class ExoWalkState(smach.State):
 
     def execute(self, userdata):
 
-        count = self.count
+        self.runner.update_start(userdata.q)
 
-        # if count == 0:
-        #     start = []
-
-        #     for q in self._model.q[0:6]:
-        #         start.append(np.array([q]))
-
-        #     self.runner.update_start(start)
-        # print(self.runner.get_length())
         while count < self.runner.get_length():
 
             self.runner.step()

@@ -32,10 +32,12 @@ class ModelServer(Model.Model):
         self._left_leg = Leg.Leg(left_joints["Hip"], left_joints["Knee"], left_joints["Ankle"])
         self._right_leg = Leg.Leg(right_joints["Hip"], right_joints["Knee"], right_joints["Ankle"])
         #"/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
+        self.
         self.make_dynamic_model(model_name, model_path )
         self._joint_map = {}
         self._joint_map_selected = {}
         self._selected_joint_names = joint_names
+        self.pub_joint_state = rospy.Publisher(model_name + )
         self.dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
 
 
