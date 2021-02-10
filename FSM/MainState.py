@@ -6,6 +6,7 @@ class MainState(smach.State):
 
     def __init__(self, outcomes=["walkinit", "lower"]):
         smach.State.__init__(self, outcomes=outcomes)
+        rospy.Subscriber("Mode", String, callback=self.mode_cb)
         self.have_msg = False
         self.msg = String
         self.Rate = rospy.Rate(100)
@@ -13,8 +14,9 @@ class MainState(smach.State):
     def mode_cb(self, msg):
 
         if not self.have_msg:
-            self.msg = msg
-            self.have_msg = True
+            if msg.data in self._outcomes:
+                self.msg = msg.data
+                self.have_msg = True
 
     def execute(self, userdata):
 
@@ -23,4 +25,4 @@ class MainState(smach.State):
         while not self.have_msg:
             rate.sleep()
 
-        return self.msg.data
+        return self.msg

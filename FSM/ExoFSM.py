@@ -32,10 +32,14 @@ class ExoFSM():
 
                 # Add states to the container 
                 smach.StateMachine.add('WalkInit', WalkInitState.WalkInitState("exo"),
-                                    transitions={'WalkInitialized':'Walk'})
+                                    transitions={'WalkInitialized':'Walk'},
+                                       remapping={'q':'q',
+                                          'qd':'qd'} )
 
-                smach.StateMachine.add('Walk', WalkState.WalkState("exo", "exo"),
-                                    transitions={'walked':'walked'}) 
+                smach.StateMachine.add('Walk', WalkState.WalkState("exo", "Dyn"),
+                                    transitions={'walked':'walked'},
+                                       remapping={'q':'q',
+                                          'qd':'qd'})
 
 
             smach.StateMachine.add('Sub_Walk', walk_sub,
