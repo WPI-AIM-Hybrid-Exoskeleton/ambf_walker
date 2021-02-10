@@ -55,15 +55,13 @@ class HumanControllerServer(object):
             self._updater.start()
         return True
 
-    def joint_cmd_server(self, msg):
-        with self.lock:
-            self.msg = msg
-       
-        if not self._enable_control:
-            self._updater.start()
-        return DesiredJointsCmdResponse(True)
-
-    
+    # def joint_cmd_server(self, msg):
+    #     with self.lock:
+    #         self.msg = msg
+    #
+    #     if not self._enable_control:
+    #         self._updater.start()
+    #     return DesiredJointsCmdResponse(True)
 
    def set_torque(self):
         self._enable_control = True
@@ -80,6 +78,7 @@ class HumanControllerServer(object):
                 
                 msg = JointControlRequest()
                 msg.controller_name = "FES"
+                traj_msg.data = local_msg.q
                 msg.actual.positions = np.rad2deg(self._model.q)
                 msg.actual.velocities = np.rad2deg(self._model.qd)
                 msg.desired.positions =  np.rad2deg(local_msg.q) 
@@ -111,7 +110,9 @@ class HumanControllerServer(object):
                     tau = resp1.control_output.effort
                     tau_msg.effort = tau
                     self.required_tau_pub.publish(tau_msg)
+                    self.traj_pub.publish(traj_msg)
                 except rospy.ServiceException as e:
                     print("Service call failed: %s"%e)
-            
+
+
             rate.sleep()

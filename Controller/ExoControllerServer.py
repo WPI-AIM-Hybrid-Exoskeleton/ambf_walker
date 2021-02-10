@@ -74,6 +74,7 @@ class ExoControllerServer():
         while 1:
             with self.lock:
                 local_msg = self.msg
+                traj_msg.data = local_msg.q
                 # q = np.array(local_msg.q)
                 # qd = np.array(local_msg.qd)
                 # qdd = np.array(local_msg.qdd)
@@ -91,12 +92,13 @@ class ExoControllerServer():
             
                 error_msg.data = np.abs((local_msg.q - q)/local_msg.q)
                 self.error_pub.publish(error_msg)
-                
+
                 try:
                     resp1 = self.controller_srv(msg)
                     tau = resp1.control_output.effort
                     tau_msg.effort = tau
                     self.tau_pub.publish(tau_msg)
+                    self.traj_pub.publish(traj_msg)
                 except rospy.ServiceException as e:
                     print("Service call failed: %s"%e)
                                         
