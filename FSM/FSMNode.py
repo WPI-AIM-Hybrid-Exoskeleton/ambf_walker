@@ -9,6 +9,6 @@ if __name__ == "__main__":
 
 
     rospy.init_node("FSM")
-    # ExoFSM.ExoFSM()
-    ExoHumanFSM.ExoHumanFSM()
+    ExoFSM.ExoFSM()
+    #ExoHumanFSM.ExoHumanFSM()
     rospy.spin()

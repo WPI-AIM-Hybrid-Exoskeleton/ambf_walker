@@ -12,12 +12,14 @@ from sensor_msgs.msg import JointState
 from rbdl_server.srv import RBDLModel, RBDLModelAlignment
 from rbdl_server.srv import RBDLInverseDynamics
 from . import Model
+
 class ModelServer(Model.Model):
 
     def __init__(self, client, model_name, joint_names, model_path):
         
         super(ModelServer, self).__init__(client=client, model_name=model_name, joint_names=joint_names)
-        
+        self._use_gravity = False
+        self.make_dynamic_model(model_name, model_path)
         left_joints = {}
         right_joints = {}
         self.grav_tau = np.array([])
@@ -32,7 +34,6 @@ class ModelServer(Model.Model):
         self._left_leg = Leg.Leg(left_joints["Hip"], left_joints["Knee"], left_joints["Ankle"])
         self._right_leg = Leg.Leg(right_joints["Hip"], right_joints["Knee"], right_joints["Ankle"])
         #"/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
-        self.make_dynamic_model(model_name, model_path )
         self._joint_map = {}
         self._joint_map_selected = {}
         self._selected_joint_names = joint_names
@@ -56,8 +57,10 @@ class ModelServer(Model.Model):
         use the RBDL server to create the model 
         """
         try:
+            print("making model")
             model_srv = rospy.ServiceProxy('CreateModel', RBDLModel)
             resp1 = model_srv(name, model_path)
+
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
 
@@ -68,11 +71,12 @@ class ModelServer(Model.Model):
         :return:
         """
         rate = rospy.Rate(1000)  # 1000hz
-        q_msg = Float32MultiArray()
+        state_msg = JointState()
 
         # get the joint map
         self._joints_names = self.handle.get_joint_names()
         try:
+            print(self.model_name)
             model_srv = rospy.ServiceProxy('AMBF2RBDL', RBDLModelAlignment)
             resp1 = model_srv(self.model_name, [])           
         except rospy.ServiceException as e:
@@ -96,14 +100,15 @@ class ModelServer(Model.Model):
             self.qd = self.handle.get_all_joint_vel()
             self.state = (self.q, self.qd)
             self._joint_num = self.q.size
-            q_msg.data = self.q
-            self.q_pub.publish(q_msg)
+            state_msg.position = self.q
+            state_msg.velocity = self.qd
+            self.q_pub.publish(state_msg)
             if self._enable_control: 
-                self.calc_gravity()
-                tau = self.tau
-                if self.tau.size == self.grav_tau.size: 
-                    tau+=self.grav_tau 
-                self.handle.set_multiple_joint_effort(tau, joints_idx)
+                #self.calc_gravity()
+                # tau = self.tau
+                # if  self.tau.size == self.grav_tau.size:# and self._use_gravity:
+                #     pass#tau+=self.grav_tau
+                self.handle.set_multiple_joint_effort(self.tau, joints_idx)
                 #set multiple joint pos
             rate.sleep()
 
