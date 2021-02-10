@@ -3,7 +3,7 @@ from ambf_walker.msg import DesiredPosCmd
 import rospy
 from geometry_msgs.msg import Wrench
 
-class LowerBody(smach.State):
+class LowerState(smach.State):
 
     def __init__(self, model_name, outcomes=['Lowered']):
 

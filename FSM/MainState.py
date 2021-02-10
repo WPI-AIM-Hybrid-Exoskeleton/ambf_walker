@@ -2,7 +2,7 @@ import rospy
 import smach
 from std_msgs.msg import String
 
-class Main(smach.State):
+class MainState(smach.State):
 
     def __init__(self, outcomes=["walkinit", "lower"]):
         smach.State.__init__(self, outcomes=outcomes)

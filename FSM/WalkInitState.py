@@ -4,7 +4,10 @@ import rospy
 from sensor_msgs.msg import JointState
 from ambf_walker.msg import DesiredJoints
 from Utlities import trajectories
-class WalkInit(smach.State):
+
+
+
+class WalkInitState(smach.State):
 
     def __init__(self, model_name, outcomes=['WalkInitialized']):
 
@@ -18,9 +21,6 @@ class WalkInit(smach.State):
         self.pub = rospy.Publisher(model_name + "_set_points", DesiredJoints, queue_size=1)
         self.total = tf / dt
         self.count = 0
-
-
-
 
     def execute(self, userdata):
         

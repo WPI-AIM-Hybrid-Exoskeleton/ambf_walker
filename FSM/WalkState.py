@@ -1,6 +1,7 @@
+
 import smach
 import rospy
-from ambf_walker import DesiredJoints
+from ambf_walker.msg import DesiredJoints
 import numpy as np
 from os.path import dirname, join
 from ambf_msgs.msg import RigidBodyState, SensorState
@@ -9,7 +10,7 @@ from sensor_msgs.msg import JointState
 
 class WalkState(smach.State):
 
-    def __init__(self, model_name, controller_name, model,outcomes=["walking"]):
+    def __init__(self, model_name, controller_name,outcomes=["walked"]):
         smach.State.__init__(self, outcomes=outcomes)
         self.runner = self._get_walker()
         self.joint_state = JointState()
@@ -48,7 +49,7 @@ class WalkState(smach.State):
             # print(count)
             self.rate.sleep()
             
-        return "walking"
+        return "walked"
     
 
     def joint_callback(self, msg):

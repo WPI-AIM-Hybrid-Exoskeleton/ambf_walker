@@ -6,7 +6,6 @@ from sensor_msgs.msg import JointState
 from ambf_walker.msg import DesiredJoints
 from GaitAnaylsisToolkit.LearningTools.Runner import TPGMMRunner
 from std_msgs.msg import Float32MultiArray
-from Model import Model
 from std_msgs.msg import Empty,String
 import matplotlib.pyplot as plt
 from ambf_walker.srv import DesiredJointsCmdRequest, DesiredJointsCmd
@@ -15,7 +14,7 @@ from ambf_walker.msg import DesiredPosCmd
 from Utlities import trajectories
 
 
-class Initialize(smach.State):
+class InitializeState(smach.State):
 
     def __init__(self, model_name, outcomes=['Initialized']):
 
@@ -25,7 +24,7 @@ class Initialize(smach.State):
         tf = 2.0
         dt = 0.01
         self.joint_cb = rospy.Subscriber(model_name + "_jointstate", JointState, self.joint_callback)
-        self.pub_joints = rospy.Publisher(self._model_name + "_set_points", DesiredJointsCmd, queue_size=1)
+        self.pub_joints = rospy.Publisher(self._model_name + "_set_points", DesiredJoints, queue_size=1)
         self.pub_pos = rospy.Publisher(self._model_name + "_set_pos_cmd", DesiredPosCmd, queue_size=1)
         self.total = tf / dt
         self.count = 0
