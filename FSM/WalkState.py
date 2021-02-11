@@ -47,7 +47,7 @@ class WalkState(smach.State):
             msg.q = q
             msg.qd = qd
             msg.qdd = qdd
-            msg.controller =  self._controller_name
+            msg.controller = self._controller_name
             self.pub.publish(msg)
             self.count += 1
             # print(count)

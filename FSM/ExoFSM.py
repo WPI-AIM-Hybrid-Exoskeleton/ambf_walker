@@ -4,7 +4,7 @@ import smach
 import smach_ros
 import rospy
 
-import InitializeState, WalkInitState, WalkState, MainState, LowerState
+import InitializeState, WalkInitState, WalkState, MainState, LowerState, iLQRState
 
 
 class ExoFSM():
@@ -26,6 +26,7 @@ class ExoFSM():
                                     transitions={'Lowered': 'Main'})
 
             walk_sub = smach.StateMachine(outcomes=['walked'])
+            ilqr_sub = smach.StateMachine(outcomes=['ilqred'])
 
             # Open the container 
             with walk_sub:
@@ -45,6 +46,22 @@ class ExoFSM():
             smach.StateMachine.add('Sub_Walk', walk_sub,
                                 transitions={'walked':'Main'})
         
+
+            with ilqr_sub:
+
+                # Add states to the container
+                smach.StateMachine.add('LQRInit', WalkInitState.WalkInitState("exo"),
+                                    transitions={'WalkInitialized':'ILQR'},
+                                       remapping={'q':'q', 'qd':'qd'} )
+
+                smach.StateMachine.add('ILQR', iLQRState.iLQRState("exo", "FF"),
+                                    transitions={'ilqred':'ilqred'},
+                                       remapping={'q':'q', 'qd':'qd'})
+
+
+            smach.StateMachine.add('Sub_ILQR', ilqr_sub,
+                                transitions={'ilqred':'Main'})
+
 
         sis = smach_ros.IntrospectionServer('server_name', sm, '/SM_ROOT')
         sis.start()

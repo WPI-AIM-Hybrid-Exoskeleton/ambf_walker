@@ -1,6 +1,7 @@
 #!/usr/bin/env python2
 import smach
 import rospy
+import smach_ros
 import numpy as np
 from sensor_msgs.msg import JointState
 from ambf_walker.msg import DesiredJoints

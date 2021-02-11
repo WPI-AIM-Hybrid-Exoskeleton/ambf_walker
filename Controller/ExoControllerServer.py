@@ -10,6 +10,8 @@ from ambf_walker.srv import DesiredJointsCmd, DesiredJointsCmdResponse
 from controller_modules.srv import JointControl, JointControlRequest
 from trajectory_msgs.msg import JointTrajectoryPoint
 
+
+
 class ExoControllerServer():
 
     def __init__(self, model):
@@ -38,6 +40,7 @@ class ExoControllerServer():
     def model(self, value):
         self._model = value
 
+
     def update_set_point(self, msg):
         """
 
@@ -60,8 +63,6 @@ class ExoControllerServer():
         if not self._enable_control:
             self._updater.start()
         return DesiredJointsCmdResponse(True)
-
-    
 
 
     def set_torque(self):
@@ -89,9 +90,10 @@ class ExoControllerServer():
                 qd = self._model.qd
                 msg.actual.positions = self._model.ambf_to_rbdl(q)
                 msg.actual.velocities = self._model.ambf_to_rbdl(qd)
-            
+
                 error_msg.data = np.abs((local_msg.q - q)/local_msg.q)
                 self.error_pub.publish(error_msg)
+
 
                 try:
                     resp1 = self.controller_srv(msg)
@@ -101,7 +103,7 @@ class ExoControllerServer():
                     self.traj_pub.publish(traj_msg)
                 except rospy.ServiceException as e:
                     print("Service call failed: %s"%e)
-                                        
+
               
             rate.sleep()
 

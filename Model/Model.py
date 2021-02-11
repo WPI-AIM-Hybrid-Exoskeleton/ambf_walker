@@ -11,7 +11,7 @@ from std_msgs.msg import Float32MultiArray
 from sensor_msgs.msg import JointState
 from ambf_walker.msg import DesiredPosCmd
 from geometry_msgs.msg import Wrench
-
+from std_srvs.srv import SetBool, SetBoolResponse
 class Model(object):
 
     def __init__(self, client, model_name, joint_names):
@@ -34,8 +34,10 @@ class Model(object):
         self.q_pub = rospy.Publisher(self.model_name + "_jointstate", JointState, queue_size=1)
         self.pos_sub = rospy.Subscriber(self.model_name + "_set_body_pos", DesiredPosCmd, self.set_body_pos )
         self.force_sub = rospy.Subscriber(self.model_name + "_set_body_force", Wrench ,self.set_body_force )
+        self.onoff = rospy.Service(model_name + '_onoff', SetBool, self.enable_control_srv)
 
-        
+
+
     @property
     def rbdl_model(self):
         return self._rbdl_model
@@ -73,6 +75,15 @@ class Model(object):
     @enable_control.setter
     def enable_control(self, value):
         self._enable_control = value
+
+    def enable_control_srv(self, msg):
+        
+        if msg.data:
+            self.enable_control = True
+            return SetBoolResponse(True, "Turned on " + self.model_name + " Controller")
+        else:
+            self.enable_control = False
+            return SetBoolResponse(True, "Turned off " + self.model_name +  " Controller" )
 
     @property
     def handle(self):

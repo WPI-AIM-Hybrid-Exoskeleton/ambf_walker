@@ -12,6 +12,10 @@ from sensor_msgs.msg import JointState
 from rbdl_server.srv import RBDLModel, RBDLModelAlignment
 from rbdl_server.srv import RBDLInverseDynamics
 from . import Model
+from std_srvs.srv import SetBool, SetBoolResponse
+
+
+
 
 class ModelServer(Model.Model):
 
@@ -49,7 +53,6 @@ class ModelServer(Model.Model):
         :type tau: List
         """
         self.tau = self.rbdl_to_ambf(tau)
-        self._enable_control = True
 
 
     def make_dynamic_model(self, name, model_path): 
@@ -110,6 +113,9 @@ class ModelServer(Model.Model):
                 #     pass#tau+=self.grav_tau
                 self.handle.set_multiple_joint_effort(self.tau, joints_idx)
                 #set multiple joint pos
+            else:
+                self.handle.set_multiple_joint_effort(len(self.tau)*[0.0], joints_idx)
+
             rate.sleep()
 
 

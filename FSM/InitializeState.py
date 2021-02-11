@@ -12,7 +12,7 @@ from ambf_walker.srv import DesiredJointsCmdRequest, DesiredJointsCmd
 from GaitAnaylsisToolkit.LearningTools.Runner import GMMRunner
 from ambf_walker.msg import DesiredPosCmd
 from Utlities import trajectories
-
+from std_srvs.srv import SetBool, SetBoolResponse
 
 class InitializeState(smach.State):
 
@@ -42,6 +42,14 @@ class InitializeState(smach.State):
 
         self.pub_pos.publish(msg_pos)
         self.hip, self.knee, self.ankle = trajectories.stance_trajectory()
+        rospy.wait_for_service('exo_onoff')
+        try:
+            add_two_ints = rospy.ServiceProxy('exo_onoff', SetBool)
+            resp1 = add_two_ints(True)
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
+
+
    
         while self.count <= self.total - 1:
             msg = DesiredJoints()
