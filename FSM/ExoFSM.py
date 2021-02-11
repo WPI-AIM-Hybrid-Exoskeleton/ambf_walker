@@ -16,9 +16,10 @@ class ExoFSM():
         with sm:
             smach.StateMachine.add('Initialize', InitializeState.InitializeState("exo"), transitions={'Initialized': 'Main'})
             
-            smach.StateMachine.add('Main', MainState.MainState(["Walk", "Lower", "Done"] ),
+            smach.StateMachine.add('Main', MainState.MainState(["Walk", "Lower", "Done", "ilqr"] ),
                             transitions={'Walk': 'Sub_Walk', 
                                         'Lower': 'LowerBody',
+                                        "ilqr":"Sub_ILQR",
                                         "Done": "Done" })
 
             
@@ -44,7 +45,7 @@ class ExoFSM():
 
 
             smach.StateMachine.add('Sub_Walk', walk_sub,
-                                transitions={'walked':'Main'})
+                                transitions={'walked':'Initialize'})
         
 
             with ilqr_sub:
@@ -60,7 +61,7 @@ class ExoFSM():
 
 
             smach.StateMachine.add('Sub_ILQR', ilqr_sub,
-                                transitions={'ilqred':'Main'})
+                                transitions={'ilqred':'Initialize'})
 
 
         sis = smach_ros.IntrospectionServer('server_name', sm, '/SM_ROOT')
