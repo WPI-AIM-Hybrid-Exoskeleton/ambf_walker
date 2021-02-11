@@ -10,8 +10,8 @@ from sensor_msgs.msg import JointState
 
 class WalkState(smach.State):
 
-    def __init__(self, model_name, controller_name,outcomes=["walked"],input_keys=['q', 'qd']):
-        smach.State.__init__(self, outcomes=outcomes, input_keys=input_keys)
+    def __init__(self, model_name, controller_name,outcomes=["walked"],output_keys=['human'],  input_keys=['q', 'qd']):
+        smach.State.__init__(self, outcomes=outcomes, input_keys=input_keys, output_keys=output_keys)
         self.runner = self._get_walker()
         self.joint_state = JointState()
         self.joint_cb = rospy.Subscriber(model_name+ "_jointstate", JointState, self.joint_callback)
@@ -51,6 +51,7 @@ class WalkState(smach.State):
             self.pub.publish(msg)
             self.count += 1
             # print(count)
+            userdata.human = False
             self.rate.sleep()
             
         return "walked"

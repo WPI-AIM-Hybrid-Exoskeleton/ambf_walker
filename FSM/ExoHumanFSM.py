@@ -4,7 +4,7 @@ import smach
 import smach_ros
 import rospy
 
-import InitializeState, WalkInitState, WalkState, MainState, LowerState
+import InitializeState, WalkInitState, WalkState, MainState, LowerState, InitilizeHumanState
 
 
 class ExoHumanFSM():
@@ -30,7 +30,12 @@ class ExoHumanFSM():
             with walk_sub:
                 # Add states to the container
                 smach.StateMachine.add('WalkInit', WalkInitState.WalkInitState("exo"),
-                                       transitions={'WalkInitialized': 'walk_con'})
+                                       transitions={'WalkInitialized': 'Humaninit'},
+                                       remapping={'human':'status'} )
+
+                smach.StateMachine.add('Humaninit', InitilizeHumanState.InitializeState(),
+                                       transitions={'on':'walk_con','off':'walked' },
+                                       remapping={'status':'status'})
 
                 # Create the sub SMACH state machine
                 walk_con = smach.Concurrence(outcomes=['walked'],
@@ -43,10 +48,11 @@ class ExoHumanFSM():
                 with walk_con:
                     # Add states to the container
                     smach.Concurrence.add('ExoWalk', WalkState.WalkState("exo", "exo"))
-                    smach.Concurrence.add('HumanWalk', WalkState.WalkState("exo", "exo"))
+                    smach.Concurrence.add('HumanWalk', WalkState.WalkState("human", "human"))
 
                 smach.StateMachine.add('walk_con', walk_con,
-                                       transitions={'walked': 'walked'})
+                                       transitions={'walked': 'Humaninit'},
+                                       remapping={"human":"status"})
 
 
 

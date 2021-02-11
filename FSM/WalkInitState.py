@@ -9,7 +9,7 @@ from Utlities import trajectories
 
 class WalkInitState(smach.State):
 
-    def __init__(self, model_name, outcomes=['WalkInitialized'], output_keys=['q', 'qd']):
+    def __init__(self, model_name, outcomes=['WalkInitialized'], output_keys=['q', 'qd', 'human']):
 
         smach.State.__init__(self, outcomes=outcomes, output_keys=output_keys)
         self.rate = rospy.Rate(100)
@@ -56,6 +56,7 @@ class WalkInitState(smach.State):
 
         userdata.q = self.joint_state.position
         userdata.qd = self.joint_state.velocity
+        userdata.human = True
         return "WalkInitialized"
 
     

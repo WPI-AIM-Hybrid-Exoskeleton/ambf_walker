@@ -44,8 +44,8 @@ class InitializeState(smach.State):
         self.hip, self.knee, self.ankle = trajectories.stance_trajectory()
         rospy.wait_for_service('exo_onoff')
         try:
-            add_two_ints = rospy.ServiceProxy('exo_onoff', SetBool)
-            resp1 = add_two_ints(True)
+            exo = rospy.ServiceProxy('exo_onoff', SetBool)
+            resp1 = exo(True)
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
 
