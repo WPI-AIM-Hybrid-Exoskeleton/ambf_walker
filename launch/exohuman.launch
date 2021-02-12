@@ -1,0 +1,15 @@
+
+<launch>
+
+         <node  pkg="ambf_walker" name="dynamic_server" type="dynamic_server" output="screen" />
+      <node  pkg="ambf_walker" name="exohuman_controller_server" type="exohuman_controller_server" output="screen" />
+    <node pkg="ambf_walker" name="HumanBasic" type="HumanBasic.py" output="screen"/>
+
+<!--     <node pkg="ambf_walker" name="FSMNode" type="FSMNode.py" output="screen"/>-->
+     <node pkg="ambf_walker" name="TransformFrames" type="TransformFrames.py" output="screen"/>
+
+     <!-- <node pkg="ambf_walker" name="TransformPointCloud" type="rotate_point_cloud" output="screen"/> -->
+
+</launch>
+
+

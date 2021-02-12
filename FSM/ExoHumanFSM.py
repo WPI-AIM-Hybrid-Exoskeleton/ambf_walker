@@ -47,7 +47,7 @@ class ExoHumanFSM():
                 # Open the container
                 with walk_con:
                     # Add states to the container
-                    smach.Concurrence.add('ExoWalk', WalkState.WalkState("exo", "exo"))
+                    smach.Concurrence.add('ExoWalk', WalkState.WalkState("exo", "Dyn"))
                     smach.Concurrence.add('HumanWalk', WalkState.WalkState("human", "human"))
 
                 smach.StateMachine.add('walk_con', walk_con,
@@ -57,7 +57,7 @@ class ExoHumanFSM():
 
 
             smach.StateMachine.add('Sub_Walk', walk_sub,
-                                   transitions={'walked': 'Main'})
+                                   transitions={'walked': 'Initialize'})
 
         sis = smach_ros.IntrospectionServer('server_name', sm, '/SM_ROOT')
         sis.start()

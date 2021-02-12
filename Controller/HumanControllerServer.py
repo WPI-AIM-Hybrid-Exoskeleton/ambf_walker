@@ -22,7 +22,7 @@ class HumanControllerServer(object):
         self.tau_pub = rospy.Publisher(self.model.model_name + "_joint_torque", JointState, queue_size=1)
         self.traj_pub = rospy.Publisher(self.model.model_name + "_trajectory", Float32MultiArray, queue_size=1)
         self.error_pub = rospy.Publisher(self.model.model_name + "_Error", Float32MultiArray, queue_size=1)
-        self.required_tau_pub = rospy.Publisher("required_human", JointState, queue_size=1)
+        self.required_tau_pub = rospy.Publisher("required_human_tau", JointState, queue_size=1)
 
         self.controller_srv = rospy.ServiceProxy('CalcTau', JointControl)
         self.service = rospy.Service(self.model.model_name + '_joint_cmd', DesiredJointsCmd, self.joint_cmd_server)
@@ -79,7 +79,7 @@ class HumanControllerServer(object):
 
                 local_msg = self.msg
                 rospy.wait_for_service('CalcTau')
-
+                self.traj_pub.publish(traj_msg)
                 msg = JointControlRequest()
                 msg.controller_name = "FES"
                 traj_msg.data = local_msg.q
@@ -114,7 +114,7 @@ class HumanControllerServer(object):
                 tau = resp1.control_output.effort
                 tau_msg.effort = tau
                 self.required_tau_pub.publish(tau_msg)
-                self.traj_pub.publish(traj_msg)
+
             except rospy.ServiceException as e:
                 print("Service call failed: %s"%e)
 
