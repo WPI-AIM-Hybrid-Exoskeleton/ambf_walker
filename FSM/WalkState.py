@@ -13,6 +13,7 @@ class WalkState(smach.State):
     def __init__(self, model_name, controller_name,outcomes=["walked"],output_keys=['human'],  input_keys=['q', 'qd']):
         smach.State.__init__(self, outcomes=outcomes, input_keys=input_keys, output_keys=output_keys)
         self.runner = self._get_walker()
+        self.model_name = model_name
         self.joint_state = JointState()
         self.joint_cb = rospy.Subscriber(model_name+ "_jointstate", JointState, self.joint_callback)
         self.rate = rospy.Rate(10)
@@ -34,7 +35,7 @@ class WalkState(smach.State):
         self.runner.update_start(start)
 
         while self.count < self.runner.get_length():
-
+            rospy.loginfo(self.model_name + " is at " + str(self.count) )
             self.runner.step()
             msg = DesiredJoints()
             q = self.runner.x

@@ -22,7 +22,6 @@ void DynController::calculate_torque(const trajectory_msgs::JointTrajectoryPoint
     Eigen::VectorXd e = VectToEigen(desired.positions) - VectToEigen(actual.positions);
     Eigen::VectorXd ed = VectToEigen(desired.velocities) - VectToEigen(actual.velocities); 
     Eigen::VectorXd qdd_( VectToEigen(actual.positions).rows());
-    ROS_INFO("Did a things");
     my_controller.calculate_torque(e, ed, qdd_);
     std::vector<double> qdd(&qdd_[0], qdd_.data()+qdd_.cols()*qdd_.rows());
 

@@ -106,8 +106,8 @@ class HumanControllerServer(object):
                 msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd) )
                 msg.actual.positions = self._model.ambf_to_rbdl(self._model.q)
                 msg.actual.velocities = self._model.ambf_to_rbdl(self._model.qd)
-                error_msg.data = abs((msg.desired.positions - msg.actual.positions)/msg.desired.positions)
-                self.error_pub.publish(error_msg)
+                # error_msg.data = abs((msg.desired.positions - msg.actual.positions)/msg.desired.positions)
+                # self.error_pub.publish(error_msg)
 
             try:
                 resp1 = self.controller_srv(msg)

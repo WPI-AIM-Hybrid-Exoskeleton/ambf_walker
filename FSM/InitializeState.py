@@ -23,6 +23,7 @@ class InitializeState(smach.State):
         self.rate = rospy.Rate(100)
         tf = 2.0
         dt = 0.01
+        self.hip, self.knee, self.ankle = trajectories.stance_trajectory()
         self.joint_cb = rospy.Subscriber(model_name + "_jointstate", JointState, self.joint_callback)
         self.pub_joints = rospy.Publisher(self._model_name + "_set_points", DesiredJoints, queue_size=1)
         self.pub_pos = rospy.Publisher(self._model_name + "_set_pos_cmd", DesiredPosCmd, queue_size=1)
@@ -41,7 +42,8 @@ class InitializeState(smach.State):
         msg_pos.rpy.z = 0.0
 
         self.pub_pos.publish(msg_pos)
-        self.hip, self.knee, self.ankle = trajectories.stance_trajectory()
+
+        
         rospy.wait_for_service('exo_onoff')
         try:
             exo = rospy.ServiceProxy('exo_onoff', SetBool)

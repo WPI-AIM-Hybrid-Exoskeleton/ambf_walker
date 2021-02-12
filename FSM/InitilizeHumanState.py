@@ -16,9 +16,9 @@ from std_srvs.srv import SetBool, SetBoolResponse
 
 class InitializeState(smach.State):
 
-    def __init__(self,outcomes=['on', 'off'], input_keys=["status"] ):
+    def __init__(self,outcomes=['on', 'off'], input_keys=["status", "q", "qd"], output_keys=["q", "qd"] ):
 
-        smach.State.__init__(self, outcomes=outcomes, input_keys=input_keys)
+        smach.State.__init__(self, outcomes=outcomes, input_keys=input_keys, output_keys=output_keys)
         
 
     def execute(self, userdata):
@@ -26,6 +26,7 @@ class InitializeState(smach.State):
        
         rospy.wait_for_service('human_onoff')
         status = userdata.status
+        print(status)
         try:
             human = rospy.ServiceProxy('human_onoff', SetBool)
             resp1 = human(status)

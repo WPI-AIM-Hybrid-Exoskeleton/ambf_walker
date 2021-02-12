@@ -90,8 +90,8 @@ class ExoControllerServer():
             qd = self._model.qd
             msg.actual.positions = self._model.ambf_to_rbdl(q)
             msg.actual.velocities = self._model.ambf_to_rbdl(qd)
-            error_msg.data = np.abs((local_msg.q - q)/local_msg.q)
-            self.error_pub.publish(error_msg)
+            # error_msg.data = np.abs((local_msg.q - q)/local_msg.q)
+            # self.error_pub.publish(error_msg)
 
             self.traj_pub.publish(traj_msg)
             
