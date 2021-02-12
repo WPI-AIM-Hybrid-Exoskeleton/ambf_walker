@@ -49,7 +49,7 @@ class InitializeState(smach.State):
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
 
-
+        self.count = 0
    
         while self.count <= self.total - 1:
             msg = DesiredJoints()

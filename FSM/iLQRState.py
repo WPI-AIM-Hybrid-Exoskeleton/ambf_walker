@@ -20,7 +20,7 @@ class iLQRState(smach.State):
         with open(file, 'rb') as f:
             self.ilqr_tau = np.load(f)
 
-        self.runner = self._get_walker()
+     
         self.joint_state = JointState()
         self.rate = rospy.Rate(10)
         self._controller_name = controller_name
@@ -46,7 +46,7 @@ class iLQRState(smach.State):
             start.append(np.array([q]))
 
         self.count = 0
-        self.runner.reset()
+        self.runner = self._get_walker()
         self.runner.update_start(start)
 
         while self.count < self.runner.get_length():

@@ -73,36 +73,36 @@ class ExoControllerServer():
         error_msg = Float32MultiArray()
 
         while 1:
-            with self.lock:
-                local_msg = self.msg
-                traj_msg.data = local_msg.q
-                # q = np.array(local_msg.q)
-                # qd = np.array(local_msg.qd)
-                # qdd = np.array(local_msg.qdd)
-                # other = np.array(local_msg.other)
-                rospy.wait_for_service('CalcTau')
-                msg = JointControlRequest()
-                msg.controller_name = local_msg.controller
-                msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
-                msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd) )
-                msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd) )
-                q = self._model.q
-                qd = self._model.qd
-                msg.actual.positions = self._model.ambf_to_rbdl(q)
-                msg.actual.velocities = self._model.ambf_to_rbdl(qd)
+            # with self.lock:
+            local_msg = self.msg
+            traj_msg.data = local_msg.q
+            # q = np.array(local_msg.q)
+            # qd = np.array(local_msg.qd)
+            # qdd = np.array(local_msg.qdd)
+            # other = np.array(local_msg.other)
+            rospy.wait_for_service('CalcTau')
+            msg = JointControlRequest()
+            msg.controller_name = local_msg.controller
+            msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
+            msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd) )
+            msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd) )
+            q = self._model.q
+            qd = self._model.qd
+            msg.actual.positions = self._model.ambf_to_rbdl(q)
+            msg.actual.velocities = self._model.ambf_to_rbdl(qd)
+            error_msg.data = np.abs((local_msg.q - q)/local_msg.q)
+            self.error_pub.publish(error_msg)
 
-                error_msg.data = np.abs((local_msg.q - q)/local_msg.q)
-                self.error_pub.publish(error_msg)
-
-
-                try:
-                    resp1 = self.controller_srv(msg)
-                    tau = resp1.control_output.effort
-                    tau_msg.effort = tau
-                    self.tau_pub.publish(tau_msg)
-                    self.traj_pub.publish(traj_msg)
-                except rospy.ServiceException as e:
-                    print("Service call failed: %s"%e)
+            self.traj_pub.publish(traj_msg)
+            
+            try:
+                resp1 = self.controller_srv(msg)
+                tau = resp1.control_output.effort
+                tau_msg.effort = tau
+                self.tau_pub.publish(tau_msg)
+            
+            except rospy.ServiceException as e:
+                print("Service call failed: %s"%e)
 
               
             rate.sleep()

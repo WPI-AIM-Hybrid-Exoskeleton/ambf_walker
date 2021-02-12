@@ -21,6 +21,7 @@ class Model(object):
         self._model_name = model_name
         self._q = np.array([])
         self._qd = np.array([])
+        self._joint_effort = np.array([])
         self.tau = np.array([])
         self._state = np.array([])
         self._handle = None
@@ -120,6 +121,20 @@ class Model(object):
         self._qd = self.qd_filter.update(np.asarray(my_joints))
 
     @property
+    def joint_effort(self):
+        return self._qd
+
+    @joint_effort.setter
+    def joint_effort(self, value):
+        my_joints = []
+        self._joints_names = self.handle.get_joint_names()
+        for joint in self._selected_joint_names:
+            if joint in self._joints_names:
+                my_joints.append(value[self._joints_names.index(joint)])
+        self._joint_effort=np.asarray(my_joints)
+
+
+    @property
     def state(self):
         return self._state
 
@@ -144,8 +159,10 @@ class Model(object):
             self.qd = self.handle.get_all_joint_vel()
             self.state = (self.q, self.qd)
             self._joint_num = self.q.size
+            q_msg.name = self._selected_joint_names
             q_msg.position = self.q
             q_msg.velocity = self.qd
+            q_msg.effort = self.tau
             self.q_pub.publish(q_msg)
             if self._enable_control:
                 joints_idx = []

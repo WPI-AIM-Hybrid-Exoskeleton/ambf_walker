@@ -74,7 +74,7 @@ class ModelServer(Model.Model):
         :return:
         """
         rate = rospy.Rate(1000)  # 1000hz
-        state_msg = JointState()
+        
 
         # get the joint map
         self._joints_names = self.handle.get_joint_names()
@@ -101,10 +101,14 @@ class ModelServer(Model.Model):
         while 1:
             self.q = self.handle.get_all_joint_pos()
             self.qd = self.handle.get_all_joint_vel()
+            self.joint_effort = self.handle.get_all_joint_effort()
             self.state = (self.q, self.qd)
             self._joint_num = self.q.size
+            state_msg = JointState()
+            state_msg.name = self._selected_joint_names
             state_msg.position = self.q
             state_msg.velocity = self.qd
+            state_msg.effort = self.tau
             self.q_pub.publish(state_msg)
             if self._enable_control: 
                 #self.calc_gravity()
