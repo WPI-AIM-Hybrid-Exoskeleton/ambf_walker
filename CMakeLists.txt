@@ -18,11 +18,19 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   rbdl_server
   controller_modules
+  ambf_client
   geometry_msgs
   trajectory_msgs
 )
 
 find_package( PCL REQUIRED )
+
+get_filename_component(PARENT_CMAKE ../cmake ABSOLUTE)
+set (CMAKE_MODULE_PATH ${PARENT_CMAKE} )
+FIND_PACKAGE (ambf_client REQUIRED)
+include_directories(${AMBF_CLIENT_INCLUDE_DIR})
+MESSAGE(STATUS "Found AMBsd;lf;lasfklasjf;ladsjf;lsadjf;lsdjfF: ${AMBF_CLIENT_INCLUDE_DIR}")
+find_package (Boost COMPONENTS program_options filesystem REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -62,7 +70,6 @@ generate_messages(
 FIND_PACKAGE (Eigen3 3.0.0 REQUIRED)
 include_directories(${Eigen3_INCLUDE_DIRS})
 
-include_directories( include ${catkin_INCLUDE_DIRS} ${GTEST_INCLUDE_DIRS} ${Eigen_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR})
 
 
 
@@ -86,6 +93,8 @@ set (HDR_FILES
    )
 
 
+ include_directories( include ${AMBF_CLIENT_INCLUDE_DIRS}  ${catkin_INCLUDE_DIRS} ${GTEST_INCLUDE_DIRS} ${Eigen_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR})
+
 
 add_library(${PROJECT_NAME} ${SRC_FILES} ${HRD_FILES} )
 add_dependencies(${PROJECT_NAME}  ${catkin_EXPORTED_TARGETS})
@@ -100,7 +109,7 @@ target_link_libraries(rotate_point_cloud  ${PCL_LIBRARIES} ${catkin_LIBRARIES})
 
 add_executable (dynamic_server src/dynamic_server.cpp)
 add_dependencies (dynamic_server ${catkin_EXPORTED_TARGETS})
-target_link_libraries(dynamic_server ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
+target_link_libraries(dynamic_server ${AMBF_CLIENT_LIBRARY} ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
 
 
 add_executable (exo_controller_server src/exo_controller_server.cpp)
@@ -118,6 +127,10 @@ add_executable (exohuman_controller_server src/exohuman_controller_server.cpp)
 add_dependencies (exohuman_controller_server ${catkin_EXPORTED_TARGETS})
 target_link_libraries(exohuman_controller_server ${PROJECT_NAME}  ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
 
+
+add_executable (exohuman_client src/client_test/main_client.cpp)
+add_dependencies (exohuman_client ${catkin_EXPORTED_TARGETS})
+target_link_libraries(exohuman_client ${PROJECT_NAME} ${AMBF_CLIENT_LIBRARY} ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
 
 
 
