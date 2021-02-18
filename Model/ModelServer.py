@@ -13,7 +13,7 @@ from rbdl_server.srv import RBDLModel, RBDLModelAlignment
 from rbdl_server.srv import RBDLInverseDynamics
 from . import Model
 from std_srvs.srv import SetBool, SetBoolResponse
-
+from std_msgs.msg import Float32
 
 
 
@@ -22,6 +22,7 @@ class ModelServer(Model.Model):
     def __init__(self, client, model_name, joint_names, model_path):
         
         super(ModelServer, self).__init__(client=client, model_name=model_name, joint_names=joint_names)
+        self.dt_pub = rospy.Publisher("dt", Float32, queue_size=1)
         self._use_gravity = False
         self.make_dynamic_model(model_name, model_path)
         left_joints = {}
@@ -73,7 +74,7 @@ class ModelServer(Model.Model):
 
         :return:
         """
-        rate = rospy.Rate(1000)  # 1000hz
+        rate = rospy.Rate(500)  # 1000hz
         
 
         # get the joint map
@@ -97,7 +98,11 @@ class ModelServer(Model.Model):
                 index+=1
                 
         # loop through and get the joint values
-        # set the torques 
+        # set the torques
+
+        dt_msg = Float32()
+        last_time = rospy.get_time()
+
         while 1:
             self.q = self.handle.get_all_joint_pos()
             self.qd = self.handle.get_all_joint_vel()
@@ -110,11 +115,16 @@ class ModelServer(Model.Model):
             state_msg.velocity = self.qd
             state_msg.effort = self.tau
             self.q_pub.publish(state_msg)
+            current_time = rospy.get_time()
+            dt_msg.data = current_time - last_time
+            last_time = current_time
+            self.dt_pub.publish(dt_msg)
             if self._enable_control: 
                 #self.calc_gravity()
                 # tau = self.tau
                 # if  self.tau.size == self.grav_tau.size:# and self._use_gravity:
                 #     pass#tau+=self.grav_tau
+
                 self.handle.set_multiple_joint_effort(self.tau, joints_idx)
                 #set multiple joint pos
             else:
