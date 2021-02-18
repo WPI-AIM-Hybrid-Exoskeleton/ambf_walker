@@ -29,7 +29,7 @@ class iLQRState(smach.State):
         self.count = 0
         self.pub_tau_ilqr = rospy.Publisher("tau_ilqr", Float32MultiArray, queue_size=1 )
         
-        self.rate = rospy.Rate(100)
+        self.rate = rospy.Rate(10)
 
     def _get_walker(self):
         project_root = dirname(dirname(__file__))

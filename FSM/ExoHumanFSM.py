@@ -86,7 +86,5 @@ class ExoHumanFSM():
 
 if __name__ == "__main__":
 
-
-
     rospy.init_node("FSM")
     ExoHumanFSM()
