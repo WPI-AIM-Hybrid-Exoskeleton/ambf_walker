@@ -110,9 +110,10 @@ void tau_callback(const ambf_walker::DesiredJoints joints)
             int count = 0;
             std::vector<double> tau_aligned;
             rbdl_to_ambf(dyn_msg.response.tau, tau_aligned); 
-
+            
             for(auto&& item : selected_joints) 
-            {
+            {   
+
                 tau[tau_map[item]] = tau_aligned[count]; 
                 count++;
             }
@@ -128,6 +129,7 @@ void tau_callback(const ambf_walker::DesiredJoints joints)
         ROS_INFO("Failed to call service controller");
        
     }
+    enabled_control = true;
 }
 
 
@@ -173,8 +175,8 @@ void main_loop()
     ros::Rate loop_rate(500);    
     while(ros::ok())
     {
-        std::vector<float> q = get_q();
-        std::vector<float> qd = get_qd();
+       q = get_q();
+       qd = get_qd();
 
         if( enabled_control)
         {
@@ -212,6 +214,7 @@ int main(int argc, char **argv)
     client_model = n.serviceClient<rbdl_server::RBDLModel>("CreateModel");
     client_ID = n.serviceClient<rbdl_server::RBDLInverseDynamics>("InverseDynamics");
     client_controller = n.serviceClient<controller_modules::JointControl>("CalcTau");   
+    ros::Subscriber sub_setpoints = n.subscribe("exo_set_points", 1000, tau_callback);
     ros::Rate rate(1000);    
 
 
@@ -259,7 +262,7 @@ int main(int argc, char **argv)
         return false;
     }
    
-  
+    main_loop();
 
     return 0;
 }
