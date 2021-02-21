@@ -208,7 +208,6 @@ class ModelServer(Model.Model):
         
         names = self._selected_joint_names
         ambf_joints_names = self.handle.get_joint_names()
-        joints_aligned = [0.0]*len(names)
         q_new = [0.0]*len(names)
         for ii, name in enumerate(names):
             if(len(names) > len(ambf_joints_names)):
