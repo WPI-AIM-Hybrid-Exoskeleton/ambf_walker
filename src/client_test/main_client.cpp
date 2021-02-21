@@ -81,7 +81,7 @@ void rbdl_to_ambf(const vector<double> joints, vector<double> &joints_aligned)
 void tau_callback(const ambf_walker::DesiredJoints joints)
 {
     double start =ros::Time::now().toSec();
-    
+    std::cout<<"callingback\n";
     controller_modules::JointControl joint_msg;
     rbdl_server::RBDLInverseDynamics dyn_msg;
     joint_msg.request.controller_name = joints.controller;
@@ -135,13 +135,15 @@ void tau_callback(const ambf_walker::DesiredJoints joints)
 
 std::vector<double> get_q()
 {
+    
     std::vector<float> q_ = exo_handler->get_all_joint_pos();
     std::vector<double> joints = {0,0,0,0,0,0,0};
     int count = 0;
+    
     for(auto&& joint : selected_joints) 
     {
-
-        int index = jointMap[joint];
+        
+        int index = jointMap[joint]-1;
         joints[count] = (double)q_[index];
         count++;
     }
@@ -160,7 +162,7 @@ std::vector<double> get_qd()
     for(auto&& joint : selected_joints) 
     {
 
-        int index = jointMap[joint];
+        int index = jointMap[joint]-1;
         joints[count] = (double)qd_[index];
         count++;
     }
@@ -177,12 +179,16 @@ void main_loop()
     {
        q = get_q();
        qd = get_qd();
+       exo_handler->set_rpy(0.25,0,0);
+       exo_handler->set_pos(0.0,0,1.0);
 
         if( enabled_control)
         {
             exo_handler->set_multiple_joint_effort(tau);
+            std::cout<<"sending torque\n";
         }
         loop_rate.sleep();
+        ros::spinOnce();
     }
 
 }
@@ -190,7 +196,17 @@ void main_loop()
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "Main");
+    Client client;
+    client.connect();
+    ros::NodeHandle n;
+    usleep(10000);
+    exo_handler = client.getRigidBody("ExoHip", true);
+    usleep(100000);
+  
+    
+    ros::Duration(5.0).sleep();  // Sleep for one second
+    
+    
     const std::string actuator_config_file = "/home/nathaniel/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml";
     tau_map["ExoHipCrutches"] = 0;
     tau_map["ExoLeftKnee"] = 1;
@@ -206,11 +222,8 @@ int main(int argc, char **argv)
     q = {0,0,0,0,0,0,0};
     qd = {0,0,0,0,0,0,0};
     enabled_control = false;
-    Client client;
-    client.connect();
-    usleep(10000);
-    exo_handler = client.getRigidBody("ExoHip", true);
-    ros::NodeHandle n;
+    
+   
     client_model = n.serviceClient<rbdl_server::RBDLModel>("CreateModel");
     client_ID = n.serviceClient<rbdl_server::RBDLInverseDynamics>("InverseDynamics");
     client_controller = n.serviceClient<controller_modules::JointControl>("CalcTau");   
@@ -255,13 +268,17 @@ int main(int argc, char **argv)
         {
             cout << it << "\n";
         }
+         for (auto &it : joint_names)
+        {
+            cout << it << "\n";
+        }
     }
     else
     {
         cout << ("Failed to call service joint");
         return false;
     }
-   
+    cout << "CALLING MAINLOOP" << "\n";
     main_loop();
 
     return 0;
