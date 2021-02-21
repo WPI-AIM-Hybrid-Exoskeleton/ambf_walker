@@ -101,15 +101,15 @@ void tau_callback(const ambf_walker::DesiredJoints joints)
     {
         std::vector<double> effort = joint_msg.response.control_output.effort;
         rbdl_server::RBDLInverseDynamics dyn_msg;
-        dyn_msg.request.q = q;
-        dyn_msg.request.qd = qd;
+        dyn_msg.request.q = q_aligned_desired;
+        dyn_msg.request.qd = qd_aligned_desired;
         dyn_msg.request.qdd = effort;
 
         if(client_ID.call(dyn_msg))
         {
             int count = 0;
             std::vector<double> tau_aligned;
-            ambf_to_rbdl(dyn_msg.response.tau, q_aligned_desired); 
+            rbdl_to_ambf(dyn_msg.response.tau, tau_aligned); 
 
             for(auto&& item : selected_joints) 
             {
@@ -173,16 +173,8 @@ void main_loop()
     ros::Rate loop_rate(500);    
     while(ros::ok())
     {
-        std::vector<float> q_, qd_;
-        // q_= exo_handler->get_all_joint_pos();
-        // qd_ = exo_handler->get_all_joint_vel();
-        
-        // q = std::vector<double>(q_.begin(), q_.end());
-        // qd = std::vector<double>(qd_.begin(), qd_.end());
-        
-
-        q = get_q();
-        qd = get_qd();
+        std::vector<float> q = get_q();
+        std::vector<float> qd = get_qd();
 
         if( enabled_control)
         {
