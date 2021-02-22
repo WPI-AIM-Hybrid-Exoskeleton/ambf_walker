@@ -197,8 +197,11 @@ class ModelServer(Model.Model):
                 index = self._joint_map_selected[name]
             else:
                 index = self._joint_map[name] - 1
+                print(index)
+        
             joints_aligned[index] = q[ii]
 
+        print("---------------------------------")
         return joints_aligned
 
     def rbdl_to_ambf(self, q):

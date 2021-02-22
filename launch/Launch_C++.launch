@@ -3,7 +3,7 @@
 
 
          <node  pkg="ambf_walker" name="dynamic_server" type="dynamic_server" output="screen" />
-      <node  pkg="ambf_walker" name="lumped_controller_server" type="lumped_controller_server" output="screen" />
+      <node  pkg="ambf_walker" name="c_test_server" type="c_test_server" output="screen" />
     <node pkg="ambf_walker" name="client" type="exohuman_client" output="screen"/>
 
 <!--     <node pkg="ambf_walker" name="FSMNode" type="FSMNode.py" output="screen"/>-->

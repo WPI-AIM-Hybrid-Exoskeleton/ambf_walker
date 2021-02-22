@@ -20,7 +20,7 @@ class InitializeState(smach.State):
 
         smach.State.__init__(self, outcomes=outcomes)
         self._model_name = model_name
-        self.rate = rospy.Rate(100)
+        self.rate = rospy.Rate(10)
         tf = 2.0
         dt = 0.01
         self.hip, self.knee, self.ankle = trajectories.stance_trajectory()
@@ -44,12 +44,12 @@ class InitializeState(smach.State):
         self.pub_pos.publish(msg_pos)
 
         
-        rospy.wait_for_service('exo_onoff')
-        try:
-            exo = rospy.ServiceProxy('exo_onoff', SetBool)
-            resp1 = exo(True)
-        except rospy.ServiceException as e:
-            print("Service call failed: %s"%e)
+        # rospy.wait_for_service('exo_onoff')
+        # try:
+        #     exo = rospy.ServiceProxy('exo_onoff', SetBool)
+        #     resp1 = exo(True)
+        # except rospy.ServiceException as e:
+        #     print("Service call failed: %s"%e)
 
         self.count = 0
    
