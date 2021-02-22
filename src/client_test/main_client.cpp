@@ -100,7 +100,7 @@ void rbdl_to_ambf(const vector<double> joints, vector<double> &joints_aligned)
     
 
     int count = 0;
-    for(auto&& item : joint_names) 
+    for(auto&& item : selected_joints) 
     {
         int index = 0; 
         if(  selected_joints.size() > joint_names.size() )
@@ -232,11 +232,10 @@ int main(int argc, char **argv)
     
    
     client_model = n.serviceClient<rbdl_server::RBDLModel>("CreateModel");
-    client_ID = n.serviceClient<rbdl_server::RBDLInverseDynamics>("InverseDynamics");
     client_controller = n.serviceClient<controller_modules::JointControl>("CalcTau");   
-    ros::Subscriber sub_setpoints = n.subscribe("exo_set_points", 1000, tau_callback);
-    chatter_pub = n.advertise<std_msgs::Float32MultiArray>("my_joints", 1000);
-    dt_pub = n.advertise<std_msgs::Float32>("dt", 1000);
+    ros::Subscriber sub_setpoints = n.subscribe("exo_set_points", 1, tau_callback);
+    chatter_pub = n.advertise<std_msgs::Float32MultiArray>("my_joints", 1);
+    dt_pub = n.advertise<std_msgs::Float32>("dt", 1);
     ros::Rate rate(1000);    
 
     std::vector<std::string> ambf_joint_names = exo_handler->get_joint_names();
