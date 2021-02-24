@@ -57,6 +57,7 @@ class WalkInitState(smach.State):
         userdata.q = self.joint_state.position
         userdata.qd = self.joint_state.velocity
         userdata.human = True
+       
         return "WalkInitialized"
 
     
