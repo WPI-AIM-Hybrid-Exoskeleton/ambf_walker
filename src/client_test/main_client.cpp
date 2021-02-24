@@ -186,14 +186,17 @@ void main_loop()
       qd = get_qd();
       msg.data = std::vector<float>(q_desired.begin(), q_desired.end());
       chatter_pub.publish(msg);
-      double current_time = ros::Time::now().toSec();
-      dt_msg.data = current_time - last_time;
-      last_time = current_time;
-      dt_pub.publish(dt_msg);
+    //   double current_time = ros::Time::now().toSec();
+    //   dt_msg.data = current_time - last_time;
+    //   last_time = current_time;
+    //   dt_pub.publish(dt_msg);
       if( enabled_control)
       {
         update_tau();
+        double current_time = ros::Time::now().toSec();
         exo_handler->set_multiple_joint_effort(tau);
+        dt_msg.data = ros::Time::now().toSec() - current_time;
+        dt_pub.publish(dt_msg);
       }
       loop_rate.sleep();
       ros::spinOnce();

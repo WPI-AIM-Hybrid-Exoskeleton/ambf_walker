@@ -44,12 +44,12 @@ class InitializeState(smach.State):
         self.pub_pos.publish(msg_pos)
 
         
-        # rospy.wait_for_service('exo_onoff')
-        # try:
-        #     exo = rospy.ServiceProxy('exo_onoff', SetBool)
-        #     resp1 = exo(True)
-        # except rospy.ServiceException as e:
-        #     print("Service call failed: %s"%e)
+        rospy.wait_for_service('exo_onoff')
+        try:
+            exo = rospy.ServiceProxy('exo_onoff', SetBool)
+            resp1 = exo(True)
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
 
         self.count = 0
    

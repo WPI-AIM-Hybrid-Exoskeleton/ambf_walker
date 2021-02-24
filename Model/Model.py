@@ -101,7 +101,7 @@ class Model(object):
     @q.setter
     def q(self, value):
         my_joints = []
-        self._joints_names = self.handle.get_joint_names()
+
         for joint in self._selected_joint_names:
             if joint in self._joints_names:
                 my_joints.append(value[self._joints_names.index(joint)])
@@ -114,7 +114,7 @@ class Model(object):
     @qd.setter
     def qd(self, value):
         my_joints = []
-        self._joints_names = self.handle.get_joint_names()
+        
         for joint in self._selected_joint_names:
             if joint in self._joints_names:
                 my_joints.append(value[self._joints_names.index(joint)])
@@ -154,6 +154,7 @@ class Model(object):
         """
         rate = rospy.Rate(1000)  # 1000hz
         q_msg = JointState()
+        self._joints_names = self.handle.get_joint_names()
         while 1:
             self.q = self.handle.get_all_joint_pos()
             self.qd = self.handle.get_all_joint_vel()

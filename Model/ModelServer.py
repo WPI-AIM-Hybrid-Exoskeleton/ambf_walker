@@ -79,6 +79,7 @@ class ModelServer(Model.Model):
 
         # get the joint map
         self._joints_names = self.handle.get_joint_names()
+        
         try:
             print(self.model_name)
             model_srv = rospy.ServiceProxy('AMBF2RBDL', RBDLModelAlignment)
@@ -106,26 +107,27 @@ class ModelServer(Model.Model):
         while 1:
             self.q = self.handle.get_all_joint_pos()
             self.qd = self.handle.get_all_joint_vel()
-            self.joint_effort = self.handle.get_all_joint_effort()
-            self.state = (self.q, self.qd)
-            self._joint_num = self.q.size
-            state_msg = JointState()
-            state_msg.name = self._selected_joint_names
-            state_msg.position = self.q
-            state_msg.velocity = self.qd
-            state_msg.effort = self.tau
-            self.q_pub.publish(state_msg)
-            current_time = rospy.get_time()
-            dt_msg.data = current_time - last_time
-            last_time = current_time
-            self.dt_pub.publish(dt_msg)
+            # self.joint_effort = self.handle.get_all_joint_effort()
+            # self.state = (self.q, self.qd)
+            # self._joint_num = self.q.size
+            # state_msg = JointState()
+            # state_msg.name = self._selected_joint_names
+            # state_msg.position = self.q
+            # state_msg.velocity = self.qd
+            # state_msg.effort = self.tau
+            # self.q_pub.publish(state_msg)
+           
             if self._enable_control: 
                 #self.calc_gravity()
                 # tau = self.tau
                 # if  self.tau.size == self.grav_tau.size:# and self._use_gravity:
                 #     pass#tau+=self.grav_tau
 
+                current_time = rospy.get_time()
                 self.handle.set_multiple_joint_effort(self.tau, joints_idx)
+                dt_msg.data = rospy.get_time() - current_time 
+                
+                self.dt_pub.publish(dt_msg)
                 #set multiple joint pos
             else:
                 self.handle.set_multiple_joint_effort(len(self.tau)*[0.0], joints_idx)
@@ -197,11 +199,9 @@ class ModelServer(Model.Model):
                 index = self._joint_map_selected[name]
             else:
                 index = self._joint_map[name] - 1
-                print(index)
         
             joints_aligned[index] = q[ii]
 
-        print("---------------------------------")
         return joints_aligned
 
     def rbdl_to_ambf(self, q):
