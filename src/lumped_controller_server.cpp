@@ -59,8 +59,8 @@ int main(int argc, char **argv)
 
 
     FF_Kd(0,0) = 0.50; //crutches
-    FF_Kd(1,1) = 0.50; //left knee
-    FF_Kd(2,2) = 0.50;  //left ankle
+    FF_Kd(1,1) = 1.00; //left knee
+    FF_Kd(2,2) = 1.00;  //left ankle
     FF_Kd(3,3) = 0.00; //left hip
     FF_Kd(4,4) = 0.00; //right knee
     FF_Kd(5,5) = 0.00; //right ankle

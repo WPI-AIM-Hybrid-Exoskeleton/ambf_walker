@@ -113,7 +113,7 @@ class ModelServer(Model.Model):
             state_msg.name = self._selected_joint_names
             state_msg.position = self.q
             state_msg.velocity = self.qd
-            #state_msg.effort = self.tau
+            state_msg.effort = self.tau
             self.q_pub.publish(state_msg)
             # current_time = rospy.get_time()
             # dt_msg.data = current_time - last_time
