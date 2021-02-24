@@ -9,8 +9,9 @@ from GaitCore.Bio import Joint, Leg
 from GaitCore.Core import Point
 from std_msgs.msg import Float32MultiArray
 from sensor_msgs.msg import JointState
-
-
+from ambf_walker.msg import DesiredPosCmd
+from geometry_msgs.msg import Wrench
+from std_srvs.srv import SetBool, SetBoolResponse
 class Model(object):
 
     def __init__(self, client, model_name, joint_names):
@@ -20,6 +21,7 @@ class Model(object):
         self._model_name = model_name
         self._q = np.array([])
         self._qd = np.array([])
+        self._joint_effort = np.array([])
         self.tau = np.array([])
         self._state = np.array([])
         self._handle = None
@@ -30,7 +32,12 @@ class Model(object):
         self.qd_filter = MeanFilter.MeanFilter(1)
         self.q_filter = MeanFilter.MeanFilter(1)
         self.sub_torque = rospy.Subscriber(self.model_name + "_joint_torque", JointState, self.torque_cb)
-        self.q_pub = rospy.Publisher(self.model_name + "_q", Float32MultiArray, queue_size=1)
+        self.q_pub = rospy.Publisher(self.model_name + "_jointstate", JointState, queue_size=1)
+        self.pos_sub = rospy.Subscriber(self.model_name + "_set_body_pos", DesiredPosCmd, self.set_body_pos )
+        self.force_sub = rospy.Subscriber(self.model_name + "_set_body_force", Wrench ,self.set_body_force )
+        self.onoff = rospy.Service(model_name + '_onoff', SetBool, self.enable_control_srv)
+
+
 
     @property
     def rbdl_model(self):
@@ -53,7 +60,7 @@ class Model(object):
 
     def update_torque(self, tau):
         """
-self.rbdl_model = self.dynamic_model()
+        self.rbdl_model = self.dynamic_model()
         :type tau: List
         """
         self.tau = tau
@@ -69,6 +76,15 @@ self.rbdl_model = self.dynamic_model()
     @enable_control.setter
     def enable_control(self, value):
         self._enable_control = value
+
+    def enable_control_srv(self, msg):
+        
+        if msg.data:
+            self.enable_control = True
+            return SetBoolResponse(True, "Turned on " + self.model_name + " Controller")
+        else:
+            self.enable_control = False
+            return SetBoolResponse(True, "Turned off " + self.model_name +  " Controller" )
 
     @property
     def handle(self):
@@ -105,6 +121,20 @@ self.rbdl_model = self.dynamic_model()
         self._qd = self.qd_filter.update(np.asarray(my_joints))
 
     @property
+    def joint_effort(self):
+        return self._qd
+
+    @joint_effort.setter
+    def joint_effort(self, value):
+        my_joints = []
+        self._joints_names = self.handle.get_joint_names()
+        for joint in self._selected_joint_names:
+            if joint in self._joints_names:
+                my_joints.append(value[self._joints_names.index(joint)])
+        self._joint_effort=np.asarray(my_joints)
+
+
+    @property
     def state(self):
         return self._state
 
@@ -123,13 +153,16 @@ self.rbdl_model = self.dynamic_model()
         :return:
         """
         rate = rospy.Rate(1000)  # 1000hz
-        q_msg = Float32MultiArray()
+        q_msg = JointState()
         while 1:
             self.q = self.handle.get_all_joint_pos()
             self.qd = self.handle.get_all_joint_vel()
             self.state = (self.q, self.qd)
             self._joint_num = self.q.size
-            q_msg.data = self.q
+            q_msg.name = self._selected_joint_names
+            q_msg.position = self.q
+            q_msg.velocity = self.qd
+            q_msg.effort = self.tau
             self.q_pub.publish(q_msg)
             if self._enable_control:
                 joints_idx = []
@@ -160,6 +193,17 @@ self.rbdl_model = self.dynamic_model()
     @abc.abstractmethod
     def calculate_torque(self):
         pass
+
+
+    def set_body_pos(self, msg):
+        self.handle.set_rpy(msg.pos.x, msg.pos.y, msg.pos.z)
+        self.handle.set_pos(msg.rpy.x, msg.rpy.y, msg.rpy.z)
+    
+
+    def set_body_force(self, msg):
+        self.handle.set_force(msg.force.x, msg.force.x, msg.force.x)
+        
+
 # def runge_integrator(model, t, y, h, tau):
 #
 #     k1 = rhs(model, y,tau)

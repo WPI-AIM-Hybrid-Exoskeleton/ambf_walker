@@ -5,7 +5,7 @@ import sys
 import numpy as np
 
 
-from Controller import ControllerNode, ControllerServer
+from Controller import ControllerNode, ExoControllerServer
 from Model import ExoskeletonServer, Human
 from StateMachines import StateMachine
 import rospy
@@ -28,7 +28,7 @@ if __name__ == '__main__':
     file_path = "/home/nathaniel/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
    
     LARRE = ExoskeletonServer.ExoskeletonServer(_client, "exo", robot_joints, file_path)
-    controller_server = ControllerServer.ControllerServer(LARRE)
+    controller_server = ExoControllerServer.ExoControllerServer(LARRE)
    
     # while True:
     #     fk = LARRE.fk()
@@ -37,4 +37,6 @@ if __name__ == '__main__':
     #     LARRE.calculate_torque()
     LARRE.handle.set_rpy(0, 0, 0)
     LARRE.handle.set_pos(0.0, 0, 1.0)
+
     machine = StateMachine.ExoStateMachine(LARRE)
+    rospy.spin()

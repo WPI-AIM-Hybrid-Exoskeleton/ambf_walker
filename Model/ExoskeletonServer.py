@@ -25,30 +25,17 @@ from rbdl_server.srv import RBDLInverseDynamics
 
 class ExoskeletonServer(ModelServer.ModelServer):
 
-    def __init__(self, client, model_name, joints, model_path):
+    def __init__(self, client, model_name, joints, model_path, use_gravity=False):
         
         super(ExoskeletonServer, self).__init__(client, model_name=model_name, joint_names=joints, model_path=model_path)
         self._handle = self._client.get_obj_handle('ExoHip')
+        self._use_gravity = use_gravity
         # Update to current
         self.prox = {}
         self.prox["LeftSideProx"] = rospy.Publisher('left_leg', PointCloud, queue_size=10)
         self.prox["RightSideProx"] = rospy.Publisher('right_leg', PointCloud, queue_size=10)
+        self.make_dynamic_model("exo", model_path)
         time.sleep(4)
-        # model_path = file_path  #"/home/nathaniel/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
-        # self.make_dynamic_model(model_name, model_path )
-        left_joints = {}
-        right_joints = {}
-
-        for joint in (left_joints, right_joints):
-            for output in ["Hip", "Knee", "Ankle"]:
-                angle = Point.Point(0, 0, 0)
-                force = Point.Point(0, 0, 0)
-                moment = Point.Point(0, 0, 0)
-                power = Point.Point(0, 0, 0)
-                joint[output] = Joint.Joint(angle, moment, power, force)
-
-        self._left_leg = Leg.Leg(left_joints["Hip"], left_joints["Knee"], left_joints["Ankle"])
-        self._right_leg = Leg.Leg(right_joints["Hip"], right_joints["Knee"], right_joints["Ankle"])
 
         self._state = (self._q, self._qd)
         
@@ -119,6 +106,24 @@ class ExoskeletonServer(ModelServer.ModelServer):
         dist = self._right_foot_prox.measurement
         raduis = self._right_foot_prox.range[0]
         return dist[0] - raduis
+
+
+    def calc_gravity(self):
+
+
+        q = self.ambf_to_rbdl(self.q)
+        qd = self.ambf_to_rbdl(self.qd)
+        qdd = np.array([0.0] * self._joint_num)
+        tau = np.asarray([0.0] * self._joint_num)
+        self.grav_tau = tau
+        rospy.wait_for_service("InverseDynamics")
+        try:
+            dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
+            resp1 = dyn_srv(self.model_name, q, qd, qdd)
+            tau = resp1.tau
+            self.grav_tau = np.array(self.rbdl_to_ambf(tau))
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
 
     def prox_callback(self, msg):
 
@@ -216,8 +221,7 @@ class ExoskeletonServer(ModelServer.ModelServer):
         right_foot_sensors = [self._right_foot_sensor1, self._right_foot_sensor2, self._right_foot_sensor3]
         return left_foot_sensors, right_foot_sensors
     
-    
-    
+
     
     # def ambf_to_rbdl(self, q):
     #     """

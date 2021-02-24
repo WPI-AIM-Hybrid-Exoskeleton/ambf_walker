@@ -4,7 +4,7 @@ import numpy as np
 
 class Riener_Muscle():
 
-    def __init__(self, joints, d = [122.0,487.0], k = [0.02*10**(6), 0.00938*10**(6)]):
+    def __init__(self, joints=[0, 0, 0], d = [122.0,487.0], k = [0.02*10**(6), 0.00938*10**(6)]):
 
         self.d_sat = d[0]
         self.d_thr = d[1]
@@ -31,17 +31,17 @@ class Riener_Muscle():
         force = self.muscle_force(theta, dtheta)
         a, fit = self.activation(d, f, time)
 
-        muscle_force = a*fit*force
+        muscle_force = a*force#*fit
 
         ma = self.calc_ma(theta)
         active_moments = {"H": 0, "K": 0, "A": 0}
 
         for joint in self.joints:
             for i in range(9):
-                active_moments[joint] += muscle_force[i] *ma[i][joint]
+                active_moments[joint] += muscle_force[i] * ma[i][joint]
 
         for i, joint in enumerate(self.joints):
-            total_toque[i] = active_moments[joint]   + M_ela[joint] #+ M_vis[joint]
+            total_toque[i] = active_moments[joint] + M_ela[joint] #+ M_vis[joint]
 
         self.prev_ma = ma
 
@@ -55,7 +55,8 @@ class Riener_Muscle():
         T_rec =28.5
         T_del = 0.025
 
-        n1 = (-self.d_thr) * np.arctan(self.k_thr * -self.d_thr) - (-self.d_sat) * np.arctan(self.k_sat * -self.d_sat);
+        n1 = (-self.d_thr) * np.arctan(self.k_thr * -self.d_thr) - (-self.d_sat) * np.arctan(self.k_sat * -self.d_sat)
+
         n2 = (max_d - self.d_thr) * np.arctan(self.k_thr * (max_d - self.d_thr)) - (max_d - self.d_sat) * np.arctan(
             self.k_sat * (max_d - self.d_sat))
 
@@ -64,6 +65,7 @@ class Riener_Muscle():
 
         a_r = c1 * ((d - self.d_thr) * np.arctan(self.k_thr * (d - self.d_thr)) - (d - self.d_sat) * np.arctan(
             self.k_sat * (d - self.d_sat))) + c2
+
         temp = (alpha * f) ** 2
 
         a_f = temp / (1 + temp)
@@ -91,7 +93,7 @@ class Riener_Muscle():
         ma[0]["H"] = 0.00233 * (hip ** 2) - 0.00233 * hip - 0.0275
         ma[1]["H"] = -0.0098 * (hip ** 2) - 0.0054 * hip + 0.0413
         ma[2]["H"] = -0.020 * (hip ** 2) - 0.024 * hip + 0.055
-        ma[4]["H"] = 0.025 * hip ** 2 + 0.41 * hip - 0.040
+        ma[4]["H"] = 0.025 * (hip ** 2) + 0.41 * hip - 0.040
         ma[2]["K"] = -0.0098 * (knee ** 2) + 0.021 * knee + 0.028
         ma[3]["K"] = -0.008 * (knee ** 2) + 0.027 * knee + 0.014
         ma[4]["K"] = -0.058 * (math.exp(-2.0 * knee ** 2)) * math.sin(knee) - 0.0284
@@ -134,17 +136,18 @@ class Riener_Muscle():
 
         hip, knee, ankle = theta
         M_ela = {}
-
+        ankle = 0
+        print(knee)
         M_ela["H"] = math.exp(2.1080 - 0.0160 * knee - 0.0195 * hip) \
-                     - math.exp(-2.1784 + 0.070 * knee + 0.01349 * hip) - 15.24
+                     - math.exp(-2.1784 + 0.070 * knee + 0.1349 * hip) - 15.24
 
 
-        M_ela["K"] = math.exp(1.0372 + 0.0040 * ankle - 0.0494 * knee - 0.250 * hip) \
+        M_ela["K"] = math.exp(1.0372 + 0.0040 * ankle - 0.0494 * knee - 0.0250 * hip) \
                      - math.exp(-1.1561 - 0.0020 * ankle + 0.0254 * knee + 0.003 * hip) \
                      + math.exp(2.5 - 0.25 * knee) + 1.0
 
         M_ela["A"] = math.exp(2.0111 - 0.0833 * ankle - 0.009 * knee) \
-                     - math.exp(-9.925 + 0.02132 * ankle) - 2.970
+                      - math.exp(-9.925 + 0.2132 * ankle) - 2.970
 
         return M_ela
 
@@ -188,7 +191,7 @@ class Riener_Muscle():
     def calc_length(self, theta):
 
         theta = np.asarray(theta)
-        ma = self.__intergrate_ma(theta)
+        ma = self._intergrate_ma(theta)
         l = np.zeros(9)
 
         for i in range(9):
@@ -197,7 +200,7 @@ class Riener_Muscle():
                 l[i] += ma[i][joint]
         return l / self.muscle_vals["l_opt"]
 
-    def __intergrate_ma(self, theta):
+    def _intergrate_ma(self, theta):
 
         h = 0.01
         k1 = self.calc_ma(theta)
