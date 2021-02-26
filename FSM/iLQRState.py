@@ -16,7 +16,7 @@ class iLQRState(smach.State):
         self._model = model_name
 
         project_root = dirname(dirname(__file__))
-        file = join(project_root, 'config/tau_human.npy')
+        file = join(project_root, 'config/tau_human2.npy')
         with open(file, 'rb') as f:
             self.ilqr_tau = np.load(f)
 
@@ -49,6 +49,7 @@ class iLQRState(smach.State):
         self.runner = self._get_walker()
         self.runner.update_start(start)
 
+        rospy.sleep(1.0)
         while self.count < self.runner.get_length():
             self.runner.step()
             x = self.runner.x
@@ -70,8 +71,8 @@ class iLQRState(smach.State):
             self.pub_tau_ilqr.publish(ilqr_tau_msg)
             self.count += 1
             self.rate.sleep()
-
-
+    
+        rospy.sleep(2.0)
         return "ilqred"
     
 
