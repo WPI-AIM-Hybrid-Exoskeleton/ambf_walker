@@ -38,46 +38,45 @@ int main(int argc, char **argv)
     exo_Kd(6,6) = 4.0;
 
 
-    Eigen::MatrixXd FF_Kp = Eigen::MatrixXd::Ones(7,7);
-    Eigen::MatrixXd FF_Kd = Eigen::MatrixXd::Ones(7,7);
-    
-
-    // FF_Kp(0,0) =  0.0; //crutches
-    // FF_Kp(1,1) = 100.0; //left knee
-    // FF_Kp(2,2) = 550.0;  // left ankle
-    // FF_Kp(3,3) = 400.0; //left hip
-    // FF_Kp(4,4) = 0.0; //right knee
-    // FF_Kp(5,5) = 0.0; //right ankle
-    // FF_Kp(6,6) = 0.0; //right hip
-
-
-    // FF_Kd(0,0) = 0.50; //crutches
-    // FF_Kd(1,1) = 1.00; //left knee
-    // FF_Kd(2,2) = 1.00;  //left ankle
-    // FF_Kd(3,3) = 0.00; //left hip
-    // FF_Kd(4,4) = 0.00; //right knee
-    // FF_Kd(5,5) = 0.00; //right ankle
-    // FF_Kd(6,6) = 0.00; //right hip
+    Eigen::MatrixXd FF_Kp = Eigen::MatrixXd::Zero(7,7);
+    Eigen::MatrixXd FF_Kd = Eigen::MatrixXd::Zero(7,7);
   
 
-    FF_Kp(0,0) = 000.0; //crutches
-    FF_Kp(1,1) = 00.0; //left knee
-    FF_Kp(2,2) = 510.0;  // 510 left ankle
-    FF_Kp(3,3) = 550.0; //left hip
-    FF_Kp(4,4) = 000.0; //right knee
-    FF_Kp(5,5) = 000.0; //right ankle
-    FF_Kp(6,6) = 220.0; // 220 right hip
+    // FF_Kp(0,0) = 000.0; 
+    // FF_Kp(1,1) = 00.0; 
+    // FF_Kp(2,2) = 500.0;  // 510 left hip
+    // FF_Kp(3,3) = 550.0;  // 250 left knee
+    // FF_Kp(4,4) = 000.0; 
+    // FF_Kp(5,5) = 000.0; 
+    // FF_Kp(6,6) = 500.0; // 220 left ankle
 
 
-    FF_Kd(0,0) = 0.0; //crutches
-    FF_Kd(1,1) = 0.00; //left knee
-    FF_Kd(2,2) = 1.15;  //left ankle
-    FF_Kd(3,3) = 1.15; //left hip
-    FF_Kd(4,4) = 0.00; //right knee
-    FF_Kd(5,5) = 0.00; //right ankle
-    FF_Kd(6,6) = 1.10; //right hip
+    // FF_Kd(0,0) = 0.0; 
+    // FF_Kd(1,1) = 0.00; 
+    // FF_Kd(2,2) = 0.50;  //1.15 left hip
+    // FF_Kd(3,3) = 0.60; //1.15 left knee
+    // FF_Kd(4,4) = 0.00; 
+    // FF_Kd(5,5) = 0.00; 
+    // FF_Kd(6,6) = 0.50; //1.10 right ankle    
 
-    
+
+    FF_Kp(0,0) = 000.0; 
+    FF_Kp(1,1) = 00.0; 
+    FF_Kp(2,2) = 550.0;  // 510 left hip
+    FF_Kp(3,3) = 320.0;  // 250 left knee
+    FF_Kp(4,4) = 000.0; 
+    FF_Kp(5,5) = 000.0; 
+    FF_Kp(6,6) = 100.0; // 220 left ankle
+
+
+    FF_Kd(0,0) = 0.0; 
+    FF_Kd(1,1) = 0.00; 
+    FF_Kd(2,2) = 2.10;  //1.15 left hip
+    FF_Kd(3,3) = 1.10; //1.15 left knee
+    FF_Kd(4,4) = 0.00; 
+    FF_Kd(5,5) = 0.00; 
+    FF_Kd(6,6) = 0.50; //1.10 right ankle
+
     ControllerManager manager = ControllerManager(&n);
     PDController exo(exo_Kp, exo_Kd);
     boost::shared_ptr<ControllerBase> Dyn_controller(new  DynController("exo", &n, &exo) );
