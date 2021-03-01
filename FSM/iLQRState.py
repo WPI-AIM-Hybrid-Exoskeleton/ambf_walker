@@ -56,7 +56,7 @@ class iLQRState(smach.State):
             x = np.array(self.runner.x) #+ 0.2*x
             dx = np.array(self.runner.dx) #+ 0.2*dx
             ddx = -self.ilqr_tau[self.count]
-            ilqr_tau_msg.data = ddx
+            ilqr_tau_msg.data = ddx            
             size_diff = abs(len(x) - len(self.joint_state.position))
             q = np.append(x, size_diff * [0.0])
             qd = np.append(dx, size_diff * [0.0])
