@@ -13,6 +13,11 @@
 #include "boost/shared_ptr.hpp"
 #include "ambf_client/ambf_client.h"
 #include "ambf_walker/DesiredJoints.h"
+#include <iostream>
+#include <boost/asio.hpp>
+#include <boost/date_time/posix_time/posix_time.hpp>
+
+
 
 rigidBodyPtr exo_handler;
 bool enabled_control;
@@ -121,8 +126,7 @@ void rbdl_to_ambf(const vector<double> joints, vector<double> &joints_aligned)
 
 void update_tau()
 {
-    double start =ros::Time::now().toSec();
-    std::cout<<"callingback\n";
+
     controller_modules::JointControl joint_msg;
     rbdl_server::RBDLInverseDynamics dyn_msg;
 
@@ -180,25 +184,31 @@ void main_loop()
     std_msgs::Float32 dt_msg;
     ros::Rate loop_rate(500);    
     double last_time = ros::Time::now().toSec();
+
+
+    //boost::asio::io_service io;
+    double current_time;
     while(ros::ok())
     { 
+     //boost::asio::deadline_timer t(io, boost::posix_time::millisec(2));
+     //   exo_handler->set_rpy(0.25,0,0);
+     //   exo_handler->set_pos(0.0,0,2.0);  
       q = get_q();
       qd = get_qd();
-      msg.data = std::vector<float>(q_desired.begin(), q_desired.end());
-      chatter_pub.publish(msg);
-    //   double current_time = ros::Time::now().toSec();
-    //   dt_msg.data = current_time - last_time;
-    //   last_time = current_time;
-    //   dt_pub.publish(dt_msg);
+     //   msg.data = std::vector<float>(q_desired.begin(), q_desired.end());
+     //   chatter_pub.publish(msg);
+      current_time = ros::Time::now().toSec();
+      dt_msg.data = current_time - last_time;
+      last_time = current_time;
+      dt_pub.publish(dt_msg);
       if( enabled_control)
       {
         update_tau();
-        double current_time = ros::Time::now().toSec();
         exo_handler->set_multiple_joint_effort(tau);
-        dt_msg.data = ros::Time::now().toSec() - current_time;
-        dt_pub.publish(dt_msg);
+
       }
       loop_rate.sleep();
+      // t.wait();
       ros::spinOnce();
     }
 
@@ -214,8 +224,9 @@ int main(int argc, char **argv)
     exo_handler = client.getRigidBody("ExoHip", true);
     usleep(100000);
     ros::Duration(5.0).sleep();  // Sleep for one second
-    //        exo_handler->set_rpy(0.25,0,0);
-    //    exo_handler->set_pos(0.0,0,2.0);
+    exo_handler->set_rpy(0.25,0,0);
+    exo_handler->set_pos(0.0,0,2.0);
+    ros::Duration(5.0).sleep();
       // Sleep for one second
     const std::string actuator_config_file = "/home/nathaniel/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml";
     tau_map["ExoHipCrutches"] = 0;
