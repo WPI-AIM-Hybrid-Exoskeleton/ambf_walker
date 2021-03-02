@@ -41,40 +41,95 @@ int main(int argc, char **argv)
     Eigen::MatrixXd FF_Kp = Eigen::MatrixXd::Zero(7,7);
     Eigen::MatrixXd FF_Kd = Eigen::MatrixXd::Zero(7,7);
   
-
-    // FF_Kp(0,0) = 000.0; 
+    // FF_Kp(0,0) = 1000.0; 
     // FF_Kp(1,1) = 00.0; 
-    // FF_Kp(2,2) = 500.0;  // 510 left hip
-    // FF_Kp(3,3) = 550.0;  // 250 left knee
-    // FF_Kp(4,4) = 000.0; 
-    // FF_Kp(5,5) = 000.0; 
-    // FF_Kp(6,6) = 500.0; // 220 left ankle
+    // FF_Kp(2,2) = 0.0;  // 510 left hip
+    // FF_Kp(3,3) = 00.0;  // 250 left knee
+    // FF_Kp(4,4) = 500.0; 
+    // FF_Kp(5,5) = 100.0; 
+    // FF_Kp(6,6) = 00.0; // 220 left ankle
 
 
-    // FF_Kd(0,0) = 0.0; 
-    // FF_Kd(1,1) = 0.50; 
-    // FF_Kd(2,2) = 0.50;  //1.15 left hip
-    // FF_Kd(3,3) = 0.60; //1.15 left knee
-    // FF_Kd(4,4) = 0.50; 
-    // FF_Kd(5,5) = 0.00; 
-    // FF_Kd(6,6) = 0.50; //1.10 right ankle    
+    // FF_Kd(0,0) = 2.5; 
+    // FF_Kd(1,1) = 0.00; 
+    // FF_Kd(2,2) = 0.0;  //1.15 left hip
+    // FF_Kd(3,3) = 0.0; //1.15 left knee
+    // FF_Kd(4,4) = 1.750; 
+    // FF_Kd(5,5) = 1.750; 
+    // FF_Kd(6,6) = 0.0; //1.10 right ankle
+
+    
+   
+    // FF_Kp(0,0) = 1000.0; 
+    // FF_Kp(1,1) = 00.0; 
+    // FF_Kp(2,2) = 0.0;  // 510 left hip
+    // FF_Kp(3,3) = 00.0;  // 250 left knee
+    // FF_Kp(4,4) = 500.0; 
+    // FF_Kp(5,5) = 200.0; 
+    // FF_Kp(6,6) = 00.0; // 220 left ankle
 
 
-    FF_Kp(0,0) = 550.0; 
+    // FF_Kd(0,0) = 0.75; 
+    // FF_Kd(1,1) = 0.00; 
+    // FF_Kd(2,2) = 0.0;  //1.15 left hip
+    // FF_Kd(3,3) = 0.0; //1.15 left knee
+    // FF_Kd(4,4) = 1.750; 
+    // FF_Kd(5,5) = 1.750; 
+    // FF_Kd(6,6) = 0.0; //1.10 right ankle
+
+    // FF_Kp(0,0) = 500.0; 
+    // FF_Kp(1,1) = 00.0; 
+    // FF_Kp(2,2) = 0.0;  // 510 left hip
+    // FF_Kp(3,3) = 00.0;  // 250 left knee
+    // FF_Kp(4,4) = 250.0; 
+    // FF_Kp(5,5) = 220.0; 
+    // FF_Kp(6,6) = 00.0; // 220 left ankle
+
+
+    // FF_Kd(0,0) = 0.75; 
+    // FF_Kd(1,1) = 0.00; 
+    // FF_Kd(2,2) = 0.0;  //1.15 left hip
+    // FF_Kd(3,3) = 0.75; //1.15 left knee
+    // FF_Kd(4,4) = 0.750; 
+    // FF_Kd(5,5) =  0;
+
+
+    FF_Kp(0,0) = 750.0; 
     FF_Kp(1,1) = 00.0; 
     FF_Kp(2,2) = 0.0;  // 510 left hip
     FF_Kp(3,3) = 00.0;  // 250 left knee
     FF_Kp(4,4) = 250.0; 
-    FF_Kp(5,5) = 125.0; 
+    FF_Kp(5,5) = 200.0; 
     FF_Kp(6,6) = 00.0; // 220 left ankle
 
 
-    FF_Kd(0,0) = 2.5; 
+    FF_Kd(0,0) = 0.75; 
     FF_Kd(1,1) = 0.00; 
     FF_Kd(2,2) = 0.0;  //1.15 left hip
     FF_Kd(3,3) = 0.0; //1.15 left knee
-    FF_Kd(4,4) = 1.750; 
-    FF_Kd(5,5) = 1.750; 
+    FF_Kd(4,4) = 0.750; 
+    FF_Kd(5,5) = 0.750; 
+    FF_Kd(6,6) = 0.0; //1.10 right ankle.750; 
+    FF_Kd(6,6) = 0.0; //1.10 right ankle
+
+
+
+    FF_Kp(0,0) = 300.0; 
+    FF_Kp(1,1) = 00.0; 
+    FF_Kp(2,2) = 0.0;  // 510 left hip
+    FF_Kp(3,3) = 000.0;  // 250 left knee
+    FF_Kp(4,4) = 250.0; 
+    FF_Kp(5,5) = 100.0; 
+    FF_Kp(6,6) = 00.0; // 220 left ankle
+
+
+    FF_Kd(0,0) = 1.000; 
+    FF_Kd(1,1) = 0.00; 
+    FF_Kd(2,2) = 0.0;  //1.15 left hip
+    FF_Kd(3,3) = 0.0; //1.15 left knee
+    FF_Kd(4,4) = 0.00; 
+    FF_Kd(5,5) = 0.750; 
+    FF_Kd(6,6) = 0.50; //1.10 right ankle.750; 
     FF_Kd(6,6) = 0.0; //1.10 right ankle
 
     ControllerManager manager = ControllerManager(&n);
