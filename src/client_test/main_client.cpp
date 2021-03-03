@@ -137,9 +137,12 @@ void update_tau()
     // qd = get_qd();
     ambf_to_rbdl(qd, qd_aligned);
     ambf_to_rbdl(q, q_aligned);
-    ambf_to_rbdl(qdd_desired, qdd_aligned_desired);
-    ambf_to_rbdl(qd_desired, qd_aligned_desired);
-    ambf_to_rbdl(q_desired, q_aligned_desired);
+    qdd_aligned_desired = {0,0,0,0,0,0,0};
+    qd_aligned_desired = {0,0,0,0,0,0,0};
+    q_aligned_desired = {0,0,0,0,0,0,0};
+    // ambf_to_rbdl(qdd_desired, qdd_aligned_desired);
+    // ambf_to_rbdl(qd_desired, qd_aligned_desired);
+    // ambf_to_rbdl(q_desired, q_aligned_desired);
 
     joint_msg.request.actual.velocities = qd_aligned;
     joint_msg.request.actual.positions = q_aligned;
@@ -195,6 +198,7 @@ void main_loop()
      //   exo_handler->set_pos(0.0,0,2.0);  
       q = get_q();
       qd = get_qd();
+       enabled_control = true;
      //   msg.data = std::vector<float>(q_desired.begin(), q_desired.end());
      //   chatter_pub.publish(msg);
       current_time = ros::Time::now().toSec();

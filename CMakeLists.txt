@@ -138,4 +138,7 @@ add_dependencies (exohuman_client ${catkin_EXPORTED_TARGETS})
 target_link_libraries(exohuman_client ${PROJECT_NAME} ${AMBF_CLIENT_LIBRARY} ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
 
 
+add_executable (timing_test_C src/client_test/timing_test_C.cpp)
+add_dependencies (timing_test_C ${catkin_EXPORTED_TARGETS})
+target_link_libraries(timing_test_C ${PROJECT_NAME} ${AMBF_CLIENT_LIBRARY} ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
 
