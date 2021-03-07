@@ -120,10 +120,10 @@ class ModelServer(Model.Model):
             last_time = current_time
             self.dt_pub.publish(dt_msg)
             if self._enable_control: 
-                #self.calc_gravity()
-                # tau = self.tau
-                # if  self.tau.size == self.grav_tau.size:# and self._use_gravity:
-                #     pass#tau+=self.grav_tau
+                self.calc_gravity()
+                tau = self.tau
+                if  self.tau.size == self.grav_tau.size and self._use_gravity:
+                    tau+=self.grav_tau
 
                 self.handle.set_multiple_joint_effort(self.tau, joints_idx)
                 #set multiple joint pos

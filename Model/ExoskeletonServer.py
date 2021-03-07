@@ -30,6 +30,11 @@ class ExoskeletonServer(ModelServer.ModelServer):
         super(ExoskeletonServer, self).__init__(client, model_name=model_name, joint_names=joints, model_path=model_path)
         self._handle = self._client.get_obj_handle('ExoHip')
         self._use_gravity = use_gravity
+        
+        if self._use_gravity:
+            project_root = dirname(dirname(__file__))
+            path = join(project_root, 'ambf_models/plain_exo/default.yaml')
+            self.make_dynamic_model("grav", path)        
         # Update to current
         self.prox = {}
         self.prox["LeftSideProx"] = rospy.Publisher('left_leg', PointCloud, queue_size=10)
@@ -109,7 +114,6 @@ class ExoskeletonServer(ModelServer.ModelServer):
 
 
     def calc_gravity(self):
-
 
         q = self.ambf_to_rbdl(self.q)
         qd = self.ambf_to_rbdl(self.qd)
