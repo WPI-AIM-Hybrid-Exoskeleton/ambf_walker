@@ -33,8 +33,8 @@ class ExoskeletonServer(ModelServer.ModelServer):
         
         if self._use_gravity:
             project_root = dirname(dirname(__file__))
-            path = join(project_root, 'ambf_models/plain_exo/default.yaml')
-            self.make_dynamic_model("grav", path)        
+            path = join(project_root, "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/plain_exo/default.yaml")
+            self.make_dynamic_model(self.model_name + "grav", path)        
         # Update to current
         self.prox = {}
         self.prox["LeftSideProx"] = rospy.Publisher('left_leg', PointCloud, queue_size=10)
@@ -123,7 +123,7 @@ class ExoskeletonServer(ModelServer.ModelServer):
         rospy.wait_for_service("InverseDynamics")
         try:
             dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
-            resp1 = dyn_srv(self.model_name, q, qd, qdd)
+            resp1 = dyn_srv(self.model_name + "grav", q, qd, qdd)
             tau = resp1.tau
             self.grav_tau = np.array(self.rbdl_to_ambf(tau))
         except rospy.ServiceException as e:

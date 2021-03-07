@@ -14,7 +14,7 @@ from rbdl_server.srv import RBDLInverseDynamics
 from . import Model
 from std_srvs.srv import SetBool, SetBoolResponse
 from std_msgs.msg import Float32
-
+from os.path import dirname, join
 
 
 class ModelServer(Model.Model):
