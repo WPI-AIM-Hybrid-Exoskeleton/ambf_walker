@@ -23,7 +23,6 @@ class HumanControllerServer(object):
         self.traj_pub = rospy.Publisher(self.model.model_name + "_trajectory", Float32MultiArray, queue_size=1)
         self.error_pub = rospy.Publisher(self.model.model_name + "_Error", Float32MultiArray, queue_size=1)
         self.required_tau_pub = rospy.Publisher("required_human_tau", JointState, queue_size=1)
-
         self.controller_srv = rospy.ServiceProxy('CalcTau', JointControl)
         self.service = rospy.Service(self.model.model_name + '_joint_cmd', DesiredJointsCmd, self.joint_cmd_server)
         self._enable_control = False
@@ -48,13 +47,14 @@ class HumanControllerServer(object):
 
         :type msg: DesiredJoints
         """
+        print( "human controller being called")
         self.msg = msg
         # self.controller = self._controllers[msg.controller]
         # self.q = np.array(msg.q)
         # self.qd = np.array(msg.qd)
         # self.qdd = np.array(msg.qdd)
         # self.other = np.array(msg.other)
-        if self._updater.is_alive():
+        if not self._enable_control:
             self._updater.start()
         return True
 
@@ -62,7 +62,7 @@ class HumanControllerServer(object):
         with self.lock:
             self.msg = msg
 
-        if self._updater.is_alive():
+        if not self._enable_control:
             self._updater.start()
         return DesiredJointsCmdResponse(True)
 
@@ -75,48 +75,49 @@ class HumanControllerServer(object):
 
         while 1:
 
-            with self.lock:
+            print("humansadfsdfsdafsdfsdfasdfasdfsadf controller")
 
-                local_msg = self.msg
-                rospy.wait_for_service('CalcTau')
-                self.traj_pub.publish(traj_msg)
-                msg = JointControlRequest()
-                msg.controller_name = "FES"
-                traj_msg.data = local_msg.q
-                msg.actual.positions = np.rad2deg(self._model.q)
-                msg.actual.velocities = np.rad2deg(self._model.qd)
-                msg.desired.positions =  np.rad2deg(local_msg.q)
-                msg.desired.velocities = np.rad2deg(local_msg.qd)
-                msg.desired.accelerations = np.array(local_msg.qdd)
+            local_msg = self.msg
 
-                try:
-                    resp1 = self.controller_srv(msg)
-                    tau = resp1.control_output.effort
-                    tau_msg.effort = tau
-                    self.tau_pub.publish(tau_msg)
-                except rospy.ServiceException as e:
-                    print("Service call failed: %s"%e)
+            self.traj_pub.publish(traj_msg)
+            rospy.wait_for_service('CalcTau')
+            msg = JointControlRequest()
+            msg.controller_name = "FES"
+            traj_msg.data = local_msg.q
+            msg.actual.positions = np.rad2deg(self._model.q)
 
-
-
-                msg = JointControlRequest()
-                msg.controller_name = "HumanPD"
-                msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
-                msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd) )
-                msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd) )
-                msg.actual.positions = self._model.ambf_to_rbdl(self._model.q)
-                msg.actual.velocities = self._model.ambf_to_rbdl(self._model.qd)
-                # error_msg.data = abs((msg.desired.positions - msg.actual.positions)/msg.desired.positions)
-                # self.error_pub.publish(error_msg)
-
+            msg.actual.velocities = np.rad2deg(self._model.qd)
+            msg.desired.positions =  np.rad2deg(local_msg.q)
+            msg.desired.velocities = np.rad2deg(local_msg.qd)
+            #msg.desired.accelerations = np.array(local_msg.qdd)
             try:
                 resp1 = self.controller_srv(msg)
                 tau = resp1.control_output.effort
                 tau_msg.effort = tau
-                self.required_tau_pub.publish(tau_msg)
-
+                self.tau_pub.publish(tau_msg)
             except rospy.ServiceException as e:
                 print("Service call failed: %s"%e)
 
+            # msg = JointControlRequest()
+            # msg.controller_name = "HumanPD"
+            # msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
+            # msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd) )
+            # msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd) )
+            # msg.actual.positions = self._model.ambf_to_rbdl(self._model.q)
+            # msg.actual.velocities = self._model.ambf_to_rbdl(self._model.qd)
+            # # error_msg.data = abs((msg.desired.positions - msg.actual.positions)/msg.desired.positions)
+            # # self.error_pub.publish(error_msg)
+            # #
+            # try:
+            #     resp1 = self.controller_srv(msg)
+            #     tau = resp1.control_output.effort
+            #     tau_msg.effort = tau
+            #     self.required_tau_pub.publish(tau_msg)
+            #
+            # except rospy.ServiceException as e:
+            #     print("Service call failed: %s"%e)
 
             rate.sleep()
+
+
+

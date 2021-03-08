@@ -151,7 +151,7 @@ int main(int argc, char **argv)
 
     manager.addController("Dyn", Dyn_controller);
     manager.addController("HumanPD", FF_controller);
-    manager.addController("FES", FF_controller);
+    manager.addController("FES", FES_controller);
 
     ros::spin();
 

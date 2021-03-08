@@ -106,8 +106,8 @@ class ModelServer(Model.Model):
         while 1:
             self.q = self.handle.get_all_joint_pos()
             self.qd = self.handle.get_all_joint_vel()
-            #self.joint_effort = self.handle.get_all_joint_effort()
-            #self.state = (self.q, self.qd)
+            # self.joint_effort = self.handle.get_all_joint_effort()
+            self.state = (self.q, self.qd)
             self._joint_num = self.q.size
             state_msg = JointState()
             state_msg.name = self._selected_joint_names
@@ -115,17 +115,18 @@ class ModelServer(Model.Model):
             state_msg.velocity = self.qd
             state_msg.effort = self.tau
             self.q_pub.publish(state_msg)
-            current_time = rospy.get_time()
-            dt_msg.data = current_time - last_time
-            last_time = current_time
-            self.dt_pub.publish(dt_msg)
-            if self._enable_control: 
-                self.calc_gravity()
+            # current_time = rospy.get_time()
+            # dt_msg.data = current_time - last_time
+            # last_time = current_time
+            # self.dt_pub.publish(dt_msg)
+            if self._enable_control:
                 tau = self.tau
-                if  self.tau.size == self.grav_tau.size and self._use_gravity:
-                    tau+=self.grav_tau
+                if self._use_gravity:
+                    self.calc_gravity()
+                    if  self.tau.size == self.grav_tau.size:
+                        tau+=self.grav_tau
 
-                self.handle.set_multiple_joint_effort(self.tau, joints_idx)
+                self.handle.set_multiple_joint_effort(tau, joints_idx)
                 #set multiple joint pos
             else:
                 self.handle.set_multiple_joint_effort(len(self.tau)*[0.0], joints_idx)

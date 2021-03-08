@@ -27,7 +27,7 @@ class HumanServer(ModelServer.ModelServer):
         # inits dynamic model and joints for leg
         super(HumanServer, self).__init__(client, model_name=model_name, joint_names=joint_names, model_path=model_path)
        
-        self.handle = self._client.get_obj_handle('Hip')
+        self.handle = self._client.get_obj_handle('HumanTorso')
         # model_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/human/human.yaml"
         self.make_dynamic_model(model_name, model_path )
         # # num_of_segments should be initialized with the dynamical model, which is created in the constructor
@@ -38,7 +38,7 @@ class HumanServer(ModelServer.ModelServer):
         self._right_muscle = RienerMuscles.Riener_Muscle()
         self.freq = np.array([30,30,30,30,30,30,30,30,30])
         time.sleep(2)
-
+        self.last_time = None
         self._state = (self._q, self._qd)
         self._updater.start()  # start update thread
 
@@ -60,14 +60,14 @@ class HumanServer(ModelServer.ModelServer):
         :type tau: List
         """
         time = 0.0
-        if not self._enable_control:
+        if self.last_time is None:
             self.last_time = rospy.get_time() 
             time = 0.0
         else:
             time = rospy.get_time() - self.last_time
         left_tau = self._left_muscle.calc_moment(np.abs(np.clip(PW[:9], 0, 500)) ,  self.freq, time, np.rad2deg(self.q[:3]), np.rad2deg(self.qd[:3]))
         right_tau = self._right_muscle.calc_moment(np.abs(np.clip(PW[9:], 0, 500)), self.freq, time, np.rad2deg(self.q[3:]), np.rad2deg(self.qd[3:]))
-        
+        print("the reverse potato")
         self.tau =  np.concatenate([left_tau, right_tau])
         self._enable_control = True
 

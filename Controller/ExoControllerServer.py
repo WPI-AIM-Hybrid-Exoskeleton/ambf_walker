@@ -46,6 +46,7 @@ class ExoControllerServer():
 
         :type msg: DesiredJoints
         """
+        print( "Exo controller being called")
         self.msg = msg
         # self.controller = self._controllers[msg.controller]
         # self.q = np.array(msg.q)
@@ -74,6 +75,7 @@ class ExoControllerServer():
 
         while 1:
             # with self.lock:
+            print("exosadfsdfsdafsdfsdfasdfasdfsadf controller")
             local_msg = self.msg
             traj_msg.data = local_msg.q
             # q = np.array(local_msg.q)
@@ -92,7 +94,6 @@ class ExoControllerServer():
             msg.actual.velocities = self._model.ambf_to_rbdl(qd)
             # error_msg.data = np.abs((local_msg.q - q)/local_msg.q)
             # self.error_pub.publish(error_msg)
-
             self.traj_pub.publish(traj_msg)
             
             try:

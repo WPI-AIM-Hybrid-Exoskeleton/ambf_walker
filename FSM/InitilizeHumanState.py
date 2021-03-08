@@ -25,7 +25,7 @@ class InitializeState(smach.State):
 
        
         rospy.wait_for_service('human_onoff')
-        status = userdata.status
+        status =  userdata.status
         print(status)
         try:
             human = rospy.ServiceProxy('human_onoff', SetBool)
