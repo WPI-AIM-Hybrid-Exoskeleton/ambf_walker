@@ -84,6 +84,7 @@ class Model(object):
             return SetBoolResponse(True, "Turned on " + self.model_name + " Controller")
         else:
             self.enable_control = False
+            self.tau = 0.0*self.tau
             return SetBoolResponse(True, "Turned off " + self.model_name +  " Controller" )
 
     @property

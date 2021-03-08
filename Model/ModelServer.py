@@ -23,7 +23,7 @@ class ModelServer(Model.Model):
         
         super(ModelServer, self).__init__(client=client, model_name=model_name, joint_names=joint_names)
         self.dt_pub = rospy.Publisher("dt", Float32, queue_size=1)
-        self._use_gravity = False
+
         self.make_dynamic_model(model_name, model_path)
         left_joints = {}
         right_joints = {}
@@ -43,7 +43,7 @@ class ModelServer(Model.Model):
         self._joint_map_selected = {}
         self._selected_joint_names = joint_names
         self.dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
-
+        self._use_gravity = False
 
     def torque_cb(self, tau):
         self.update_torque(list(tau.effort))
@@ -121,10 +121,10 @@ class ModelServer(Model.Model):
             # self.dt_pub.publish(dt_msg)
             if self._enable_control:
                 tau = self.tau
-                if self._use_gravity:
-                    self.calc_gravity()
-                    if  self.tau.size == self.grav_tau.size:
-                        tau+=self.grav_tau
+                # if self._use_gravity:
+                #     self.calc_gravity()
+                #     # if  len(tau) == len(self.grav_tau):
+                #     #     tau += self.grav_tau
 
                 self.handle.set_multiple_joint_effort(tau, joints_idx)
                 #set multiple joint pos
@@ -138,8 +138,6 @@ class ModelServer(Model.Model):
     def fk(self):
         pass
 
-
-    @abc.abstractmethod
     def calc_gravity(self):
         pass
 

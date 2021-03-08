@@ -31,7 +31,8 @@ class ExoskeletonServer(ModelServer.ModelServer):
         self._handle = self._client.get_obj_handle('ExoHip')
         self._use_gravity = use_gravity
         
-        if self._use_gravity:
+        if use_gravity:
+            print("Getting the gravity dynamics")
             project_root = dirname(dirname(__file__))
             path = join(project_root, "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/plain_exo/default.yaml")
             self.make_dynamic_model(self.model_name + "grav", path)        
@@ -112,22 +113,6 @@ class ExoskeletonServer(ModelServer.ModelServer):
         raduis = self._right_foot_prox.range[0]
         return dist[0] - raduis
 
-
-    def calc_gravity(self):
-
-        q = self.ambf_to_rbdl(self.q)
-        qd = self.ambf_to_rbdl(self.qd)
-        qdd = np.array([0.0] * self._joint_num)
-        tau = np.asarray([0.0] * self._joint_num)
-        self.grav_tau = tau
-        rospy.wait_for_service("InverseDynamics")
-        try:
-            dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
-            resp1 = dyn_srv(self.model_name + "grav", q, qd, qdd)
-            tau = resp1.tau
-            self.grav_tau = np.array(self.rbdl_to_ambf(tau))
-        except rospy.ServiceException as e:
-            print("Service call failed: %s"%e)
 
     def prox_callback(self, msg):
 

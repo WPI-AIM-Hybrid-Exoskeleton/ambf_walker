@@ -60,16 +60,18 @@ class HumanServer(ModelServer.ModelServer):
         :type tau: List
         """
         time = 0.0
-        if self.last_time is None:
-            self.last_time = rospy.get_time() 
-            time = 0.0
-        else:
-            time = rospy.get_time() - self.last_time
-        left_tau = self._left_muscle.calc_moment(np.abs(np.clip(PW[:9], 0, 500)) ,  self.freq, time, np.rad2deg(self.q[:3]), np.rad2deg(self.qd[:3]))
-        right_tau = self._right_muscle.calc_moment(np.abs(np.clip(PW[9:], 0, 500)), self.freq, time, np.rad2deg(self.q[3:]), np.rad2deg(self.qd[3:]))
-        print("the reverse potato")
-        self.tau =  np.concatenate([left_tau, right_tau])
-        self._enable_control = True
+
+        if self.enable_control:
+
+            if self.last_time is None:
+                self.last_time = rospy.get_time()
+            else:
+                time = rospy.get_time() - self.last_time
+
+            left_tau = self._left_muscle.calc_moment(np.abs(np.clip(PW[:9], 0, 500)) ,  self.freq, time, np.rad2deg(self.q[:3]), np.rad2deg(self.qd[:3]))
+            right_tau = self._right_muscle.calc_moment(np.abs(np.clip(PW[9:], 0, 500)), self.freq, time, np.rad2deg(self.q[3:]), np.rad2deg(self.qd[3:]))
+            print("the reverse potato")
+            self.tau =  np.concatenate([left_tau, right_tau])
 
 
 

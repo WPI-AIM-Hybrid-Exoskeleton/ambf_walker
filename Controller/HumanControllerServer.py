@@ -47,7 +47,6 @@ class HumanControllerServer(object):
 
         :type msg: DesiredJoints
         """
-        print( "human controller being called")
         self.msg = msg
         # self.controller = self._controllers[msg.controller]
         # self.q = np.array(msg.q)
@@ -75,7 +74,6 @@ class HumanControllerServer(object):
 
         while 1:
 
-            print("humansadfsdfsdafsdfsdfasdfasdfsadf controller")
 
             local_msg = self.msg
 
@@ -98,24 +96,24 @@ class HumanControllerServer(object):
             except rospy.ServiceException as e:
                 print("Service call failed: %s"%e)
 
-            # msg = JointControlRequest()
-            # msg.controller_name = "HumanPD"
-            # msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
-            # msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd) )
-            # msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd) )
-            # msg.actual.positions = self._model.ambf_to_rbdl(self._model.q)
-            # msg.actual.velocities = self._model.ambf_to_rbdl(self._model.qd)
-            # # error_msg.data = abs((msg.desired.positions - msg.actual.positions)/msg.desired.positions)
-            # # self.error_pub.publish(error_msg)
-            # #
-            # try:
-            #     resp1 = self.controller_srv(msg)
-            #     tau = resp1.control_output.effort
-            #     tau_msg.effort = tau
-            #     self.required_tau_pub.publish(tau_msg)
+            msg = JointControlRequest()
+            msg.controller_name = "HumanPD"
+            msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
+            msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd) )
+            msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd) )
+            msg.actual.positions = self._model.ambf_to_rbdl(self._model.q)
+            msg.actual.velocities = self._model.ambf_to_rbdl(self._model.qd)
+            # error_msg.data = abs((msg.desired.positions - msg.actual.positions)/msg.desired.positions)
+            # self.error_pub.publish(error_msg)
             #
-            # except rospy.ServiceException as e:
-            #     print("Service call failed: %s"%e)
+            try:
+                resp1 = self.controller_srv(msg)
+                tau = resp1.control_output.effort
+                tau_msg.effort = tau
+                self.required_tau_pub.publish(tau_msg)
+
+            except rospy.ServiceException as e:
+                print("Service call failed: %s"%e)
 
             rate.sleep()
 

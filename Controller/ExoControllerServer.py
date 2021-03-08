@@ -14,7 +14,7 @@ from trajectory_msgs.msg import JointTrajectoryPoint
 
 class ExoControllerServer():
 
-    def __init__(self, model):
+    def __init__(self, model, use_gravity=False):
         self.lock = Lock()
         self._model = model
         self._updater = Thread(target=self.set_torque)
@@ -31,6 +31,7 @@ class ExoControllerServer():
         self.qd = np.array([])
         self.qdd = np.array([])
         self.other = np.array([])
+        self.use_gravity= use_gravity
 
     @property
     def model(self):
@@ -46,7 +47,6 @@ class ExoControllerServer():
 
         :type msg: DesiredJoints
         """
-        print( "Exo controller being called")
         self.msg = msg
         # self.controller = self._controllers[msg.controller]
         # self.q = np.array(msg.q)
@@ -66,16 +66,34 @@ class ExoControllerServer():
         return DesiredJointsCmdResponse(True)
 
 
+
+    def calc_gravity(self, q, qd):
+
+        msg.actual.positions = q
+        msg.actual.velocities = qd
+        qdd = np.array([0.0] * len(q))
+        tau = np.asarray([0.0] * len(q))
+        rospy.wait_for_service("InverseDynamics")
+        try:
+            dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
+            resp1 = dyn_srv(self._model_name + "grav", q, qd, qdd)
+            tau = resp1.tau
+            return np.array(tau)
+
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
+
+
+
     def set_torque(self):
         self._enable_control = True
-        rate = rospy.Rate(1000)
+        rate = rospy.Rate(500)
         tau_msg = JointState()
         traj_msg = Float32MultiArray()
         error_msg = Float32MultiArray()
 
         while 1:
             # with self.lock:
-            print("exosadfsdfsdafsdfsdfasdfasdfsadf controller")
             local_msg = self.msg
             traj_msg.data = local_msg.q
             # q = np.array(local_msg.q)
@@ -88,10 +106,10 @@ class ExoControllerServer():
             msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
             msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd) )
             msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd) )
-            q = self._model.q
-            qd = self._model.qd
-            msg.actual.positions = self._model.ambf_to_rbdl(q)
-            msg.actual.velocities = self._model.ambf_to_rbdl(qd)
+            q = self._model.ambf_to_rbdl(self._model.q)
+            qd = self._model.ambf_to_rbdl(self._model.qd)
+            msg.actual.positions = q
+            msg.actual.velocities = qd
             # error_msg.data = np.abs((local_msg.q - q)/local_msg.q)
             # self.error_pub.publish(error_msg)
             self.traj_pub.publish(traj_msg)
@@ -99,6 +117,12 @@ class ExoControllerServer():
             try:
                 resp1 = self.controller_srv(msg)
                 tau = resp1.control_output.effort
+
+                grav_tau = [0.0]*len(tau)
+                if self.use_gravity:
+                    grav_tau = self.calc_gravity(q,qd)
+                    tau +=grav_tau
+
                 tau_msg.effort = tau
                 self.tau_pub.publish(tau_msg)
             
