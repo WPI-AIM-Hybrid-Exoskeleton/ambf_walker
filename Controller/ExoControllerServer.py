@@ -9,6 +9,7 @@ from . import DynController
 from ambf_walker.srv import DesiredJointsCmd, DesiredJointsCmdResponse
 from controller_modules.srv import JointControl, JointControlRequest
 from trajectory_msgs.msg import JointTrajectoryPoint
+from rbdl_server.srv import RBDLInverseDynamics
 
 
 
@@ -69,21 +70,17 @@ class ExoControllerServer():
 
     def calc_gravity(self, q, qd):
 
-        msg.actual.positions = q
-        msg.actual.velocities = qd
         qdd = np.array([0.0] * len(q))
         tau = np.asarray([0.0] * len(q))
         rospy.wait_for_service("InverseDynamics")
         try:
             dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
-            resp1 = dyn_srv(self._model_name + "grav", q, qd, qdd)
+            resp1 = dyn_srv("exograv", q, qd, qdd)
             tau = resp1.tau
             return np.array(tau)
 
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
-
-
 
     def set_torque(self):
         self._enable_control = True
