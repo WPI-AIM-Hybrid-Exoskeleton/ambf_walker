@@ -53,7 +53,12 @@ for i in range(1):
     ankle.append(y)
 
 
-trainer = TPGMMTrainer.TPGMMTrainer(demo=[hip, knee, ankle,hip, knee, ankle], file_name="gotozero", n_rf=5, dt=0.01, reg=[1e-4], poly_degree=[3,3,3,3,3,3])
+trainer = TPGMMTrainer.TPGMMTrainer(demo=[hip, knee, ankle, hip, knee, ankle],
+                                    file_name="gotozero",
+                                    n_rf=5,
+                                    dt=0.01,
+                                    reg=[1e-4],
+                                    poly_degree=[3,3,3,3,3,3])
 trainer.train()
 runner = TPGMMRunner.TPGMMRunner("gotozero")
 

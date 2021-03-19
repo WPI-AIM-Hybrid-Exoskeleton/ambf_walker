@@ -54,24 +54,35 @@ class HumanServer(ModelServer.ModelServer):
             self.torque_error_pub.publish(msg)
 
 
-    def update_torque(self, PW):
-        """
-        self.rbdl_model = self.dynamic_model()
-        :type tau: List
-        """
-        time = 0.0
-
-        if self.enable_control:
-
-            if self.last_time is None:
-                self.last_time = rospy.get_time()
-            else:
-                time = rospy.get_time() - self.last_time
-
-            left_tau = self._left_muscle.calc_moment(np.abs(np.clip(PW[:9], 0, 500)) ,  self.freq, time, np.rad2deg(self.q[:3]), np.rad2deg(self.qd[:3]))
-            right_tau = self._right_muscle.calc_moment(np.abs(np.clip(PW[9:], 0, 500)), self.freq, time, np.rad2deg(self.q[3:]), np.rad2deg(self.qd[3:]))
-            print("the reverse potato")
-            self.tau =  np.concatenate([left_tau, right_tau])
+    # def update_torque(self, PW):
+    #     """
+    #     self.rbdl_model = self.dynamic_model()
+    #     :type tau: List
+    #     """
+    #     time = 0.0
+    #
+    #     if self.enable_control:
+    #
+    #         if self.last_time is None:
+    #             self.last_time = rospy.get_time()
+    #         else:
+    #             time = rospy.get_time() - self.last_time
+    #
+    #         left_tau = self._left_muscle.calc_moment(np.abs(np.clip(PW[:9], 0, 500)) ,
+    #                                                  self.freq,
+    #                                                  time,
+    #                                                  np.rad2deg(self.q[:3]),
+    #                                                  np.rad2deg(self.qd[:3]))
+    #
+    #         right_tau = (self._right_muscle.calc_moment(np.abs(np.clip(PW[9:], 0, 500)),
+    #                                                    self.freq,
+    #                                                    time,
+    #                                                    np.rad2deg(self.q[3:]),
+    #                                                    np.rad2deg(self.qd[3:])))
+    #
+    #
+    #
+    #         self.tau =  np.concatenate([left_tau, right_tau])
 
 
 

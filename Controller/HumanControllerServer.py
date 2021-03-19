@@ -67,7 +67,7 @@ class HumanControllerServer(object):
 
     def set_torque(self):
         self._enable_control = True
-        rate = rospy.Rate(1000)
+        rate = rospy.Rate(500)
         tau_msg = JointState()
         traj_msg = Float32MultiArray()
         error_msg = Float32MultiArray()
@@ -88,15 +88,15 @@ class HumanControllerServer(object):
             msg.desired.positions =  np.rad2deg(local_msg.q)
             msg.desired.velocities = np.rad2deg(local_msg.qd)
             #msg.desired.accelerations = np.array(local_msg.qdd)
-            try:
-                resp1 = self.controller_srv(msg)
-                tau = resp1.control_output.effort
-                tau_msg.effort = tau
-                self.tau_pub.publish(tau_msg)
-            except rospy.ServiceException as e:
-                print("Service call failed: %s"%e)
+            # try:
+            #     resp1 = self.controller_srv(msg)
+            #     tau = resp1.control_output.effort
+            #     tau_msg.effort = tau
+            #     self.tau_pub.publish(tau_msg)
+            # except rospy.ServiceException as e:
+            #     print("Service call failed: %s"%e)
 
-            msg = JointControlRequest()
+            # msg = JointControlRequest()
             msg.controller_name = "HumanPD"
             msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q) )
             msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd) )
@@ -109,9 +109,9 @@ class HumanControllerServer(object):
             try:
                 resp1 = self.controller_srv(msg)
                 tau = resp1.control_output.effort
-                tau_msg.effort = tau
-                self.required_tau_pub.publish(tau_msg)
-
+                tau_msg.effort = np.clip(np.array(tau), -10, 10)
+                #self.required_tau_pub.publish(tau_msg)
+                self.tau_pub.publish(tau_msg)
             except rospy.ServiceException as e:
                 print("Service call failed: %s"%e)
 

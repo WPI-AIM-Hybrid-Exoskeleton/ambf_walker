@@ -31,7 +31,7 @@ class Riener_Muscle():
         force = self.muscle_force(theta, dtheta)
         a, fit = self.activation(d, f, time)
 
-        muscle_force = a*force#*fit
+        muscle_force = a*force*fit
 
         ma = self.calc_ma(theta)
         active_moments = {"H": 0, "K": 0, "A": 0}

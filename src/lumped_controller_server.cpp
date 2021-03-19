@@ -21,21 +21,21 @@ int main(int argc, char **argv)
     Eigen::MatrixXd exo_Kd = Eigen::MatrixXd::Ones(7,7);
     
     
-    exo_Kp(0,0) = 1000.0;
-    exo_Kp(1,1) = 1000.0;
-    exo_Kp(2,2) = 1000.0;
-    exo_Kp(3,3) = 1000.0;
-    exo_Kp(4,4) = 1000.0;
-    exo_Kp(5,5) = 1000.0;
-    exo_Kp(6,6) = 1000.0;
+    exo_Kp(0,0) = 350.0;
+    exo_Kp(1,1) = 350.0;
+    exo_Kp(2,2) = 350.0;
+    exo_Kp(3,3) = 350.0;
+    exo_Kp(4,4) = 350.0;
+    exo_Kp(5,5) = 350.0;
+    exo_Kp(6,6) = 350.0;
 
-    exo_Kd(0,0) = 4.0;
-    exo_Kd(1,1) = 4.0;
-    exo_Kd(2,2) = 4.0;
-    exo_Kd(3,3) = 4.0;
-    exo_Kd(4,4) = 4.0;
-    exo_Kd(5,5) = 4.0;
-    exo_Kd(6,6) = 4.0;
+    exo_Kd(0,0) = 0.8;
+    exo_Kd(1,1) = 0.8;
+    exo_Kd(2,2) = 0.8;
+    exo_Kd(3,3) = 0.8;
+    exo_Kd(4,4) = 0.8;
+    exo_Kd(5,5) = 0.8;
+    exo_Kd(6,6) = 0.8;
 
 
     Eigen::MatrixXd FF_Kp = Eigen::MatrixXd::Zero(7,7);
