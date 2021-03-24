@@ -98,11 +98,11 @@ class HumanControllerServer(object):
 
             # msg = JointControlRequest()
             msg.controller_name =  "Dyn" #"HumanPD"
-            msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q.append(0)) )
-            msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd.append(0)) )
-            msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd.append(0)) )
-            msg.actual.positions = self._model.ambf_to_rbdl(self._model.q.append(0))
-            msg.actual.velocities = self._model.ambf_to_rbdl(self._model.qd.append(0))
+            msg.desired.positions = self._model.ambf_to_rbdl(np.array(local_msg.q + (0,)) )
+            msg.desired.velocities = self._model.ambf_to_rbdl(np.array(local_msg.qd + (0,)) )
+            msg.desired.accelerations = self._model.ambf_to_rbdl(np.array(local_msg.qdd +(0,) ))
+            msg.actual.positions = self._model.ambf_to_rbdl(self._model.q + (0,))
+            msg.actual.velocities = self._model.ambf_to_rbdl(self._model.qd+ (0,))
 
             # error_msg.data = abs((msg.desired.positions - msg.actual.positions)/msg.desired.positions)
             # self.error_pub.publish(error_msg)

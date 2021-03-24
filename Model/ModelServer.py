@@ -120,7 +120,7 @@ class ModelServer(Model.Model):
             # self.dt_pub.publish(dt_msg)
             tau = self.tau
             if self._enable_control:
-                print(self.model_name + " is on")
+                # print(self.model_name + " is on")
                 # if self._use_gravity:
                 #     self.calc_gravity()
                 #     if  len(tau) == len(self.grav_tau):
@@ -129,7 +129,7 @@ class ModelServer(Model.Model):
                 self.handle.set_multiple_joint_effort(tau, joints_idx)
                 #set multiple joint pos
             else:
-                print(self.model_name + " is off")
+                # print(self.model_name + " is off")
                 tau = len(tau)*[0.0]
                 self.handle.set_multiple_joint_effort(tau, joints_idx)
 
