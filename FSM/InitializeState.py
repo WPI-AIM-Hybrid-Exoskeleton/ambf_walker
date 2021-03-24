@@ -36,7 +36,7 @@ class InitializeState(smach.State):
         msg_pos = DesiredPosCmd() 
         msg_pos.pos.x = 0.0
         msg_pos.pos.y = 0.0
-        msg_pos.pos.z = 3.0
+        msg_pos.pos.z = 0.2
         msg_pos.rpy.x = 0.25
         msg_pos.rpy.y = 0.0
         msg_pos.rpy.z = 0.0

@@ -7,10 +7,11 @@ from os.path import dirname, join
 from ambf_msgs.msg import RigidBodyState, SensorState
 from GaitAnaylsisToolkit.LearningTools.Runner import TPGMMRunner
 from sensor_msgs.msg import JointState
+from std_srvs.srv import SetBool, SetBoolResponse
 
 class WalkState(smach.State):
 
-    def __init__(self, model_name, controller_name,outcomes=["walked"],output_keys=['human'],  input_keys=['q', 'qd']):
+    def __init__(self, model_name, controller_name, outcomes=["walked"],output_keys=['human'],  input_keys=['q', 'qd']):
         smach.State.__init__(self, outcomes=outcomes, input_keys=input_keys, output_keys=output_keys)
         self.runner = self._get_walker()
         self.model_name = model_name

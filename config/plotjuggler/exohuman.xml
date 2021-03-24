@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root version="2.3.8">
+ <tabbed_widget name="Main Window" parent="main_window">
+  <Tab tab_name="tab1" containers="1">
+   <Container>
+    <DockSplitter orientation="-" count="3" sizes="0.333698;0.332604;0.333698">
+     <DockSplitter orientation="|" count="2" sizes="0.500327;0.499673">
+      <DockArea name="...">
+       <plot mode="TimeSeries" style="Lines">
+        <range bottom="-0.501340" right="1616510019.644269" left="1616509989.643322" top="-0.445076"/>
+        <limitY/>
+        <curve name="/exo_jointstate/ExoLeftHip/position" color="#d62728"/>
+        <curve name="/exo_trajectory/data.0" color="#17becf"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" style="Lines">
+        <range bottom="-0.512958" right="1616510019.644269" left="1616509989.643322" top="-0.499684"/>
+        <limitY/>
+        <curve name="/exo_jointstate/ExoRightHip/position" color="#f14cc1"/>
+        <curve name="/exo_trajectory/data.3" color="#d62728"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockSplitter orientation="|" count="2" sizes="0.500327;0.499673">
+      <DockArea name="...">
+       <plot mode="TimeSeries" style="Lines">
+        <range bottom="0.481282" right="1616510019.644269" left="1616509989.643322" top="0.500457"/>
+        <limitY/>
+        <curve name="/exo_jointstate/ExoLeftKnee/position" color="#1ac938"/>
+        <curve name="/exo_trajectory/data.1" color="#bcbd22"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" style="Lines">
+        <range bottom="0.499653" right="1616510019.644269" left="1616509989.643322" top="0.514209"/>
+        <limitY/>
+        <curve name="/exo_jointstate/ExoRightKnee/position" color="#9467bd"/>
+        <curve name="/exo_trajectory/data.4" color="#1ac938"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockSplitter orientation="|" count="2" sizes="0.500327;0.499673">
+      <DockArea name="...">
+       <plot mode="TimeSeries" style="Lines">
+        <range bottom="-0.396790" right="1616510019.644269" left="1616509989.643322" top="-0.277151"/>
+        <limitY/>
+        <curve name="/exo_jointstate/ExoLeftAnkle/position" color="#1f77b4"/>
+        <curve name="/exo_trajectory/data.2" color="#1f77b4"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" style="Lines">
+        <range bottom="-0.289869" right="1616510019.644269" left="1616509989.643322" top="-0.273090"/>
+        <limitY/>
+        <curve name="/exo_jointstate/ExoRightAnkle/position" color="#ff7f0e"/>
+        <curve name="/exo_trajectory/data.5" color="#ff7f0e"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <Tab tab_name="tab2" containers="1">
+   <Container>
+    <DockSplitter orientation="-" count="3" sizes="0.333698;0.332604;0.333698">
+     <DockSplitter orientation="|" count="2" sizes="0.500327;0.499673">
+      <DockArea name="...">
+       <plot mode="TimeSeries" style="Lines">
+        <range bottom="-284.995778" right="1616510010.265978" left="1616509980.266875" top="309.135652"/>
+        <limitY/>
+        <curve name="/exo_jointstate/ExoLeftHip/effort" color="#9467bd"/>
+        <curve name="/human_jointstate/HumanLeftHip/effort" color="#ff7f0e"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" style="Lines">
+        <range bottom="-402.837623" right="1616510010.265978" left="1616509980.266875" top="287.103012"/>
+        <limitY/>
+        <curve name="/exo_jointstate/ExoRightHip/effort" color="#1f77b4"/>
+        <curve name="/human_jointstate/HumanRightHip/effort" color="#17becf"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockSplitter orientation="|" count="2" sizes="0.500327;0.499673">
+      <DockArea name="...">
+       <plot mode="TimeSeries" style="Lines">
+        <range bottom="-94.367498" right="1616510010.265978" left="1616509980.266875" top="45.934587"/>
+        <limitY/>
+        <curve name="/exo_jointstate/ExoLeftKnee/effort" color="#17becf"/>
+        <curve name="/human_jointstate/HumanLeftKnee/effort" color="#f14cc1"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" style="Lines">
+        <range bottom="-122.307713" right="1616510010.265978" left="1616509980.266875" top="52.945945"/>
+        <limitY/>
+        <curve name="/exo_jointstate/ExoRightKnee/effort" color="#d62728"/>
+        <curve name="/human_jointstate/HumanRightKnee/effort" color="#bcbd22"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+     <DockSplitter orientation="|" count="2" sizes="0.500327;0.499673">
+      <DockArea name="...">
+       <plot mode="TimeSeries" style="Lines">
+        <range bottom="-20.193193" right="1616510010.265978" left="1616509980.266875" top="3.361501"/>
+        <limitY/>
+        <curve name="/exo_jointstate/ExoLeftAnkle/effort" color="#f14cc1"/>
+        <curve name="/human_jointstate/HumanLeftAnkle/effort" color="#1ac938"/>
+       </plot>
+      </DockArea>
+      <DockArea name="...">
+       <plot mode="TimeSeries" style="Lines">
+        <range bottom="-21.865435" right="1616510010.265978" left="1616509980.266875" top="11.157435"/>
+        <limitY/>
+        <curve name="/exo_jointstate/ExoRightAnkle/effort" color="#bcbd22"/>
+        <curve name="/human_jointstate/HumanRightAnkle/effort" color="#9467bd"/>
+       </plot>
+      </DockArea>
+     </DockSplitter>
+    </DockSplitter>
+   </Container>
+  </Tab>
+  <currentTabIndex index="0"/>
+ </tabbed_widget>
+ <use_relative_time_offset enabled="0"/>
+ <!-- - - - - - - - - - - - - - - -->
+ <!-- - - - - - - - - - - - - - - -->
+ <Plugins>
+  <plugin ID="DataLoad CSV">
+   <default time_axis=""/>
+  </plugin>
+  <plugin ID="DataLoad ROS bags">
+   <use_header_stamp value="false"/>
+   <use_renaming_rules value="true"/>
+   <discard_large_arrays value="true"/>
+   <max_array_size value="100"/>
+  </plugin>
+  <plugin ID="DataLoad ULog"/>
+  <plugin ID="MQTT Subscriber"/>
+  <plugin ID="ROS Topic Subscriber">
+   <use_header_stamp value="false"/>
+   <use_renaming_rules value="true"/>
+   <discard_large_arrays value="true"/>
+   <max_array_size value="100"/>
+  </plugin>
+  <plugin ID="UDP Server"/>
+  <plugin ID="WebSocket Server"/>
+  <plugin ID="ZMQ Subscriber"/>
+  <plugin ID="ROS /rosout Visualization" status="idle"/>
+  <plugin ID="ROS Topic Re-Publisher" status="idle"/>
+ </Plugins>
+ <!-- - - - - - - - - - - - - - - -->
+ <previouslyLoaded_Datafiles/>
+ <previouslyLoaded_Streamer name="ROS Topic Subscriber"/>
+ <!-- - - - - - - - - - - - - - - -->
+ <customMathEquations/>
+ <snippets/>
+ <!-- - - - - - - - - - - - - - - -->
+</root>
+

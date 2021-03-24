@@ -118,7 +118,7 @@ class ExoControllerServer():
                 grav_tau = [0.0]*len(tau)
                 if self.use_gravity:
                     grav_tau = self.calc_gravity(q,qd)
-                    #tau +=grav_tau
+                    tau +=grav_tau
 
                 tau_msg.effort = tau
                 self.tau_pub.publish(tau_msg)

@@ -36,7 +36,7 @@ class HumanServer(ModelServer.ModelServer):
         self.torque_error_pub = rospy.Publisher("human_torque_error", Float32MultiArray, queue_size=1)
         self._left_muscle = RienerMuscles.Riener_Muscle()
         self._right_muscle = RienerMuscles.Riener_Muscle()
-        self.freq = np.array([30,30,30,30,30,30,30,30,30])
+        self.freq = 20*np.array([1,1,1,1,1,1,1,1,1])
         time.sleep(2)
         self.last_time = None
         self._state = (self._q, self._qd)
@@ -68,13 +68,13 @@ class HumanServer(ModelServer.ModelServer):
     #         else:
     #             time = rospy.get_time() - self.last_time
     #
-    #         left_tau = self._left_muscle.calc_moment(np.abs(np.clip(PW[:9], 0, 500)) ,
-    #                                                  self.freq,
-    #                                                  time,
-    #                                                  np.rad2deg(self.q[:3]),
-    #                                                  np.rad2deg(self.qd[:3]))
+    #         left_tau = (self._left_muscle.calc_moment(np.abs(np.clip(PW[:9], 0, 480)) ,
+    #                                                              self.freq,
+    #                                                              time,
+    #                                                              np.rad2deg(self.q[:3]),
+    #                                                              np.rad2deg(self.qd[:3])))
     #
-    #         right_tau = (self._right_muscle.calc_moment(np.abs(np.clip(PW[9:], 0, 500)),
+    #         right_tau = (self._right_muscle.calc_moment(np.abs(np.clip(PW[9:], 0, 480)),
     #                                                    self.freq,
     #                                                    time,
     #                                                    np.rad2deg(self.q[3:]),

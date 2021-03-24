@@ -113,24 +113,28 @@ class ModelServer(Model.Model):
             state_msg.name = self._selected_joint_names
             state_msg.position = self.q
             state_msg.velocity = self.qd
-            state_msg.effort = self.tau
-            self.q_pub.publish(state_msg)
+
             # current_time = rospy.get_time()
             # dt_msg.data = current_time - last_time
             # last_time = current_time
             # self.dt_pub.publish(dt_msg)
+            tau = self.tau
             if self._enable_control:
-                tau = self.tau
+                print(self.model_name + " is on")
                 # if self._use_gravity:
                 #     self.calc_gravity()
-                #     # if  len(tau) == len(self.grav_tau):
-                #     #     tau += self.grav_tau
+                #     if  len(tau) == len(self.grav_tau):
+                #         tau += self.grav_tau
 
                 self.handle.set_multiple_joint_effort(tau, joints_idx)
                 #set multiple joint pos
             else:
-                self.handle.set_multiple_joint_effort(len(self.tau)*[0.0], joints_idx)
+                print(self.model_name + " is off")
+                tau = len(tau)*[0.0]
+                self.handle.set_multiple_joint_effort(tau, joints_idx)
 
+            state_msg.effort = tau
+            self.q_pub.publish(state_msg)
             rate.sleep()
 
 
