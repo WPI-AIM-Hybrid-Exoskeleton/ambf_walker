@@ -127,10 +127,16 @@ add_executable (exohuman_controller_server src/exohuman_controller_server.cpp)
 add_dependencies (exohuman_controller_server ${catkin_EXPORTED_TARGETS})
 target_link_libraries(exohuman_controller_server ${PROJECT_NAME}  ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
 
+add_executable (perfecthuman_controller_server src/perfecthuman_controller_server.cpp)
+add_dependencies (perfecthuman_controller_server ${catkin_EXPORTED_TARGETS})
+target_link_libraries(perfecthuman_controller_server ${PROJECT_NAME}  ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
+
 
 # add_executable (exohuman_client src/client_test/main_client.cpp)
 # add_dependencies (exohuman_client ${catkin_EXPORTED_TARGETS})
 # target_link_libraries(exohuman_client ${PROJECT_NAME} ${AMBF_CLIENT_LIBRARY} ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
+
+
 
 
 
