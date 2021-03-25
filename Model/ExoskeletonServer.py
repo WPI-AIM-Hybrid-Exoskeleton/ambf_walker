@@ -21,7 +21,7 @@ from geometry_msgs.msg import Point32
 from sensor_msgs.msg import PointCloud
 from os.path import dirname, join
 from rbdl_server.srv import RBDLInverseDynamics
-
+from sensor_msgs.msg import JointState
 
 class ExoskeletonServer(ModelServer.ModelServer):
 
@@ -89,7 +89,20 @@ class ExoskeletonServer(ModelServer.ModelServer):
         self._foot_sensor_cb.registerCallback(self.foot_sensor_callback)
         self._right_foot_prox = SensorState()
         self._left_foot_prox = SensorState()
+        self.humantorque_sub = rospy.Subscriber("human_jointstate", JointState, self.update_human_torque)
         self._updater.start()
+        self.human_torque = np.array(7*[0])
+
+    def update_human_torque(self, state):
+        self.human_torque = np.array(state.effort + (0.0,))
+
+    def update_torque(self, tau):
+        """
+        self.rbdl_model = self.dynamic_model()
+        :type tau: List
+        """
+        self.tau = self.rbdl_to_ambf(tau) - self.human_torque
+
 
     def left_foot_prox_callback(self, msg):
         self._left_foot_prox = msg

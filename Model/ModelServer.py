@@ -43,6 +43,7 @@ class ModelServer(Model.Model):
         self._joint_map_selected = {}
         self._selected_joint_names = joint_names
         self.dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
+        self.tau = len(self._selected_joint_names)*[0.0]
         self._use_gravity = False
 
     def torque_cb(self, tau):
@@ -125,7 +126,6 @@ class ModelServer(Model.Model):
                 #     self.calc_gravity()
                 #     if  len(tau) == len(self.grav_tau):
                 #         tau += self.grav_tau
-
                 self.handle.set_multiple_joint_effort(tau, joints_idx)
                 #set multiple joint pos
             else:

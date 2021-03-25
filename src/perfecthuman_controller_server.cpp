@@ -29,13 +29,13 @@ int main(int argc, char **argv)
     exo_Kp(6,6) = 500.0;
 
 
-    exo_Kd(0,0) = 5.5;
-    exo_Kd(1,1) = 5.5;
-    exo_Kd(2,2) = 5.5;
-    exo_Kd(3,3) = 5.5;
-    exo_Kd(4,4) = 5.5;
-    exo_Kd(5,5) = 5.5;
-    exo_Kd(6,6) = 5.5;
+    exo_Kd(0,0) = 0.5;
+    exo_Kd(1,1) = 0.5;
+    exo_Kd(2,2) = 0.5;
+    exo_Kd(3,3) = 0.5;
+    exo_Kd(4,4) = 0.5;
+    exo_Kd(5,5) = 0.5;
+    exo_Kd(6,6) = 0.5;
 
 
 
@@ -51,12 +51,12 @@ int main(int argc, char **argv)
     FF_Kp(5,5) = 500.0;
 
 
-    FF_Kd(0,0) = 5.5;
-    FF_Kd(1,1) = 5.5;
-    FF_Kd(2,2) = 5.5;
-    FF_Kd(3,3) = 5.5;
-    FF_Kd(4,4) = 5.5;
-    FF_Kd(5,5) = 5.5;
+    FF_Kd(0,0) = 0.5;
+    FF_Kd(1,1) = 0.5;
+    FF_Kd(2,2) = 0.5;
+    FF_Kd(3,3) = 0.5;
+    FF_Kd(4,4) = 0.5;
+    FF_Kd(5,5) = 0.5;
 
 
 

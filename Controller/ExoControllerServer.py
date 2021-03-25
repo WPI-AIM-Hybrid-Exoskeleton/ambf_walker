@@ -20,6 +20,7 @@ class ExoControllerServer():
         self._model = model
         self._updater = Thread(target=self.set_torque)
         self.sub_set_points = rospy.Subscriber(self.model.model_name + "_set_points", DesiredJoints, self.update_set_point)
+
         self.tau_pub = rospy.Publisher(self.model.model_name + "_joint_torque", JointState, queue_size=1)
         self.traj_pub = rospy.Publisher(self.model.model_name + "_trajectory", Float32MultiArray, queue_size=1)
         self.error_pub = rospy.Publisher(self.model.model_name + "_Error", Float32MultiArray, queue_size=1)
@@ -32,6 +33,7 @@ class ExoControllerServer():
         self.qd = np.array([])
         self.qdd = np.array([])
         self.other = np.array([])
+        self.human_effort = np.array(7*[0.0])
         self.use_gravity= use_gravity
 
     @property
