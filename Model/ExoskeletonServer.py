@@ -96,12 +96,12 @@ class ExoskeletonServer(ModelServer.ModelServer):
     def update_human_torque(self, state):
         self.human_torque = np.array(state.effort + (0.0,))
 
-    def update_torque(self, tau):
-        """
-        self.rbdl_model = self.dynamic_model()
-        :type tau: List
-        """
-        self.tau = self.rbdl_to_ambf(tau) - self.human_torque
+    # def update_torque(self, tau):
+    #     """
+    #     self.rbdl_model = self.dynamic_model()
+    #     :type tau: List
+    #     """
+    #     self.tau = self.rbdl_to_ambf(tau) #- self.human_torque
 
 
     def left_foot_prox_callback(self, msg):

@@ -33,6 +33,13 @@ class InitializeState(smach.State):
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
 
+        # try:
+        #     human = rospy.ServiceProxy('exo_onoff', SetBool)
+        #     resp1 = human(False)
+        # except rospy.ServiceException as e:
+        #     print("Service call failed: %s"%e)
+
+
         if status:
             return "on"
         else:

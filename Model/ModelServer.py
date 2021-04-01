@@ -129,7 +129,6 @@ class ModelServer(Model.Model):
                 self.handle.set_multiple_joint_effort(tau, joints_idx)
                 #set multiple joint pos
             else:
-                # print(self.model_name + " is off")
                 tau = len(tau)*[0.0]
                 self.handle.set_multiple_joint_effort(tau, joints_idx)
 
