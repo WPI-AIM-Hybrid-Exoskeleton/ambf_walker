@@ -34,8 +34,8 @@ int main(int argc, char **argv)
     exo_Kd(2,2) = 4.0;
     exo_Kd(3,3) = 4.0;
     exo_Kd(4,4) = 4.0;
-    exo_Kd(5,5) = 4.0;
-    exo_Kd(6,6) = 4.0;
+    exo_Kd(5,5) = 0.4;
+    exo_Kd(6,6) = 0.4;
 
 
     Eigen::MatrixXd FF_Kp = Eigen::MatrixXd::Zero(7,7);

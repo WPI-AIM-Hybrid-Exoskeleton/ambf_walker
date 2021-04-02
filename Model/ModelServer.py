@@ -115,12 +115,12 @@ class ModelServer(Model.Model):
             state_msg.velocity = self.qd
             state_msg.effort = self.tau
             self.q_pub.publish(state_msg)
-            current_time = rospy.get_time()
-            dt_msg.data = current_time - last_time
-            last_time = current_time
+            # current_time = rospy.get_time()
+            # dt_msg.data = current_time - last_time
+            # last_time = current_time
             self.dt_pub.publish(dt_msg)
             if self._enable_control: 
-                #self.calc_gravity()
+                # self.calc_gravity()
                 # tau = self.tau
                 # if  self.tau.size == self.grav_tau.size:# and self._use_gravity:
                 #     pass#tau+=self.grav_tau

@@ -67,7 +67,7 @@ class ExoControllerServer():
 
     def set_torque(self):
         self._enable_control = True
-        rate = rospy.Rate(1000)
+        rate = rospy.Rate(500)
         tau_msg = JointState()
         traj_msg = Float32MultiArray()
         error_msg = Float32MultiArray()
