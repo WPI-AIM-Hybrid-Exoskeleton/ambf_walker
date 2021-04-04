@@ -137,7 +137,7 @@ BODY Crutches:
 BODY ExoHip:
   name: ExoHip
   mesh: ExoHip.STL
-  mass: 0 # 5.0
+  mass: 5.0
   inertia:
     ix: 0.4004
     iy: 0.4587
@@ -238,7 +238,7 @@ BODY ExoLeftThigh:
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.1
+    angular: 0.5
     linear: 0.5
   collision groups:
   - 5
@@ -305,7 +305,7 @@ BODY ExoLeftShank:
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.1
+    angular: 0.5
     linear: 0.5
   collision groups:
   - 6
@@ -368,11 +368,11 @@ BODY ExoLeftFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.1
+    rolling: 0.01
     static: 0.5
   restitution: 0.1
   damping:
-    angular: 0.1
+    angular: 0.5
     linear: 0.5
   collision groups:
   - 7
@@ -435,12 +435,12 @@ BODY ExoRightThigh:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.5
+    rolling: 0.01
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.1
-    linear: 0.1
+    angular: 0.5
+    linear: 0.5
   collision groups:
   - 15
   collision shape: CAPSULE
@@ -569,11 +569,11 @@ BODY ExoRightFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.1
+    rolling: 0.01
     static: 0.5
   restitution: 0.1
   damping:
-    angular: 0.1
+    angular: 0.5
     linear: 0.5
   collision groups:
   - 17
@@ -706,7 +706,7 @@ BODY HumanLeftThigh:
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.1
+    angular: 0.5
     linear: 0.5
   collision groups:
   - 0
@@ -771,7 +771,7 @@ BODY HumanLeftShank:
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.1
+    angular: 0.5
     linear: 0.5
   collision groups:
   - 1
@@ -823,11 +823,11 @@ BODY HumanLeftFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.5
+    rolling: 0.01
     static: 0.5
   restitution: 0.1
   damping:
-    angular: 0.1
+    angular: 0.5
     linear: 0.5
   collision groups:
   - 2
@@ -892,7 +892,7 @@ BODY HumanRightThigh:
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.1
+    angular: 0.5
     linear: 0.5
   collision groups:
   - 0
@@ -957,7 +957,7 @@ BODY HumanRightShank:
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.1
+    angular: 0.5
     linear: 0.5
   collision groups:
   - 11
@@ -1018,11 +1018,11 @@ BODY HumanRightFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.5
+    rolling: 0.01
     static: 0.5
   restitution: 0.1
   damping:
-    angular: 0.1
+    angular: 0.5
     linear: 0.5
   collision groups:
   - 12
