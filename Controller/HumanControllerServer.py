@@ -71,7 +71,8 @@ class HumanControllerServer(object):
         tau_msg = JointState()
         traj_msg = Float32MultiArray()
         error_msg = Float32MultiArray()
-
+        t = 0
+        dt = 1.0/500
         while 1:
 
 
@@ -120,7 +121,8 @@ class HumanControllerServer(object):
             try:
                 resp1 = self.controller_srv(msg)
                 tau = resp1.control_output.effort
-                tau_msg.effort = np.array(tau)
+                t +=dt
+                tau_msg.effort = np.array(tau) # np.abs(np.sin(0.5*t))*
                 #self.required_tau_pub.publish(tau_msg)
                 self.tau_pub.publish(tau_msg)
             except rospy.ServiceException as e:

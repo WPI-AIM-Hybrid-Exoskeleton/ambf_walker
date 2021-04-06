@@ -42,7 +42,7 @@ int main(int argc, char **argv)
     Eigen::MatrixXd FF_Kd = Eigen::MatrixXd::Ones(6,6);
 
 
-    FF_Kp(0,0) = 350.0;
+    FF_Kp(0,0) = 500.0;
     FF_Kp(1,1) = 500.0;
     FF_Kp(2,2) = 400.0;
     FF_Kp(3,3) = 300.0;
