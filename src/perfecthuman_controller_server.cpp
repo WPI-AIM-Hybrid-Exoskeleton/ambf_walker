@@ -20,22 +20,21 @@ int main(int argc, char **argv)
     Eigen::MatrixXd exo_Kp = Eigen::MatrixXd::Zero(7,7);
     Eigen::MatrixXd exo_Kd = Eigen::MatrixXd::Zero(7,7);
 
-    exo_Kp(0,0) = 500.0;
-    exo_Kp(1,1) = 500.0;
-    exo_Kp(2,2) = 500.0;
-    exo_Kp(3,3) = 500.0;
-    exo_Kp(4,4) = 500.0;
-    exo_Kp(5,5) = 500.0;
-    exo_Kp(6,6) = 500.0;
+    exo_Kp(0,0) = 800.0;
+    exo_Kp(1,1) = 800.0;
+    exo_Kp(2,2) = 800.0;
+    exo_Kp(3,3) = 800.0;
+    exo_Kp(4,4) = 800.0;
+    exo_Kp(5,5) = 1200.0;
+    exo_Kp(6,6) = 1200.0;
 
-
-    exo_Kd(0,0) = 0.4;
-    exo_Kd(1,1) = 0.4;
-    exo_Kd(2,2) = 0.4;
-    exo_Kd(3,3) = 0.4;
-    exo_Kd(4,4) = 0.4;
-    exo_Kd(5,5) = 0.4;
-    exo_Kd(6,6) = 0.4;
+    exo_Kd(0,0) = 4.00;
+    exo_Kd(1,1) = 4.00;
+    exo_Kd(2,2) = 4.00;
+    exo_Kd(3,3) = 4.00;
+    exo_Kd(4,4) = 4.00;
+    exo_Kd(5,5) = 4.00;
+    exo_Kd(6,6) = 4.00;
 
 
 
@@ -43,21 +42,21 @@ int main(int argc, char **argv)
     Eigen::MatrixXd FF_Kd = Eigen::MatrixXd::Ones(6,6);
 
 
-    FF_Kp(0,0) = 500.0;
+    FF_Kp(0,0) = 350.0;
     FF_Kp(1,1) = 500.0;
-    FF_Kp(2,2) = 500.0;
-    FF_Kp(3,3) = 500.0;
-    FF_Kp(4,4) = 500.0;
-    FF_Kp(5,5) = 500.0;
+    FF_Kp(2,2) = 400.0;
+    FF_Kp(3,3) = 300.0;
+    FF_Kp(4,4) = 400.0;
+    FF_Kp(5,5) = 400.0;
 
 
-    FF_Kd(0,0) = 0.5;
-    FF_Kd(1,1) = 0.5;
-    FF_Kd(2,2) = 0.5;
-    FF_Kd(3,3) = 0.5;
-    FF_Kd(4,4) = 0.5;
-    FF_Kd(5,5) = 0.5;
-    FF_Kd(5,5) = 0.5;
+    FF_Kd(0,0) = 3.0;
+    FF_Kd(1,1) = 3.0;
+    FF_Kd(2,2) = 3.0;
+    FF_Kd(3,3) = 3.0;
+    FF_Kd(4,4) = 3.0;
+    FF_Kd(5,5) = 3.0;
+    FF_Kd(5,5) = 3.0;
 
 
 

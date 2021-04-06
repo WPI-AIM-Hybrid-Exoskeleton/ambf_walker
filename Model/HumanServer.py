@@ -45,7 +45,13 @@ class HumanServer(ModelServer.ModelServer):
     def torque_cb(self, tau):
         self.update_torque(list(tau.effort))
 
-    
+    def update_torque(self, tau):
+        """
+        self.rbdl_model = self.dynamic_model()
+        :type tau: List
+        """
+        self.tau =  self.rbdl_to_ambf(tau)
+
     def required_human_cb(self, tau):
         msg = Float32MultiArray()
         tau = self.calculate_dynamics(tau.effort)
