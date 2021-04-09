@@ -137,7 +137,7 @@ class Riener_Muscle():
         hip, knee, ankle = theta
         M_ela = {}
         ankle = 0
-        print(knee)
+
         M_ela["H"] = math.exp(2.1080 - 0.0160 * knee - 0.0195 * hip) \
                      - math.exp(-2.1784 + 0.070 * knee + 0.1349 * hip) - 15.24
 
