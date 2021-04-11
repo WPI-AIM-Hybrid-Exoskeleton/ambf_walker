@@ -19,7 +19,7 @@ int main(int argc, char **argv)
    
     Eigen::MatrixXd exo_Kp = Eigen::MatrixXd::Zero(7,7);
     Eigen::MatrixXd exo_Kd = Eigen::MatrixXd::Zero(7,7);
-    
+
     
     exo_Kp(0,0) = 1000.0;
     exo_Kp(1,1) = 1500.0;

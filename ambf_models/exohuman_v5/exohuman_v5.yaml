@@ -1,36 +1,36 @@
 bodies:
-- BODY Crutches
-- BODY ExoHip
-- BODY ExoLeftThigh
-- BODY ExoLeftShank
-- BODY ExoLeftFoot
-- BODY ExoRightThigh
-- BODY ExoRightShank
-- BODY ExoRightFoot
-- BODY HumanTorso
-- BODY HumanLeftThigh
-- BODY HumanLeftShank
-- BODY HumanLeftFoot
-- BODY HumanRightThigh
-- BODY HumanRightShank
-- BODY HumanRightFoot
+  - BODY Crutches
+  - BODY ExoHip
+  - BODY ExoLeftThigh
+  - BODY ExoLeftShank
+  - BODY ExoLeftFoot
+  - BODY ExoRightThigh
+  - BODY ExoRightShank
+  - BODY ExoRightFoot
+  - BODY HumanTorso
+  - BODY HumanLeftThigh
+  - BODY HumanLeftShank
+  - BODY HumanLeftFoot
+  - BODY HumanRightThigh
+  - BODY HumanRightShank
+  - BODY HumanRightFoot
 joints:
-- JOINT Exo-Human_LeftFoot
-- JOINT Exo-Human_RightFoot
-- JOINT ExoHip-HumanTorso
-- JOINT ExoHipCrutches
-- JOINT ExoLeftKnee
-- JOINT ExoLeftAnkle
-- JOINT ExoLeftHip
-- JOINT ExoRightKnee
-- JOINT ExoRightAnkle
-- JOINT ExoRightHip
-- JOINT HumanLeftHip
-- JOINT HumanLeftKnee
-- JOINT HumanLeftAnkle
-- JOINT HumanRightHip
-- JOINT HumanRightKnee
-- JOINT HumanRightAnkle
+  - JOINT Exo-Human_LeftFoot
+  - JOINT Exo-Human_RightFoot
+  - JOINT ExoHip-HumanTorso
+  - JOINT ExoHipCrutches
+  - JOINT ExoLeftKnee
+  - JOINT ExoLeftAnkle
+  - JOINT ExoLeftHip
+  - JOINT ExoRightKnee
+  - JOINT ExoRightAnkle
+  - JOINT ExoRightHip
+  - JOINT HumanLeftHip
+  - JOINT HumanLeftKnee
+  - JOINT HumanLeftAnkle
+  - JOINT HumanRightHip
+  - JOINT HumanRightKnee
+  - JOINT HumanRightAnkle
 high resolution path: ./high_res/
 low resolution path: ./low_res/
 ignore inter-collision: false
@@ -76,64 +76,64 @@ BODY Crutches:
     angular: 0.1
     linear: 0.5
   collision groups:
-  - 18
+    - 18
   compound collision shape:
-  - name: '1'
-    shape: CYLINDER
-    geometry:
-      axis: Z
-      height: 1.066
-      radius: 0.042
-    offset:
-      position:
-        x: 0.4499993324279785
-        y: 0.0
-        z: -0.06539099663496017
-      orientation:
-        r: 0.0
-        p: 0.0
-        y: 0.0
-  - name: '2'
-    shape: CYLINDER
-    geometry:
-      axis: Z
-      height: 1.066
-      radius: 0.042
-    offset:
-      position:
-        x: -0.44999998807907104
-        y: 0.0
-        z: -0.06539099663496017
-      orientation:
-        r: 0.0
-        p: 0.0
-        y: 0.0
-  - name: '3'
-    shape: SPHERE
-    geometry:
-      radius: 0.061
-    offset:
-      position:
-        x: 0.44999998807907104
-        y: 0.0
-        z: -0.6420000195503235
-      orientation:
-        r: 0.0
-        p: 0.0
-        y: 0.0
-  - name: '4'
-    shape: SPHERE
-    geometry:
-      radius: 0.061
-    offset:
-      position:
-        x: -0.44999998807907104
-        y: 0.0
-        z: -0.6420000195503235
-      orientation:
-        r: 0.0
-        p: 0.0
-        y: 0.0
+    - name: '1'
+      shape: CYLINDER
+      geometry:
+        axis: Z
+        height: 1.066
+        radius: 0.042
+      offset:
+        position:
+          x: 0.4499993324279785
+          y: 0.0
+          z: -0.06539099663496017
+        orientation:
+          r: 0.0
+          p: 0.0
+          y: 0.0
+    - name: '2'
+      shape: CYLINDER
+      geometry:
+        axis: Z
+        height: 1.066
+        radius: 0.042
+      offset:
+        position:
+          x: -0.44999998807907104
+          y: 0.0
+          z: -0.06539099663496017
+        orientation:
+          r: 0.0
+          p: 0.0
+          y: 0.0
+    - name: '3'
+      shape: SPHERE
+      geometry:
+        radius: 0.061
+      offset:
+        position:
+          x: 0.44999998807907104
+          y: 0.0
+          z: -0.6420000195503235
+        orientation:
+          r: 0.0
+          p: 0.0
+          y: 0.0
+    - name: '4'
+      shape: SPHERE
+      geometry:
+        radius: 0.061
+      offset:
+        position:
+          x: -0.44999998807907104
+          y: 0.0
+          z: -0.6420000195503235
+        orientation:
+          r: 0.0
+          p: 0.0
+          y: 0.0
 BODY ExoHip:
   name: ExoHip
   mesh: ExoHip.STL
@@ -148,7 +148,7 @@ BODY ExoHip:
     position:
       x: -0.0001
       y: -0.0
-      z: 0.2001
+      z: 3.0
     orientation:
       r: 0.0
       p: -0.0
@@ -174,7 +174,7 @@ BODY ExoHip:
     angular: 0.5
     linear: 0.5
   collision groups:
-  - 8
+    - 8
   collision shape: BOX
   collision geometry:
     x: 0.4763
@@ -238,10 +238,10 @@ BODY ExoLeftThigh:
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.5
+    angular: 0.1
     linear: 0.5
   collision groups:
-  - 5
+    - 5
   collision shape: CAPSULE
   collision geometry:
     axis: Z
@@ -305,10 +305,10 @@ BODY ExoLeftShank:
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.5
+    angular: 0.1
     linear: 0.5
   collision groups:
-  - 6
+    - 6
   collision shape: CAPSULE
   collision geometry:
     axis: Z
@@ -368,14 +368,14 @@ BODY ExoLeftFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.01
+    rolling: 0.1
     static: 0.5
   restitution: 0.1
   damping:
-    angular: 0.5
+    angular: 0.1
     linear: 0.5
   collision groups:
-  - 7
+    - 7
   collision shape: BOX
   collision geometry:
     x: 0.2283
@@ -435,14 +435,14 @@ BODY ExoRightThigh:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.01
+    rolling: 0.5
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.5
-    linear: 0.5
+    angular: 0.1
+    linear: 0.1
   collision groups:
-  - 15
+    - 15
   collision shape: CAPSULE
   collision geometry:
     axis: Z
@@ -509,7 +509,7 @@ BODY ExoRightShank:
     angular: 0.5
     linear: 0.5
   collision groups:
-  - 16
+    - 16
   collision shape: CAPSULE
   collision geometry:
     axis: Z
@@ -569,14 +569,14 @@ BODY ExoRightFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.01
+    rolling: 0.1
     static: 0.5
   restitution: 0.1
   damping:
-    angular: 0.5
+    angular: 0.1
     linear: 0.5
   collision groups:
-  - 17
+    - 17
   collision shape: BOX
   collision geometry:
     x: 0.2283
@@ -653,7 +653,7 @@ BODY HumanTorso:
     angular: 0.5
     linear: 0.5
   collision groups:
-  - 3
+    - 3
   collision shape: BOX
   collision geometry:
     x: 0.4179
@@ -706,10 +706,10 @@ BODY HumanLeftThigh:
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.5
+    angular: 0.1
     linear: 0.5
   collision groups:
-  - 0
+    - 0
   collision shape: CAPSULE
   collision geometry:
     axis: Z
@@ -771,10 +771,10 @@ BODY HumanLeftShank:
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.5
+    angular: 0.1
     linear: 0.5
   collision groups:
-  - 1
+    - 1
   collision shape: CAPSULE
   collision geometry:
     axis: Z
@@ -823,14 +823,14 @@ BODY HumanLeftFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.01
+    rolling: 0.5
     static: 0.5
   restitution: 0.1
   damping:
-    angular: 0.5
+    angular: 0.1
     linear: 0.5
   collision groups:
-  - 2
+    - 2
   collision shape: BOX
   collision geometry:
     x: 0.1167
@@ -892,10 +892,10 @@ BODY HumanRightThigh:
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.5
+    angular: 0.1
     linear: 0.5
   collision groups:
-  - 0
+    - 0
   collision shape: CAPSULE
   collision geometry:
     axis: Z
@@ -957,10 +957,10 @@ BODY HumanRightShank:
     static: 0.5
   restitution: 0.0
   damping:
-    angular: 0.5
+    angular: 0.1
     linear: 0.5
   collision groups:
-  - 11
+    - 11
   collision shape: CAPSULE
   collision geometry:
     axis: Z
@@ -1018,14 +1018,14 @@ BODY HumanRightFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.01
+    rolling: 0.5
     static: 0.5
   restitution: 0.1
   damping:
-    angular: 0.5
+    angular: 0.1
     linear: 0.5
   collision groups:
-  - 12
+    - 12
   collision shape: BOX
   collision geometry:
     x: 0.1167

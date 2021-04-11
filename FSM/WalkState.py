@@ -36,7 +36,7 @@ class WalkState(smach.State):
         self.runner.update_start(start)
 
         while self.count < self.runner.get_length():
-            rospy.loginfo(self.model_name + " is at " + str(self.count) )
+            #rospy.loginfo(self.model_name + " is at " + str(self.count) )
             self.runner.step()
             msg = DesiredJoints()
             q = self.runner.x

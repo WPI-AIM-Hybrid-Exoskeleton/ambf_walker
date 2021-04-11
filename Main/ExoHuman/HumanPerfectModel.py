@@ -21,7 +21,7 @@ if __name__ == '__main__':
     rospy.init_node("Base")
     _client = Client()
     _client.connect()
-    rate = rospy.Rate(1000)
+
 
     robot_joints = ['ExoLeftHip', 'ExoLeftKnee', 'ExoLeftAnkle',
                     'ExoRightHip', 'ExoRightKnee', 'ExoRightAnkle',  'ExoHipCrutches']
@@ -32,8 +32,8 @@ if __name__ == '__main__':
 
     project_root = dirname(dirname(__file__))
     exo_file_path ="/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
-    human_file_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/human_lumped/lumped.yaml"
-
+    #human_file_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/human_lumped/lumped.yaml"
+    human_file_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/human2/default.yaml"
     LARRE = ExoskeletonServer.ExoskeletonServer(_client, "exo", robot_joints, exo_file_path, use_gravity=True)
     LARRY = HumanServer.HumanServer(_client, "human", body_joints, human_file_path)
     exo_controller_server = ExoControllerServer.ExoControllerServer(LARRE, True )
