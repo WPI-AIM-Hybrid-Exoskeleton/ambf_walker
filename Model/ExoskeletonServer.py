@@ -101,10 +101,11 @@ class ExoskeletonServer(ModelServer.ModelServer):
         self.rbdl_model = self.dynamic_model()
         :type tau: List
         """
+
         self.tau = self.rbdl_to_ambf(tau) - self.human_torque
-        #
+        # #
         # if all( np.abs(ele) > 0.0 for ele in self.human_torque):
-        #     temp = np.abs(tau) > 50
+        #     temp = np.abs(tau) > 1
         #     self.tau = temp*tau # self.rbdl_to_ambf(tau) - self.human_torque
         # else:
         #     self.tau = tau

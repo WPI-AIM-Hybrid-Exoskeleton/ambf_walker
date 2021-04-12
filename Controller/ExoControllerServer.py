@@ -121,8 +121,9 @@ class ExoControllerServer():
                 # if self.use_gravity:
                 #     grav_tau = self.calc_gravity(q,qd)
                 #     tau +=grav_tau
-
-                tau_msg.effort = tau
+                choose =  np.abs( np.array(msg.desired.positions) - np.array(q)) > 0.01
+                choose = 0 + choose
+                tau_msg.effort =  tau
                 self.tau_pub.publish(tau_msg)
             
             except rospy.ServiceException as e:

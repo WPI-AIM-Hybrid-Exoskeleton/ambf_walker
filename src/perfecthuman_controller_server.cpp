@@ -78,7 +78,7 @@ int main(int argc, char **argv)
 
 
         FF_Kp(0,0) = 500.0;
-        FF_Kp(1,1) = 500.0;
+        FF_Kp(1,1) = 400.0;
         FF_Kp(2,2) = 400.0;
         FF_Kp(3,3) = 400.0;
         FF_Kp(4,4) = 400.0;
