@@ -1,10 +1,10 @@
 #ifndef DYNCONTROLLER_H
 #define DYNCONTROLLER_H
 #include <Eigen/Core>
+#include <iostream>
 #include "ros/ros.h"
 #include "controller_modules/ControllerBase.h"
 #include "controller_modules/PDController.h"
-#include <iostream>
 #include "rbdl_server/RBDLInverseDynamics.h"
 
 class DynController : public ControllerBase

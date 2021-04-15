@@ -75,7 +75,7 @@ class HumanControllerServer(object):
         dt = 1.0/500
         while 1:
 
-
+            t +=dt
             local_msg = self.msg
 
             self.traj_pub.publish(traj_msg)
@@ -88,14 +88,15 @@ class HumanControllerServer(object):
             msg.actual.velocities = np.rad2deg(self._model.qd)
             msg.desired.positions =  np.rad2deg(local_msg.q)
             msg.desired.velocities = np.rad2deg(local_msg.qd)
+
             #msg.desired.accelerations = np.array(local_msg.qdd)
-            # try:
-            #     resp1 = self.controller_srv(msg)
-            #     tau = resp1.control_output.effort
-            #     tau_msg.effort = tau
-            #     self.tau_pub.publish(tau_msg)
-            # except rospy.ServiceException as e:
-            #     print("Service call failed: %s"%e)
+            try:
+                resp1 = self.controller_srv(msg)
+                tau = resp1.control_output.effort
+                tau_msg.effort = tau
+                self.tau_pub.publish(tau_msg)
+            except rospy.ServiceException as e:
+                print("Service call failed: %s"%e)
 
             # msg = JointControlRequest()
             msg.controller_name = "HumanPD"
@@ -118,15 +119,15 @@ class HumanControllerServer(object):
             #     print("Service call failed: %s"%e)
 
 
-            try:
-                resp1 = self.controller_srv(msg)
-                tau = resp1.control_output.effort
-                t +=dt
-                tau_msg.effort = np.array(tau) # np.abs(np.sin(0.5*t))*
-                #self.required_tau_pub.publish(tau_msg)
-                self.tau_pub.publish(tau_msg)
-            except rospy.ServiceException as e:
-                print("Service call failed: %s"%e)
+            # try:
+            #     resp1 = self.controller_srv(msg)
+            #     tau = resp1.control_output.effort
+            #     t +=dt
+            #     tau_msg.effort = np.array(tau) # np.abs(np.sin(0.5*t))*
+            #     #self.required_tau_pub.publish(tau_msg)
+            #     self.tau_pub.publish(tau_msg)
+            # except rospy.ServiceException as e:
+            #     print("Service call failed: %s"%e)
 
 
             rate.sleep()

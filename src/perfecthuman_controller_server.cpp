@@ -128,7 +128,7 @@ int main(int argc, char **argv)
 
 
 
-    FES_Kp(0, 0) =  500.0;
+    FES_Kp(0, 0) = 250.0;
     FES_Kp(1, 0) = 100.0;
     FES_Kp(2, 0) =  0.0;
     FES_Kp(5, 0) = 250.0;
@@ -161,7 +161,7 @@ int main(int argc, char **argv)
 
 
 
-    FES_Kp(0+9, 0+3) = 500.0;
+    FES_Kp(0+9, 0+3) = 250.0;
     FES_Kp(1+9, 0+3) = 100.0;
     FES_Kp(2+9, 0+3) =  0.0;
     FES_Kp(5+9, 0+3) = 250.0;

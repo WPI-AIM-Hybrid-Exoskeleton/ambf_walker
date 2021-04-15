@@ -45,6 +45,7 @@ class ModelServer(Model.Model):
         self.dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
         self.tau = len(self._selected_joint_names)*[0.0]
         self._use_gravity = False
+        self.loop_rate = 500
 
     def torque_cb(self, tau):
         self.update_torque(list(tau.effort))
@@ -75,7 +76,7 @@ class ModelServer(Model.Model):
 
         :return:
         """
-        rate = rospy.Rate(500)  # 1000hz
+        rate = rospy.Rate(self.loop_rate)  # 1000hz
         
 
         # get the joint map
