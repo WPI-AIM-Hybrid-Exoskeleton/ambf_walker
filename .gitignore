@@ -5,3 +5,6 @@
 build/
 lib/GaitAnalysisToolkit
 .vscode/*
+*.slxc
+
+matlab/slprj/sim/varcache/comm_test/

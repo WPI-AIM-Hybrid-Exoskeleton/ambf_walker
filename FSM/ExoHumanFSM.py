@@ -26,7 +26,30 @@ class ExoHumanFSM():
 
             walk_sub = smach.StateMachine(outcomes=['walked'])
 
-            # Open the container
+            simulink_sub = smach.StateMachine(outcomes=['walked'])
+
+
+            with simulink_sub:
+                # Add states to the container
+                smach.StateMachine.add('WalkInit', WalkInitState.WalkInitState("exo"),
+                                       transitions={'WalkInitialized': 'Humaninit'},
+                                       remapping={'human':'status',
+                                                  'q':'q',
+                                                  'qd':'qd'})
+
+                smach.StateMachine.add('Humaninit', InitilizeHumanState.InitializeState(),
+                                       transitions={'on':'walk','off':'walked' },
+                                       remapping={'status':'status',
+                                                  'q':'q',
+                                                  'qd':'qd'})
+
+                smach.StateMachine.add('WalkSimulink', WalkSimulinkState.WalkSimulinkState("exo", "Dyn"),
+                                       transitions={'walked':'walked'},
+                                       remapping={'q':'q',
+                                                  'qd':'qd'})
+
+
+        # Open the container
             with walk_sub:
                 # Add states to the container
                 smach.StateMachine.add('WalkInit', WalkInitState.WalkInitState("exo"),
@@ -70,7 +93,11 @@ class ExoHumanFSM():
             smach.StateMachine.add('Sub_Walk', walk_sub,
                                    transitions={'walked': 'Initialize'})
 
-        sis = smach_ros.IntrospectionServer('server_name', sm, '/SM_ROOT')
+            smach.StateMachine.add('Simulink_Walk', simulink_sub,
+                                   transitions={'walked': 'Initialize'})
+
+
+    sis = smach_ros.IntrospectionServer('server_name', sm, '/SM_ROOT')
         sis.start()
 
         # Execute the state machine
