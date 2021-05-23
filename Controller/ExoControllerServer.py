@@ -21,7 +21,7 @@ class ExoControllerServer():
         self._model = model
         self._updater = Thread(target=self.set_torque)
         self.sub_set_points = rospy.Subscriber(self.model.model_name + "_set_points", DesiredJoints, self.update_set_point)
-        self._enable_control_srv = rospy.Service(self.model.model_name + '_controller_onoff', SetBool, self.enable_control_srv)
+        self.control_onoff_srv = rospy.Service(self.model.model_name + '_controller_onoff', SetBool, self.enable_control_srv)
         self.tau_pub = rospy.Publisher(self.model.model_name + "_joint_torque", JointState, queue_size=1)
         self.traj_pub = rospy.Publisher(self.model.model_name + "_trajectory", Float32MultiArray, queue_size=1)
         self.error_pub = rospy.Publisher(self.model.model_name + "_Error", Float32MultiArray, queue_size=1)
@@ -50,10 +50,12 @@ class ExoControllerServer():
     def enable_control_srv(self, msg):
         if msg.data:
             self._enable_control = True
-            return SetBoolResponse(True, "Turned on " + self.model_name + " Controller")
+            print("asd;kljfhaskjfdhaskjfhalksjdhflaksdjfh")
+            rospy.loginfo("ahfkljsdhfaksjhfaksjdfhksadjhf")
+            return SetBoolResponse(False, "Turned on Exo Controller")
         else:
             self._enable_control = False
-            return SetBoolResponse(True, "Turned off " + self.model_name +  " Controller" )
+            return SetBoolResponse(False, "Turned off Exo Controller" )
 
 
     def update_set_point(self, msg):

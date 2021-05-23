@@ -4,7 +4,7 @@ import smach
 import smach_ros
 import rospy
 
-import InitializeState, WalkInitState, WalkState, MainState, LowerState, InitilizeHumanState
+import InitializeState, WalkInitState, WalkState, MainState, LowerState, InitilizeHumanState, WalkSimulinkState
 
 
 class ExoHumanFSM():
@@ -16,10 +16,11 @@ class ExoHumanFSM():
             smach.StateMachine.add('Initialize', InitializeState.InitializeState("exo"),
                                    transitions={'Initialized': 'Main'})
 
-            smach.StateMachine.add('Main', MainState.MainState(["Walk", "Lower", "Done"]),
+            smach.StateMachine.add('Main', MainState.MainState(["Walk", "Lower", "Done", "Sim"]),
                                    transitions={'Walk': 'Sub_Walk',
                                                 'Lower': 'LowerBody',
-                                                "Done": "Done"})
+                                                "Done": "Done",
+                                                "Sim":'Simulink_Walk'})
 
             smach.StateMachine.add('LowerBody', LowerState.LowerState("exo"),
                                    transitions={'Lowered': 'Main'})
@@ -38,7 +39,7 @@ class ExoHumanFSM():
                                                   'qd':'qd'})
 
                 smach.StateMachine.add('Humaninit', InitilizeHumanState.InitializeState(),
-                                       transitions={'on':'walk','off':'walked' },
+                                       transitions={'on':'WalkSimulink','off':'walked' },
                                        remapping={'status':'status',
                                                   'q':'q',
                                                   'qd':'qd'})
@@ -97,10 +98,10 @@ class ExoHumanFSM():
                                    transitions={'walked': 'Initialize'})
 
 
-    sis = smach_ros.IntrospectionServer('server_name', sm, '/SM_ROOT')
+        sis = smach_ros.IntrospectionServer('server_name', sm, '/SM_ROOT')
         sis.start()
 
-        # Execute the state machine
+            # Execute the state machine
         outcome = sm.execute()
 
         # Wait for ctrl-c to stop the application

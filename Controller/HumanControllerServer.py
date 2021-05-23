@@ -63,10 +63,10 @@ class HumanControllerServer(object):
     def enable_control_srv(self, msg):
         if msg.data:
             self._enable_control = True
-            return SetBoolResponse(True, "Turned on " + self.model_name + " Controller")
+            return SetBoolResponse(True, "Turned on human Controller")
         else:
             self._enable_control = False
-            return SetBoolResponse(True, "Turned off " + self.model_name +  " Controller" )
+            return SetBoolResponse(True, "Turned off human Controller" )
 
     def joint_cmd_server(self, msg):
         with self.lock:
