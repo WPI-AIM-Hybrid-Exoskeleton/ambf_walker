@@ -60,57 +60,57 @@ int main(int argc, char **argv)
             exo_Kp(2,2) = 450.0;
             exo_Kp(3,3) = 450.0;
             exo_Kp(4,4) = 450.0;
-            exo_Kp(5,5) = 450.0;
-            exo_Kp(6,6) = 450.0;
+            exo_Kp(5,5) = 1250.0;
+            exo_Kp(6,6) = 1250.0;
 
-            exo_Kd(0,0) = 8.0;
-            exo_Kd(1,1) = 8.0;
-            exo_Kd(2,2) = 8.0;
-            exo_Kd(3,3) = 8.0;
-            exo_Kd(4,4) = 8.0;
-            exo_Kd(5,5) = 8.0;
-            exo_Kd(6,6) = 8.0;
+            exo_Kd(0,0) = 20.0;
+            exo_Kd(1,1) = 20.0;
+            exo_Kd(2,2) = 20.0;
+            exo_Kd(3,3) = 20.0;
+            exo_Kd(4,4) = 20.0;
+            exo_Kd(5,5) = 20.0;
+            exo_Kd(6,6) = 20.0;
 
 
     Eigen::MatrixXd FF_Kp = Eigen::MatrixXd::Ones(6,6);
     Eigen::MatrixXd FF_Kd = Eigen::MatrixXd::Ones(6,6);
 
 
-//    FF_Kp(0,0) = 500.0;
-//    FF_Kp(1,1) = 300.0;
-//    FF_Kp(2,2) = 300.0;
-//    FF_Kp(3,3) = 500.0;
-//    FF_Kp(4,4) = 500.0;
-//    FF_Kp(4,4) = 500.0;
-//    FF_Kp(5,5) = 500.0;
+        FF_Kp(0,0) = 250.0;
+        FF_Kp(1,1) = 250.0;
+        FF_Kp(2,2) = 250.0;
+        FF_Kp(3,3) = 250.0;
+        FF_Kp(4,4) = 250.0;
+        FF_Kp(4,4) = 250.0;
+        FF_Kp(5,5) = 250.0;
+
+
+        FF_Kd(0,0) = 60.5;
+        FF_Kd(1,1) = 60.5;
+        FF_Kd(2,2) = 60.5;
+        FF_Kd(3,3) = 60.5;
+        FF_Kd(4,4) = 60.5;
+        FF_Kd(5,5) = 60.5;
+        FF_Kd(5,5) = 60.5;
+
+
+
+//        FF_Kp(0,0) = 500.0;
+//        FF_Kp(1,1) = 400.0;
+//        FF_Kp(2,2) = 400.0;
+//        FF_Kp(3,3) = 400.0;
+//        FF_Kp(4,4) = 400.0;
+//        FF_Kp(4,4) = 400.0;
+//        FF_Kp(5,5) = 800.0;
 //
 //
-//    FF_Kd(0,0) = 2.5;
-//    FF_Kd(1,1) = 4.5;
-//    FF_Kd(2,2) = 4.5;
-//    FF_Kd(3,3) = 4.5;
-//    FF_Kd(4,4) = 4.5;
-//    FF_Kd(5,5) = 4.5;
-//    FF_Kd(5,5) = 4.5;
-
-
-
-        FF_Kp(0,0) = 500.0;
-        FF_Kp(1,1) = 400.0;
-        FF_Kp(2,2) = 400.0;
-        FF_Kp(3,3) = 400.0;
-        FF_Kp(4,4) = 400.0;
-        FF_Kp(4,4) = 400.0;
-        FF_Kp(5,5) = 800.0;
-
-
-        FF_Kd(0,0) = 2.5;
-        FF_Kd(1,1) = 2.5;
-        FF_Kd(2,2) = 2.5;
-        FF_Kd(3,3) = 2.5;
-        FF_Kd(4,4) = 2.5;
-        FF_Kd(5,5) = 2.5;
-        FF_Kd(5,5) = 2.5;
+//        FF_Kd(0,0) = 2.5;
+//        FF_Kd(1,1) = 2.5;
+//        FF_Kd(2,2) = 2.5;
+//        FF_Kd(3,3) = 2.5;
+//        FF_Kd(4,4) = 2.5;
+//        FF_Kd(5,5) = 2.5;
+//        FF_Kd(5,5) = 2.5;
 
 //    FF_Kp(0,0) = 500.0;
 //    FF_Kp(1,1) = 500.0;
@@ -211,15 +211,22 @@ int main(int argc, char **argv)
     FES_Kd(8+9, 2+3) = 0.0;
 //
 
+    Eigen::MatrixXd Kp0 = Eigen::MatrixXd::Zero(7,7);
+    Eigen::MatrixXd Kd0 = Eigen::MatrixXd::Zero(7,7);
+
+
     ControllerManager manager = ControllerManager(&n);
     PDController exo(exo_Kp, exo_Kd);
     PDController human(FF_Kp, FF_Kd);
+    PDController NoGains(Kp0, Kd0);
     boost::shared_ptr<ControllerBase> Dyn_controller(new  DynController("exo", &n, &exo) );
+    boost::shared_ptr<ControllerBase> NoGainsController(new  DynController("exo", &n, &NoGains  ) );
     boost::shared_ptr<ControllerBase> Human_controller(new DynController("human", &n, &human ) );
     boost::shared_ptr<ControllerBase> FES_controller(new  PDController(FES_Kp, FES_Kd ) );
 
 
     manager.addController("Dyn", Dyn_controller);
+    manager.addController("NoGains", NoGainsController);
     manager.addController("HumanPD", Human_controller);
     manager.addController("FES", FES_controller);
 

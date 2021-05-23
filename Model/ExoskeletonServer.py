@@ -102,7 +102,7 @@ class ExoskeletonServer(ModelServer.ModelServer):
         :type tau: List
         """
 
-        self.tau = self.rbdl_to_ambf(tau) - self.human_torque
+        self.tau = self.rbdl_to_ambf(tau) #- self.human_torque
         # #
         # if all( np.abs(ele) > 0.0 for ele in self.human_torque):
         #     temp = np.abs(tau) > 1

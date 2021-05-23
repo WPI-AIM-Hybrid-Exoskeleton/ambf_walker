@@ -9,7 +9,7 @@ from . import DynController
 from ambf_walker.srv import DesiredJointsCmd, DesiredJointsCmdResponse
 from controller_modules.srv import JointControl, JointControlRequest
 from trajectory_msgs.msg import JointTrajectoryPoint
-
+from std_srvs.srv import SetBool, SetBoolResponse
 
 class HumanControllerServer(object):
 
@@ -19,6 +19,7 @@ class HumanControllerServer(object):
         self._model = model
         self._updater = Thread(target=self.set_torque)
         self.sub_set_points = rospy.Subscriber(self.model.model_name + "_set_points", DesiredJoints, self.update_set_point)
+        self._enable_control_srv = rospy.Service(self.model.model_name+ '_controller_onoff', SetBool, self.enable_control_srv)
         self.tau_pub = rospy.Publisher(self.model.model_name + "_joint_torque", JointState, queue_size=1)
         self.traj_pub = rospy.Publisher(self.model.model_name + "_trajectory", Float32MultiArray, queue_size=1)
         self.error_pub = rospy.Publisher(self.model.model_name + "_Error", Float32MultiArray, queue_size=1)
@@ -57,6 +58,16 @@ class HumanControllerServer(object):
             self._updater.start()
         return True
 
+
+
+    def enable_control_srv(self, msg):
+        if msg.data:
+            self._enable_control = True
+            return SetBoolResponse(True, "Turned on " + self.model_name + " Controller")
+        else:
+            self._enable_control = False
+            return SetBoolResponse(True, "Turned off " + self.model_name +  " Controller" )
+
     def joint_cmd_server(self, msg):
         with self.lock:
             self.msg = msg
@@ -90,13 +101,13 @@ class HumanControllerServer(object):
             msg.desired.velocities = np.rad2deg(local_msg.qd)
 
             #msg.desired.accelerations = np.array(local_msg.qdd)
-            try:
-                resp1 = self.controller_srv(msg)
-                tau = resp1.control_output.effort
-                tau_msg.effort = tau
-                self.tau_pub.publish(tau_msg)
-            except rospy.ServiceException as e:
-                print("Service call failed: %s"%e)
+            # try:
+            #     resp1 = self.controller_srv(msg)
+            #     tau = resp1.control_output.effort
+            #     tau_msg.effort = tau
+            #     self.tau_pub.publish(tau_msg)
+            # except rospy.ServiceException as e:
+            #     print("Service call failed: %s"%e)
 
             # msg = JointControlRequest()
             msg.controller_name = "HumanPD"
@@ -119,15 +130,15 @@ class HumanControllerServer(object):
             #     print("Service call failed: %s"%e)
 
 
-            # try:
-            #     resp1 = self.controller_srv(msg)
-            #     tau = resp1.control_output.effort
-            #     t +=dt
-            #     tau_msg.effort = np.array(tau) # np.abs(np.sin(0.5*t))*
-            #     #self.required_tau_pub.publish(tau_msg)
-            #     self.tau_pub.publish(tau_msg)
-            # except rospy.ServiceException as e:
-            #     print("Service call failed: %s"%e)
+            try:
+                resp1 = self.controller_srv(msg)
+                tau = resp1.control_output.effort
+                t +=dt
+                tau_msg.effort = np.array(tau) # np.abs(np.sin(0.5*t))*
+                #self.required_tau_pub.publish(tau_msg)
+                self.tau_pub.publish(tau_msg)
+            except rospy.ServiceException as e:
+                print("Service call failed: %s"%e)
 
 
             rate.sleep()

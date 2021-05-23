@@ -45,12 +45,12 @@ class HumanServer(ModelServer.ModelServer):
     def torque_cb(self, tau):
         self.update_torque(list(tau.effort))
 
-    # def update_torque(self, tau):
-    #     """
-    #     self.rbdl_model = self.dynamic_model()
-    #     :type tau: List
-    #     """
-    #     self.tau =  self.rbdl_to_ambf(tau)
+    def update_torque(self, tau):
+        """
+        self.rbdl_model = self.dynamic_model()
+        :type tau: List
+        """
+        self.tau =  self.rbdl_to_ambf(tau)
 
     def required_human_cb(self, tau):
         msg = Float32MultiArray()
@@ -59,40 +59,40 @@ class HumanServer(ModelServer.ModelServer):
             msg.data = tau - self.tau
             self.torque_error_pub.publish(msg)
 
-
-    def update_torque(self, PW):
-        """
-        self.rbdl_model = self.dynamic_model()
-        :type tau: List
-        """
-        time = 0.0
-
-        if self.enable_control:
-
-            if self.last_time is None:
-                self.last_time = rospy.get_time()
-            else:
-                time = rospy.get_time() - self.last_time
-
-            # if time % 1 <  0.1:
-            #     rospy.sleep(0.5)
-            #     time = rospy.get_time() - self.last_time
-
-            left_tau = (self._left_muscle.calc_moment(np.abs(np.clip(PW[:9], 0, 480)) ,
-                                                                 self.freq,
-                                                                 time,
-                                                                 np.rad2deg(self.q[:3]),
-                                                                 np.rad2deg(self.qd[:3])))
-
-            right_tau = (self._right_muscle.calc_moment(np.abs(np.clip(PW[9:], 0, 480)),
-                                                       self.freq,
-                                                       time,
-                                                       np.rad2deg(self.q[3:]),
-                                                       np.rad2deg(self.qd[3:])))
-
-
-
-            self.tau =  np.concatenate([left_tau, right_tau])
+    #
+    # def update_torque(self, PW):
+    #     """
+    #     self.rbdl_model = self.dynamic_model()
+    #     :type tau: List
+    #     """
+    #     time = 0.0
+    #
+    #     if self.enable_control:
+    #
+    #         if self.last_time is None:
+    #             self.last_time = rospy.get_time()
+    #         else:
+    #             time = rospy.get_time() - self.last_time
+    #
+    #         # if time % 1 <  0.1:
+    #         #     rospy.sleep(0.5)
+    #         #     time = rospy.get_time() - self.last_time
+    #
+    #         left_tau = (self._left_muscle.calc_moment(np.abs(np.clip(PW[:9], 0, 480)) ,
+    #                                                              self.freq,
+    #                                                              time,
+    #                                                              np.rad2deg(self.q[:3]),
+    #                                                              np.rad2deg(self.qd[:3])))
+    #
+    #         right_tau = (self._right_muscle.calc_moment(np.abs(np.clip(PW[9:], 0, 480)),
+    #                                                    self.freq,
+    #                                                    time,
+    #                                                    np.rad2deg(self.q[3:]),
+    #                                                    np.rad2deg(self.qd[3:])))
+    #
+    #
+    #
+    #         self.tau =  np.concatenate([left_tau, right_tau])
 
 
 

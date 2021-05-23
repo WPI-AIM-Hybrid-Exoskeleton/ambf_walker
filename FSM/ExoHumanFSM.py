@@ -53,7 +53,7 @@ class ExoHumanFSM():
                 # Open the container
                 with walk_con:
                     # Add states to the container
-                    smach.Concurrence.add('ExoWalk', WalkState.WalkState("exo", "Dyn") ,remapping={'q':'q',
+                    smach.Concurrence.add('ExoWalk', WalkState.WalkState("exo", "NoGains") ,remapping={'q':'q',
                                           'qd':'qd'})
                     smach.Concurrence.add('HumanWalk', WalkState.WalkState("human", "human"),
                                    remapping={'q':'q',
