@@ -48,7 +48,9 @@ class ModelServer(Model.Model):
         self.loop_rate = 500
 
     def torque_cb(self, tau):
-        self.update_torque(list(tau.effort))
+        my_tau = tau.effort
+        if len(my_tau) == len(self._selected_joint_names):
+            self.update_torque(list(tau.effort))
 
     def update_torque(self, tau):
         """

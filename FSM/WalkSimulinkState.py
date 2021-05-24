@@ -9,6 +9,8 @@ from GaitAnaylsisToolkit.LearningTools.Runner import TPGMMRunner
 from sensor_msgs.msg import JointState
 from std_srvs.srv import SetBool, SetBoolResponse
 
+from std_msgs.msg import Float32
+
 class WalkSimulinkState(smach.State):
 
     def __init__(self, model_name, controller_name, outcomes=["walked"],output_keys=['human'],  input_keys=['q', 'qd']):
@@ -20,6 +22,7 @@ class WalkSimulinkState(smach.State):
         self.rate = rospy.Rate(10)
         self._controller_name = controller_name
         self.pub = rospy.Publisher(model_name + "simulink_set_points", DesiredJoints, queue_size=1)
+        self.pub_sin = rospy.Publisher("my_sin_wave", Float32, queue_size=1)
         self.count = 0
 
     def _get_walker(self):
@@ -34,6 +37,8 @@ class WalkSimulinkState(smach.State):
             start.append(np.array([q]))
 
         self.runner.update_start(start)
+
+
 
         while self.count < self.runner.get_length():
             #rospy.loginfo(self.model_name + " is at " + str(self.count) )

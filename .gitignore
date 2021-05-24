@@ -10,3 +10,5 @@ lib/GaitAnalysisToolkit
 matlab/slprj/sim/varcache/comm_test/
 
 matlab/comm_test.slx.autosave
+
+*.original

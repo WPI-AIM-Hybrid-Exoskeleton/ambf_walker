@@ -9,6 +9,7 @@ import Model
 import time
 import message_filters
 from GaitCore.Core import Point
+from std_msgs.msg import Float32
 from GaitCore.Core import utilities
 from std_msgs.msg import Float32MultiArray
 from threading import Thread
@@ -30,7 +31,6 @@ class ExoskeletonServer(ModelServer.ModelServer):
         super(ExoskeletonServer, self).__init__(client, model_name=model_name, joint_names=joints, model_path=model_path)
         self._handle = self._client.get_obj_handle('ExoHip')
         self._use_gravity = use_gravity
-        
         if use_gravity:
             print("Getting the gravity dynamics")
             project_root = dirname(dirname(__file__))
@@ -90,18 +90,27 @@ class ExoskeletonServer(ModelServer.ModelServer):
         self._right_foot_prox = SensorState()
         self._left_foot_prox = SensorState()
         self.humantorque_sub = rospy.Subscriber("human_jointstate", JointState, self.update_human_torque)
+        self.humantorque_sub = rospy.Subscriber("simulink_jointstate", JointState, self.simulink_controller)
         self._updater.start()
         self.human_torque = np.array(7*[0])
 
+
     def update_human_torque(self, state):
         self.human_torque = np.array(state.effort + (0.0,))
+
+
+    def simulink_controller(self, msg):
+        for effort in msg.effort:
+            if effort != 0:
+                print(effort)
+                self.update_torque(list(msg.effort))
+                break
 
     def update_torque(self, tau):
         """
         self.rbdl_model = self.dynamic_model()
         :type tau: List
         """
-
         self.tau = self.rbdl_to_ambf(tau) #- self.human_torque
         # #
         # if all( np.abs(ele) > 0.0 for ele in self.human_torque):

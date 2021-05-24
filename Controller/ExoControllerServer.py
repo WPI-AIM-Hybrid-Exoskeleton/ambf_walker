@@ -27,7 +27,7 @@ class ExoControllerServer():
         self.error_pub = rospy.Publisher(self.model.model_name + "_Error", Float32MultiArray, queue_size=1)
         self.controller_srv = rospy.ServiceProxy('CalcTau', JointControl)
         self.service = rospy.Service(model.model_name + '_joint_cmd', DesiredJointsCmd, self.joint_cmd_server)
-
+        self._tread_running = False
         self._enable_control = False
         self.ctrl_list = []
         self.msg = None
@@ -50,8 +50,6 @@ class ExoControllerServer():
     def enable_control_srv(self, msg):
         if msg.data:
             self._enable_control = True
-            print("asd;kljfhaskjfdhaskjfhalksjdhflaksdjfh")
-            rospy.loginfo("ahfkljsdhfaksjhfaksjdfhksadjhf")
             return SetBoolResponse(False, "Turned on Exo Controller")
         else:
             self._enable_control = False
@@ -69,7 +67,7 @@ class ExoControllerServer():
         # self.qd = np.array(msg.qd)
         # self.qdd = np.array(msg.qdd)
         # self.other = np.array(msg.other)
-        if not self._enable_control:
+        if not self._tread_running:
             self._updater.start()
         return True
 
@@ -77,7 +75,7 @@ class ExoControllerServer():
         with self.lock:
             self.msg = msg
        
-        if not self._enable_control:
+        if not self._tread_running:
             self._updater.start()
         return DesiredJointsCmdResponse(True)
 
@@ -99,12 +97,14 @@ class ExoControllerServer():
 
     def set_torque(self):
         self._enable_control = True
+        self._tread_running = True
         rate = rospy.Rate(500)
         tau_msg = JointState()
         traj_msg = Float32MultiArray()
         error_msg = Float32MultiArray()
 
         while 1:
+
             if self._enable_control:
                 # with self.lock:
                 local_msg = self.msg
