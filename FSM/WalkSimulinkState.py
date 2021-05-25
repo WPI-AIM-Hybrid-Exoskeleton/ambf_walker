@@ -24,6 +24,11 @@ class WalkSimulinkState(smach.State):
         self.pub = rospy.Publisher(model_name + "simulink_set_points", DesiredJoints, queue_size=1)
         self.pub_sin = rospy.Publisher("my_sin_wave", Float32, queue_size=1)
         self.count = 0
+        project_root = dirname(dirname(__file__))
+        file = join(project_root, 'config/tau_human2.npy')
+        with open(file, 'rb') as f:
+            self.ilqr_tau = np.load(f)
+
 
     def _get_walker(self):
         project_root = dirname(dirname(__file__))
@@ -51,9 +56,11 @@ class WalkSimulinkState(smach.State):
             q = np.append(q, size_diff*[0.0])
             qd = np.append(qd, size_diff*[0.0])
             qdd = np.append(qdd, size_diff*[0.0])
+            Td = -self.ilqr_tau[self.count]
             msg.q = q
             msg.qd = qd
             msg.qdd = qdd
+            msg.other = Td
             msg.controller = self._controller_name
             self.pub.publish(msg)
             self.count += 1
