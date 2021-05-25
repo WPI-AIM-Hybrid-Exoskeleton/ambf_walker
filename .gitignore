@@ -18,3 +18,7 @@ matlab/slprj/_sfprj/precompile/
 *.mat
 
 *.asv
+
+matlab/slprj/_jitprj/
+
+matlab/slprj/sim/varcache/sliding_controller/tmwinternal/

@@ -50,3 +50,13 @@ Ked = eye(7);
 exo_sat = 50
 
 Kp0 = 50
+
+
+Kp0 = 50*eye(2);
+Kn0 = 50*eye(2);
+Bp0 = 50;
+Bn0 = 50;
+beta_p = 3;
+beta_n = 3;
+alpha_p = 3;
+alpha_n = 3;
