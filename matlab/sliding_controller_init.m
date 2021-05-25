@@ -13,8 +13,8 @@ myR = eye(7); % diag([0.001 0.001 0.00 0.00]);
 
 
 % connection dyamics
-spring = eye(14);
-dampener = eye(7);
+spring = eye(2);
+dampener = eye(2);
 
 
 % model 1 gains
