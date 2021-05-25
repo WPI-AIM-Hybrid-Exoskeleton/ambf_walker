@@ -12,3 +12,9 @@ matlab/slprj/sim/varcache/comm_test/
 matlab/comm_test.slx.autosave
 
 *.original
+
+matlab/slprj/_sfprj/precompile/
+
+*.mat
+
+*.asv
