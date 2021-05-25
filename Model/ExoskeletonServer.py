@@ -90,7 +90,6 @@ class ExoskeletonServer(ModelServer.ModelServer):
         self._right_foot_prox = SensorState()
         self._left_foot_prox = SensorState()
         self.humantorque_sub = rospy.Subscriber("human_jointstate", JointState, self.update_human_torque)
-        self.humantorque_sub = rospy.Subscriber("simulink_jointstate", JointState, self.simulink_controller)
         self._updater.start()
         self.human_torque = np.array(7*[0])
 
@@ -98,13 +97,6 @@ class ExoskeletonServer(ModelServer.ModelServer):
     def update_human_torque(self, state):
         self.human_torque = np.array(state.effort + (0.0,))
 
-
-    def simulink_controller(self, msg):
-        for effort in msg.effort:
-            if effort != 0:
-                print(effort)
-                self.update_torque(list(msg.effort))
-                break
 
     def update_torque(self, tau):
         """

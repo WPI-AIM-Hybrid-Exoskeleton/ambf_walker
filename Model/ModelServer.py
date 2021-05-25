@@ -45,7 +45,16 @@ class ModelServer(Model.Model):
         self.dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
         self.tau = len(self._selected_joint_names)*[0.0]
         self._use_gravity = False
+        self.simulink_sub = rospy.Subscriber("simulink_torque", JointState, self.simulink_controller)
         self.loop_rate = 500
+
+
+    def simulink_controller(self, msg):
+        for effort in msg.effort:
+            if effort != 0:
+                print(effort)
+                self.update_torque(list(msg.effort))
+                break
 
     def torque_cb(self, tau):
         my_tau = tau.effort
