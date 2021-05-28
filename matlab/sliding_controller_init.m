@@ -1,12 +1,8 @@
 myQ = 1;
 myR = 1;
 
-mh = [2, 1]; 
-
-me = [ 1, 1] + mh;
-
-% other model params
-l = [ 1.0, 1.5]
+    l1 = 0.3240;
+    l2 = 0.3900;
 
 myQ = eye(14);
 myR = eye(7); % diag([0.001 0.001 0.00 0.00]);
