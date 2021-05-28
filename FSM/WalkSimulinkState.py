@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 import smach
 import rospy
 from ambf_walker.msg import DesiredJoints
@@ -22,7 +22,6 @@ class WalkSimulinkState(smach.State):
         self.rate = rospy.Rate(10)
         self._controller_name = controller_name
         self.pub = rospy.Publisher(model_name + "simulink_set_points", DesiredJoints, queue_size=1)
-        self.pub_sin = rospy.Publisher("my_sin_wave", Float32, queue_size=1)
         self.count = 0
         project_root = dirname(dirname(__file__))
         file = join(project_root, 'config/tau_human2.npy')
@@ -43,7 +42,7 @@ class WalkSimulinkState(smach.State):
 
         self.runner.update_start(start)
 
-
+        self.count = 0
 
         while self.count < self.runner.get_length():
             #rospy.loginfo(self.model_name + " is at " + str(self.count) )

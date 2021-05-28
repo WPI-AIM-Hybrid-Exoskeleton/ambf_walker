@@ -13,20 +13,21 @@ myR = eye(7); % diag([0.001 0.001 0.00 0.00]);
 
 
 % connection dyamics
-spring = eye(2);
-dampener = eye(2);
+spring = 100*eye(2);
+dampener = 100*eye(2);
 
 
 % model 1 gains
-Km1 = eye(7);
-Dm1 = eye(7);
+Km1 = 30*eye(7);
+Dm1 = 30*eye(7);
 
 
 
 % Addmittance Controller
-Kd = eye(7);
-Bd = eye(7);
-Md =eye(7);
+Kd = 50*eye(7);
+Bd = 50*eye(7);
+Md = 20*eye(7);
+invMd = inv(Md);
 
 %Exo Gains
 Kp_e = 300;
@@ -42,18 +43,18 @@ lambda2 = eye(7);
 rho2 = eye(7);
 
 lambda2 = eye(7);
-rho2 = eye(7);
+rho2 = 200*eye(7);
 sat = 10;
 
-Kem = eye(7);
-Ked = eye(7);
+Kem = 50*eye(7);
+Ked = 50*eye(7);
 exo_sat = 50
 
 Kp0 = 50
 
 
-Kp0 = 50*eye(2);
-Kn0 = 50*eye(2);
+Kp0 = 50*eye(7);
+Kn0 = 50*eye(7);
 Bp0 = 50;
 Bn0 = 50;
 beta_p = 3;

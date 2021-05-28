@@ -22,3 +22,19 @@ matlab/slprj/_sfprj/precompile/
 matlab/slprj/_jitprj/
 
 matlab/slprj/sim/varcache/sliding_controller/tmwinternal/
+
+matlab/slprj/_sfprj/EMLReport/sbOpTC5ry5LRcMyR4dwJm8C/
+
+*.mldatx
+
+*.html
+
+*.xml
+
+matlab/slprj/modeladvisor/sliding_controller/ModelAdvisorData
+
+matlab/slprj/modeladvisor/com_2emathworks_2eSimulink_2ePerformanceAdvisor_2ePerformanceAdvisor_/sliding_controller/ModelAdvisorData
+
+*.htmx
+
+*.tmw
