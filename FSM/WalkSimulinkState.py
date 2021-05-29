@@ -40,9 +40,23 @@ class WalkSimulinkState(smach.State):
         for q in userdata.q[0:6]:
             start.append(np.array([q]))
 
+        self.runner.reset()
         self.runner.update_start(start)
-
         self.count = 0
+
+
+
+        rospy.wait_for_service('human_controller_onoff')
+        rospy.wait_for_service('exo_controller_onoff')
+
+        try:
+            human = rospy.ServiceProxy('human_controller_onoff', SetBool)
+            exo = rospy.ServiceProxy('human_controller_onoff', SetBool)
+            resp1 = human(False)
+            resp1 = exo(False)
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
+
 
         while self.count < self.runner.get_length():
             #rospy.loginfo(self.model_name + " is at " + str(self.count) )
@@ -66,6 +80,14 @@ class WalkSimulinkState(smach.State):
             # print(count)
             userdata.human = False
             self.rate.sleep()
+
+
+
+        try:
+            exo = rospy.ServiceProxy('human_controller_onoff', SetBool)
+            resp1 = exo(True)
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
 
         return "walked"
 

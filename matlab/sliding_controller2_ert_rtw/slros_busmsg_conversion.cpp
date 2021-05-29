@@ -1,0 +1,134 @@
+#include "slros_busmsg_conversion.h"
+
+
+// Conversions between SL_Bus_sliding_controller2_ambf_walker_DesiredJoints and ambf_walker::DesiredJoints
+
+void convertFromBus(ambf_walker::DesiredJoints* msgPtr, SL_Bus_sliding_controller2_ambf_walker_DesiredJoints const* busPtr)
+{
+  const std::string rosMessageType("ambf_walker/DesiredJoints");
+
+  convertFromBusVariablePrimitiveArray(msgPtr->controller, busPtr->Controller, busPtr->Controller_SL_Info);
+  convertFromBus(&msgPtr->header, &busPtr->Header);
+  convertFromBusVariablePrimitiveArray(msgPtr->other, busPtr->Other, busPtr->Other_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->q, busPtr->Q, busPtr->Q_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->qd, busPtr->Qd, busPtr->Qd_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->qdd, busPtr->Qdd, busPtr->Qdd_SL_Info);
+}
+
+void convertToBus(SL_Bus_sliding_controller2_ambf_walker_DesiredJoints* busPtr, ambf_walker::DesiredJoints const* msgPtr)
+{
+  const std::string rosMessageType("ambf_walker/DesiredJoints");
+
+  convertToBusVariablePrimitiveArray(busPtr->Controller, busPtr->Controller_SL_Info, msgPtr->controller, slros::EnabledWarning(rosMessageType, "controller"));
+  convertToBus(&busPtr->Header, &msgPtr->header);
+  convertToBusVariablePrimitiveArray(busPtr->Other, busPtr->Other_SL_Info, msgPtr->other, slros::EnabledWarning(rosMessageType, "other"));
+  convertToBusVariablePrimitiveArray(busPtr->Q, busPtr->Q_SL_Info, msgPtr->q, slros::EnabledWarning(rosMessageType, "q"));
+  convertToBusVariablePrimitiveArray(busPtr->Qd, busPtr->Qd_SL_Info, msgPtr->qd, slros::EnabledWarning(rosMessageType, "qd"));
+  convertToBusVariablePrimitiveArray(busPtr->Qdd, busPtr->Qdd_SL_Info, msgPtr->qdd, slros::EnabledWarning(rosMessageType, "qdd"));
+}
+
+
+// Conversions between SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex and rbdl_server::RBDLInverseDynamicsRequest
+
+void convertFromBus(rbdl_server::RBDLInverseDynamicsRequest* msgPtr, SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex const* busPtr)
+{
+  const std::string rosMessageType("rbdl_server/RBDLInverseDynamicsRequest");
+
+  convertFromBusVariablePrimitiveArray(msgPtr->model_name, busPtr->ModelName, busPtr->ModelName_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->q, busPtr->Q, busPtr->Q_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->qd, busPtr->Qd, busPtr->Qd_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->qdd, busPtr->Qdd, busPtr->Qdd_SL_Info);
+}
+
+void convertToBus(SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex* busPtr, rbdl_server::RBDLInverseDynamicsRequest const* msgPtr)
+{
+  const std::string rosMessageType("rbdl_server/RBDLInverseDynamicsRequest");
+
+  convertToBusVariablePrimitiveArray(busPtr->ModelName, busPtr->ModelName_SL_Info, msgPtr->model_name, slros::EnabledWarning(rosMessageType, "model_name"));
+  convertToBusVariablePrimitiveArray(busPtr->Q, busPtr->Q_SL_Info, msgPtr->q, slros::EnabledWarning(rosMessageType, "q"));
+  convertToBusVariablePrimitiveArray(busPtr->Qd, busPtr->Qd_SL_Info, msgPtr->qd, slros::EnabledWarning(rosMessageType, "qd"));
+  convertToBusVariablePrimitiveArray(busPtr->Qdd, busPtr->Qdd_SL_Info, msgPtr->qdd, slros::EnabledWarning(rosMessageType, "qdd"));
+}
+
+
+// Conversions between SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h and rbdl_server::RBDLInverseDynamicsResponse
+
+void convertFromBus(rbdl_server::RBDLInverseDynamicsResponse* msgPtr, SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h const* busPtr)
+{
+  const std::string rosMessageType("rbdl_server/RBDLInverseDynamicsResponse");
+
+  convertFromBusVariablePrimitiveArray(msgPtr->tau, busPtr->Tau, busPtr->Tau_SL_Info);
+}
+
+void convertToBus(SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h* busPtr, rbdl_server::RBDLInverseDynamicsResponse const* msgPtr)
+{
+  const std::string rosMessageType("rbdl_server/RBDLInverseDynamicsResponse");
+
+  convertToBusVariablePrimitiveArray(busPtr->Tau, busPtr->Tau_SL_Info, msgPtr->tau, slros::EnabledWarning(rosMessageType, "tau"));
+}
+
+
+// Conversions between SL_Bus_sliding_controller2_ros_time_Time and ros::Time
+
+void convertFromBus(ros::Time* msgPtr, SL_Bus_sliding_controller2_ros_time_Time const* busPtr)
+{
+  const std::string rosMessageType("ros_time/Time");
+
+  msgPtr->nsec =  busPtr->Nsec;
+  msgPtr->sec =  busPtr->Sec;
+}
+
+void convertToBus(SL_Bus_sliding_controller2_ros_time_Time* busPtr, ros::Time const* msgPtr)
+{
+  const std::string rosMessageType("ros_time/Time");
+
+  busPtr->Nsec =  msgPtr->nsec;
+  busPtr->Sec =  msgPtr->sec;
+}
+
+
+// Conversions between SL_Bus_sliding_controller2_sensor_msgs_JointState and sensor_msgs::JointState
+
+void convertFromBus(sensor_msgs::JointState* msgPtr, SL_Bus_sliding_controller2_sensor_msgs_JointState const* busPtr)
+{
+  const std::string rosMessageType("sensor_msgs/JointState");
+
+  convertFromBusVariablePrimitiveArray(msgPtr->effort, busPtr->Effort, busPtr->Effort_SL_Info);
+  convertFromBus(&msgPtr->header, &busPtr->Header);
+  convertFromBusVariableStringArray(msgPtr->name, busPtr->Name, busPtr->Name_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->position, busPtr->Position, busPtr->Position_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->velocity, busPtr->Velocity, busPtr->Velocity_SL_Info);
+}
+
+void convertToBus(SL_Bus_sliding_controller2_sensor_msgs_JointState* busPtr, sensor_msgs::JointState const* msgPtr)
+{
+  const std::string rosMessageType("sensor_msgs/JointState");
+
+  convertToBusVariablePrimitiveArray(busPtr->Effort, busPtr->Effort_SL_Info, msgPtr->effort, slros::EnabledWarning(rosMessageType, "effort"));
+  convertToBus(&busPtr->Header, &msgPtr->header);
+  convertToBusVariableStringArray(busPtr->Name, busPtr->Name_SL_Info, msgPtr->name, slros::EnabledWarning(rosMessageType, "name"));
+  convertToBusVariablePrimitiveArray(busPtr->Position, busPtr->Position_SL_Info, msgPtr->position, slros::EnabledWarning(rosMessageType, "position"));
+  convertToBusVariablePrimitiveArray(busPtr->Velocity, busPtr->Velocity_SL_Info, msgPtr->velocity, slros::EnabledWarning(rosMessageType, "velocity"));
+}
+
+
+// Conversions between SL_Bus_sliding_controller2_std_msgs_Header and std_msgs::Header
+
+void convertFromBus(std_msgs::Header* msgPtr, SL_Bus_sliding_controller2_std_msgs_Header const* busPtr)
+{
+  const std::string rosMessageType("std_msgs/Header");
+
+  convertFromBusVariablePrimitiveArray(msgPtr->frame_id, busPtr->FrameId, busPtr->FrameId_SL_Info);
+  msgPtr->seq =  busPtr->Seq;
+  convertFromBus(&msgPtr->stamp, &busPtr->Stamp);
+}
+
+void convertToBus(SL_Bus_sliding_controller2_std_msgs_Header* busPtr, std_msgs::Header const* msgPtr)
+{
+  const std::string rosMessageType("std_msgs/Header");
+
+  convertToBusVariablePrimitiveArray(busPtr->FrameId, busPtr->FrameId_SL_Info, msgPtr->frame_id, slros::EnabledWarning(rosMessageType, "frame_id"));
+  busPtr->Seq =  msgPtr->seq;
+  convertToBus(&busPtr->Stamp, &msgPtr->stamp);
+}
+
