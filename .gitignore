@@ -38,3 +38,11 @@ matlab/slprj/modeladvisor/com_2emathworks_2eSimulink_2ePerformanceAdvisor_2ePerf
 *.htmx
 
 *.tmw
+
+matlab/slprj/sim/_sharedutils/
+
+matlab/slprj/modeladvisor/com_2emathworks_2ecgo_2egroup_/sliding_controller/1609/
+
+*.dmr
+
+*.tlh
