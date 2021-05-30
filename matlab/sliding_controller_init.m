@@ -44,7 +44,8 @@ sat = 10;
 
 Kem = 50*eye(7);
 Ked = 50*eye(7);
-exo_sat = 50
+exo_sat = 50;
+human_sat = 10;
 
 Kp0 = 50
 

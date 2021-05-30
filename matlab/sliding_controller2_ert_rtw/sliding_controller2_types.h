@@ -7,9 +7,9 @@
  *
  * Code generation for model "sliding_controller2".
  *
- * Model version              : 1.153
+ * Model version              : 1.160
  * Simulink Coder version : 9.5 (R2021a) 14-Nov-2020
- * C++ source code generated on : Sat May 29 16:26:29 2021
+ * C++ source code generated on : Sat May 29 21:39:34 2021
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -24,6 +24,16 @@
 #include "multiword_types.h"
 
 /* Model Code Variants */
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_std_msgs_Float32_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_std_msgs_Float32_
+
+struct SL_Bus_sliding_controller2_std_msgs_Float32
+{
+  real32_T Data;
+};
+
+#endif
+
 #ifndef DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_ros_time_Time_
 #define DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_ros_time_Time_
 
@@ -93,7 +103,7 @@ struct SL_Bus_sliding_controller2_sensor_msgs_JointState
 
 struct SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex
 {
-  uint8_T ModelName;
+  uint8_T ModelName[3];
   SL_Bus_ROSVariableLengthArrayInfo ModelName_SL_Info;
   real_T Q[7];
   SL_Bus_ROSVariableLengthArrayInfo Q_SL_Info;
@@ -200,7 +210,7 @@ const c_ros_slros_internal_block_Se_T SLOtherError = 3U;
 
 #endif             /* ros_slros_internal_block_ServiceCallErrorCode_constants */
 
-/* Parameters for system: '<S10>/Enabled Subsystem' */
+/* Parameters for system: '<S12>/Enabled Subsystem' */
 typedef struct P_EnabledSubsystem_sliding_co_T_ P_EnabledSubsystem_sliding_co_T;
 
 /* Parameters (default storage) */

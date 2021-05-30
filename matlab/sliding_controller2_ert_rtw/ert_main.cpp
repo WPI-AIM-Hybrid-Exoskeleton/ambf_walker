@@ -7,9 +7,6 @@
 #include "rt_nonfinite.h"
 #include "linuxinitialize.h"
 #define UNUSED(x)                      x = x
-
-static sliding_controller2ModelClass sliding_controller2_Obj;/* Instance of model class */
-
 #define NAMELEN                        16
 
 /* Function prototype declaration*/
@@ -23,20 +20,36 @@ sem_t stopSem;
 sem_t baserateTaskSem;
 pthread_t schedulerThread;
 pthread_t baseRateThread;
+pthread_t backgroundThread;
 void *threadJoinStatus;
 int terminatingmodel = 0;
 void *baseRateTask(void *arg)
 {
-  runModel = (rtmGetErrorStatus(sliding_controller2_Obj.getRTM()) == (NULL)) &&
-    !rtmGetStopRequested(sliding_controller2_Obj.getRTM());
+  runModel = (rtmGetErrorStatus(sliding_controller2_M) == (NULL)) &&
+    !rtmGetStopRequested(sliding_controller2_M);
   while (runModel) {
     sem_wait(&baserateTaskSem);
-    sliding_controller2_Obj.step();
+
+    /* External mode */
+    {
+      boolean_T rtmStopReq = false;
+      rtExtModePauseIfNeeded(sliding_controller2_M->extModeInfo, 2, &rtmStopReq);
+      if (rtmStopReq) {
+        rtmSetStopRequested(sliding_controller2_M, true);
+      }
+
+      if (rtmGetStopRequested(sliding_controller2_M) == true) {
+        rtmSetErrorStatus(sliding_controller2_M, "Simulation finished");
+        break;
+      }
+    }
+
+    sliding_controller2_step();
 
     /* Get model outputs here */
-    stopRequested = !((rtmGetErrorStatus(sliding_controller2_Obj.getRTM()) ==
-                       (NULL)) && !rtmGetStopRequested
-                      (sliding_controller2_Obj.getRTM()));
+    rtExtModeCheckEndTrigger();
+    stopRequested = !((rtmGetErrorStatus(sliding_controller2_M) == (NULL)) &&
+                      !rtmGetStopRequested(sliding_controller2_M));
     runModel = !stopRequested;
   }
 
@@ -49,7 +62,7 @@ void *baseRateTask(void *arg)
 void exitFcn(int sig)
 {
   UNUSED(sig);
-  rtmSetErrorStatus(sliding_controller2_Obj.getRTM(), "stopping the model");
+  rtmSetErrorStatus(sliding_controller2_M, "stopping the model");
 }
 
 void *terminateTask(void *arg)
@@ -59,13 +72,34 @@ void *terminateTask(void *arg)
 
   {
     runModel = 0;
+
+    /* Wait for background task to complete */
+    CHECK_STATUS(pthread_join(backgroundThread, &threadJoinStatus), 0,
+                 "pthread_join");
   }
 
   /* Disable rt_OneStep() here */
 
   /* Terminate model */
-  sliding_controller2_Obj.terminate();
+  sliding_controller2_terminate();
+  rtExtModeShutdown(2);
   sem_post(&stopSem);
+  return NULL;
+}
+
+void *backgroundTask(void *arg)
+{
+  while (runModel) {
+    /* External mode */
+    {
+      boolean_T rtmStopReq = false;
+      rtExtModeOneStep(sliding_controller2_M->extModeInfo, 2, &rtmStopReq);
+      if (rtmStopReq) {
+        rtmSetStopRequested(sliding_controller2_M, true);
+      }
+    }
+  }
+
   return NULL;
 }
 
@@ -75,10 +109,25 @@ int main(int argc, char **argv)
   UNUSED(argv);
   void slros_node_init(int argc, char** argv);
   slros_node_init(argc, argv);
-  rtmSetErrorStatus(sliding_controller2_Obj.getRTM(), 0);
+  rtmSetErrorStatus(sliding_controller2_M, 0);
+  rtExtModeParseArgs(argc, (const char_T **)argv, NULL);
 
   /* Initialize model */
-  sliding_controller2_Obj.initialize();
+  sliding_controller2_initialize();
+
+  /* External mode */
+  rtSetTFinalForExtMode(&rtmGetTFinal(sliding_controller2_M));
+  rtExtModeCheckInit(2);
+
+  {
+    boolean_T rtmStopReq = false;
+    rtExtModeWaitForStartPkt(sliding_controller2_M->extModeInfo, 2, &rtmStopReq);
+    if (rtmStopReq) {
+      rtmSetStopRequested(sliding_controller2_M, true);
+    }
+  }
+
+  rtERTExtModeStartMsg();
 
   /* Call RTOS Initialization function */
   myRTOSInit(0.02, 0);

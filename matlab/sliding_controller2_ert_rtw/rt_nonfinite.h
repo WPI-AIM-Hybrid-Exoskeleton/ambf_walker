@@ -7,9 +7,9 @@
  *
  * Code generation for model "sliding_controller2".
  *
- * Model version              : 1.153
+ * Model version              : 1.160
  * Simulink Coder version : 9.5 (R2021a) 14-Nov-2020
- * C++ source code generated on : Sat May 29 16:26:29 2021
+ * C++ source code generated on : Sat May 29 21:39:34 2021
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

@@ -51,7 +51,7 @@ class WalkSimulinkState(smach.State):
 
         try:
             human = rospy.ServiceProxy('human_controller_onoff', SetBool)
-            exo = rospy.ServiceProxy('human_controller_onoff', SetBool)
+            exo = rospy.ServiceProxy('exo_controller_onoff', SetBool)
             resp1 = human(False)
             resp1 = exo(False)
         except rospy.ServiceException as e:
