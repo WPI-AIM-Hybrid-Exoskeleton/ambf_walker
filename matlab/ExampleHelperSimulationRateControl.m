@@ -44,6 +44,7 @@ classdef (StrictDefaults)ExampleHelperSimulationRateControl < matlab.System & ma
     properties(Nontunable)
         %SampleTime The desired update interval in wall time (seconds)
         SampleTime = 0.001
+        
     end
     
     properties(Access = private)
@@ -53,10 +54,13 @@ classdef (StrictDefaults)ExampleHelperSimulationRateControl < matlab.System & ma
     
     methods (Access = protected)
         
-        function stepImpl(obj)
+        function [r] = stepImpl(obj)
             %stepImpl Regulates simulation update
             if coder.target('MATLAB')
                 obj.RateObj.waitfor();
+                r = obj.RateObj.LastPeriod;
+            else
+                r = nan;
             end
         end
         
