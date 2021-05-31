@@ -7,9 +7,9 @@
  *
  * Code generation for model "sliding_controller2".
  *
- * Model version              : 1.160
+ * Model version              : 1.171
  * Simulink Coder version : 9.5 (R2021a) 14-Nov-2020
- * C++ source code generated on : Sat May 29 21:39:34 2021
+ * C++ source code generated on : Sun May 30 15:12:19 2021
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -21,12 +21,6 @@
 #ifndef MULTIWORD_TYPES_H
 #define MULTIWORD_TYPES_H
 #include "rtwtypes.h"
-
-/*
- * Definitions supporting external data access
- */
-typedef int32_T chunk_T;
-typedef uint32_T uchunk_T;
 
 /*
  * MultiWord supporting definitions

@@ -7,9 +7,9 @@
  *
  * Code generation for model "sliding_controller2".
  *
- * Model version              : 1.160
+ * Model version              : 1.171
  * Simulink Coder version : 9.5 (R2021a) 14-Nov-2020
- * C++ source code generated on : Sat May 29 21:39:34 2021
+ * C++ source code generated on : Sun May 30 15:12:19 2021
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -22,9 +22,9 @@
 #include "sliding_controller2_private.h"
 
 /* Block parameters (default storage) */
-P_sliding_controller2_T sliding_controller2_P = {
+P_sliding_controller2_T sliding_controller2ModelClass::sliding_controller2_P = {
   /* Variable: Km1
-   * Referenced by: '<S20>/human proportional gain'
+   * Referenced by: '<S18>/human proportional gain'
    */
   { 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0,
@@ -33,25 +33,25 @@ P_sliding_controller2_T sliding_controller2_P = {
 
   /* Variable: dampener
    * Referenced by:
-   *   '<S26>/dampener left shank'
-   *   '<S27>/dampener left thigh'
-   *   '<S28>/dampener right shank'
-   *   '<S29>/dampener right shank'
+   *   '<S24>/dampener left shank'
+   *   '<S25>/dampener left thigh'
+   *   '<S26>/dampener right shank'
+   *   '<S27>/dampener right shank'
    */
   { 100.0, 0.0, 0.0, 100.0 },
 
   /* Variable: exo_sat
-   * Referenced by: '<S5>/exo sateration'
+   * Referenced by: '<S4>/exo sateration'
    */
   50.0,
 
   /* Variable: human_sat
-   * Referenced by: '<S5>/human sateration'
+   * Referenced by: '<S4>/human sateration'
    */
   10.0,
 
   /* Variable: invMd
-   * Referenced by: '<S19>/addmittance gain'
+   * Referenced by: '<S17>/addmittance gain'
    */
   { 0.05, 0.0, 0.0, 0.0, 0.0, 0.0, -0.0, 0.0, 0.05, 0.0, 0.0, 0.0, 0.0, -0.0,
     0.0, 0.0, 0.05, 0.0, 0.0, 0.0, -0.0, 0.0, 0.0, 0.0, 0.05, 0.0, 0.0, -0.0,
@@ -60,8 +60,8 @@ P_sliding_controller2_T sliding_controller2_P = {
 
   /* Variable: lambda2
    * Referenced by:
-   *   '<S21>/Gain12'
-   *   '<S21>/lambda SMC'
+   *   '<S19>/Gain12'
+   *   '<S19>/lambda SMC'
    */
   { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0,
@@ -69,7 +69,7 @@ P_sliding_controller2_T sliding_controller2_P = {
     0.0, 0.0, 0.0, 1.0 },
 
   /* Variable: rho2
-   * Referenced by: '<S21>/rho SMC'
+   * Referenced by: '<S19>/rho SMC'
    */
   { 200.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 200.0, 0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 200.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 200.0, 0.0, 0.0, 0.0,
@@ -78,15 +78,15 @@ P_sliding_controller2_T sliding_controller2_P = {
 
   /* Variable: spring
    * Referenced by:
-   *   '<S26>/spring left shank'
-   *   '<S27>/spring left thigh'
-   *   '<S28>/spring right thigh'
-   *   '<S29>/spring right thigh'
+   *   '<S24>/spring left shank'
+   *   '<S25>/spring left thigh'
+   *   '<S26>/spring right thigh'
+   *   '<S27>/spring right thigh'
    */
   { 100.0, 0.0, 0.0, 100.0 },
 
   /* Computed Parameter: Constant_Value
-   * Referenced by: '<S2>/Constant'
+   * Referenced by: '<S1>/Constant'
    */
   {
     {
@@ -408,7 +408,7 @@ P_sliding_controller2_T sliding_controller2_P = {
   },
 
   /* Computed Parameter: Constant_Value_d
-   * Referenced by: '<S3>/Constant'
+   * Referenced by: '<S2>/Constant'
    */
   {
     {
@@ -730,7 +730,7 @@ P_sliding_controller2_T sliding_controller2_P = {
   },
 
   /* Computed Parameter: exo_Y0
-   * Referenced by: '<S7>/exo'
+   * Referenced by: '<S6>/exo'
    */
   {
     {
@@ -1052,7 +1052,7 @@ P_sliding_controller2_T sliding_controller2_P = {
   },
 
   /* Computed Parameter: human_Y0
-   * Referenced by: '<S8>/human'
+   * Referenced by: '<S7>/human'
    */
   {
     {
@@ -1374,7 +1374,7 @@ P_sliding_controller2_T sliding_controller2_P = {
   },
 
   /* Computed Parameter: Constant_Value_a
-   * Referenced by: '<S12>/Constant'
+   * Referenced by: '<S10>/Constant'
    */
   {
     {
@@ -1696,7 +1696,7 @@ P_sliding_controller2_T sliding_controller2_P = {
   },
 
   /* Computed Parameter: Constant_Value_j
-   * Referenced by: '<S13>/Constant'
+   * Referenced by: '<S11>/Constant'
    */
   {
     {
@@ -2018,7 +2018,7 @@ P_sliding_controller2_T sliding_controller2_P = {
   },
 
   /* Computed Parameter: Out1_Y0
-   * Referenced by: '<S46>/Out1'
+   * Referenced by: '<S44>/Out1'
    */
   {
     {
@@ -2093,7 +2093,7 @@ P_sliding_controller2_T sliding_controller2_P = {
   },
 
   /* Computed Parameter: Constant_Value_b
-   * Referenced by: '<S11>/Constant'
+   * Referenced by: '<S9>/Constant'
    */
   {
     {
@@ -2168,11 +2168,11 @@ P_sliding_controller2_T sliding_controller2_P = {
   },
 
   /* Computed Parameter: Constant_Value_e
-   * Referenced by: '<S4>/Constant'
+   * Referenced by: '<S3>/Constant'
    */
   {
     {
-      0U, 0U, 0U }
+      0U, 0U, 0U, 0U }
     ,                                  /* ModelName */
 
     {
@@ -2209,7 +2209,7 @@ P_sliding_controller2_T sliding_controller2_P = {
   },
 
   /* Computed Parameter: Constant_Value_bi
-   * Referenced by: '<S43>/Constant'
+   * Referenced by: '<S41>/Constant'
    */
   {
     {
@@ -2222,92 +2222,65 @@ P_sliding_controller2_T sliding_controller2_P = {
     }                                  /* Tau_SL_Info */
   },
 
-  /* Computed Parameter: Constant_Value_o
-   * Referenced by: '<S1>/Constant'
-   */
-  {
-    0.0F                               /* Data */
-  },
-
   /* Computed Parameter: exotau_Y0
-   * Referenced by: '<S5>/exo tau'
+   * Referenced by: '<S4>/exo tau'
    */
   0.0,
 
   /* Computed Parameter: humantau_Y0
-   * Referenced by: '<S5>/human tau'
+   * Referenced by: '<S4>/human tau'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<S18>/Constant'
+   * Referenced by: '<S16>/Constant'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<S36>/Constant'
+   * Referenced by: '<S34>/Constant'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<S37>/Constant'
+   * Referenced by: '<S35>/Constant'
    */
   0.0,
 
   /* Expression: [-0.349,-0.2,0,-0.349,-0.2,0,0]
-   * Referenced by: '<S19>/Integrator1'
+   * Referenced by: '<S17>/Integrator1'
    */
   { -0.349, -0.2, 0.0, -0.349, -0.2, 0.0, 0.0 },
 
   /* Expression: 0
-   * Referenced by: '<S19>/Integrator'
+   * Referenced by: '<S17>/Integrator'
    */
   0.0,
 
   /* Expression: 0.5
-   * Referenced by: '<S21>/surface width SMC'
+   * Referenced by: '<S19>/surface width SMC'
    */
   0.5,
 
   /* Expression: 0
-   * Referenced by: '<S17>/Constant'
+   * Referenced by: '<S15>/Constant'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<S30>/Constant'
+   * Referenced by: '<S28>/Constant'
    */
   0.0,
 
   /* Expression: 0
-   * Referenced by: '<S31>/Constant'
+   * Referenced by: '<S29>/Constant'
    */
   0.0,
 
-  /* Expression: 1
-   * Referenced by: '<Root>/Sine Wave Function'
-   */
-  1.0,
-
-  /* Expression: 0
-   * Referenced by: '<Root>/Sine Wave Function'
-   */
-  0.0,
-
-  /* Expression: 1
-   * Referenced by: '<Root>/Sine Wave Function'
-   */
-  1.0,
-
-  /* Expression: 0
-   * Referenced by: '<Root>/Sine Wave Function'
-   */
-  0.0,
-
-  /* Start of '<S13>/Enabled Subsystem' */
+  /* Start of '<S11>/Enabled Subsystem' */
   {
     /* Computed Parameter: Out1_Y0
-     * Referenced by: '<S48>/Out1'
+     * Referenced by: '<S46>/Out1'
      */
     {
       {
@@ -2630,12 +2603,12 @@ P_sliding_controller2_T sliding_controller2_P = {
   }
   ,
 
-  /* End of '<S13>/Enabled Subsystem' */
+  /* End of '<S11>/Enabled Subsystem' */
 
-  /* Start of '<S12>/Enabled Subsystem' */
+  /* Start of '<S10>/Enabled Subsystem' */
   {
     /* Computed Parameter: Out1_Y0
-     * Referenced by: '<S47>/Out1'
+     * Referenced by: '<S45>/Out1'
      */
     {
       {
@@ -2956,5 +2929,5 @@ P_sliding_controller2_T sliding_controller2_P = {
       }                                /* Effort_SL_Info */
     }
   }
-  /* End of '<S12>/Enabled Subsystem' */
+  /* End of '<S10>/Enabled Subsystem' */
 };

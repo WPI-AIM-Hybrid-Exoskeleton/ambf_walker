@@ -5,7 +5,7 @@
   ;%***********************
       
     nTotData      = 0; %add to this count as we go
-    nTotSects     = 16;
+    nTotSects     = 15;
     sectIdxOffset = 0;
     
     ;%
@@ -31,37 +31,37 @@
       section.nData     = 8;
       section.data(8)  = dumData; %prealloc
       
-	  ;% sliding_controller2_P.Km1
+	  ;% sliding_controller2_P.Dm1
 	  section.data(1).logicalSrcIdx = 0;
 	  section.data(1).dtTransOffset = 0;
 	
-	  ;% sliding_controller2_P.dampener
+	  ;% sliding_controller2_P.Km1
 	  section.data(2).logicalSrcIdx = 1;
 	  section.data(2).dtTransOffset = 49;
 	
-	  ;% sliding_controller2_P.exo_sat
+	  ;% sliding_controller2_P.dampener
 	  section.data(3).logicalSrcIdx = 2;
-	  section.data(3).dtTransOffset = 53;
+	  section.data(3).dtTransOffset = 98;
 	
-	  ;% sliding_controller2_P.human_sat
+	  ;% sliding_controller2_P.exo_sat
 	  section.data(4).logicalSrcIdx = 3;
-	  section.data(4).dtTransOffset = 54;
+	  section.data(4).dtTransOffset = 102;
 	
 	  ;% sliding_controller2_P.invMd
 	  section.data(5).logicalSrcIdx = 4;
-	  section.data(5).dtTransOffset = 55;
+	  section.data(5).dtTransOffset = 103;
 	
 	  ;% sliding_controller2_P.lambda2
 	  section.data(6).logicalSrcIdx = 5;
-	  section.data(6).dtTransOffset = 104;
+	  section.data(6).dtTransOffset = 152;
 	
 	  ;% sliding_controller2_P.rho2
 	  section.data(7).logicalSrcIdx = 6;
-	  section.data(7).dtTransOffset = 153;
+	  section.data(7).dtTransOffset = 201;
 	
 	  ;% sliding_controller2_P.spring
 	  section.data(8).logicalSrcIdx = 7;
-	  section.data(8).dtTransOffset = 202;
+	  section.data(8).dtTransOffset = 250;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(1) = section;
@@ -219,7 +219,7 @@
 	  section.data(7).logicalSrcIdx = 25;
 	  section.data(7).dtTransOffset = 12;
 	
-	  ;% sliding_controller2_P.surfacewidthSMC_Gain
+	  ;% sliding_controller2_P.Gain18_Gain
 	  section.data(8).logicalSrcIdx = 26;
 	  section.data(8).dtTransOffset = 13;
 	
@@ -281,16 +281,6 @@
       ;%
       ;% Non-auto Data (parameter)
       ;%
-	      
-	    ;% Dm1
-	    section.nData = 1;
-	    section.data(1).logicalSrcIdx = 36;
-	    section.data(1).dtTransOffset = 0;
-	  
-	    nTotData = nTotData + section.nData;
-	    paramMap.sections(16) = section;
-	    clear section
-	  
     
 
     ;%
@@ -369,8 +359,8 @@
       sigMap.sections(3) = section;
       clear section
       
-      section.nData     = 6;
-      section.data(6)  = dumData; %prealloc
+      section.nData     = 8;
+      section.data(8)  = dumData; %prealloc
       
 	  ;% sliding_controller2_B.qd_add
 	  section.data(1).logicalSrcIdx = 8;
@@ -380,21 +370,29 @@
 	  section.data(2).logicalSrcIdx = 9;
 	  section.data(2).dtTransOffset = 7;
 	
-	  ;% sliding_controller2_B.exosateration
+	  ;% sliding_controller2_B.q_add
 	  section.data(3).logicalSrcIdx = 10;
 	  section.data(3).dtTransOffset = 14;
 	
-	  ;% sliding_controller2_B.humansateration
+	  ;% sliding_controller2_B.q_add_j
 	  section.data(4).logicalSrcIdx = 11;
 	  section.data(4).dtTransOffset = 21;
 	
-	  ;% sliding_controller2_B.K
+	  ;% sliding_controller2_B.Saturation3
 	  section.data(5).logicalSrcIdx = 12;
 	  section.data(5).dtTransOffset = 28;
 	
-	  ;% sliding_controller2_B.B
+	  ;% sliding_controller2_B.Saturation4
 	  section.data(6).logicalSrcIdx = 13;
-	  section.data(6).dtTransOffset = 77;
+	  section.data(6).dtTransOffset = 35;
+	
+	  ;% sliding_controller2_B.K
+	  section.data(7).logicalSrcIdx = 14;
+	  section.data(7).dtTransOffset = 42;
+	
+	  ;% sliding_controller2_B.B
+	  section.data(8).logicalSrcIdx = 15;
+	  section.data(8).dtTransOffset = 91;
 	
       nTotData = nTotData + section.nData;
       sigMap.sections(4) = section;
@@ -419,20 +417,12 @@
       sigMap.sections(5) = section;
       clear section
       
-      section.nData     = 3;
-      section.data(3)  = dumData; %prealloc
+      section.nData     = 1;
+      section.data(1)  = dumData; %prealloc
       
 	  ;% sliding_controller2_B.SourceBlock_o1
-	  section.data(1).logicalSrcIdx = 14;
+	  section.data(1).logicalSrcIdx = 16;
 	  section.data(1).dtTransOffset = 0;
-	
-	  ;% sliding_controller2_B.SourceBlock_o1_h
-	  section.data(2).logicalSrcIdx = 15;
-	  section.data(2).dtTransOffset = 1;
-	
-	  ;% sliding_controller2_B.SourceBlock_o1_c
-	  section.data(3).logicalSrcIdx = 16;
-	  section.data(3).dtTransOffset = 2;
 	
       nTotData = nTotData + section.nData;
       sigMap.sections(6) = section;
@@ -658,7 +648,7 @@
   ;%*******************
       
     nTotData      = 0; %add to this count as we go
-    nTotSects     = 8;
+    nTotSects     = 9;
     sectIdxOffset = 20;
     
     ;%
@@ -733,7 +723,7 @@
       section.nData     = 1;
       section.data(1)  = dumData; %prealloc
       
-	  ;% sliding_controller2_DW.obj_k
+	  ;% sliding_controller2_DW.Scope22_PWORK.LoggedData
 	  section.data(1).logicalSrcIdx = 7;
 	  section.data(1).dtTransOffset = 0;
 	
@@ -741,86 +731,86 @@
       dworkMap.sections(4) = section;
       clear section
       
+      section.nData     = 1;
+      section.data(1)  = dumData; %prealloc
+      
+	  ;% sliding_controller2_DW.obj_k
+	  section.data(1).logicalSrcIdx = 8;
+	  section.data(1).dtTransOffset = 0;
+	
+      nTotData = nTotData + section.nData;
+      dworkMap.sections(5) = section;
+      clear section
+      
       section.nData     = 5;
       section.data(5)  = dumData; %prealloc
       
 	  ;% sliding_controller2_DW.EnabledSubsystem_SubsysRanBC
-	  section.data(1).logicalSrcIdx = 8;
+	  section.data(1).logicalSrcIdx = 9;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% sliding_controller2_DW.EnabledSubsystem2_SubsysRanBC
-	  section.data(2).logicalSrcIdx = 9;
+	  section.data(2).logicalSrcIdx = 10;
 	  section.data(2).dtTransOffset = 1;
 	
 	  ;% sliding_controller2_DW.EnabledSubsystem1_SubsysRanBC
-	  section.data(3).logicalSrcIdx = 10;
+	  section.data(3).logicalSrcIdx = 11;
 	  section.data(3).dtTransOffset = 2;
 	
 	  ;% sliding_controller2_DW.EnabledSubsystem_SubsysRanBC_c
-	  section.data(4).logicalSrcIdx = 11;
+	  section.data(4).logicalSrcIdx = 12;
 	  section.data(4).dtTransOffset = 3;
 	
 	  ;% sliding_controller2_DW.Controller_SubsysRanBC
-	  section.data(5).logicalSrcIdx = 12;
+	  section.data(5).logicalSrcIdx = 13;
 	  section.data(5).dtTransOffset = 4;
 	
       nTotData = nTotData + section.nData;
-      dworkMap.sections(5) = section;
+      dworkMap.sections(6) = section;
       clear section
       
       section.nData     = 10;
       section.data(10)  = dumData; %prealloc
       
 	  ;% sliding_controller2_DW.objisempty
-	  section.data(1).logicalSrcIdx = 13;
+	  section.data(1).logicalSrcIdx = 14;
 	  section.data(1).dtTransOffset = 0;
 	
 	  ;% sliding_controller2_DW.objisempty_n
-	  section.data(2).logicalSrcIdx = 14;
+	  section.data(2).logicalSrcIdx = 15;
 	  section.data(2).dtTransOffset = 1;
 	
 	  ;% sliding_controller2_DW.objisempty_o
-	  section.data(3).logicalSrcIdx = 15;
+	  section.data(3).logicalSrcIdx = 16;
 	  section.data(3).dtTransOffset = 2;
 	
 	  ;% sliding_controller2_DW.objisempty_oz
-	  section.data(4).logicalSrcIdx = 16;
+	  section.data(4).logicalSrcIdx = 17;
 	  section.data(4).dtTransOffset = 3;
 	
 	  ;% sliding_controller2_DW.objisempty_h
-	  section.data(5).logicalSrcIdx = 17;
+	  section.data(5).logicalSrcIdx = 18;
 	  section.data(5).dtTransOffset = 4;
 	
 	  ;% sliding_controller2_DW.objisempty_d
-	  section.data(6).logicalSrcIdx = 18;
+	  section.data(6).logicalSrcIdx = 19;
 	  section.data(6).dtTransOffset = 5;
 	
 	  ;% sliding_controller2_DW.objisempty_c
-	  section.data(7).logicalSrcIdx = 19;
+	  section.data(7).logicalSrcIdx = 20;
 	  section.data(7).dtTransOffset = 6;
 	
 	  ;% sliding_controller2_DW.objisempty_a
-	  section.data(8).logicalSrcIdx = 20;
+	  section.data(8).logicalSrcIdx = 21;
 	  section.data(8).dtTransOffset = 7;
 	
 	  ;% sliding_controller2_DW.EnabledSubsystem_MODE
-	  section.data(9).logicalSrcIdx = 21;
+	  section.data(9).logicalSrcIdx = 22;
 	  section.data(9).dtTransOffset = 8;
 	
 	  ;% sliding_controller2_DW.Controller_MODE
-	  section.data(10).logicalSrcIdx = 22;
+	  section.data(10).logicalSrcIdx = 23;
 	  section.data(10).dtTransOffset = 9;
-	
-      nTotData = nTotData + section.nData;
-      dworkMap.sections(6) = section;
-      clear section
-      
-      section.nData     = 1;
-      section.data(1)  = dumData; %prealloc
-      
-	  ;% sliding_controller2_DW.EnabledSubsystem_i.EnabledSubsystem_SubsysRanBC
-	  section.data(1).logicalSrcIdx = 23;
-	  section.data(1).dtTransOffset = 0;
 	
       nTotData = nTotData + section.nData;
       dworkMap.sections(7) = section;
@@ -829,12 +819,23 @@
       section.nData     = 1;
       section.data(1)  = dumData; %prealloc
       
-	  ;% sliding_controller2_DW.EnabledSubsystem_l.EnabledSubsystem_SubsysRanBC
+	  ;% sliding_controller2_DW.EnabledSubsystem_i.EnabledSubsystem_SubsysRanBC
 	  section.data(1).logicalSrcIdx = 24;
 	  section.data(1).dtTransOffset = 0;
 	
       nTotData = nTotData + section.nData;
       dworkMap.sections(8) = section;
+      clear section
+      
+      section.nData     = 1;
+      section.data(1)  = dumData; %prealloc
+      
+	  ;% sliding_controller2_DW.EnabledSubsystem_l.EnabledSubsystem_SubsysRanBC
+	  section.data(1).logicalSrcIdx = 25;
+	  section.data(1).dtTransOffset = 0;
+	
+      nTotData = nTotData + section.nData;
+      dworkMap.sections(9) = section;
       clear section
       
     
@@ -863,8 +864,8 @@
   ;%
 
 
-  targMap.checksum0 = 1728082948;
-  targMap.checksum1 = 4041347945;
-  targMap.checksum2 = 2363488853;
-  targMap.checksum3 = 1414351142;
+  targMap.checksum0 = 2756682841;
+  targMap.checksum1 = 3339489682;
+  targMap.checksum2 = 2231355134;
+  targMap.checksum3 = 3451770852;
 

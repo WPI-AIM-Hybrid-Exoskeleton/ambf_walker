@@ -7,9 +7,9 @@
  *
  * Code generation for model "sliding_controller2".
  *
- * Model version              : 1.160
+ * Model version              : 1.171
  * Simulink Coder version : 9.5 (R2021a) 14-Nov-2020
- * C++ source code generated on : Sat May 29 21:39:34 2021
+ * C++ source code generated on : Sun May 30 15:12:19 2021
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -23,7 +23,7 @@
  * Code generation for Simulink model "sliding_controller2".
  *
  * Simulink Coder version                : 9.5 (R2021a) 14-Nov-2020
- * C++ source code generated on : Sat May 29 21:39:34 2021
+ * C++ source code generated on : Sun May 30 15:12:19 2021
  *
  * Note that the generated code is not dependent on this header file.
  * The file is used in cojuction with the automatic build procedure.
@@ -39,5 +39,21 @@
  */
 #include "sliding_controller2.h"
 #include "sliding_controller2.h"
+#define MODEL_CLASSNAME                sliding_controller2ModelClass
+#define MODEL_STEPNAME                 step
 #define GRTINTERFACE                   0
+
+/*
+ * ROOT_IO_FORMAT: 0 (Individual arguments)
+ * ROOT_IO_FORMAT: 1 (Structure reference)
+ * ROOT_IO_FORMAT: 2 (Part of model data structure)
+ */
+#define ROOT_IO_FORMAT                 2
+
+/*
+ * ROOT_IO_FORMAT: 0 (Individual arguments)
+ * ROOT_IO_FORMAT: 1 (Structure reference)
+ * ROOT_IO_FORMAT: 2 (Part of model data structure)
+ */
+#define ROOT_IO_FORMAT                 2
 #endif                                 /* RTW_HEADER_rtmodel_h_ */

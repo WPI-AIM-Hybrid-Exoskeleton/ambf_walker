@@ -1,5 +1,5 @@
 // Copyright 2019-2021 The MathWorks, Inc.
-// Generated 29-May-2021 21:39:39
+// Generated 30-May-2021 15:12:23
 
 #ifdef _MSC_VER
 
@@ -8,7 +8,6 @@
 #pragma warning(disable : 4265)
 #pragma warning(disable : 4458)
 #pragma warning(disable : 4100)
-#pragma comment(lib, "Ws2_32.lib")
 
 #else
 
@@ -36,10 +35,10 @@ namespace ros
   {
     NodeInterface::NodeInterface()
       : mNode()
+      , mModel()
       , mBaseRateSem()
       , mBaseRateThread()
       , mSchedulerThread()
-      , mExtModeThread()
       , mStopSem()
       , mRunModel(true)
     {
@@ -56,33 +55,10 @@ namespace ros
         mNode = std::make_shared<ros::NodeHandle>();
         ROS_INFO("** Starting the model \"sliding_controller2\" **\n");
 
-        {
-          char* extmodeArg[] = { "-port", "17725", "-blocking", "1", "-verbose",
-            "0" };
-
-          rtExtModeParseArgs(6, (const char_T **)extmodeArg, NULL);
-        }
-
-        // initialize the model which will initialize the publishers and subscribers
-        rtmSetErrorStatus(sliding_controller2_M, (NULL));
-        sliding_controller2_initialize();
-
-        /* External mode */
-        rtSetTFinalForExtMode(&rtmGetTFinal(sliding_controller2_M));
-        rtExtModeCheckInit(1);
-
-        {
-          boolean_T rtmStopReq = false;
-          rtExtModeWaitForStartPkt(sliding_controller2_M->extModeInfo, 1,
-            &rtmStopReq);
-          if (rtmStopReq) {
-            rtmSetStopRequested(sliding_controller2_M, true);
-          }
-        }
-
-        rtERTExtModeStartMsg();
-        mExtModeThread = std::make_shared<std::thread>(&NodeInterface::
-          extmodeBackgroundTask, this);
+        //initialize the model which will initialize the publishers and subscribers
+        mModel = std::make_shared<sliding_controller2ModelClass>();
+        rtmSetErrorStatus(mModel->getRTM(), (NULL));
+        mModel->initialize();
 
         // create the threads for the rates in the Model
         mBaseRateThread = std::make_shared<std::thread>(&NodeInterface::
@@ -109,13 +85,13 @@ namespace ros
 
 #ifndef rtmGetStopRequested
 
-      return (!(rtmGetErrorStatus(sliding_controller2_M)
+      return (!(rtmGetErrorStatus(mModel->getRTM())
                 == (NULL)));
 
 #else
 
-      return (!(rtmGetErrorStatus(sliding_controller2_M)
-                == (NULL)) || rtmGetStopRequested(sliding_controller2_M));
+      return (!(rtmGetErrorStatus(mModel->getRTM())
+                == (NULL)) || rtmGetStopRequested(mModel->getRTM()));
 
 #endif
 
@@ -133,8 +109,10 @@ namespace ros
           mSchedulerThread.reset();
         }
 
-        sliding_controller2_terminate();
-        rtExtModeShutdown(1);
+        if (mModel.get()) {
+          mModel->terminate();
+        }
+
         mNode.reset();
       }
     }
@@ -154,7 +132,7 @@ namespace ros
     // Base-rate task
     void NodeInterface::baseRateTask(void)
     {
-      mRunModel = (rtmGetErrorStatus(sliding_controller2_M) ==
+      mRunModel = (rtmGetErrorStatus(mModel->getRTM()) ==
                    (NULL));
       while (mRunModel) {
         mBaseRateSem.wait();
@@ -167,45 +145,12 @@ namespace ros
 
         if (!mRunModel)
           break;
-
-        /* External mode */
-        {
-          boolean_T rtmStopReq = false;
-          rtExtModePauseIfNeeded(sliding_controller2_M->extModeInfo, 1,
-            &rtmStopReq);
-          if (rtmStopReq) {
-            rtmSetStopRequested(sliding_controller2_M, true);
-          }
-
-          if (rtmGetStopRequested(sliding_controller2_M) == true) {
-            rtmSetErrorStatus(sliding_controller2_M, "Simulation finished");
-            mRunModel = false;
-            break;
-          }
-        }
-
-        sliding_controller2_step();
-        rtExtModeCheckEndTrigger();
+        mModel->step();
         mRunModel = !NodeInterface::getStopRequestedFlag();
       }
 
       // Shutdown the ROS node
       ros::shutdown();
-    }
-
-    void NodeInterface::extmodeBackgroundTask(void)
-    {
-      while (mRunModel) {
-        /* External mode */
-        {
-          boolean_T rtmStopReq = false;
-          rtExtModeOneStep(sliding_controller2_M->extModeInfo, 1,
-                           &rtmStopReq);
-          if (rtmStopReq) {
-            rtmSetStopRequested(sliding_controller2_M, true);
-          }
-        }
-      }
     }
   }                                    //namespace matlab
 }                                      //namespace ros

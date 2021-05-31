@@ -1,5 +1,5 @@
 // Copyright 2019-2020 The MathWorks, Inc.
-// Generated 29-May-2021 21:39:39
+// Generated 30-May-2021 15:12:23
 
 #ifndef _ROS_MATLAB_NODEINTERFACE_
 #define _ROS_MATLAB_NODEINTERFACE_
@@ -78,6 +78,7 @@ namespace ros
 
       //
       std::shared_ptr<ros::NodeHandle> mNode;
+      std::shared_ptr<sliding_controller2ModelClass> mModel;
       Semaphore mBaseRateSem;
       std::shared_ptr<std::thread> mBaseRateThread;
       std::shared_ptr<std::thread> mSchedulerThread;
@@ -86,9 +87,6 @@ namespace ros
       //
       Semaphore mStopSem;
       volatile boolean_T mRunModel;
-
-      // External mode background thread
-      std::shared_ptr<std::thread> mExtModeThread;
      public:
       NodeInterface();
       ~NodeInterface();
@@ -103,10 +101,15 @@ namespace ros
       boolean_T getStopRequestedFlag(void);
       void schedulerThread(void);
       void baseRateTask(void);
-      void extmodeBackgroundTask(void);
       std::shared_ptr<ros::NodeHandle> getNode()
       {
         return mNode;
+      }
+
+      //
+      std::shared_ptr<sliding_controller2ModelClass> getModel()
+      {
+        return mModel;
       }
     };                                 //class NodeInterface
 

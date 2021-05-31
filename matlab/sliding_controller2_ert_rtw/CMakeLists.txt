@@ -18,7 +18,7 @@ std_msgs
 )
 
 add_definitions(
--DMODEL=sliding_controller2 -DNUMST=2 -DNCSTATES=14 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0 -DON_TARGET_WAIT_FOR_START=1 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=1 -DEXT_MODE=1 -DONESTEPFCN=1 -DTERMFCN=1 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0 -DROS_PROJECT -DMW_SCHED_OTHER -DSTACK_SIZE=64 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DRT=RT )
+-DMODEL=sliding_controller2 -DNUMST=2 -DNCSTATES=14 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=1 -DONESTEPFCN=1 -DTERMFCN=1 -DMULTI_INSTANCE_CODE=1 -DINTEGER_CODE=0 -DMT=0 -DROS_PROJECT -DMW_SCHED_OTHER -DSTACK_SIZE=64 -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DRT=RT )
 
 ## The catkin_package macro generates cmake config files for your package
 ## Declare things to be passed to dependent projects
@@ -56,12 +56,6 @@ add_executable(${PROJECT_NAME}_node
    rt_nonfinite.cpp
    sliding_controller2.cpp
    sliding_controller2_data.cpp
-   ext_svr.c
-   updown.c
-   ext_work.c
-   rtiostream_utils.c
-   rtiostream_interface.c
-   rtiostream_tcpip.c
    rosnodeinterface.cpp
    main.cpp
    slros_busmsg_conversion.cpp

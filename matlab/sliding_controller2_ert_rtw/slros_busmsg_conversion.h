@@ -8,7 +8,6 @@
 #include <rbdl_server/RBDLInverseDynamicsResponse.h>
 #include <ros/time.h>
 #include <sensor_msgs/JointState.h>
-#include <std_msgs/Float32.h>
 #include <std_msgs/Header.h>
 #include "sliding_controller2_types.h"
 #include "slros_msgconvert_utils.h"
@@ -28,9 +27,6 @@ void convertToBus(SL_Bus_sliding_controller2_ros_time_Time* busPtr, ros::Time co
 
 void convertFromBus(sensor_msgs::JointState* msgPtr, SL_Bus_sliding_controller2_sensor_msgs_JointState const* busPtr);
 void convertToBus(SL_Bus_sliding_controller2_sensor_msgs_JointState* busPtr, sensor_msgs::JointState const* msgPtr);
-
-void convertFromBus(std_msgs::Float32* msgPtr, SL_Bus_sliding_controller2_std_msgs_Float32 const* busPtr);
-void convertToBus(SL_Bus_sliding_controller2_std_msgs_Float32* busPtr, std_msgs::Float32 const* msgPtr);
 
 void convertFromBus(std_msgs::Header* msgPtr, SL_Bus_sliding_controller2_std_msgs_Header const* busPtr);
 void convertToBus(SL_Bus_sliding_controller2_std_msgs_Header* busPtr, std_msgs::Header const* msgPtr);

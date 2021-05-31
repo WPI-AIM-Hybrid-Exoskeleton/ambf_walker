@@ -46,15 +46,27 @@ class ModelServer(Model.Model):
         self.tau = len(self._selected_joint_names)*[0.0]
         self._use_gravity = False
         self.simulink_sub = rospy.Subscriber(model_name + "_simulink_torque", JointState, self.simulink_controller)
+        self.pub_sim_loop_rate = rospy.Publisher("/sim_loop_dt", Float32, queue_size=1)
         self.loop_rate = 500
+        self.last_simulink_time = -1
 
 
     def simulink_controller(self, msg):
-        for effort in msg.effort:
-            if effort != 0:
-                print(effort)
-                self.update_torque(list(msg.effort))
-                break
+
+        dt_msg = Float32()
+        dt_msg.data = 0
+        if self.last_simulink_time == -1:
+            self.last_simulink_time = rospy.get_time()
+
+        else:
+            current_time = rospy.get_time()
+            dt = current_time - self.last_simulink_time
+            self.last_simulink_time = current_time
+            dt_msg.data = dt
+
+            self.pub_sim_loop_rate.publish(dt_msg)
+
+        self.update_torque(list(msg.effort))
 
     def torque_cb(self, tau):
         my_tau = tau.effort

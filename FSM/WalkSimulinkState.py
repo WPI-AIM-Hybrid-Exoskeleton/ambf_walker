@@ -78,7 +78,6 @@ class WalkSimulinkState(smach.State):
             self.pub.publish(msg)
             self.count += 1
             # print(count)
-            userdata.human = False
             self.rate.sleep()
 
 
