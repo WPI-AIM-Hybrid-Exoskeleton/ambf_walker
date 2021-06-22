@@ -5,3 +5,8 @@
 build/
 lib/GaitAnalysisToolkit
 .vscode/*
+*.slxc
+
+*.original
+
+*.autosave
