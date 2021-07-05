@@ -52,6 +52,7 @@ catkin_python_setup()
 add_service_files(
   FILES
   DesiredJointsCmd.srv
+  my_srv.srv
  
 )
 
@@ -93,7 +94,7 @@ set (HDR_FILES
    )
 
 
- include_directories( include ${AMBF_CLIENT_INCLUDE_DIRS}  ${catkin_INCLUDE_DIRS} ${GTEST_INCLUDE_DIRS} ${Eigen_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR})
+include_directories( include ${AMBF_CLIENT_INCLUDE_DIRS}  ${catkin_INCLUDE_DIRS} ${GTEST_INCLUDE_DIRS} ${Eigen_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIR})
 
 
 add_library(${PROJECT_NAME} ${SRC_FILES} ${HRD_FILES} )

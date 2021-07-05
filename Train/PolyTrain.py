@@ -28,7 +28,7 @@ t = np.linspace(0,10,count)
 y_prime = fit(t)
 hip = []
 for i in range(5):
-    y = y_prime + gauss(-0.01, 0.01)
+    y = y_prime #+ gauss(-0.001, 0.001)
     hip.append(y)
 
 b = np.array([ [0.221], [0.0], [0.5], [0.0] ])
@@ -52,6 +52,7 @@ for i in range(5):
     y = y_prime + gauss(-0.01, 0.01)
     ankle.append(y)
 
+print(hip)
 
 trainer = TPGMMTrainer.TPGMMTrainer(demo=[hip, knee, ankle, hip, knee, ankle],
                                     file_name="simpletest",

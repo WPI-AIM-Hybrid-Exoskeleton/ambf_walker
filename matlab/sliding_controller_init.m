@@ -22,7 +22,7 @@ Dm1 = 30*eye(7);
 % Addmittance Controller
 Kd = 50*eye(7);
 Bd = 50*eye(7);
-Md = 10*eye(7);
+Md = 20*eye(7);
 invMd = inv(Md);
 
 %Exo Gains
@@ -33,7 +33,10 @@ Kd_e = 300;
 % SMClambda2 = [1., 0; 0 5.0];
 
 
+rho2 = eye(7);
 
+lambda2 = eye(7);
+rho2 = eye(7);
 
 lambda2 = eye(7);
 rho2 = 200*eye(7);
@@ -47,9 +50,9 @@ human_sat = 10;
 Kp0 = 50
 
 
-Kp0 = 75*eye(7);
+Kp0 = 50*eye(7);
 Kn0 = 50*eye(7);
-Bp0 = 70;
+Bp0 = 50;
 Bn0 = 50;
 beta_p = 3;
 beta_n = 3;
