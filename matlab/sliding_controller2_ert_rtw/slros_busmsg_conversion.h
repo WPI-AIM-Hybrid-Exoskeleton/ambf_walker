@@ -3,12 +3,16 @@
 
 #include <ros/ros.h>
 #include <rbdl_server/RBDLInverseDynamics.h>
+#include <std_srvs/SetBool.h>
 #include <ambf_walker/DesiredJoints.h>
 #include <rbdl_server/RBDLInverseDynamicsRequest.h>
 #include <rbdl_server/RBDLInverseDynamicsResponse.h>
 #include <ros/time.h>
 #include <sensor_msgs/JointState.h>
+#include <std_msgs/Bool.h>
 #include <std_msgs/Header.h>
+#include <std_srvs/SetBoolRequest.h>
+#include <std_srvs/SetBoolResponse.h>
 #include "sliding_controller2_types.h"
 #include "slros_msgconvert_utils.h"
 
@@ -28,8 +32,17 @@ void convertToBus(SL_Bus_sliding_controller2_ros_time_Time* busPtr, ros::Time co
 void convertFromBus(sensor_msgs::JointState* msgPtr, SL_Bus_sliding_controller2_sensor_msgs_JointState const* busPtr);
 void convertToBus(SL_Bus_sliding_controller2_sensor_msgs_JointState* busPtr, sensor_msgs::JointState const* msgPtr);
 
+void convertFromBus(std_msgs::Bool* msgPtr, SL_Bus_sliding_controller2_std_msgs_Bool const* busPtr);
+void convertToBus(SL_Bus_sliding_controller2_std_msgs_Bool* busPtr, std_msgs::Bool const* msgPtr);
+
 void convertFromBus(std_msgs::Header* msgPtr, SL_Bus_sliding_controller2_std_msgs_Header const* busPtr);
 void convertToBus(SL_Bus_sliding_controller2_std_msgs_Header* busPtr, std_msgs::Header const* msgPtr);
+
+void convertFromBus(std_srvs::SetBoolRequest* msgPtr, SL_Bus_sliding_controller2_std_srvs_SetBoolRequest const* busPtr);
+void convertToBus(SL_Bus_sliding_controller2_std_srvs_SetBoolRequest* busPtr, std_srvs::SetBoolRequest const* msgPtr);
+
+void convertFromBus(std_srvs::SetBoolResponse* msgPtr, SL_Bus_sliding_controller2_std_srvs_SetBoolResponse const* busPtr);
+void convertToBus(SL_Bus_sliding_controller2_std_srvs_SetBoolResponse* busPtr, std_srvs::SetBoolResponse const* msgPtr);
 
 
 #endif

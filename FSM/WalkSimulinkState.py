@@ -8,7 +8,7 @@ from ambf_msgs.msg import RigidBodyState, SensorState
 from GaitAnaylsisToolkit.LearningTools.Runner import TPGMMRunner
 from sensor_msgs.msg import JointState
 from std_srvs.srv import SetBool, SetBoolResponse
-
+from std_msgs.msg import Bool
 from std_msgs.msg import Float32
 
 class WalkSimulinkState(smach.State):
@@ -22,6 +22,7 @@ class WalkSimulinkState(smach.State):
         self.rate = rospy.Rate(10)
         self._controller_name = controller_name
         self.pub = rospy.Publisher(model_name + "simulink_set_points", DesiredJoints, queue_size=1)
+        self.pub_start = rospy.Publisher("start_sim", Bool, queue_size=1)
         self.count = 0
         project_root = dirname(dirname(__file__))
         file = join(project_root, 'config/tau_human2.npy')
@@ -49,15 +50,20 @@ class WalkSimulinkState(smach.State):
         rospy.wait_for_service('human_controller_onoff')
         rospy.wait_for_service('exo_controller_onoff')
 
+
         try:
             human = rospy.ServiceProxy('human_controller_onoff', SetBool)
             exo = rospy.ServiceProxy('exo_controller_onoff', SetBool)
             resp1 = human(False)
-            resp1 = exo(False)
+            resp2 = exo(False)
+
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
 
+        start_msg = Bool()
+        start_msg.data = True
 
+        self.pub_start.publish(start_msg)
         while self.count < self.runner.get_length():
             #rospy.loginfo(self.model_name + " is at " + str(self.count) )
             self.runner.step()
@@ -82,11 +88,24 @@ class WalkSimulinkState(smach.State):
 
 
 
+        start_msg.data = False
+
+        self.pub_start.publish(start_msg)
+
         try:
-            exo = rospy.ServiceProxy('human_controller_onoff', SetBool)
-            resp1 = exo(True)
+            human = rospy.ServiceProxy('human_controller_onoff', SetBool)
+            exo = rospy.ServiceProxy('exo_controller_onoff', SetBool)
+            # print("here")
+            # sim = rospy.ServiceProxy('start_sim', SetBool)
+            # print("here2")
+            resp1 = human(False)
+            resp2 = exo(True)
+            #resp3 = sim(False)
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
+
+
+
 
         return "walked"
 

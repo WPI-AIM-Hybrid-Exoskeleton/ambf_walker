@@ -1,5 +1,5 @@
 // Copyright 2019-2021 The MathWorks, Inc.
-// Generated 30-May-2021 15:12:23
+// Generated 06-Jul-2021 15:24:54
 
 #ifdef _MSC_VER
 
@@ -124,7 +124,7 @@ namespace ros
     {
       while (mRunModel) {
         std::this_thread::sleep_until(std::chrono::system_clock::now() + std::
-          chrono::nanoseconds(20000000));
+          chrono::nanoseconds(1000000));
         mBaseRateSem.notify();
       }
     }

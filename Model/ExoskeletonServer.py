@@ -34,7 +34,7 @@ class ExoskeletonServer(ModelServer.ModelServer):
         if use_gravity:
             print("Getting the gravity dynamics")
             project_root = dirname(dirname(__file__))
-            path = join(project_root, "/home/nathaniel/catkin_ws/src/ambf_walker/ambf_models/plain_exo/default.yaml")
+            path = join(project_root, "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/plain_exo/default.yaml")
             self.make_dynamic_model(self.model_name + "grav", path)        
         # Update to current
         self.prox = {}

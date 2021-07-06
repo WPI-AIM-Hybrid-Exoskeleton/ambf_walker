@@ -1,28 +1,26 @@
-/*
- * rt_nonfinite.cpp
- *
- * Academic License - for use in teaching, academic research, and meeting
- * course requirements at degree granting institutions only.  Not for
- * government, commercial, or other organizational use.
- *
- * Code generation for model "sliding_controller2".
- *
- * Model version              : 1.171
- * Simulink Coder version : 9.5 (R2021a) 14-Nov-2020
- * C++ source code generated on : Sun May 30 15:12:19 2021
- *
- * Target selection: ert.tlc
- * Note: GRT includes extra infrastructure and instrumentation for prototyping
- * Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
- * Code generation objectives: Unspecified
- * Validation result: Not run
- */
+//
+// Academic License - for use in teaching, academic research, and meeting
+// course requirements at degree granting institutions only.  Not for
+// government, commercial, or other organizational use.
+//
+// File: rt_nonfinite.cpp
+//
+// Code generated for Simulink model 'sliding_controller2'.
+//
+// Model version                  : 1.182
+// Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
+// C/C++ source code generated on : Tue Jul  6 15:24:52 2021
+//
+// Target selection: ert.tlc
+// Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
+// Code generation objectives: Unspecified
+// Validation result: Not run
+//
 
-/*
- * Abstract:
- *      Function to initialize non-finites,
- *      (Inf, NaN and -Inf).
- */
+//
+//  Abstract:
+//       Function to initialize non-finites,
+//       (Inf, NaN and -Inf).
 #include "rt_nonfinite.h"
 #include "rtGetNaN.h"
 #include "rtGetInf.h"
@@ -38,10 +36,10 @@ extern "C" {
 }
   extern "C"
 {
-  /*
-   * Initialize the rtInf, rtMinusInf, and rtNaN needed by the
-   * generated code. NaN is initialized as non-signaling. Assumes IEEE.
-   */
+  //
+  // Initialize the rtInf, rtMinusInf, and rtNaN needed by the
+  // generated code. NaN is initialized as non-signaling. Assumes IEEE.
+  //
   void rt_InitInfAndNaN(size_t realSize)
   {
     (void) (realSize);
@@ -53,19 +51,19 @@ extern "C" {
     rtMinusInfF = rtGetMinusInfF();
   }
 
-  /* Test if value is infinite */
+  // Test if value is infinite
   boolean_T rtIsInf(real_T value)
   {
     return (boolean_T)((value==rtInf || value==rtMinusInf) ? 1U : 0U);
   }
 
-  /* Test if single-precision value is infinite */
+  // Test if single-precision value is infinite
   boolean_T rtIsInfF(real32_T value)
   {
     return (boolean_T)(((value)==rtInfF || (value)==rtMinusInfF) ? 1U : 0U);
   }
 
-  /* Test if value is not a number */
+  // Test if value is not a number
   boolean_T rtIsNaN(real_T value)
   {
     boolean_T result = (boolean_T) 0;
@@ -114,7 +112,7 @@ extern "C" {
     return result;
   }
 
-  /* Test if single-precision value is not a number */
+  // Test if single-precision value is not a number
   boolean_T rtIsNaNF(real32_T value)
   {
     IEEESingle tmp;
@@ -123,3 +121,9 @@ extern "C" {
                        (tmp.wordL.wordLuint & 0x007FFFFF) != 0 );
   }
 }
+
+//
+// File trailer for generated code.
+//
+// [EOF]
+//

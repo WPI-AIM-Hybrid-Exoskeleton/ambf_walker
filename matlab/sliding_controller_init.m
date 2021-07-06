@@ -33,12 +33,9 @@ Kd_e = 300;
 % SMClambda2 = [1., 0; 0 5.0];
 
 
-rho2 = eye(7);
 
-lambda2 = eye(7);
-rho2 = eye(7);
 
-lambda2 = eye(7);
+lambda2 = 50*eye(7);
 rho2 = 200*eye(7);
 sat = 10;
 

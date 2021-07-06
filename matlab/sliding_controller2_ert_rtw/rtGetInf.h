@@ -1,23 +1,21 @@
-/*
- * rtGetInf.h
- *
- * Academic License - for use in teaching, academic research, and meeting
- * course requirements at degree granting institutions only.  Not for
- * government, commercial, or other organizational use.
- *
- * Code generation for model "sliding_controller2".
- *
- * Model version              : 1.171
- * Simulink Coder version : 9.5 (R2021a) 14-Nov-2020
- * C++ source code generated on : Sun May 30 15:12:19 2021
- *
- * Target selection: ert.tlc
- * Note: GRT includes extra infrastructure and instrumentation for prototyping
- * Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
- * Code generation objectives: Unspecified
- * Validation result: Not run
- */
-
+//
+// Academic License - for use in teaching, academic research, and meeting
+// course requirements at degree granting institutions only.  Not for
+// government, commercial, or other organizational use.
+//
+// File: rtGetInf.h
+//
+// Code generated for Simulink model 'sliding_controller2'.
+//
+// Model version                  : 1.182
+// Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
+// C/C++ source code generated on : Tue Jul  6 15:24:52 2021
+//
+// Target selection: ert.tlc
+// Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
+// Code generation objectives: Unspecified
+// Validation result: Not run
+//
 #ifndef RTW_HEADER_rtGetInf_h_
 #define RTW_HEADER_rtGetInf_h_
 #include <stddef.h>
@@ -36,6 +34,12 @@ extern "C" {
 
 #ifdef __cplusplus
 
-}                                      /* extern "C" */
+}                                      // extern "C"
 #endif
-#endif                                 /* RTW_HEADER_rtGetInf_h_ */
+#endif                                 // RTW_HEADER_rtGetInf_h_
+
+//
+// File trailer for generated code.
+//
+// [EOF]
+//

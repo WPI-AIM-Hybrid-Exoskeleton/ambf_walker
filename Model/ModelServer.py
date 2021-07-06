@@ -63,7 +63,6 @@ class ModelServer(Model.Model):
             dt = current_time - self.last_simulink_time
             self.last_simulink_time = current_time
             dt_msg.data = dt
-
             self.pub_sim_loop_rate.publish(dt_msg)
 
         self.update_torque(list(msg.effort))

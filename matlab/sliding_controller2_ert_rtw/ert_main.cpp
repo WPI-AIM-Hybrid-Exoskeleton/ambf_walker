@@ -1,3 +1,21 @@
+//
+// Academic License - for use in teaching, academic research, and meeting
+// course requirements at degree granting institutions only.  Not for
+// government, commercial, or other organizational use.
+//
+// File: ert_main.cpp
+//
+// Code generated for Simulink model 'sliding_controller2'.
+//
+// Model version                  : 1.182
+// Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
+// C/C++ source code generated on : Tue Jul  6 15:24:52 2021
+//
+// Target selection: ert.tlc
+// Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
+// Code generation objectives: Unspecified
+// Validation result: Not run
+//
 #include <stdio.h>
 #include <stdlib.h>
 #include "sliding_controller2.h"
@@ -8,11 +26,11 @@
 #include "linuxinitialize.h"
 #define UNUSED(x)                      x = x
 
-static sliding_controller2ModelClass sliding_controller2_Obj;/* Instance of model class */
+static sliding_controller2ModelClass sliding_controller2_Obj;// Instance of model class 
 
 #define NAMELEN                        16
 
-/* Function prototype declaration*/
+// Function prototype declaration
 void exitFcn(int sig);
 void *terminateTask(void *arg);
 void *baseRateTask(void *arg);
@@ -33,7 +51,7 @@ void *baseRateTask(void *arg)
     sem_wait(&baserateTaskSem);
     sliding_controller2_Obj.step();
 
-    /* Get model outputs here */
+    // Get model outputs here
     stopRequested = !((rtmGetErrorStatus(sliding_controller2_Obj.getRTM()) ==
                        (NULL)) && !rtmGetStopRequested
                       (sliding_controller2_Obj.getRTM()));
@@ -61,9 +79,9 @@ void *terminateTask(void *arg)
     runModel = 0;
   }
 
-  /* Disable rt_OneStep() here */
+  // Disable rt_OneStep() here
 
-  /* Terminate model */
+  // Terminate model
   sliding_controller2_Obj.terminate();
   sem_post(&stopSem);
   return NULL;
@@ -77,13 +95,13 @@ int main(int argc, char **argv)
   slros_node_init(argc, argv);
   rtmSetErrorStatus(sliding_controller2_Obj.getRTM(), 0);
 
-  /* Initialize model */
+  // Initialize model
   sliding_controller2_Obj.initialize();
 
-  /* Call RTOS Initialization function */
-  myRTOSInit(0.02, 0);
+  // Call RTOS Initialization function
+  myRTOSInit(0.001, 0);
 
-  /* Wait for stop semaphore */
+  // Wait for stop semaphore
   sem_wait(&stopSem);
 
 #if (MW_NUMBER_TIMER_DRIVEN_TASKS > 0)
@@ -99,3 +117,9 @@ int main(int argc, char **argv)
 
   return 0;
 }
+
+//
+// File trailer for generated code.
+//
+// [EOF]
+//
