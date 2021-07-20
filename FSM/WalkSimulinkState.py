@@ -19,7 +19,7 @@ class WalkSimulinkState(smach.State):
         self.model_name = model_name
         self.joint_state = JointState()
         self.joint_cb = rospy.Subscriber(model_name+ "_jointstate", JointState, self.joint_callback)
-        self.rate = rospy.Rate(10)
+        self.rate = rospy.Rate(100)
         self._controller_name = controller_name
         self.pub = rospy.Publisher(model_name + "simulink_set_points", DesiredJoints, queue_size=1)
         self.pub_start = rospy.Publisher("start_sim", Bool, queue_size=1)

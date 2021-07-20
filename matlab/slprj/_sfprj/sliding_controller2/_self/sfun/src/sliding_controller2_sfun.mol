@@ -10,6 +10,7 @@ c11_sliding_controller2.o
 c12_sliding_controller2.o
 c13_sliding_controller2.o
 c14_sliding_controller2.o
+c15_sliding_controller2.o
 c17_sliding_controller2.o
 c19_sliding_controller2.o
 c20_sliding_controller2.o

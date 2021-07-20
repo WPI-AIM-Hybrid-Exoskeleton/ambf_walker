@@ -18,11 +18,17 @@ SimulinkSubscriber<std_msgs::Bool, SL_Bus_sliding_controller2_std_msgs_Bool> Sub
 // For Block sliding_controller2/Controller/Publish1
 SimulinkPublisher<std_msgs::Bool, SL_Bus_sliding_controller2_std_msgs_Bool> Pub_sliding_controller2_1405;
 
+// For Block sliding_controller2/Controller/Publish2
+SimulinkPublisher<sensor_msgs::JointState, SL_Bus_sliding_controller2_sensor_msgs_JointState> Pub_sliding_controller2_1454;
+
 // For Block sliding_controller2/Enabled Subsystem/Publish1
 SimulinkPublisher<sensor_msgs::JointState, SL_Bus_sliding_controller2_sensor_msgs_JointState> Pub_sliding_controller2_1242;
 
 // For Block sliding_controller2/Enabled Subsystem/Publish2
 SimulinkPublisher<sensor_msgs::JointState, SL_Bus_sliding_controller2_sensor_msgs_JointState> Pub_sliding_controller2_1246;
+
+// For Block sliding_controller2/Publish
+SimulinkPublisher<std_msgs::Float32, SL_Bus_sliding_controller2_std_msgs_Float32> Pub_sliding_controller2_1177;
 
 // For Block sliding_controller2/Controller/sliding mode controller/Call Service
 SimulinkServiceCaller<rbdl_server::RBDLInverseDynamics, SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex, SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h> ServCall_sliding_controller2_1160;

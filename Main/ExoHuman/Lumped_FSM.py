@@ -20,7 +20,7 @@ if __name__ == '__main__':
     robot_joints = ['ExoLeftHip', 'ExoLeftKnee', 'ExoLeftAnkle',
                     'ExoRightHip', 'ExoRightKnee', 'ExoRightAnkle', 'ExoHipCrutches']
 
-    file_path = "/home/nathaniel/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
+    file_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
 
     LARRE = ExoskeletonServer.ExoskeletonServer(_client, "exo", robot_joints, file_path)
     controller_server = ExoControllerServer.ExoControllerServer(LARRE)
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     #     print(fk["right_hip"])
     # while True:
     #     LARRE.calculate_torque()
-    LARRE.handle.set_rpy(0, 0, 0)
+    LARRE.handle.set_rpy(0.25, 0, 0)
     LARRE.handle.set_pos(0.0, 0, 0.2)
 
     # machine = StateMachine.ExoStateMachine(LARRE)

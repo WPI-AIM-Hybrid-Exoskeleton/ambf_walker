@@ -197,8 +197,9 @@ class Model(object):
 
 
     def set_body_pos(self, msg):
-        self.handle.set_rpy(msg.pos.x, msg.pos.y, msg.pos.z)
-        self.handle.set_pos(msg.rpy.x, msg.rpy.y, msg.rpy.z)
+        print("hello")
+        self.handle.set_pos(msg.pos.x, msg.pos.y, msg.pos.z)
+        self.handle.set_rpy(msg.rpy.x, msg.rpy.y, msg.rpy.z)
     
 
     def set_body_force(self, msg):
