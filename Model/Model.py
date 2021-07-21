@@ -38,7 +38,6 @@ class Model(object):
         self.onoff = rospy.Service(model_name + '_onoff', SetBool, self.enable_control_srv)
 
 
-
     @property
     def rbdl_model(self):
         return self._rbdl_model
