@@ -28,11 +28,18 @@ class ExoFSM():
                                     transitions={'Lowered': 'Main'})
 
 
-            smach.StateMachine.add('RaiseLeg', RaiseLegState.RaiseLegState("exo"),
-                                   transitions={'Raised': 'ForwardLeg'})
+            smach.StateMachine.add('LeftRaiseLeg', RaiseLegState.RaiseLegState("exo"),
+                                   transitions={'Raised': 'LeftForwardLeg'})
 
-            smach.StateMachine.add('ForwardLeg', ForwardLegState.ForwardLegState("exo"),
-                                   transitions={'Forwarded': 'Main'})
+
+            smach.StateMachine.add('LeftForwardLeg', ForwardLegState.ForwardLegState("exo"),
+                                   transitions={'Forwarded': 'RightRaiseLeg'})
+
+            smach.StateMachine.add('RightRaiseLeg', RaiseLegState.RaiseLegState("exo"),
+                                   transitions={'Raised': 'RightForwardLeg'})
+
+            smach.StateMachine.add('RightForwardLeg', ForwardLegState.ForwardLegState("exo"),
+                               transitions={'Forwarded': 'Main'})
 
             walk_sub = smach.StateMachine(outcomes=['walked'])
             ilqr_sub = smach.StateMachine(outcomes=['ilqred'])
