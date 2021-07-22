@@ -16,9 +16,10 @@ from std_srvs.srv import SetBool, SetBoolResponse
 
 class RaiseLegState(smach.State):
 
-    def __init__(self, model_name, outcomes=["Raised"]):
+    def __init__(self, model_name, side, outcomes=["Raised"]):
         smach.State.__init__(self, outcomes=outcomes)
         self.rate = rospy.Rate(100)
+        self.side = side
         tf = 2.0
         dt = 0.01
         self.joint_state = JointState()
@@ -30,9 +31,13 @@ class RaiseLegState(smach.State):
 
     def execute(self, userdata):
 
-
+        self.count = 0
         pos = self.joint_state.position
-        Lhip, Lknee, Lankle, Rhip, Rknee, Rankle = trajectories.raise_leg_traj(pos)
+        if self.side == 0:
+            Lhip, Lknee, Lankle, Rhip, Rknee, Rankle = trajectories.raise_left_leg_traj(pos)
+
+        elif self.side == 1:
+            Lhip, Lknee, Lankle, Rhip, Rknee, Rankle = trajectories.raise_right_leg_traj(pos)
 
         while self.count <= self.total - 1:
 
@@ -69,7 +74,7 @@ class RaiseLegState(smach.State):
             #self.send(q, qd, qdd, "Dyn", [])
             self.rate.sleep()
 
-        rospy.sleep(2)
+        rospy.sleep(0.5)
         return "Raised"
 
 

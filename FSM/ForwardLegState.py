@@ -16,11 +16,12 @@ from std_srvs.srv import SetBool, SetBoolResponse
 
 class ForwardLegState(smach.State):
 
-    def __init__(self, model_name, outcomes=["Forwarded"]):
+    def __init__(self, model_name, side, outcomes=["Forwarded"]):
         smach.State.__init__(self, outcomes=outcomes)
         self.rate = rospy.Rate(100)
         tf = 2.0
         dt = 0.01
+        self.side = side
         self.joint_state = JointState()
         self.joint_cb = rospy.Subscriber(model_name+ "_jointstate", JointState, self.joint_callback)
         self.msg = DesiredJoints()
@@ -30,10 +31,15 @@ class ForwardLegState(smach.State):
 
     def execute(self, userdata):
 
-
+        self.count = 0
         pos = self.joint_state.position
         print(len(pos))
-        Lhip, Lknee, Lankle, Rhip, Rknee, Rankle = trajectories.lower_leg_traj(pos)
+        pos = self.joint_state.position
+        if self.side == 0:
+            Lhip, Lknee, Lankle, Rhip, Rknee, Rankle = trajectories.lower_right_leg_traj(pos)
+
+        elif self.side == 1:
+            Lhip, Lknee, Lankle, Rhip, Rknee, Rankle = trajectories.lower_right_leg_traj(pos)
 
         while self.count <= self.total - 1:
 

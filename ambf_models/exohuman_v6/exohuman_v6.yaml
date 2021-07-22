@@ -823,12 +823,12 @@ BODY HumanLeftFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.5
-    static: 0.5
+    rolling: 1.0
+    static: 1.0
   restitution: 0.1
   damping:
-    angular: 0.1
-    linear: 0.5
+    angular: 0.75
+    linear: 0.75
   collision groups:
     - 2
   collision shape: BOX
@@ -1018,12 +1018,12 @@ BODY HumanRightFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.5
-    static: 0.5
+    rolling: 1.0
+    static: 1.0
   restitution: 0.1
   damping:
-    angular: 0.1
-    linear: 0.5
+    angular: 0.75
+    linear: 0.75
   collision groups:
     - 12
   collision shape: BOX
@@ -1196,8 +1196,8 @@ JOINT ExoHipCrutches:
     y: 0.387
     z: 0.54
   joint limits:
-    high: 0.25
-    low: -0.25
+    high: 0.3
+    low: -0.3
   enable feedback: false
   passive: false
   controller:

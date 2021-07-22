@@ -21,25 +21,25 @@ class ExoFSM():
                                         'Lower': 'LowerBody',
                                         "ilqr":"Sub_ILQR",
                                         "Done": "Done" ,
-                                        "raise": "RaiseLeg"})
+                                        "raise": "LeftRaiseLeg"})
 
             
             smach.StateMachine.add('LowerBody', LowerState.LowerState("exo"),
                                     transitions={'Lowered': 'Main'})
 
 
-            smach.StateMachine.add('LeftRaiseLeg', RaiseLegState.RaiseLegState("exo"),
+            smach.StateMachine.add('LeftRaiseLeg', RaiseLegState.RaiseLegState("exo", 0),
                                    transitions={'Raised': 'LeftForwardLeg'})
 
 
-            smach.StateMachine.add('LeftForwardLeg', ForwardLegState.ForwardLegState("exo"),
+            smach.StateMachine.add('LeftForwardLeg', ForwardLegState.ForwardLegState("exo" , 0),
                                    transitions={'Forwarded': 'RightRaiseLeg'})
 
-            smach.StateMachine.add('RightRaiseLeg', RaiseLegState.RaiseLegState("exo"),
+            smach.StateMachine.add('RightRaiseLeg', RaiseLegState.RaiseLegState("exo", 1),
                                    transitions={'Raised': 'RightForwardLeg'})
 
-            smach.StateMachine.add('RightForwardLeg', ForwardLegState.ForwardLegState("exo"),
-                               transitions={'Forwarded': 'Main'})
+            smach.StateMachine.add('RightForwardLeg', ForwardLegState.ForwardLegState("exo", 1),
+                               transitions={'Forwarded': 'LeftRaiseLeg'})
 
             walk_sub = smach.StateMachine(outcomes=['walked'])
             ilqr_sub = smach.StateMachine(outcomes=['ilqred'])
