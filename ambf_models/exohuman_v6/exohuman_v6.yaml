@@ -137,7 +137,7 @@ BODY Crutches:
 BODY ExoHip:
   name: ExoHip
   mesh: ExoHip.STL
-  mass: 2.33
+  mass: 0.1
   inertia:
     ix: 0.4004
     iy: 0.4587
@@ -368,8 +368,8 @@ BODY ExoLeftFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.1
-    static: 0.5
+    rolling: 0.75
+    static: 0.75
   restitution: 0.1
   damping:
     angular: 0.1
@@ -569,8 +569,8 @@ BODY ExoRightFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.1
-    static: 0.5
+    rolling: 0.75
+    static: 0.75
   restitution: 0.1
   damping:
     angular: 0.1
@@ -615,7 +615,7 @@ BODY ExoRightFoot:
 BODY HumanTorso:
   name: HumanTorso
   mesh: HumanTorso.STL
-  mass: 40.32
+  mass: .1
   inertia:
     ix: 5.278
     iy: 5.6026
@@ -1196,8 +1196,8 @@ JOINT ExoHipCrutches:
     y: 0.387
     z: 0.54
   joint limits:
-    high: 1.3
-    low: -1.3
+    high: 0.25
+    low: -0.25
   enable feedback: false
   passive: false
   controller:
@@ -1215,7 +1215,7 @@ JOINT ExoHipCrutches:
     zy: -0.5
     zz: 0.866
   detached: true
-  type: fixed
+  type: prismatic
   damping: 0.0
 JOINT ExoLeftKnee:
   name: ExoLeftKnee

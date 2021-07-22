@@ -14,9 +14,9 @@ from ambf_walker.msg import DesiredPosCmd
 from Utlities import trajectories
 from std_srvs.srv import SetBool, SetBoolResponse
 
-class RaiseLegState(smach.State):
+class ForwardLegState(smach.State):
 
-    def __init__(self, model_name, outcomes=["Raised"]):
+    def __init__(self, model_name, outcomes=["Forwarded"]):
         smach.State.__init__(self, outcomes=outcomes)
         self.rate = rospy.Rate(100)
         tf = 2.0
@@ -32,7 +32,8 @@ class RaiseLegState(smach.State):
 
 
         pos = self.joint_state.position
-        Lhip, Lknee, Lankle, Rhip, Rknee, Rankle = trajectories.raise_leg_traj(pos)
+        print(len(pos))
+        Lhip, Lknee, Lankle, Rhip, Rknee, Rankle = trajectories.lower_leg_traj(pos)
 
         while self.count <= self.total - 1:
 
@@ -41,24 +42,21 @@ class RaiseLegState(smach.State):
                           Lankle["q"][self.count].item(),
                           Rhip["q"][self.count].item(),
                           Rknee["q"][self.count].item(),
-                          Rankle["q"][self.count].item(),
-                           0.0])
+                          Rankle["q"][self.count].item(), 0.0])
 
             qd = np.array([Lhip["qd"][self.count].item(),
                            Lknee["qd"][self.count].item(),
                            Lankle["qd"][self.count].item(),
                            Rhip["qd"][self.count].item(),
                            Rknee["qd"][self.count].item(),
-                           Rankle["qd"][self.count].item(),
-                           0.0])
+                           Rankle["qd"][self.count].item(), 0.0])
 
             qdd = np.array([Lhip["qdd"][self.count].item(),
                             Lknee["qdd"][self.count].item(),
                             Lankle["qdd"][self.count].item(),
                             Rhip["qdd"][self.count].item(),
                             Rknee["qdd"][self.count].item(),
-                            Rankle["qdd"][self.count].item(),
-                            0.0])
+                            Rankle["qdd"][self.count].item(), 0.0])
 
             self.count += 1
             self.msg.q = q
@@ -69,8 +67,8 @@ class RaiseLegState(smach.State):
             #self.send(q, qd, qdd, "Dyn", [])
             self.rate.sleep()
 
-        rospy.sleep(2)
-        return "Raised"
+
+        return "Forwarded"
 
 
     def joint_callback(self, msg):

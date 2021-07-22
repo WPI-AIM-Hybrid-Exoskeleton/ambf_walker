@@ -202,7 +202,7 @@ class Model(object):
     
 
     def set_body_force(self, msg):
-        self.handle.set_force(msg.force.x, msg.force.x, msg.force.x)
+        self.handle.set_force(msg.force.x, msg.force.y, msg.force.z)
         
 
 # def runge_integrator(model, t, y, h, tau):

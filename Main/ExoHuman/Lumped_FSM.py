@@ -31,7 +31,7 @@ if __name__ == '__main__':
     # while True:
     #     LARRE.calculate_torque()
     LARRE.handle.set_rpy(0.25, 0, 0)
-    LARRE.handle.set_pos(0.0, 0, 0.2)
+    LARRE.handle.set_pos(0.0, 0, 1.0)
 
     # machine = StateMachine.ExoStateMachine(LARRE)
     rospy.spin()

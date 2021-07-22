@@ -4,7 +4,7 @@ import smach
 import smach_ros
 import rospy
 
-import InitializeState, WalkInitState, WalkState, MainState, LowerState, iLQRState, RaiseLegState
+import InitializeState, WalkInitState, WalkState, MainState, LowerState, iLQRState, RaiseLegState, ForwardLegState
 
 
 class ExoFSM():
@@ -29,7 +29,10 @@ class ExoFSM():
 
 
             smach.StateMachine.add('RaiseLeg', RaiseLegState.RaiseLegState("exo"),
-                                   transitions={'Raised': 'Main'})
+                                   transitions={'Raised': 'ForwardLeg'})
+
+            smach.StateMachine.add('ForwardLeg', ForwardLegState.ForwardLegState("exo"),
+                                   transitions={'Forwarded': 'Main'})
 
             walk_sub = smach.StateMachine(outcomes=['walked'])
             ilqr_sub = smach.StateMachine(outcomes=['ilqred'])

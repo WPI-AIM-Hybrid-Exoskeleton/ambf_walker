@@ -138,6 +138,11 @@ add_dependencies (CooP_controller_server ${catkin_EXPORTED_TARGETS})
 target_link_libraries(CooP_controller_server ${PROJECT_NAME}  ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
 
 
+add_executable (lumped_with_mass_server src/lumped_with_mass_server.cpp)
+add_dependencies (lumped_with_mass_server ${catkin_EXPORTED_TARGETS})
+target_link_libraries(lumped_with_mass_server ${PROJECT_NAME}  ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)
+
+
 # add_executable (exohuman_client src/client_test/main_client.cpp)
 # add_dependencies (exohuman_client ${catkin_EXPORTED_TARGETS})
 # target_link_libraries(exohuman_client ${PROJECT_NAME} ${AMBF_CLIENT_LIBRARY} ${RBDL_SERVER_LIBRARIES} ${Boost_LIBRARIES} ${Eigen_LIBRARIES} ${CONTROLLER_MODULES_LIBRARIES}  ${catkin_LIBRARIES} ${Eigen_LIBRARIES} pthread)

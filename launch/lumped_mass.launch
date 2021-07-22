@@ -1,0 +1,17 @@
+
+<launch>
+
+
+         <node  pkg="ambf_walker" name="dynamic_server" type="dynamic_server" output="screen" />
+      <node  pkg="ambf_walker" name="lumped_with_mass_server" type="lumped_with_mass_server" output="screen" />
+    <node pkg="ambf_walker" name="Lumped_Controller" type="Lumped_FSM.py" output="screen"/>
+
+<!--     <node pkg="ambf_walker" name="FSMNode" type="FSMNode.py" output="screen"/>-->
+     <node pkg="ambf_walker" name="TransformFrames" type="TransformFrames.py" output="screen"/>
+
+     <!-- <node pkg="ambf_walker" name="TransformPointCloud" type="rotate_point_cloud" output="screen"/> -->
+
+</launch>
+
+
+
