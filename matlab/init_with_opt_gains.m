@@ -25,15 +25,35 @@ Bd = 50*eye(7);
 Md = 10*eye(7);
 invMd = inv(Md);
 
-%Exo Gains
-Kp_e = 300;
-Kd_e = 300;
-
 
 % SMClambda2 = [1., 0; 0 5.0];
 
+Dm_hip = 496.569821348200;
+Dm_knee = 100;
+Dm_ankle = 100;
 
-        
+Km_hip = 6017.73151361233;
+Km_knee = 2898.16820260871;
+Km_ankle = 2898.16820260871;
+
+% model 1 gains
+Dm1= [Dm_hip, 0.0, 0.0, 0.0, 0.0, 0.0,0; 
+         0,  Dm_knee, 0.0, 0.0, 0.0, 0.0,0;
+         0.0, 0.0, Dm_ankle, 0.0  0.0, 0.0,0;
+         0,0,0,Dm_hip,0,0,0;
+         0,0,0,0,Dm_knee,0,0;
+         0,0,0,0,0,Dm_ankle,0;
+         0,0,0,0,0,0,0];     
+
+
+Km1= [Km_hip, 0.0, 0.0, 0.0, 0.0, 0.0,0; 
+         0,  Km_knee, 0.0, 0.0, 0.0, 0.0,0;
+         0.0, 0.0, Km_ankle, 0.0  0.0, 0.0,0;
+         0,0,0,Km_hip,0,0,0;
+         0,0,0,0,Km_knee,0,0;
+         0,0,0,0,0,Km_ankle,0;
+         0,0,0,0,0,0,0];     
+
 
 rho_hip = params.all_cost_parameters(8,1).Value(1,1);
 rho_knee = params.all_cost_parameters(8,1).Value(2,2);;
@@ -92,5 +112,5 @@ Kn0 = [Kn0_hip Kn0_knee Kn0_ankle Kn0_hip Kn0_knee Kn0_ankle 0.0]
 Bn0 = [Bn0_hip Bn0_knee Bn0_ankle Bn0_hip Bn0_knee Bn0_ankle 0.0]
 Bp0 = [Bp0_hip Bp0_knee Bp0_ankle Bp0_hip Bp0_knee Bp0_ankle 0.0]
 
-alpha = [15,15]
-gamma = [15,15]
+alpha = params.all_cost_parameters(5,1).Value;
+gamma = params.all_cost_parameters(7,1).Value;
