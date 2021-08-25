@@ -15,7 +15,7 @@ dampener = 0.01*eye(2);
 
 % model 1 gains
 Km1 = 30*eye(7);
-Dm1 = 30*eye(7);
+Dm1 = .70*eye(7);
 
 
 

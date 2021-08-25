@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sliding_controller2'.
 //
-// Model version                  : 1.190
+// Model version                  : 1.203
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Tue Jul 13 11:47:14 2021
+// C/C++ source code generated on : Tue Aug 24 18:56:13 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -166,11 +166,23 @@ struct ODE3_IntgData {
 //  these parameters and exports their symbols.
 //
 
+extern real_T Bn0[7];                  // Variable: Bn0
+                                          //  Referenced by: '<S26>/Constant3'
+
+extern real_T Bp0[7];                  // Variable: Bp0
+                                          //  Referenced by: '<S26>/Constant2'
+
 extern real_T Dm1[49];                 // Variable: Dm1
                                           //  Referenced by: '<S27>/human derative gain'
 
 extern real_T Km1[49];                 // Variable: Km1
                                           //  Referenced by: '<S27>/human proportional gain'
+
+extern real_T Kn0[7];                  // Variable: Kn0
+                                          //  Referenced by: '<S26>/Constant1'
+
+extern real_T Kp0[7];                  // Variable: Kp0
+                                          //  Referenced by: '<S26>/Constant'
 
 extern real_T dampener[4];             // Variable: dampener
                                           //  Referenced by:
@@ -213,7 +225,13 @@ class sliding_controller2ModelClass {
     SL_Bus_sliding_controller2_std_msgs_String b_varargout_2_Name[16];
     SL_Bus_sliding_controller2_ambf_walker_DesiredJoints In1_a;// '<S54>/In1'
     SL_Bus_sliding_controller2_ambf_walker_DesiredJoints b_varargout_2_c;
+    real_T K[49];                      // '<S26>/MATLAB Function'
+    real_T B[49];                      // '<S26>/MATLAB Function'
     real_T change[49];
+    real_T Kp0_k[49];
+    real_T Kn0_c[49];
+    real_T Bp0_b[49];
+    real_T Bn0_p[49];
     real_T Y[49];
     SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex msg_o;
                               // '<Root>/MATLAB Function - String Array Assign'
@@ -221,58 +239,50 @@ class sliding_controller2ModelClass {
     SL_Bus_sliding_controller2_std_msgs_Header BusAssignment1_m;// '<Root>/Bus Assignment1' 
     SL_Bus_sliding_controller2_std_srvs_SetBoolResponse b_varargout_1;
     uint8_T b_varargout_2_Header_FrameId[128];
-    SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h b_varargout_1_k;
+    SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h b_varargout_1_c;
+    real_T Position[7];
+    real_T Saturation[7];              // '<S6>/Saturation'
     real_T Sum[7];                     // '<S26>/Sum'
     real_T qd_add[7];                  // '<S26>/Integrator'
     real_T qd_add_n[7];                // '<S26>/addmittance gain'
-    real_T Gain[7];                    // '<S6>/Gain'
     real_T exosateration[7];           // '<S6>/exo sateration'
-    real_T K[49];                      // '<S26>/MATLAB Function'
-    real_T B[49];                      // '<S26>/MATLAB Function'
-    real_T B_c[7];
+    real_T humansateration[7];         // '<S6>/human sateration'
+    real_T b_varargout_2_Effort[7];
     real_T q_add[7];                   // '<S26>/Sum1'
     real_T q_add_c[7];                 // '<S26>/Sum2'
-    real_T humansateration[7];         // '<S6>/human sateration'
     real_T dv[7];
-    real_T dv1[7];
-    real_T dv2[7];
+    real_T rtb_Add_c_f[7];
     real_T work[7];
     real_T vn1[7];
     real_T vn2[7];
-    real_T rtb_Transpose2_b_b[4];
+    real_T rtb_y_g2[4];
+    real_T rtb_y_a_g[4];
     int32_T jpvt[7];
     char_T b_zeroDelimServiceName[24];
     char_T b_zeroDelimTopic[24];
-    char_T b_zeroDelimTopic_p[23];
-    char_T b_zeroDelimServiceName_c[22];
-    char_T b_zeroDelimTopic_f[21];
-    char_T b_zeroDelimTopic_g[18];
-    char_T b_zeroDelimServiceName_g[17];
-    SL_Bus_sliding_controller2_ros_time_Time rtb_CurrentTime_m;
-    real_T rtb_danke_g_n[2];
-    real_T rtb_ankle_l_p[2];
-    real_T rtb_Product2_h_l[2];
-    real_T rtb_danke_j[2];
+    char_T b_zeroDelimTopic_m[23];
+    char_T b_zeroDelimServiceName_n[22];
+    char_T b_zeroDelimTopic_p[21];
+    char_T b_zeroDelimTopic_l[18];
+    char_T b_zeroDelimServiceName_j[17];
+    SL_Bus_sliding_controller2_ros_time_Time rtb_CurrentTime_d;
+    real_T rtb_Subtract2_g[2];
+    real_T rtb_danke_m_l[2];
     real_T rtb_ankle_d[2];
-    real_T rtb_dknee_g[2];
-    real_T rtb_knee_l[2];
-    real_T rtb_Add_c_d[2];
-    real_T Add_m[2];                   // '<S39>/Add'
-    real_T Subtract2[2];               // '<S36>/Subtract2'
+    real_T rtb_dknee_d[2];
+    real_T rtb_Add_e_l[2];
+    real_T rtb_danke_e_o[2];
+    real_T rtb_Product2_b[2];
+    real_T rtb_danke_n[2];
+    real_T rtb_Add_c_b[2];
     real_T wj;
     real_T b_varargout_2_Header_Stamp_Sec;
-    real_T rtb_Product2_k_idx_0;
-    real_T rtb_Product2_k_idx_1;
-    real_T rtb_Product2_idx_0;
-    real_T rtb_Product2_idx_1;
-    real_T rtb_Transpose2_b_idx_3;
-    real_T rtb_Transpose2_idx_0;
-    real_T rtb_Transpose2_idx_2;
-    real_T rtb_Transpose2_idx_1;
-    real_T rtb_Transpose2_idx_3;
-    real_T rtb_knee_idx_0;
-    real_T rtb_knee_idx_1;
+    real_T rtb_danke_m_idx_1;
+    real_T rtb_ankle_idx_1;
     real_T rtb_dknee_idx_1;
+    real_T rtb_danke_tmp;
+    real_T rtb_Add_e_tmp;
+    real_T rtb_Add_e_tmp_l;
     real_T smax;
     real_T beta1;
     real_T scale;
@@ -281,7 +291,7 @@ class sliding_controller2ModelClass {
     SL_Bus_ROSVariableLengthArrayInfo b_varargout_2_Effort_SL_Info;
     SL_Bus_sliding_controller2_std_msgs_Bool In1_k;// '<S57>/In1'
     int32_T j;
-    int32_T k;
+    int32_T e_j;
     int32_T i;
     int32_T minmn;
     int32_T ii;
@@ -296,13 +306,13 @@ class sliding_controller2ModelClass {
     int32_T ia;
     uint32_T b_varargout_2_Header_Seq;
     uint32_T b_varargout_2_Header_FrameId_SL;
-    uint32_T b_varargout_2_Header_FrameId__l;
+    uint32_T b_varargout_2_Header_FrameId__b;
     uint32_T b_varargout_2_Name_SL_Info_Curr;
     uint32_T b_varargout_2_Name_SL_Info_Rece;
     uint32_T b_varargout_2_Position_SL_Info_;
-    uint32_T b_varargout_2_Position_SL_Inf_b;
+    uint32_T b_varargout_2_Position_SL_Inf_j;
     uint32_T b_varargout_2_Velocity_SL_Info_;
-    uint32_T b_varargout_2_Velocity_SL_Inf_h;
+    uint32_T b_varargout_2_Velocity_SL_Inf_a;
     SL_Bus_sliding_controller2_std_msgs_Float32 BusAssignment_m;// '<Root>/Bus Assignment' 
     boolean_T LogicalOperator;         // '<Root>/Logical Operator'
     boolean_T SourceBlock_o1;          // '<S14>/SourceBlock'
@@ -349,8 +359,20 @@ class sliding_controller2ModelClass {
 
   // Parameters (default storage)
   struct P_sliding_controller2_T {
+    real_T alpha[2];                   // Variable: alpha
+                                          //  Referenced by: '<S26>/Constant4'
+
+    real_T beta[7];                    // Variable: beta
+                                          //  Referenced by: '<S29>/surface width SMC'
+
+    real_T gamma[2];                   // Variable: gamma
+                                          //  Referenced by: '<S26>/Constant5'
+
     real_T human_sat;                  // Variable: human_sat
                                           //  Referenced by: '<S6>/human sateration'
+
+    real_T interaction_sat;            // Variable: interaction_sat
+                                          //  Referenced by: '<S6>/Saturation'
 
     real_T spring[4];                  // Variable: spring
                                           //  Referenced by:
@@ -439,35 +461,21 @@ class sliding_controller2ModelClass {
     real_T humantau_Y0;                // Computed Parameter: humantau_Y0
                                           //  Referenced by: '<S6>/human tau'
 
-    real_T Constant_Value_l;           // Expression: 0
-                                          //  Referenced by: '<S23>/Constant'
+    real_T Constant_Value_pa;          // Expression: 0
+                                          //  Referenced by: '<S45>/Constant'
 
     real_T Constant_Value_ou;          // Expression: 0
                                           //  Referenced by: '<S44>/Constant'
 
-    real_T Constant_Value_pa;          // Expression: 0
-                                          //  Referenced by: '<S45>/Constant'
+    real_T Constant_Value_l;           // Expression: 0
+                                          //  Referenced by: '<S23>/Constant'
 
-    real_T Integrator1_IC[7];     // Expression: [-0.349,-0.2,0,-0.349,-0.2,0,0]
-                                     //  Referenced by: '<S26>/Integrator1'
+    real_T Integrator1_IC[7];
+                    // Expression: [0.3234, 0.568, 0.07, 0.3234, 0.568, 0.07, 0]
+                       //  Referenced by: '<S26>/Integrator1'
 
     real_T Integrator_IC;              // Expression: 0
                                           //  Referenced by: '<S26>/Integrator'
-
-    real_T surfacewidthSMC_Gain;       // Expression: 0.5
-                                          //  Referenced by: '<S29>/surface width SMC'
-
-    real_T Constant_Value_cx;          // Expression: 0
-                                          //  Referenced by: '<S22>/Constant'
-
-    real_T Constant_Value_fk;          // Expression: 0
-                                          //  Referenced by: '<S38>/Constant'
-
-    real_T Constant_Value_k;           // Expression: 0
-                                          //  Referenced by: '<S39>/Constant'
-
-    real_T Gain_Gain;                  // Expression: 0
-                                          //  Referenced by: '<S6>/Gain'
 
     real_T SineWaveFunction_Amp;       // Expression: 1
                                           //  Referenced by: '<Root>/Sine Wave Function'
@@ -616,6 +624,20 @@ class sliding_controller2ModelClass {
 //-
 //  These blocks were eliminated from the model due to optimizations:
 //
+//  Block '<S22>/Constant' : Unused code path elimination
+//  Block '<S38>/Add' : Unused code path elimination
+//  Block '<S38>/Constant' : Unused code path elimination
+//  Block '<S38>/Product1' : Unused code path elimination
+//  Block '<S38>/Product2' : Unused code path elimination
+//  Block '<S38>/Transpose1' : Unused code path elimination
+//  Block '<S38>/Transpose2' : Unused code path elimination
+//  Block '<S39>/Add' : Unused code path elimination
+//  Block '<S39>/Constant' : Unused code path elimination
+//  Block '<S39>/Product1' : Unused code path elimination
+//  Block '<S39>/Product2' : Unused code path elimination
+//  Block '<S39>/Transpose1' : Unused code path elimination
+//  Block '<S39>/Transpose2' : Unused code path elimination
+//  Block '<S6>/Scope' : Unused code path elimination
 //  Block '<Root>/To Workspace' : Unused code path elimination
 //  Block '<S16>/Data Type Conversion' : Eliminate redundant data type conversion
 

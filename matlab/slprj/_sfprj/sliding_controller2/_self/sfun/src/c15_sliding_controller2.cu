@@ -1373,6 +1373,7 @@ static __global__ __launch_bounds__(32, 1) void c15_eML_blk_kernel_kernel10
     c15_b_blankMsg->Name_SL_Info.CurrentLength = 7U;
     c15_b_blankMsg->Velocity_SL_Info.CurrentLength = 7U;
     c15_b_blankMsg->Position_SL_Info.CurrentLength = 7U;
+    c15_b_blankMsg->Effort_SL_Info.CurrentLength = 7U;
   }
 }
 
@@ -1575,10 +1576,10 @@ static void init_simulink_io_address(SFc15_sliding_controller2InstanceStruct
 /* SFunction Glue Code */
 void sf_c15_sliding_controller2_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3421512125U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(196063992U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1342049774U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(62413586U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(4175659183U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3331375993U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2206515023U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(427425881U);
 }
 
 mxArray *sf_c15_sliding_controller2_third_party_uses_info(void)
@@ -1631,7 +1632,7 @@ static const mxArray *sf_get_sim_state_info_c15_sliding_controller2(void)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "s9sedWFCzkXs5RPu7JjT69";
+  return "sVIMG87L3xWrcv5LwgOPmnB";
 }
 
 static void sf_opaque_initialize_c15_sliding_controller2(void *chartInstanceVar)
@@ -1740,27 +1741,27 @@ const char* sf_c15_sliding_controller2_get_post_codegen_info(void)
 {
   int i;
   const char* encStrCodegen [18] = {
-    "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",
+    "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",
     ""
   };
 
-  static char newstr [1265] = "";
+  static char newstr [1257] = "";
   newstr[0] = '\0';
   for (i = 0; i < 18; i++) {
     strcat(newstr, encStrCodegen[i]);
@@ -1773,10 +1774,10 @@ static void mdlSetWorkWidths_c15_sliding_controller2(SimStruct *S)
 {
   const char* newstr = sf_c15_sliding_controller2_get_post_codegen_info();
   sf_set_work_widths(S, newstr);
-  ssSetChecksum0(S,(2716607362U));
-  ssSetChecksum1(S,(4110284495U));
-  ssSetChecksum2(S,(2677353127U));
-  ssSetChecksum3(S,(2735386957U));
+  ssSetChecksum0(S,(2612096389U));
+  ssSetChecksum1(S,(537299214U));
+  ssSetChecksum2(S,(2193054037U));
+  ssSetChecksum3(S,(913106869U));
 }
 
 static void mdlRTW_c15_sliding_controller2(SimStruct *S)

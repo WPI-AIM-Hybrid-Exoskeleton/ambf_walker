@@ -26,13 +26,19 @@ struct SFc17_sliding_controller2InstanceStruct
   uint8_T c17_JITStateAnimation[1];
   uint8_T c17_JITTransitionAnimation[1];
   void *c17_fEmlrtCtx;
+  real_T (*c17_Kp0)[7];
+  real_T (*c17_Kn0)[7];
+  real_T (*c17_Bp0)[7];
+  real_T (*c17_Bn0)[7];
+  real_T (*c17_beta)[2];
+  real_T (*c17_alpha)[2];
   real_T (*c17_Tid)[7];
   real_T (*c17_K)[49];
   real_T (*c17_Th)[7];
   real_T (*c17_qd)[7];
   real_T (*c17_B)[49];
-  int8_T (*c17_gpu_Kn0)[49];
-  int8_T (*c17_gpu_Kp0)[49];
+  real_T (*c17_gpu_beta)[2];
+  real_T (*c17_gpu_alpha)[2];
   real_T (*c17_gpu_B)[49];
   real_T (*c17_gpu_K)[49];
   real_T (*c17_gpu_Y)[49];
@@ -45,9 +51,17 @@ struct SFc17_sliding_controller2InstanceStruct
   real_T (*c17_b_gpu_x)[7];
   real_T (*c17_gpu_A)[7];
   ptrdiff_t (*c17_gpu_jpvt_t)[7];
+  real_T (*c17_gpu_Bn0)[7];
   real_T (*c17_gpu_Th)[7];
   real_T (*c17_gpu_qd)[7];
   real_T (*c17_gpu_Tid)[7];
+  real_T (*c17_b_gpu_Bn0)[49];
+  real_T (*c17_gpu_Bp0)[7];
+  real_T (*c17_b_gpu_Bp0)[49];
+  real_T (*c17_gpu_Kn0)[7];
+  real_T (*c17_b_gpu_Kn0)[49];
+  real_T (*c17_gpu_Kp0)[7];
+  real_T (*c17_b_gpu_Kp0)[49];
 };
 
 #endif                                 /* struct_SFc17_sliding_controller2InstanceStruct */

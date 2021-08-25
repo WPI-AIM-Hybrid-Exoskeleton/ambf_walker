@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sliding_controller2'.
 //
-// Model version                  : 1.190
+// Model version                  : 1.203
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Tue Jul 13 11:47:14 2021
+// C/C++ source code generated on : Tue Aug 24 18:56:13 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -22,10 +22,32 @@
 // Block parameters (default storage)
 sliding_controller2ModelClass::P_sliding_controller2_T
   sliding_controller2ModelClass::sliding_controller2_P = {
+  // Variable: alpha
+  //  Referenced by: '<S26>/Constant4'
+
+  { 13.630346936442596, 15.264374714220379 },
+
+  // Variable: beta
+  //  Referenced by: '<S29>/surface width SMC'
+
+  { 0.50881249047401234, 0.50881249047401234, 0.50881249047401234,
+    0.50881249047401234, 0.50881249047401234, 0.50881249047401234,
+    0.50881249047401234 },
+
+  // Variable: gamma
+  //  Referenced by: '<S26>/Constant5'
+
+  { 15.264374714220379, 15.264374714220379 },
+
   // Variable: human_sat
   //  Referenced by: '<S6>/human sateration'
 
-  10.0,
+  0.0,
+
+  // Variable: interaction_sat
+  //  Referenced by: '<S6>/Saturation'
+
+  50.0,
 
   // Variable: spring
   //  Referenced by:
@@ -34,7 +56,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   //    '<S36>/spring right thigh'
   //    '<S37>/spring right thigh'
 
-  { 0.01, 0.0, 0.0, 0.01 },
+  { 30.0, 0.0, 0.0, 30.0 },
 
   // Computed Parameter: Constant_Value
   //  Referenced by: '<S2>/Constant'
@@ -3300,7 +3322,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   0.0,
 
   // Expression: 0
-  //  Referenced by: '<S23>/Constant'
+  //  Referenced by: '<S45>/Constant'
 
   0.0,
 
@@ -3310,42 +3332,17 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   0.0,
 
   // Expression: 0
-  //  Referenced by: '<S45>/Constant'
+  //  Referenced by: '<S23>/Constant'
 
   0.0,
 
-  // Expression: [-0.349,-0.2,0,-0.349,-0.2,0,0]
+  // Expression: [0.3234, 0.568, 0.07, 0.3234, 0.568, 0.07, 0]
   //  Referenced by: '<S26>/Integrator1'
 
-  { -0.349, -0.2, 0.0, -0.349, -0.2, 0.0, 0.0 },
+  { 0.3234, 0.568, 0.07, 0.3234, 0.568, 0.07, 0.0 },
 
   // Expression: 0
   //  Referenced by: '<S26>/Integrator'
-
-  0.0,
-
-  // Expression: 0.5
-  //  Referenced by: '<S29>/surface width SMC'
-
-  0.5,
-
-  // Expression: 0
-  //  Referenced by: '<S22>/Constant'
-
-  0.0,
-
-  // Expression: 0
-  //  Referenced by: '<S38>/Constant'
-
-  0.0,
-
-  // Expression: 0
-  //  Referenced by: '<S39>/Constant'
-
-  0.0,
-
-  // Expression: 0
-  //  Referenced by: '<S6>/Gain'
 
   0.0,
 

@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sliding_controller2'.
 //
-// Model version                  : 1.190
+// Model version                  : 1.203
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Tue Jul 13 11:47:14 2021
+// C/C++ source code generated on : Tue Aug 24 18:56:13 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -20,21 +20,42 @@
 #include "sliding_controller2_private.h"
 
 // Exported block parameters
-real_T Dm1[49] = { 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0, 0.0,
-  0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0,
-  0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0,
-  0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0 } ;// Variable: Dm1
-                                           //  Referenced by: '<S27>/human derative gain'
+real_T Bn0[7] = { 508.81249047401235, 508.81249047401269, 508.81249047401269,
+  508.81249047401235, 508.81249047401269, 508.81249047401269, 0.0 } ;// Variable: Bn0
+                                                                      //  Referenced by: '<S26>/Constant3'
 
 
-real_T Km1[49] = { 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0, 0.0,
-  0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0,
-  0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0,
-  0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0 } ;// Variable: Km1
-                                           //  Referenced by: '<S27>/human proportional gain'
+real_T Bp0[7] = { 498.49313176345015, 508.81249047401269, 508.81249047401269,
+  498.49313176345015, 508.81249047401269, 508.81249047401269, 0.0 } ;// Variable: Bp0
+                                                                      //  Referenced by: '<S26>/Constant2'
 
 
-real_T dampener[4] = { 0.01, 0.0, 0.0, 0.01 } ;// Variable: dampener
+real_T Dm1[49] = { 496.5698213482, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0,
+  0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+  496.5698213482, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 } ;// Variable: Dm1
+                                                                     //  Referenced by: '<S27>/human derative gain'
+
+
+real_T Km1[49] = { 6017.73151361233, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+  2898.16820260871, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2898.16820260871, 0.0,
+  0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6017.73151361233, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+  0.0, 2898.16820260871, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2898.16820260871,
+  0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 } ;// Variable: Km1
+                                               //  Referenced by: '<S27>/human proportional gain'
+
+
+real_T Kn0[7] = { 508.81249047401235, 508.81249047401235, 508.81249047401235,
+  508.81249047401235, 508.81249047401235, 508.81249047401235, 0.0 } ;// Variable: Kn0
+                                                                      //  Referenced by: '<S26>/Constant1'
+
+
+real_T Kp0[7] = { 0.50881249047401234, 0.50881249047401234, 0.50881249047401234,
+  0.50881249047401234, 0.50881249047401234, 0.50881249047401234, 0.0 } ;// Variable: Kp0
+                                                                      //  Referenced by: '<S26>/Constant'
+
+
+real_T dampener[4] = { 30.0, 0.0, 0.0, 30.0 } ;// Variable: dampener
                                                   //  Referenced by:
                                                   //    '<S34>/dampener left shank'
                                                   //    '<S35>/dampener left thigh'
@@ -45,26 +66,28 @@ real_T dampener[4] = { 0.01, 0.0, 0.0, 0.01 } ;// Variable: dampener
 real_T exo_sat = 50.0;                 // Variable: exo_sat
                                           //  Referenced by: '<S6>/exo sateration'
 
-real_T invMd[49] = { 0.05, 0.0, 0.0, 0.0, 0.0, 0.0, -0.0, 0.0, 0.05, 0.0, 0.0,
-  0.0, 0.0, -0.0, 0.0, 0.0, 0.05, 0.0, 0.0, 0.0, -0.0, 0.0, 0.0, 0.0, 0.05, 0.0,
-  0.0, -0.0, 0.0, 0.0, 0.0, 0.0, 0.05, 0.0, -0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.05,
-  -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, 0.05 } ;// Variable: invMd
-                                                       //  Referenced by: '<S26>/addmittance gain'
+real_T invMd[49] = { 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, -0.0, 0.0, 0.1, 0.0, 0.0, 0.0,
+  0.0, -0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, -0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0,
+  -0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, -0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, -0.0,
+  -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, 0.1 } ;// Variable: invMd
+                                                //  Referenced by: '<S26>/addmittance gain'
 
 
-real_T lambda2[49] = { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0,
-  0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0,
-  0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-  0.0, 0.0, 0.0, 0.0, 0.0, 0.0 } ;     // Variable: lambda2
+real_T lambda2[49] = { 1.1276851851851846, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+  1.2388618589010809, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0, 1.1276851851851846, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+  1.2388618589010809, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0, 0.0 } ;               // Variable: lambda2
                                           //  Referenced by:
                                           //    '<S29>/Gain12'
                                           //    '<S29>/lambda SMC'
 
 
-real_T rho2[49] = { 200.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-  0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 200.0, 0.0, 0.0,
-  0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-  0.0, 0.0, 0.0, 0.0, 0.0, 0.0 } ;     // Variable: rho2
+real_T rho2[49] = { 152.64374714220378, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+  457.93124142661219, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0, 0.0, 152.64374714220378, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+  457.93124142661219, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0,
+  0.0, 0.0, 0.0, 0.0, 0.0 } ;          // Variable: rho2
                                           //  Referenced by: '<S29>/rho SMC'
 
 
@@ -168,23 +191,23 @@ void sliding_controller2ModelClass::sliding_controller2_exoleft(const real_T
   real_T tmp_0;
   tmp = sin(rtu_q[0]);
   tmp_0 = cos(rtu_q[0]);
-  rty_knee[0] = 0.324 * tmp_0;
-  rty_knee[1] = 0.324 * tmp;
-  a = 0.324 * rtu_qd[0];
+  rty_knee[0] = -0.324 * tmp_0;
+  rty_knee[1] = -0.324 * tmp;
+  a = -0.324 * rtu_qd[0];
   rty_dknee[0] = a * -tmp;
   rty_dknee[1] = a * tmp_0;
-  a = (rtu_qd[0] + rtu_qd[1]) * 0.39;
+  a = (rtu_qd[0] + rtu_qd[1]) * -0.39;
   rty_knee_0 = rty_knee[0];
   rty_knee_1 = rty_knee[1];
   tmp = rtu_q[0] + rtu_q[1];
-  tmp_0 = cos(tmp);
-  rty_ankle[0] = tmp_0 * 0.39 + rty_knee_0;
-  tmp = sin(tmp);
-  rty_ankle[1] = tmp * 0.39 + rty_knee_1;
+  tmp_0 = sin(tmp);
+  rty_ankle[0] = rty_knee_0 - tmp_0 * -0.39;
+  tmp = cos(tmp);
+  rty_ankle[1] = rty_knee_1 - tmp * -0.39;
   rty_knee_0 = rty_dknee[0];
   rty_knee_1 = rty_dknee[1];
-  rty_danke[0] = -tmp * a + rty_knee_0;
-  rty_danke[1] = tmp_0 * a + rty_knee_1;
+  rty_danke[0] = -tmp_0 * a + rty_knee_0;
+  rty_danke[1] = tmp * a + rty_knee_1;
 }
 
 //
@@ -699,45 +722,45 @@ void sliding_controller2ModelClass::step()
   static const uint8_T e[11] = { 82U, 105U, 103U, 104U, 116U, 69U, 120U, 111U,
     72U, 105U, 112U };
 
+  static const uint8_T b_0[7] = { 76U, 101U, 102U, 116U, 72U, 105U, 112U };
+
   static const uint8_T f[12] = { 82U, 105U, 103U, 104U, 116U, 69U, 120U, 111U,
     75U, 110U, 101U, 101U };
+
+  static const uint8_T c_0[8] = { 76U, 101U, 102U, 116U, 75U, 110U, 101U, 101U };
 
   static const uint8_T g[13] = { 82U, 105U, 103U, 104U, 116U, 69U, 120U, 111U,
     65U, 110U, 107U, 108U, 101U };
 
+  static const uint8_T d_0[9] = { 76U, 101U, 102U, 116U, 65U, 110U, 107U, 108U,
+    101U };
+
   static const uint8_T h[8] = { 67U, 114U, 117U, 116U, 99U, 104U, 101U, 115U };
+
+  static const uint8_T e_0[8] = { 82U, 105U, 103U, 104U, 116U, 72U, 105U, 112U };
 
   static const char_T tmp[21] = { '/', 'e', 'x', 'o', '_', 'c', 'o', 'n', 't',
     'r', 'o', 'l', 'l', 'e', 'r', '_', 'o', 'n', 'o', 'f', 'f' };
 
-  static const uint8_T b_0[7] = { 76U, 101U, 102U, 116U, 72U, 105U, 112U };
-
-  static const uint8_T c_0[8] = { 76U, 101U, 102U, 116U, 75U, 110U, 101U, 101U };
-
-  static const char_T tmp_0[23] = { '/', 'h', 'u', 'm', 'a', 'n', '_', 'c', 'o',
-    'n', 't', 'r', 'o', 'l', 'l', 'e', 'r', '_', 'o', 'n', 'o', 'f', 'f' };
-
-  static const uint8_T d_0[9] = { 76U, 101U, 102U, 116U, 65U, 110U, 107U, 108U,
-    101U };
-
-  static const uint8_T e_0[8] = { 82U, 105U, 103U, 104U, 116U, 72U, 105U, 112U };
-
   static const uint8_T f_0[9] = { 82U, 105U, 103U, 104U, 116U, 75U, 110U, 101U,
     101U };
-
-  static const uint8_T b_1[12] = { 76U, 101U, 102U, 116U, 72U, 117U, 109U, 97U,
-    110U, 72U, 105U, 112U };
-
-  static const char_T tmp_1[16] = { '/', 'I', 'n', 'v', 'e', 'r', 's', 'e', 'D',
-    'y', 'n', 'a', 'm', 'i', 'c', 's' };
 
   static const uint8_T g_0[10] = { 82U, 105U, 103U, 104U, 116U, 65U, 110U, 107U,
     108U, 101U };
 
-  static const uint8_T c_1[13] = { 76U, 101U, 102U, 116U, 72U, 117U, 109U, 97U,
-    110U, 75U, 110U, 101U, 101U };
+  static const char_T tmp_0[23] = { '/', 'h', 'u', 'm', 'a', 'n', '_', 'c', 'o',
+    'n', 't', 'r', 'o', 'l', 'l', 'e', 'r', '_', 'o', 'n', 'o', 'f', 'f' };
 
   static const uint8_T h_0[6] = { 98U, 108U, 97U, 110U, 99U, 107U };
+
+  static const char_T tmp_1[16] = { '/', 'I', 'n', 'v', 'e', 'r', 's', 'e', 'D',
+    'y', 'n', 'a', 'm', 'i', 'c', 's' };
+
+  static const uint8_T b_1[12] = { 76U, 101U, 102U, 116U, 72U, 117U, 109U, 97U,
+    110U, 72U, 105U, 112U };
+
+  static const uint8_T c_1[13] = { 76U, 101U, 102U, 116U, 72U, 117U, 109U, 97U,
+    110U, 75U, 110U, 101U, 101U };
 
   static const uint8_T d_1[14] = { 76U, 101U, 102U, 116U, 72U, 117U, 109U, 97U,
     110U, 65U, 110U, 107U, 108U, 101U };
@@ -750,14 +773,6 @@ void sliding_controller2ModelClass::step()
 
   static const uint8_T g_1[15] = { 82U, 105U, 103U, 104U, 116U, 72U, 117U, 109U,
     97U, 110U, 65U, 110U, 107U, 108U, 101U };
-
-  static const int8_T Kn0[49] = { 50, 0, 0, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0,
-    0, 50, 0, 0, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0,
-    50, 0, 0, 0, 0, 0, 0, 0, 50 };
-
-  static const int8_T Kp0[49] = { 75, 0, 0, 0, 0, 0, 0, 0, 75, 0, 0, 0, 0, 0, 0,
-    0, 75, 0, 0, 0, 0, 0, 0, 0, 75, 0, 0, 0, 0, 0, 0, 0, 75, 0, 0, 0, 0, 0, 0, 0,
-    75, 0, 0, 0, 0, 0, 0, 0, 75 };
 
   if (rtmIsMajorTimeStep((&sliding_controller2_M))) {
     // set solver stop time
@@ -794,52 +809,52 @@ void sliding_controller2ModelClass::step()
     sliding_controller2_B.msg_n = sliding_controller2_P.Constant_Value;
     sliding_controller2_B.msg_n.Name_SL_Info.CurrentLength = 7U;
     sliding_controller2_B.msg_n.Effort_SL_Info.CurrentLength = 7U;
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 10;
-         sliding_controller2_B.k++) {
-      sliding_controller2_B.msg_n.Name[0].Data[sliding_controller2_B.k] =
-        b[sliding_controller2_B.k];
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 10;
+         sliding_controller2_B.j++) {
+      sliding_controller2_B.msg_n.Name[0].Data[sliding_controller2_B.j] =
+        b[sliding_controller2_B.j];
     }
 
     sliding_controller2_B.msg_n.Name[0].Data_SL_Info.CurrentLength = 10U;
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 11;
-         sliding_controller2_B.k++) {
-      sliding_controller2_B.msg_n.Name[1].Data[sliding_controller2_B.k] =
-        c[sliding_controller2_B.k];
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 11;
+         sliding_controller2_B.j++) {
+      sliding_controller2_B.msg_n.Name[1].Data[sliding_controller2_B.j] =
+        c[sliding_controller2_B.j];
     }
 
     sliding_controller2_B.msg_n.Name[1].Data_SL_Info.CurrentLength = 11U;
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 12;
-         sliding_controller2_B.k++) {
-      sliding_controller2_B.msg_n.Name[2].Data[sliding_controller2_B.k] =
-        d[sliding_controller2_B.k];
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 12;
+         sliding_controller2_B.j++) {
+      sliding_controller2_B.msg_n.Name[2].Data[sliding_controller2_B.j] =
+        d[sliding_controller2_B.j];
     }
 
     sliding_controller2_B.msg_n.Name[2].Data_SL_Info.CurrentLength = 12U;
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 11;
-         sliding_controller2_B.k++) {
-      sliding_controller2_B.msg_n.Name[3].Data[sliding_controller2_B.k] =
-        e[sliding_controller2_B.k];
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 11;
+         sliding_controller2_B.j++) {
+      sliding_controller2_B.msg_n.Name[3].Data[sliding_controller2_B.j] =
+        e[sliding_controller2_B.j];
     }
 
     sliding_controller2_B.msg_n.Name[3].Data_SL_Info.CurrentLength = 11U;
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 12;
-         sliding_controller2_B.k++) {
-      sliding_controller2_B.msg_n.Name[4].Data[sliding_controller2_B.k] =
-        f[sliding_controller2_B.k];
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 12;
+         sliding_controller2_B.j++) {
+      sliding_controller2_B.msg_n.Name[4].Data[sliding_controller2_B.j] =
+        f[sliding_controller2_B.j];
     }
 
     sliding_controller2_B.msg_n.Name[4].Data_SL_Info.CurrentLength = 12U;
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 13;
-         sliding_controller2_B.k++) {
-      sliding_controller2_B.msg_n.Name[5].Data[sliding_controller2_B.k] =
-        g[sliding_controller2_B.k];
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 13;
+         sliding_controller2_B.j++) {
+      sliding_controller2_B.msg_n.Name[5].Data[sliding_controller2_B.j] =
+        g[sliding_controller2_B.j];
     }
 
     sliding_controller2_B.msg_n.Name[5].Data_SL_Info.CurrentLength = 13U;
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 8;
-         sliding_controller2_B.k++) {
-      sliding_controller2_B.msg_n.Name[6].Data[sliding_controller2_B.k] =
-        h[sliding_controller2_B.k];
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 8;
+         sliding_controller2_B.j++) {
+      sliding_controller2_B.msg_n.Name[6].Data[sliding_controller2_B.j] =
+        h[sliding_controller2_B.j];
     }
 
     sliding_controller2_B.msg_n.Name[6].Data_SL_Info.CurrentLength = 8U;
@@ -854,17 +869,17 @@ void sliding_controller2ModelClass::step()
       &sliding_controller2_B.wj,
       sliding_controller2_B.b_varargout_2_Header_FrameId,
       &sliding_controller2_B.b_varargout_2_Header_FrameId_SL,
-      &sliding_controller2_B.b_varargout_2_Header_FrameId__l,
+      &sliding_controller2_B.b_varargout_2_Header_FrameId__b,
       sliding_controller2_B.b_varargout_2_Name,
       &sliding_controller2_B.b_varargout_2_Name_SL_Info_Curr,
       &sliding_controller2_B.b_varargout_2_Name_SL_Info_Rece,
       sliding_controller2_B.q_add_c,
       &sliding_controller2_B.b_varargout_2_Position_SL_Info_,
-      &sliding_controller2_B.b_varargout_2_Position_SL_Inf_b,
+      &sliding_controller2_B.b_varargout_2_Position_SL_Inf_j,
       sliding_controller2_B.q_add,
       &sliding_controller2_B.b_varargout_2_Velocity_SL_Info_,
-      &sliding_controller2_B.b_varargout_2_Velocity_SL_Inf_h,
-      sliding_controller2_B.humansateration,
+      &sliding_controller2_B.b_varargout_2_Velocity_SL_Inf_a,
+      sliding_controller2_B.b_varargout_2_Effort,
       &sliding_controller2_B.b_varargout_2_Effort_SL_Info);
 
     // Outputs for Enabled SubSystem: '<S13>/Enabled Subsystem' incorporates:
@@ -885,7 +900,7 @@ void sliding_controller2ModelClass::step()
       sliding_controller2_B.In1_n.Header.FrameId_SL_Info.CurrentLength =
         sliding_controller2_B.b_varargout_2_Header_FrameId_SL;
       sliding_controller2_B.In1_n.Header.FrameId_SL_Info.ReceivedLength =
-        sliding_controller2_B.b_varargout_2_Header_FrameId__l;
+        sliding_controller2_B.b_varargout_2_Header_FrameId__b;
       memcpy(&sliding_controller2_B.In1_n.Name[0],
              &sliding_controller2_B.b_varargout_2_Name[0], sizeof
              (SL_Bus_sliding_controller2_std_msgs_String) << 4U);
@@ -896,11 +911,11 @@ void sliding_controller2ModelClass::step()
       sliding_controller2_B.In1_n.Position_SL_Info.CurrentLength =
         sliding_controller2_B.b_varargout_2_Position_SL_Info_;
       sliding_controller2_B.In1_n.Position_SL_Info.ReceivedLength =
-        sliding_controller2_B.b_varargout_2_Position_SL_Inf_b;
+        sliding_controller2_B.b_varargout_2_Position_SL_Inf_j;
       sliding_controller2_B.In1_n.Velocity_SL_Info.CurrentLength =
         sliding_controller2_B.b_varargout_2_Velocity_SL_Info_;
       sliding_controller2_B.In1_n.Velocity_SL_Info.ReceivedLength =
-        sliding_controller2_B.b_varargout_2_Velocity_SL_Inf_h;
+        sliding_controller2_B.b_varargout_2_Velocity_SL_Inf_a;
       for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
            sliding_controller2_B.i++) {
         sliding_controller2_B.In1_n.Position[sliding_controller2_B.i] =
@@ -908,7 +923,7 @@ void sliding_controller2ModelClass::step()
         sliding_controller2_B.In1_n.Velocity[sliding_controller2_B.i] =
           sliding_controller2_B.q_add[sliding_controller2_B.i];
         sliding_controller2_B.In1_n.Effort[sliding_controller2_B.i] =
-          sliding_controller2_B.humansateration[sliding_controller2_B.i];
+          sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.i];
       }
 
       sliding_controller2_B.In1_n.Effort_SL_Info =
@@ -928,17 +943,17 @@ void sliding_controller2ModelClass::step()
       &sliding_controller2_B.wj,
       sliding_controller2_B.b_varargout_2_Header_FrameId,
       &sliding_controller2_B.b_varargout_2_Header_FrameId_SL,
-      &sliding_controller2_B.b_varargout_2_Header_FrameId__l,
+      &sliding_controller2_B.b_varargout_2_Header_FrameId__b,
       sliding_controller2_B.b_varargout_2_Name,
       &sliding_controller2_B.b_varargout_2_Name_SL_Info_Curr,
       &sliding_controller2_B.b_varargout_2_Name_SL_Info_Rece,
       sliding_controller2_B.q_add_c,
       &sliding_controller2_B.b_varargout_2_Position_SL_Info_,
-      &sliding_controller2_B.b_varargout_2_Position_SL_Inf_b,
+      &sliding_controller2_B.b_varargout_2_Position_SL_Inf_j,
       sliding_controller2_B.q_add,
       &sliding_controller2_B.b_varargout_2_Velocity_SL_Info_,
-      &sliding_controller2_B.b_varargout_2_Velocity_SL_Inf_h,
-      sliding_controller2_B.humansateration,
+      &sliding_controller2_B.b_varargout_2_Velocity_SL_Inf_a,
+      sliding_controller2_B.b_varargout_2_Effort,
       &sliding_controller2_B.b_varargout_2_Effort_SL_Info);
 
     // Outputs for Enabled SubSystem: '<S14>/Enabled Subsystem' incorporates:
@@ -959,7 +974,7 @@ void sliding_controller2ModelClass::step()
       sliding_controller2_B.In1.Header.FrameId_SL_Info.CurrentLength =
         sliding_controller2_B.b_varargout_2_Header_FrameId_SL;
       sliding_controller2_B.In1.Header.FrameId_SL_Info.ReceivedLength =
-        sliding_controller2_B.b_varargout_2_Header_FrameId__l;
+        sliding_controller2_B.b_varargout_2_Header_FrameId__b;
       memcpy(&sliding_controller2_B.In1.Name[0],
              &sliding_controller2_B.b_varargout_2_Name[0], sizeof
              (SL_Bus_sliding_controller2_std_msgs_String) << 4U);
@@ -970,11 +985,11 @@ void sliding_controller2ModelClass::step()
       sliding_controller2_B.In1.Position_SL_Info.CurrentLength =
         sliding_controller2_B.b_varargout_2_Position_SL_Info_;
       sliding_controller2_B.In1.Position_SL_Info.ReceivedLength =
-        sliding_controller2_B.b_varargout_2_Position_SL_Inf_b;
+        sliding_controller2_B.b_varargout_2_Position_SL_Inf_j;
       sliding_controller2_B.In1.Velocity_SL_Info.CurrentLength =
         sliding_controller2_B.b_varargout_2_Velocity_SL_Info_;
       sliding_controller2_B.In1.Velocity_SL_Info.ReceivedLength =
-        sliding_controller2_B.b_varargout_2_Velocity_SL_Inf_h;
+        sliding_controller2_B.b_varargout_2_Velocity_SL_Inf_a;
       for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
            sliding_controller2_B.i++) {
         sliding_controller2_B.In1.Position[sliding_controller2_B.i] =
@@ -982,7 +997,7 @@ void sliding_controller2ModelClass::step()
         sliding_controller2_B.In1.Velocity[sliding_controller2_B.i] =
           sliding_controller2_B.q_add[sliding_controller2_B.i];
         sliding_controller2_B.In1.Effort[sliding_controller2_B.i] =
-          sliding_controller2_B.humansateration[sliding_controller2_B.i];
+          sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.i];
       }
 
       sliding_controller2_B.In1.Effort_SL_Info =
@@ -1022,45 +1037,45 @@ void sliding_controller2ModelClass::step()
     sliding_controller2_B.msg = sliding_controller2_P.Constant_Value_d;
     sliding_controller2_B.msg.Name_SL_Info.CurrentLength = 6U;
     sliding_controller2_B.msg.Effort_SL_Info.CurrentLength = 6U;
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 12;
-         sliding_controller2_B.k++) {
-      sliding_controller2_B.msg.Name[0].Data[sliding_controller2_B.k] =
-        b_1[sliding_controller2_B.k];
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 12;
+         sliding_controller2_B.j++) {
+      sliding_controller2_B.msg.Name[0].Data[sliding_controller2_B.j] =
+        b_1[sliding_controller2_B.j];
     }
 
     sliding_controller2_B.msg.Name[0].Data_SL_Info.CurrentLength = 12U;
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 13;
-         sliding_controller2_B.k++) {
-      sliding_controller2_B.msg.Name[1].Data[sliding_controller2_B.k] =
-        c_1[sliding_controller2_B.k];
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 13;
+         sliding_controller2_B.j++) {
+      sliding_controller2_B.msg.Name[1].Data[sliding_controller2_B.j] =
+        c_1[sliding_controller2_B.j];
     }
 
     sliding_controller2_B.msg.Name[1].Data_SL_Info.CurrentLength = 13U;
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 14;
-         sliding_controller2_B.k++) {
-      sliding_controller2_B.msg.Name[2].Data[sliding_controller2_B.k] =
-        d_1[sliding_controller2_B.k];
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 14;
+         sliding_controller2_B.j++) {
+      sliding_controller2_B.msg.Name[2].Data[sliding_controller2_B.j] =
+        d_1[sliding_controller2_B.j];
     }
 
     sliding_controller2_B.msg.Name[2].Data_SL_Info.CurrentLength = 14U;
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 13;
-         sliding_controller2_B.k++) {
-      sliding_controller2_B.msg.Name[3].Data[sliding_controller2_B.k] =
-        e_1[sliding_controller2_B.k];
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 13;
+         sliding_controller2_B.j++) {
+      sliding_controller2_B.msg.Name[3].Data[sliding_controller2_B.j] =
+        e_1[sliding_controller2_B.j];
     }
 
     sliding_controller2_B.msg.Name[3].Data_SL_Info.CurrentLength = 13U;
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 14;
-         sliding_controller2_B.k++) {
-      sliding_controller2_B.msg.Name[4].Data[sliding_controller2_B.k] =
-        f_1[sliding_controller2_B.k];
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 14;
+         sliding_controller2_B.j++) {
+      sliding_controller2_B.msg.Name[4].Data[sliding_controller2_B.j] =
+        f_1[sliding_controller2_B.j];
     }
 
     sliding_controller2_B.msg.Name[4].Data_SL_Info.CurrentLength = 14U;
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 15;
-         sliding_controller2_B.k++) {
-      sliding_controller2_B.msg.Name[5].Data[sliding_controller2_B.k] =
-        g_1[sliding_controller2_B.k];
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 15;
+         sliding_controller2_B.j++) {
+      sliding_controller2_B.msg.Name[5].Data[sliding_controller2_B.j] =
+        g_1[sliding_controller2_B.j];
     }
 
     sliding_controller2_B.msg.Name[5].Data_SL_Info.CurrentLength = 15U;
@@ -1069,7 +1084,7 @@ void sliding_controller2ModelClass::step()
   }
 
   // MATLABSystem: '<Root>/Current Time'
-  currentROSTimeBus(&sliding_controller2_B.rtb_CurrentTime_m);
+  currentROSTimeBus(&sliding_controller2_B.rtb_CurrentTime_d);
 
   // BusAssignment: '<Root>/Bus Assignment1' incorporates:
   //   Constant: '<S5>/Constant'
@@ -1078,7 +1093,7 @@ void sliding_controller2ModelClass::step()
   sliding_controller2_B.BusAssignment1_m =
     sliding_controller2_P.Constant_Value_i;
   sliding_controller2_B.BusAssignment1_m.Stamp =
-    sliding_controller2_B.rtb_CurrentTime_m;
+    sliding_controller2_B.rtb_CurrentTime_d;
   if (rtmIsMajorTimeStep((&sliding_controller2_M))) {
     // Outputs for Atomic SubSystem: '<Root>/Subscribe'
     // MATLABSystem: '<S12>/SourceBlock' incorporates:
@@ -1146,391 +1161,497 @@ void sliding_controller2ModelClass::step()
 
   if (sliding_controller2_DW.Controller_MODE) {
     if (rtmIsMajorTimeStep((&sliding_controller2_M))) {
-      // MATLAB Function: '<S44>/MATLAB Function'
-      sliding_controll_MATLABFunction(&sliding_controller2_B.In1_j.Position[3],
-        sliding_controller2_B.rtb_Transpose2_b_b);
+      // MATLAB Function: '<S6>/human msg' incorporates:
+      //   Constant: '<S20>/Constant'
 
-      // MATLAB Function: '<S19>/exo right'
-      sliding_controller2_exoleft(&sliding_controller2_B.In1_j.Position[3],
-        &sliding_controller2_B.In1_j.Velocity[3],
-        sliding_controller2_B.rtb_danke_g_n, sliding_controller2_B.rtb_ankle_l_p,
-        sliding_controller2_B.rtb_dknee_g, sliding_controller2_B.rtb_knee_l);
+      sliding_controller2_B.msg_c = sliding_controller2_P.Constant_Value_c;
+      sliding_controller2_B.msg_c.Name_SL_Info.CurrentLength = 7U;
+      sliding_controller2_B.msg_c.Velocity_SL_Info.CurrentLength = 7U;
+      sliding_controller2_B.msg_c.Position_SL_Info.CurrentLength = 7U;
+      sliding_controller2_B.msg_c.Effort_SL_Info.CurrentLength = 7U;
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.msg_c.Name[0].Data[sliding_controller2_B.j] =
+          b_0[sliding_controller2_B.j];
+      }
 
-      // MATLAB Function: '<S19>/human right'
-      sliding_controller2_exoleft(&sliding_controller2_B.In1_e.Position[3],
-        &sliding_controller2_B.In1_e.Velocity[3], sliding_controller2_B.Add_m,
-        sliding_controller2_B.Subtract2, sliding_controller2_B.rtb_Product2_h_l,
-        sliding_controller2_B.rtb_Add_c_d);
+      sliding_controller2_B.msg_c.Name[0].Data_SL_Info.CurrentLength = 7U;
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 8;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.msg_c.Name[1].Data[sliding_controller2_B.j] =
+          c_0[sliding_controller2_B.j];
+      }
 
-      // Sum: '<S37>/Subtract'
-      sliding_controller2_B.rtb_Product2_k_idx_0 =
-        sliding_controller2_B.rtb_danke_g_n[0] - sliding_controller2_B.Add_m[0];
+      sliding_controller2_B.msg_c.Name[1].Data_SL_Info.CurrentLength = 8U;
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 9;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.msg_c.Name[2].Data[sliding_controller2_B.j] =
+          d_0[sliding_controller2_B.j];
+      }
 
-      // Sum: '<S37>/Subtract1'
-      sliding_controller2_B.rtb_Product2_idx_1 =
-        sliding_controller2_B.rtb_ankle_l_p[0] -
-        sliding_controller2_B.Subtract2[0];
+      sliding_controller2_B.msg_c.Name[2].Data_SL_Info.CurrentLength = 9U;
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 8;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.msg_c.Name[3].Data[sliding_controller2_B.j] =
+          e_0[sliding_controller2_B.j];
+      }
 
-      // Sum: '<S37>/Subtract'
-      sliding_controller2_B.rtb_Product2_k_idx_1 =
-        sliding_controller2_B.rtb_danke_g_n[1] - sliding_controller2_B.Add_m[1];
+      sliding_controller2_B.msg_c.Name[3].Data_SL_Info.CurrentLength = 8U;
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 9;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.msg_c.Name[4].Data[sliding_controller2_B.j] =
+          f_0[sliding_controller2_B.j];
+      }
 
-      // Sum: '<S37>/Subtract1'
-      sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
-        sliding_controller2_B.rtb_ankle_l_p[1] -
-        sliding_controller2_B.Subtract2[1];
+      sliding_controller2_B.msg_c.Name[4].Data_SL_Info.CurrentLength = 9U;
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 10;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.msg_c.Name[5].Data[sliding_controller2_B.j] =
+          g_0[sliding_controller2_B.j];
+      }
 
-      // Sum: '<S37>/Subtract2' incorporates:
-      //   Gain: '<S37>/dampener right shank'
-      //   Gain: '<S37>/spring right thigh'
+      sliding_controller2_B.msg_c.Name[5].Data_SL_Info.CurrentLength = 10U;
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 6;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.msg_c.Name[6].Data[sliding_controller2_B.j] =
+          h_0[sliding_controller2_B.j];
+      }
 
-      sliding_controller2_B.rtb_Product2_idx_0 = (sliding_controller2_P.spring[0]
-        * sliding_controller2_B.rtb_Product2_k_idx_0 +
-        sliding_controller2_P.spring[2] *
-        sliding_controller2_B.rtb_Product2_k_idx_1) + (dampener[0] *
-        sliding_controller2_B.rtb_Product2_idx_1 + dampener[2] *
-        sliding_controller2_B.b_varargout_2_Header_Stamp_Sec);
-      sliding_controller2_B.rtb_Product2_idx_1 = (sliding_controller2_P.spring[1]
-        * sliding_controller2_B.rtb_Product2_k_idx_0 +
-        sliding_controller2_P.spring[3] *
-        sliding_controller2_B.rtb_Product2_k_idx_1) + (dampener[1] *
-        sliding_controller2_B.rtb_Product2_idx_1 + dampener[3] *
-        sliding_controller2_B.b_varargout_2_Header_Stamp_Sec);
+      sliding_controller2_B.msg_c.Name[6].Data_SL_Info.CurrentLength = 6U;
 
-      // Product: '<S44>/Product1' incorporates:
-      //   Math: '<S39>/Transpose2'
-      //   Math: '<S44>/Transpose1'
-
-      sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
-        sliding_controller2_B.rtb_Transpose2_b_b[0] *
-        sliding_controller2_B.rtb_Product2_idx_0 +
-        sliding_controller2_B.rtb_Transpose2_b_b[1] *
-        sliding_controller2_B.rtb_Product2_idx_1;
-      sliding_controller2_B.wj = sliding_controller2_B.rtb_Transpose2_b_b[2] *
-        sliding_controller2_B.rtb_Product2_idx_0 +
-        sliding_controller2_B.rtb_Transpose2_b_b[3] *
-        sliding_controller2_B.rtb_Product2_idx_1;
-
-      // MATLAB Function: '<S44>/MATLAB Function1'
-      sliding_control_MATLABFunction1(&sliding_controller2_B.In1_j.Position[3],
-        sliding_controller2_B.rtb_Transpose2_b_b);
-
-      // Math: '<S44>/Transpose2' incorporates:
-      //   Math: '<S39>/Transpose2'
-      //   Math: '<S45>/Transpose2'
-
-      sliding_controller2_B.rtb_Transpose2_idx_0 =
-        sliding_controller2_B.rtb_Transpose2_b_b[0];
-      sliding_controller2_B.rtb_Transpose2_idx_1 =
-        sliding_controller2_B.rtb_Transpose2_b_b[2];
-
-      // Sum: '<S36>/Subtract'
-      sliding_controller2_B.rtb_Product2_k_idx_1 =
-        sliding_controller2_B.rtb_dknee_g[0] -
-        sliding_controller2_B.rtb_Product2_h_l[0];
-
-      // Math: '<S44>/Transpose2' incorporates:
-      //   Math: '<S39>/Transpose2'
-      //   Math: '<S45>/Transpose2'
-
-      sliding_controller2_B.rtb_Transpose2_idx_2 =
-        sliding_controller2_B.rtb_Transpose2_b_b[1];
-      sliding_controller2_B.rtb_Transpose2_idx_3 =
-        sliding_controller2_B.rtb_Transpose2_b_b[3];
-
-      // Sum: '<S36>/Subtract'
-      sliding_controller2_B.rtb_dknee_idx_1 = sliding_controller2_B.rtb_dknee_g
-        [1] - sliding_controller2_B.rtb_Product2_h_l[1];
-
-      // Sum: '<S36>/Subtract2' incorporates:
-      //   Gain: '<S36>/spring right thigh'
-
-      sliding_controller2_B.Subtract2[0] = 0.0;
-      sliding_controller2_B.Subtract2[0] += sliding_controller2_P.spring[0] *
-        sliding_controller2_B.rtb_Product2_k_idx_1;
-      sliding_controller2_B.Subtract2[0] += sliding_controller2_P.spring[2] *
-        sliding_controller2_B.rtb_dknee_idx_1;
-
-      // Sum: '<S36>/Subtract1'
-      sliding_controller2_B.rtb_knee_idx_0 = sliding_controller2_B.rtb_knee_l[0]
-        - sliding_controller2_B.rtb_Add_c_d[0];
-
-      // Sum: '<S36>/Subtract2' incorporates:
-      //   Gain: '<S36>/spring right thigh'
-
-      sliding_controller2_B.Subtract2[1] = 0.0;
-      sliding_controller2_B.Subtract2[1] += sliding_controller2_P.spring[1] *
-        sliding_controller2_B.rtb_Product2_k_idx_1;
-      sliding_controller2_B.Subtract2[1] += sliding_controller2_P.spring[3] *
-        sliding_controller2_B.rtb_dknee_idx_1;
-
-      // Sum: '<S36>/Subtract1'
-      sliding_controller2_B.rtb_knee_idx_1 = sliding_controller2_B.rtb_knee_l[1]
-        - sliding_controller2_B.rtb_Add_c_d[1];
-
-      // Sum: '<S36>/Subtract2' incorporates:
-      //   Gain: '<S36>/dampener right shank'
-
-      sliding_controller2_B.Subtract2[0] += dampener[0] *
-        sliding_controller2_B.rtb_knee_idx_0 + dampener[2] *
-        sliding_controller2_B.rtb_knee_idx_1;
-      sliding_controller2_B.Subtract2[1] += dampener[1] *
-        sliding_controller2_B.rtb_knee_idx_0 + dampener[3] *
-        sliding_controller2_B.rtb_knee_idx_1;
+      // End of MATLAB Function: '<S6>/human msg'
+      for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
+           sliding_controller2_B.i++) {
+        // SignalConversion generated from: '<S6>/Bus Selector1'
+        sliding_controller2_B.Position[sliding_controller2_B.i] =
+          sliding_controller2_B.In1_j.Position[sliding_controller2_B.i];
+      }
 
       // MATLAB Function: '<S45>/MATLAB Function'
-      sliding_controll_MATLABFunction(&sliding_controller2_B.In1_j.Position[0],
-        sliding_controller2_B.rtb_Transpose2_b_b);
-
-      // MATLAB Function: '<S19>/exo left'
-      sliding_controller2_exoleft(&sliding_controller2_B.In1_j.Position[0],
-        &sliding_controller2_B.In1_j.Velocity[0],
-        sliding_controller2_B.rtb_knee_l, sliding_controller2_B.rtb_dknee_g,
-        sliding_controller2_B.rtb_ankle_d, sliding_controller2_B.rtb_danke_j);
+      sliding_controll_MATLABFunction(&sliding_controller2_B.Position[0],
+        sliding_controller2_B.rtb_y_a_g);
 
       // MATLAB Function: '<S19>/human left'
       sliding_controller2_exoleft(&sliding_controller2_B.In1_e.Position[0],
-        &sliding_controller2_B.In1_e.Velocity[0], sliding_controller2_B.Add_m,
-        sliding_controller2_B.rtb_Product2_h_l,
-        sliding_controller2_B.rtb_ankle_l_p, sliding_controller2_B.rtb_danke_g_n);
+        &sliding_controller2_B.In1_e.Velocity[0],
+        sliding_controller2_B.rtb_danke_e_o, sliding_controller2_B.rtb_Add_c_b,
+        sliding_controller2_B.rtb_Product2_b, sliding_controller2_B.rtb_Add_e_l);
+
+      // MATLAB Function: '<S19>/exo left'
+      sliding_controller2_exoleft(&sliding_controller2_B.Position[0],
+        &sliding_controller2_B.In1_j.Velocity[0],
+        sliding_controller2_B.rtb_danke_m_l, sliding_controller2_B.rtb_ankle_d,
+        sliding_controller2_B.rtb_dknee_d, sliding_controller2_B.rtb_danke_n);
+
+      // MATLAB Function: '<S45>/MATLAB Function1'
+      sliding_control_MATLABFunction1(&sliding_controller2_B.Position[0],
+        sliding_controller2_B.rtb_y_g2);
+
+      // Sum: '<S34>/Subtract1'
+      sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
+        sliding_controller2_B.rtb_danke_n[0] -
+        sliding_controller2_B.rtb_Add_e_l[0];
+
+      // Sum: '<S34>/Subtract'
+      sliding_controller2_B.wj = sliding_controller2_B.rtb_dknee_d[0] -
+        sliding_controller2_B.rtb_Product2_b[0];
+
+      // Sum: '<S36>/Subtract1' incorporates:
+      //   Sum: '<S34>/Subtract1'
+
+      sliding_controller2_B.rtb_danke_n[0] =
+        sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
+
+      // Sum: '<S34>/Subtract1'
+      sliding_controller2_B.rtb_danke_tmp = sliding_controller2_B.rtb_danke_n[1]
+        - sliding_controller2_B.rtb_Add_e_l[1];
+
+      // Sum: '<S34>/Subtract'
+      sliding_controller2_B.rtb_dknee_idx_1 = sliding_controller2_B.rtb_dknee_d
+        [1] - sliding_controller2_B.rtb_Product2_b[1];
+
+      // Sum: '<S36>/Subtract1' incorporates:
+      //   Sum: '<S34>/Subtract1'
+
+      sliding_controller2_B.rtb_danke_n[1] = sliding_controller2_B.rtb_danke_tmp;
+
+      // Sum: '<S36>/Subtract2' incorporates:
+      //   Gain: '<S34>/dampener left shank'
+      //   Gain: '<S34>/spring left shank'
+      //   Sum: '<S34>/Subtract1'
+      //   Sum: '<S34>/Subtract2'
+
+      sliding_controller2_B.rtb_Subtract2_g[0] = (sliding_controller2_P.spring[0]
+        * sliding_controller2_B.wj + sliding_controller2_P.spring[2] *
+        sliding_controller2_B.rtb_dknee_idx_1) + (dampener[0] *
+        sliding_controller2_B.b_varargout_2_Header_Stamp_Sec +
+        sliding_controller2_B.rtb_danke_tmp * dampener[2]);
+      sliding_controller2_B.rtb_Subtract2_g[1] = (sliding_controller2_P.spring[1]
+        * sliding_controller2_B.wj + sliding_controller2_P.spring[3] *
+        sliding_controller2_B.rtb_dknee_idx_1) +
+        (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec * dampener[1] +
+         sliding_controller2_B.rtb_danke_tmp * dampener[3]);
+
+      // Sum: '<S44>/Add' incorporates:
+      //   Math: '<S45>/Transpose2'
+      //   Product: '<S45>/Product2'
+
+      sliding_controller2_B.rtb_Add_e_tmp = sliding_controller2_B.rtb_y_g2[0] *
+        sliding_controller2_B.rtb_Subtract2_g[0] +
+        sliding_controller2_B.rtb_y_g2[1] *
+        sliding_controller2_B.rtb_Subtract2_g[1];
+      sliding_controller2_B.rtb_Add_e_l[0] = sliding_controller2_B.rtb_Add_e_tmp;
 
       // Sum: '<S35>/Subtract'
-      sliding_controller2_B.rtb_knee_idx_0 = sliding_controller2_B.rtb_knee_l[0]
-        - sliding_controller2_B.Add_m[0];
+      sliding_controller2_B.rtb_dknee_idx_1 =
+        sliding_controller2_B.rtb_danke_m_l[0] -
+        sliding_controller2_B.rtb_danke_e_o[0];
 
       // Sum: '<S35>/Subtract1'
-      sliding_controller2_B.rtb_Product2_k_idx_1 =
-        sliding_controller2_B.rtb_dknee_g[0] -
-        sliding_controller2_B.rtb_Product2_h_l[0];
+      sliding_controller2_B.rtb_danke_tmp = sliding_controller2_B.rtb_ankle_d[0]
+        - sliding_controller2_B.rtb_Add_c_b[0];
+
+      // Sum: '<S44>/Add' incorporates:
+      //   Math: '<S45>/Transpose2'
+      //   Product: '<S45>/Product2'
+
+      sliding_controller2_B.rtb_Add_e_tmp_l =
+        sliding_controller2_B.rtb_Subtract2_g[0] *
+        sliding_controller2_B.rtb_y_g2[2] +
+        sliding_controller2_B.rtb_Subtract2_g[1] *
+        sliding_controller2_B.rtb_y_g2[3];
+      sliding_controller2_B.rtb_Add_e_l[1] =
+        sliding_controller2_B.rtb_Add_e_tmp_l;
 
       // Sum: '<S35>/Subtract'
-      sliding_controller2_B.rtb_knee_idx_1 = sliding_controller2_B.rtb_knee_l[1]
-        - sliding_controller2_B.Add_m[1];
+      sliding_controller2_B.rtb_danke_m_idx_1 =
+        sliding_controller2_B.rtb_danke_m_l[1] -
+        sliding_controller2_B.rtb_danke_e_o[1];
 
       // Sum: '<S35>/Subtract1'
-      sliding_controller2_B.rtb_dknee_idx_1 = sliding_controller2_B.rtb_dknee_g
-        [1] - sliding_controller2_B.rtb_Product2_h_l[1];
+      sliding_controller2_B.rtb_ankle_idx_1 = sliding_controller2_B.rtb_ankle_d
+        [1] - sliding_controller2_B.rtb_Add_c_b[1];
 
       // Sum: '<S35>/Subtract2' incorporates:
       //   Gain: '<S35>/dampener left thigh'
       //   Gain: '<S35>/spring left thigh'
 
-      sliding_controller2_B.rtb_Product2_k_idx_0 =
-        (sliding_controller2_P.spring[0] * sliding_controller2_B.rtb_knee_idx_0
+      sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
+        (sliding_controller2_P.spring[0] * sliding_controller2_B.rtb_dknee_idx_1
          + sliding_controller2_P.spring[2] *
-         sliding_controller2_B.rtb_knee_idx_1) + (dampener[0] *
-        sliding_controller2_B.rtb_Product2_k_idx_1 + dampener[2] *
-        sliding_controller2_B.rtb_dknee_idx_1);
-      sliding_controller2_B.rtb_Product2_k_idx_1 =
-        (sliding_controller2_P.spring[1] * sliding_controller2_B.rtb_knee_idx_0
-         + sliding_controller2_P.spring[3] *
-         sliding_controller2_B.rtb_knee_idx_1) + (dampener[1] *
-        sliding_controller2_B.rtb_Product2_k_idx_1 + dampener[3] *
-        sliding_controller2_B.rtb_dknee_idx_1);
+         sliding_controller2_B.rtb_danke_m_idx_1) + (dampener[0] *
+        sliding_controller2_B.rtb_danke_tmp + dampener[2] *
+        sliding_controller2_B.rtb_ankle_idx_1);
+      sliding_controller2_B.wj = (sliding_controller2_P.spring[1] *
+        sliding_controller2_B.rtb_dknee_idx_1 + sliding_controller2_P.spring[3] *
+        sliding_controller2_B.rtb_danke_m_idx_1) + (dampener[1] *
+        sliding_controller2_B.rtb_danke_tmp + dampener[3] *
+        sliding_controller2_B.rtb_ankle_idx_1);
 
-      // Sum: '<S45>/Add' incorporates:
-      //   Math: '<S39>/Transpose2'
+      // Saturate: '<S6>/Saturation' incorporates:
       //   Math: '<S45>/Transpose1'
       //   Product: '<S45>/Product1'
+      //   Sum: '<S45>/Add'
 
-      sliding_controller2_B.rtb_Add_c_d[0] =
-        sliding_controller2_B.rtb_Transpose2_b_b[0] *
-        sliding_controller2_B.rtb_Product2_k_idx_0 +
-        sliding_controller2_B.rtb_Transpose2_b_b[1] *
-        sliding_controller2_B.rtb_Product2_k_idx_1;
-      sliding_controller2_B.rtb_Add_c_d[1] =
-        sliding_controller2_B.rtb_Transpose2_b_b[2] *
-        sliding_controller2_B.rtb_Product2_k_idx_0 +
-        sliding_controller2_B.rtb_Transpose2_b_b[3] *
-        sliding_controller2_B.rtb_Product2_k_idx_1;
+      sliding_controller2_B.rtb_Add_c_f[0] = (sliding_controller2_B.rtb_y_a_g[0]
+        * sliding_controller2_B.b_varargout_2_Header_Stamp_Sec +
+        sliding_controller2_B.rtb_y_a_g[1] * sliding_controller2_B.wj) +
+        sliding_controller2_B.rtb_Add_e_tmp;
+      sliding_controller2_B.rtb_Add_c_f[1] = (sliding_controller2_B.rtb_y_a_g[2]
+        * sliding_controller2_B.b_varargout_2_Header_Stamp_Sec +
+        sliding_controller2_B.rtb_y_a_g[3] * sliding_controller2_B.wj) +
+        sliding_controller2_B.rtb_Add_e_tmp_l;
 
-      // MATLAB Function: '<S45>/MATLAB Function1'
-      sliding_control_MATLABFunction1(&sliding_controller2_B.In1_j.Position[0],
-        sliding_controller2_B.rtb_Transpose2_b_b);
+      // MATLAB Function: '<S44>/MATLAB Function'
+      sliding_controll_MATLABFunction(&sliding_controller2_B.Position[3],
+        sliding_controller2_B.rtb_y_a_g);
 
-      // Sum: '<S34>/Subtract'
-      sliding_controller2_B.rtb_knee_idx_0 = sliding_controller2_B.rtb_ankle_d[0]
-        - sliding_controller2_B.rtb_ankle_l_p[0];
-      sliding_controller2_B.rtb_knee_idx_1 = sliding_controller2_B.rtb_ankle_d[1]
-        - sliding_controller2_B.rtb_ankle_l_p[1];
+      // MATLAB Function: '<S19>/human right'
+      sliding_controller2_exoleft(&sliding_controller2_B.In1_e.Position[3],
+        &sliding_controller2_B.In1_e.Velocity[3],
+        sliding_controller2_B.rtb_danke_n, sliding_controller2_B.rtb_Subtract2_g,
+        sliding_controller2_B.rtb_Product2_b,
+        sliding_controller2_B.rtb_danke_e_o);
 
-      // Sum: '<S39>/Add' incorporates:
-      //   Gain: '<S34>/spring left shank'
+      // MATLAB Function: '<S19>/exo right'
+      sliding_controller2_exoleft(&sliding_controller2_B.Position[3],
+        &sliding_controller2_B.In1_j.Velocity[3],
+        sliding_controller2_B.rtb_Add_e_l, sliding_controller2_B.rtb_dknee_d,
+        sliding_controller2_B.rtb_ankle_d, sliding_controller2_B.rtb_danke_m_l);
 
-      sliding_controller2_B.Add_m[0] = 0.0;
-      sliding_controller2_B.Add_m[0] += sliding_controller2_P.spring[0] *
-        sliding_controller2_B.rtb_knee_idx_0;
-      sliding_controller2_B.Add_m[0] += sliding_controller2_P.spring[2] *
-        sliding_controller2_B.rtb_knee_idx_1;
+      // MATLAB Function: '<S44>/MATLAB Function1'
+      sliding_control_MATLABFunction1(&sliding_controller2_B.Position[3],
+        sliding_controller2_B.rtb_y_g2);
 
-      // Sum: '<S34>/Subtract1'
-      sliding_controller2_B.rtb_dknee_idx_1 = sliding_controller2_B.rtb_danke_j
-        [0] - sliding_controller2_B.rtb_danke_g_n[0];
+      // Sum: '<S37>/Subtract'
+      sliding_controller2_B.rtb_danke_tmp = sliding_controller2_B.rtb_Add_e_l[0]
+        - sliding_controller2_B.rtb_danke_n[0];
 
-      // Sum: '<S39>/Add' incorporates:
-      //   Gain: '<S34>/spring left shank'
+      // Sum: '<S37>/Subtract1'
+      sliding_controller2_B.wj = sliding_controller2_B.rtb_dknee_d[0] -
+        sliding_controller2_B.rtb_Subtract2_g[0];
 
-      sliding_controller2_B.Add_m[1] = 0.0;
-      sliding_controller2_B.Add_m[1] += sliding_controller2_P.spring[1] *
-        sliding_controller2_B.rtb_knee_idx_0;
-      sliding_controller2_B.Add_m[1] += sliding_controller2_P.spring[3] *
-        sliding_controller2_B.rtb_knee_idx_1;
+      // Sum: '<S37>/Subtract'
+      sliding_controller2_B.rtb_danke_m_idx_1 =
+        sliding_controller2_B.rtb_Add_e_l[1] -
+        sliding_controller2_B.rtb_danke_n[1];
 
-      // Sum: '<S34>/Subtract1'
-      sliding_controller2_B.rtb_knee_idx_0 = sliding_controller2_B.rtb_danke_j[1]
-        - sliding_controller2_B.rtb_danke_g_n[1];
+      // Sum: '<S37>/Subtract1'
+      sliding_controller2_B.rtb_dknee_idx_1 = sliding_controller2_B.rtb_dknee_d
+        [1] - sliding_controller2_B.rtb_Subtract2_g[1];
 
-      // Sum: '<S39>/Add' incorporates:
-      //   Gain: '<S34>/dampener left shank'
-      //   Sum: '<S34>/Subtract2'
+      // Sum: '<S37>/Subtract2' incorporates:
+      //   Gain: '<S37>/dampener right shank'
+      //   Gain: '<S37>/spring right thigh'
 
-      sliding_controller2_B.Add_m[0] += dampener[0] *
+      sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
+        (sliding_controller2_P.spring[0] * sliding_controller2_B.rtb_danke_tmp +
+         sliding_controller2_P.spring[2] *
+         sliding_controller2_B.rtb_danke_m_idx_1) + (dampener[0] *
+        sliding_controller2_B.wj + dampener[2] *
+        sliding_controller2_B.rtb_dknee_idx_1);
+      sliding_controller2_B.wj = (sliding_controller2_P.spring[1] *
+        sliding_controller2_B.rtb_danke_tmp + sliding_controller2_P.spring[3] *
+        sliding_controller2_B.rtb_danke_m_idx_1) + (dampener[1] *
+        sliding_controller2_B.wj + dampener[3] *
+        sliding_controller2_B.rtb_dknee_idx_1);
+
+      // Sum: '<S36>/Subtract'
+      sliding_controller2_B.rtb_danke_tmp = sliding_controller2_B.rtb_ankle_d[0]
+        - sliding_controller2_B.rtb_Product2_b[0];
+
+      // Sum: '<S36>/Subtract1'
+      sliding_controller2_B.rtb_dknee_idx_1 =
+        sliding_controller2_B.rtb_danke_m_l[0] -
+        sliding_controller2_B.rtb_danke_e_o[0];
+
+      // Sum: '<S36>/Subtract'
+      sliding_controller2_B.rtb_ankle_idx_1 = sliding_controller2_B.rtb_ankle_d
+        [1] - sliding_controller2_B.rtb_Product2_b[1];
+
+      // Sum: '<S36>/Subtract1'
+      sliding_controller2_B.rtb_danke_m_idx_1 =
+        sliding_controller2_B.rtb_danke_m_l[1] -
+        sliding_controller2_B.rtb_danke_e_o[1];
+
+      // Sum: '<S36>/Subtract2' incorporates:
+      //   Gain: '<S36>/dampener right shank'
+      //   Gain: '<S36>/spring right thigh'
+
+      sliding_controller2_B.rtb_Add_e_tmp = (sliding_controller2_P.spring[0] *
+        sliding_controller2_B.rtb_danke_tmp + sliding_controller2_P.spring[2] *
+        sliding_controller2_B.rtb_ankle_idx_1) + (dampener[0] *
         sliding_controller2_B.rtb_dknee_idx_1 + dampener[2] *
-        sliding_controller2_B.rtb_knee_idx_0;
-      sliding_controller2_B.Add_m[1] += dampener[1] *
+        sliding_controller2_B.rtb_danke_m_idx_1);
+      sliding_controller2_B.rtb_dknee_idx_1 = (sliding_controller2_P.spring[1] *
+        sliding_controller2_B.rtb_danke_tmp + sliding_controller2_P.spring[3] *
+        sliding_controller2_B.rtb_ankle_idx_1) + (dampener[1] *
         sliding_controller2_B.rtb_dknee_idx_1 + dampener[3] *
-        sliding_controller2_B.rtb_knee_idx_0;
+        sliding_controller2_B.rtb_danke_m_idx_1);
 
-      // Sum: '<S26>/Sum' incorporates:
+      // Saturate: '<S6>/Saturation' incorporates:
       //   Constant: '<S23>/Constant'
       //   Constant: '<S44>/Constant'
       //   Constant: '<S45>/Constant'
-      //   Math: '<S39>/Transpose2'
-      //   Math: '<S45>/Transpose2'
+      //   Math: '<S44>/Transpose1'
+      //   Math: '<S44>/Transpose2'
+      //   Product: '<S44>/Product1'
       //   Product: '<S44>/Product2'
-      //   Product: '<S45>/Product2'
       //   Sum: '<S44>/Add'
-      //   Sum: '<S45>/Add'
 
-      sliding_controller2_B.Sum[2] = sliding_controller2_B.In1_a.Other[2] -
+      sliding_controller2_B.rtb_Add_c_f[2] =
         sliding_controller2_P.Constant_Value_pa;
-      sliding_controller2_B.Sum[0] = sliding_controller2_B.In1_a.Other[0] -
-        ((sliding_controller2_B.rtb_Transpose2_b_b[0] *
-          sliding_controller2_B.Add_m[0] +
-          sliding_controller2_B.rtb_Transpose2_b_b[1] *
-          sliding_controller2_B.Add_m[1]) + sliding_controller2_B.rtb_Add_c_d[0]);
-      sliding_controller2_B.Sum[3] = sliding_controller2_B.In1_a.Other[3] -
-        ((sliding_controller2_B.rtb_Transpose2_idx_0 *
-          sliding_controller2_B.Subtract2[0] +
-          sliding_controller2_B.rtb_Transpose2_idx_2 *
-          sliding_controller2_B.Subtract2[1]) +
-         sliding_controller2_B.b_varargout_2_Header_Stamp_Sec);
-      sliding_controller2_B.Sum[1] = sliding_controller2_B.In1_a.Other[1] -
-        ((sliding_controller2_B.Add_m[0] *
-          sliding_controller2_B.rtb_Transpose2_b_b[2] +
-          sliding_controller2_B.Add_m[1] *
-          sliding_controller2_B.rtb_Transpose2_b_b[3]) +
-         sliding_controller2_B.rtb_Add_c_d[1]);
-      sliding_controller2_B.Sum[4] = sliding_controller2_B.In1_a.Other[4] -
-        ((sliding_controller2_B.rtb_Transpose2_idx_1 *
-          sliding_controller2_B.Subtract2[0] +
-          sliding_controller2_B.rtb_Transpose2_idx_3 *
-          sliding_controller2_B.Subtract2[1]) + sliding_controller2_B.wj);
-      sliding_controller2_B.Sum[5] = sliding_controller2_B.In1_a.Other[5] -
+      sliding_controller2_B.rtb_Add_c_f[3] = (sliding_controller2_B.rtb_y_a_g[0]
+        * sliding_controller2_B.b_varargout_2_Header_Stamp_Sec +
+        sliding_controller2_B.rtb_y_a_g[1] * sliding_controller2_B.wj) +
+        (sliding_controller2_B.rtb_y_g2[0] * sliding_controller2_B.rtb_Add_e_tmp
+         + sliding_controller2_B.rtb_y_g2[1] *
+         sliding_controller2_B.rtb_dknee_idx_1);
+      sliding_controller2_B.rtb_Add_c_f[4] = (sliding_controller2_B.rtb_y_a_g[2]
+        * sliding_controller2_B.b_varargout_2_Header_Stamp_Sec +
+        sliding_controller2_B.rtb_y_a_g[3] * sliding_controller2_B.wj) +
+        (sliding_controller2_B.rtb_y_g2[2] * sliding_controller2_B.rtb_Add_e_tmp
+         + sliding_controller2_B.rtb_y_g2[3] *
+         sliding_controller2_B.rtb_dknee_idx_1);
+      sliding_controller2_B.rtb_Add_c_f[5] =
         sliding_controller2_P.Constant_Value_ou;
-      sliding_controller2_B.Sum[6] = sliding_controller2_B.In1_a.Other[6] -
+      sliding_controller2_B.rtb_Add_c_f[6] =
         sliding_controller2_P.Constant_Value_l;
-
-      // MATLAB Function: '<S26>/MATLAB Function'
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 7;
-           sliding_controller2_B.k++) {
+      for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
+           sliding_controller2_B.i++) {
+        // Saturate: '<S6>/Saturation'
         sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
-          sliding_controller2_B.Sum[sliding_controller2_B.k];
+          sliding_controller2_B.rtb_Add_c_f[sliding_controller2_B.i];
+        if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec >
+            sliding_controller2_P.interaction_sat) {
+          // Saturate: '<S6>/Saturation'
+          sliding_controller2_B.Saturation[sliding_controller2_B.i] =
+            sliding_controller2_P.interaction_sat;
+        } else if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec <
+                   -sliding_controller2_P.interaction_sat) {
+          // Saturate: '<S6>/Saturation'
+          sliding_controller2_B.Saturation[sliding_controller2_B.i] =
+            -sliding_controller2_P.interaction_sat;
+        } else {
+          // Saturate: '<S6>/Saturation'
+          sliding_controller2_B.Saturation[sliding_controller2_B.i] =
+            sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
+        }
+
+        // Sum: '<S26>/Sum'
+        sliding_controller2_B.Sum[sliding_controller2_B.i] =
+          sliding_controller2_B.In1_a.Other[sliding_controller2_B.i] -
+          sliding_controller2_B.Saturation[sliding_controller2_B.i];
+      }
+
+      // MATLAB Function: '<S26>/MATLAB Function' incorporates:
+      //   Constant: '<S26>/Constant'
+      //   Constant: '<S26>/Constant1'
+      //   Constant: '<S26>/Constant2'
+      //   Constant: '<S26>/Constant3'
+      //   Constant: '<S26>/Constant4'
+      //   Constant: '<S26>/Constant5'
+
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 49;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.Kp0_k[sliding_controller2_B.j] = 0.0;
+      }
+
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.Kp0_k[sliding_controller2_B.j + 7 *
+          sliding_controller2_B.j] = Kp0[sliding_controller2_B.j];
+      }
+
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 49;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.Kn0_c[sliding_controller2_B.j] = 0.0;
+      }
+
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.Kn0_c[sliding_controller2_B.j + 7 *
+          sliding_controller2_B.j] = Kn0[sliding_controller2_B.j];
+      }
+
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 49;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.Bp0_b[sliding_controller2_B.j] = 0.0;
+      }
+
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.Bp0_b[sliding_controller2_B.j + 7 *
+          sliding_controller2_B.j] = Bp0[sliding_controller2_B.j];
+      }
+
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 49;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.Bn0_p[sliding_controller2_B.j] = 0.0;
+      }
+
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.Bn0_p[sliding_controller2_B.j + 7 *
+          sliding_controller2_B.j] = Bn0[sliding_controller2_B.j];
+        sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
+          sliding_controller2_B.Sum[sliding_controller2_B.j];
         sliding_controller2_B.wj =
-          sliding_controller2_B.In1_a.Qd[sliding_controller2_B.k];
-        sliding_controller2_B.jpvt[sliding_controller2_B.k] =
-          sliding_controller2_B.k + 1;
-        sliding_controller2_B.humansateration[sliding_controller2_B.k] =
-          sliding_controller2_B.In1_a.Other[sliding_controller2_B.k];
+          sliding_controller2_B.In1_a.Qd[sliding_controller2_B.j];
+        sliding_controller2_B.jpvt[sliding_controller2_B.j] =
+          sliding_controller2_B.j + 1;
+        sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.j] =
+          sliding_controller2_B.In1_a.Other[sliding_controller2_B.j];
         if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec < 0.0) {
-          sliding_controller2_B.q_add_c[sliding_controller2_B.k] = -1.0;
+          sliding_controller2_B.q_add_c[sliding_controller2_B.j] = -1.0;
         } else if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec > 0.0) {
-          sliding_controller2_B.q_add_c[sliding_controller2_B.k] = 1.0;
+          sliding_controller2_B.q_add_c[sliding_controller2_B.j] = 1.0;
         } else if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec == 0.0)
         {
-          sliding_controller2_B.q_add_c[sliding_controller2_B.k] = 0.0;
+          sliding_controller2_B.q_add_c[sliding_controller2_B.j] = 0.0;
         } else {
-          sliding_controller2_B.q_add_c[sliding_controller2_B.k] = (rtNaN);
+          sliding_controller2_B.q_add_c[sliding_controller2_B.j] = (rtNaN);
         }
 
         if (sliding_controller2_B.wj < 0.0) {
-          sliding_controller2_B.q_add[sliding_controller2_B.k] = -1.0;
+          sliding_controller2_B.q_add[sliding_controller2_B.j] = -1.0;
         } else if (sliding_controller2_B.wj > 0.0) {
-          sliding_controller2_B.q_add[sliding_controller2_B.k] = 1.0;
+          sliding_controller2_B.q_add[sliding_controller2_B.j] = 1.0;
         } else if (sliding_controller2_B.wj == 0.0) {
-          sliding_controller2_B.q_add[sliding_controller2_B.k] = 0.0;
+          sliding_controller2_B.q_add[sliding_controller2_B.j] = 0.0;
         } else {
-          sliding_controller2_B.q_add[sliding_controller2_B.k] = (rtNaN);
+          sliding_controller2_B.q_add[sliding_controller2_B.j] = (rtNaN);
         }
       }
 
       sliding_controller2_B.b_varargout_2_Header_Stamp_Sec = 0.0;
-      sliding_controller2_qrpf(sliding_controller2_B.humansateration, 1, 1, 7,
-        &sliding_controller2_B.b_varargout_2_Header_Stamp_Sec,
+      sliding_controller2_qrpf(sliding_controller2_B.b_varargout_2_Effort, 1, 1,
+        7, &sliding_controller2_B.b_varargout_2_Header_Stamp_Sec,
         sliding_controller2_B.jpvt);
       sliding_controller2_B.i = 0;
-      sliding_controller2_B.wj = fabs(sliding_controller2_B.humansateration[0]);
+      sliding_controller2_B.wj = fabs
+        (sliding_controller2_B.b_varargout_2_Effort[0]);
       if (!(sliding_controller2_B.wj <= 1.5543122344752192E-14 *
             sliding_controller2_B.wj)) {
         sliding_controller2_B.i = 1;
       }
 
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 49;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.change[sliding_controller2_B.k] = 0.0;
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 49;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.change[sliding_controller2_B.j] = 0.0;
       }
 
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 7;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.B_c[sliding_controller2_B.k] =
-          sliding_controller2_B.Sum[sliding_controller2_B.k];
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.rtb_Add_c_f[sliding_controller2_B.j] =
+          sliding_controller2_B.Sum[sliding_controller2_B.j];
         if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec != 0.0) {
           sliding_controller2_B.wj =
             sliding_controller2_B.b_varargout_2_Header_Stamp_Sec *
-            sliding_controller2_B.B_c[sliding_controller2_B.k];
+            sliding_controller2_B.rtb_Add_c_f[sliding_controller2_B.j];
           if (sliding_controller2_B.wj != 0.0) {
-            sliding_controller2_B.B_c[sliding_controller2_B.k] -=
+            sliding_controller2_B.rtb_Add_c_f[sliding_controller2_B.j] -=
               sliding_controller2_B.wj;
           }
         }
 
         if (0 <= sliding_controller2_B.i - 1) {
           sliding_controller2_B.change[(sliding_controller2_B.jpvt[0] + 7 *
-            sliding_controller2_B.k) - 1] =
-            sliding_controller2_B.B_c[sliding_controller2_B.k];
+            sliding_controller2_B.j) - 1] =
+            sliding_controller2_B.rtb_Add_c_f[sliding_controller2_B.j];
         }
 
-        sliding_controller2_B.j = sliding_controller2_B.i;
-        while (sliding_controller2_B.j > 0) {
-          sliding_controller2_B.j = (7 * sliding_controller2_B.k +
+        sliding_controller2_B.e_j = sliding_controller2_B.i;
+        while (sliding_controller2_B.e_j > 0) {
+          sliding_controller2_B.e_j = (7 * sliding_controller2_B.j +
             sliding_controller2_B.jpvt[0]) - 1;
-          sliding_controller2_B.change[sliding_controller2_B.j] /=
-            sliding_controller2_B.humansateration[0];
-          sliding_controller2_B.j = 0;
+          sliding_controller2_B.change[sliding_controller2_B.e_j] /=
+            sliding_controller2_B.b_varargout_2_Effort[0];
+          sliding_controller2_B.e_j = 0;
         }
       }
 
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 7;
-           sliding_controller2_B.k++) {
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+           sliding_controller2_B.j++) {
         for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
              sliding_controller2_B.i++) {
           sliding_controller2_B.Y[sliding_controller2_B.i + 7 *
-            sliding_controller2_B.k] = sliding_controller2_B.change[7 *
-            sliding_controller2_B.i + sliding_controller2_B.k];
+            sliding_controller2_B.j] = sliding_controller2_B.change[7 *
+            sliding_controller2_B.i + sliding_controller2_B.j];
         }
       }
 
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 49;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.change[sliding_controller2_B.k] = fabs
-          (sliding_controller2_B.Y[sliding_controller2_B.k]);
-        sliding_controller2_B.K[sliding_controller2_B.k] = 0.0;
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 49;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.change[sliding_controller2_B.j] = fabs
+          (sliding_controller2_B.Y[sliding_controller2_B.j]);
+        sliding_controller2_B.K[sliding_controller2_B.j] = 0.0;
       }
 
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 7;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.K[sliding_controller2_B.k + 7 *
-          sliding_controller2_B.k] = 1.0;
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.K[sliding_controller2_B.j + 7 *
+          sliding_controller2_B.j] = 1.0;
       }
 
       for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 49;
@@ -1538,28 +1659,31 @@ void sliding_controller2ModelClass::step()
         sliding_controller2_B.B[sliding_controller2_B.i] = 0.0;
       }
 
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 7;
-           sliding_controller2_B.k++) {
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+           sliding_controller2_B.j++) {
         sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
-          sliding_controller2_B.change[sliding_controller2_B.k];
-        sliding_controller2_B.i = sliding_controller2_B.k + 7 *
-          sliding_controller2_B.k;
+          sliding_controller2_B.change[sliding_controller2_B.j];
+        sliding_controller2_B.i = sliding_controller2_B.j + 7 *
+          sliding_controller2_B.j;
         sliding_controller2_B.B[sliding_controller2_B.i] = 1.0;
-        if (sliding_controller2_B.q_add_c[sliding_controller2_B.k] ==
-            sliding_controller2_B.q_add[sliding_controller2_B.k]) {
-          sliding_controller2_B.K[sliding_controller2_B.i] = static_cast<real_T>
-            (Kp0[sliding_controller2_B.i]) + 3.0 *
-            sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
-          sliding_controller2_B.B[sliding_controller2_B.i] = static_cast<real_T>
-            (Kn0[sliding_controller2_B.i]) + 0.5 *
-            sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
-        } else {
-          sliding_controller2_B.wj = Kn0[sliding_controller2_B.i];
+        if (sliding_controller2_B.q_add_c[sliding_controller2_B.j] ==
+            sliding_controller2_B.q_add[sliding_controller2_B.j]) {
           sliding_controller2_B.K[sliding_controller2_B.i] =
-            sliding_controller2_B.wj - 3.0 *
+            sliding_controller2_B.Kp0_k[sliding_controller2_B.i] +
+            sliding_controller2_P.gamma[0] *
             sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
           sliding_controller2_B.B[sliding_controller2_B.i] =
-            sliding_controller2_B.wj - 0.5 *
+            sliding_controller2_B.Bp0_b[sliding_controller2_B.i] +
+            sliding_controller2_P.alpha[0] *
+            sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
+        } else {
+          sliding_controller2_B.K[sliding_controller2_B.i] =
+            sliding_controller2_B.Kn0_c[sliding_controller2_B.i] -
+            sliding_controller2_P.gamma[1] *
+            sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
+          sliding_controller2_B.B[sliding_controller2_B.i] =
+            sliding_controller2_B.Bn0_p[sliding_controller2_B.i] -
+            sliding_controller2_P.alpha[1] *
             sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
         }
       }
@@ -1576,118 +1700,58 @@ void sliding_controller2ModelClass::step()
       // Product: '<S26>/Product' incorporates:
       //   Integrator: '<S26>/Integrator1'
 
-      sliding_controller2_B.B_c[sliding_controller2_B.i] = 0.0;
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 7;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.B_c[sliding_controller2_B.i] +=
-          sliding_controller2_B.K[7 * sliding_controller2_B.k +
+      sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.i] = 0.0;
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.i] +=
+          sliding_controller2_B.K[7 * sliding_controller2_B.j +
           sliding_controller2_B.i] *
-          sliding_controller2_X.Integrator1_CSTATE[sliding_controller2_B.k];
+          sliding_controller2_X.Integrator1_CSTATE[sliding_controller2_B.j];
       }
 
       // End of Product: '<S26>/Product'
 
       // Product: '<S26>/Product1'
-      sliding_controller2_B.dv[sliding_controller2_B.i] = 0.0;
+      sliding_controller2_B.rtb_Add_c_f[sliding_controller2_B.i] = 0.0;
     }
 
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 7;
-         sliding_controller2_B.k++) {
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+         sliding_controller2_B.j++) {
       // Product: '<S26>/Product1'
       for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
            sliding_controller2_B.i++) {
-        sliding_controller2_B.dv[sliding_controller2_B.k] +=
+        sliding_controller2_B.rtb_Add_c_f[sliding_controller2_B.j] +=
           sliding_controller2_B.B[7 * sliding_controller2_B.i +
-          sliding_controller2_B.k] *
+          sliding_controller2_B.j] *
           sliding_controller2_B.qd_add[sliding_controller2_B.i];
       }
 
       // Sum: '<S26>/Sum6' incorporates:
       //   Sum: '<S26>/Add1'
 
-      sliding_controller2_B.dv1[sliding_controller2_B.k] =
-        sliding_controller2_B.Sum[sliding_controller2_B.k] -
-        (sliding_controller2_B.B_c[sliding_controller2_B.k] +
-         sliding_controller2_B.dv[sliding_controller2_B.k]);
+      sliding_controller2_B.dv[sliding_controller2_B.j] =
+        sliding_controller2_B.Sum[sliding_controller2_B.j] -
+        (sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.j] +
+         sliding_controller2_B.rtb_Add_c_f[sliding_controller2_B.j]);
 
       // Gain: '<S26>/addmittance gain'
-      sliding_controller2_B.qd_add_n[sliding_controller2_B.k] = 0.0;
+      sliding_controller2_B.qd_add_n[sliding_controller2_B.j] = 0.0;
     }
 
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 7;
-         sliding_controller2_B.k++) {
-      for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
-           sliding_controller2_B.i++) {
-        // Gain: '<S26>/addmittance gain'
-        sliding_controller2_B.qd_add_n[sliding_controller2_B.k] += invMd[7 *
-          sliding_controller2_B.i + sliding_controller2_B.k] *
-          sliding_controller2_B.dv1[sliding_controller2_B.i];
-      }
-    }
+    // BusAssignment: '<S29>/Bus Assignment' incorporates:
+    //   SignalConversion generated from: '<S29>/Bus Assignment'
 
-    if (rtmIsMajorTimeStep((&sliding_controller2_M))) {
-      // MATLAB Function: '<S6>/human msg' incorporates:
-      //   Constant: '<S20>/Constant'
-
-      sliding_controller2_B.msg_c = sliding_controller2_P.Constant_Value_c;
-      sliding_controller2_B.msg_c.Name_SL_Info.CurrentLength = 7U;
-      sliding_controller2_B.msg_c.Velocity_SL_Info.CurrentLength = 7U;
-      sliding_controller2_B.msg_c.Position_SL_Info.CurrentLength = 7U;
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 7;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.msg_c.Name[0].Data[sliding_controller2_B.k] =
-          b_0[sliding_controller2_B.k];
-      }
-
-      sliding_controller2_B.msg_c.Name[0].Data_SL_Info.CurrentLength = 7U;
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 8;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.msg_c.Name[1].Data[sliding_controller2_B.k] =
-          c_0[sliding_controller2_B.k];
-      }
-
-      sliding_controller2_B.msg_c.Name[1].Data_SL_Info.CurrentLength = 8U;
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 9;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.msg_c.Name[2].Data[sliding_controller2_B.k] =
-          d_0[sliding_controller2_B.k];
-      }
-
-      sliding_controller2_B.msg_c.Name[2].Data_SL_Info.CurrentLength = 9U;
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 8;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.msg_c.Name[3].Data[sliding_controller2_B.k] =
-          e_0[sliding_controller2_B.k];
-      }
-
-      sliding_controller2_B.msg_c.Name[3].Data_SL_Info.CurrentLength = 8U;
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 9;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.msg_c.Name[4].Data[sliding_controller2_B.k] =
-          f_0[sliding_controller2_B.k];
-      }
-
-      sliding_controller2_B.msg_c.Name[4].Data_SL_Info.CurrentLength = 9U;
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 10;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.msg_c.Name[5].Data[sliding_controller2_B.k] =
-          g_0[sliding_controller2_B.k];
-      }
-
-      sliding_controller2_B.msg_c.Name[5].Data_SL_Info.CurrentLength = 10U;
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 6;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.msg_c.Name[6].Data[sliding_controller2_B.k] =
-          h_0[sliding_controller2_B.k];
-      }
-
-      sliding_controller2_B.msg_c.Name[6].Data_SL_Info.CurrentLength = 6U;
-
-      // End of MATLAB Function: '<S6>/human msg'
-    }
-
+    sliding_controller2_B.BusAssignment = sliding_controller2_B.msg_o;
     for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
          sliding_controller2_B.i++) {
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+           sliding_controller2_B.j++) {
+        // Gain: '<S26>/addmittance gain'
+        sliding_controller2_B.qd_add_n[sliding_controller2_B.i] += invMd[7 *
+          sliding_controller2_B.j + sliding_controller2_B.i] *
+          sliding_controller2_B.dv[sliding_controller2_B.j];
+      }
+
       // Sum: '<S26>/Sum2' incorporates:
       //   Sum: '<S26>/Sum8'
 
@@ -1701,370 +1765,28 @@ void sliding_controller2ModelClass::step()
       //   Sum: '<S26>/Sum7'
 
       sliding_controller2_B.q_add[sliding_controller2_B.i] =
-        sliding_controller2_B.In1_j.Position[sliding_controller2_B.i] -
+        sliding_controller2_B.Position[sliding_controller2_B.i] -
         (sliding_controller2_B.In1_a.Q[sliding_controller2_B.i] +
          sliding_controller2_X.Integrator1_CSTATE[sliding_controller2_B.i]);
-    }
 
-    if (rtmIsMajorTimeStep((&sliding_controller2_M))) {
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 7;
-           sliding_controller2_B.k++) {
-        // Sum: '<S27>/Sum3'
-        sliding_controller2_B.B_c[sliding_controller2_B.k] =
-          sliding_controller2_B.In1_a.Q[sliding_controller2_B.k] -
-          sliding_controller2_B.In1_e.Position[sliding_controller2_B.k];
-
-        // Sum: '<S27>/Sum1'
-        sliding_controller2_B.dv[sliding_controller2_B.k] =
-          sliding_controller2_B.In1_a.Qd[sliding_controller2_B.k] -
-          sliding_controller2_B.In1_e.Velocity[sliding_controller2_B.k];
-
-        // Gain: '<S27>/human proportional gain'
-        sliding_controller2_B.dv1[sliding_controller2_B.k] = 0.0;
-      }
-
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 7;
-           sliding_controller2_B.k++) {
-        // Gain: '<S27>/human derative gain'
-        sliding_controller2_B.dv2[sliding_controller2_B.k] = 0.0;
-        for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
-             sliding_controller2_B.i++) {
-          // Gain: '<S27>/human proportional gain' incorporates:
-          //   Gain: '<S27>/human derative gain'
-
-          sliding_controller2_B.j = 7 * sliding_controller2_B.i +
-            sliding_controller2_B.k;
-          sliding_controller2_B.dv1[sliding_controller2_B.k] +=
-            Km1[sliding_controller2_B.j] *
-            sliding_controller2_B.B_c[sliding_controller2_B.i];
-
-          // Gain: '<S27>/human derative gain'
-          sliding_controller2_B.dv2[sliding_controller2_B.k] +=
-            Dm1[sliding_controller2_B.j] *
-            sliding_controller2_B.dv[sliding_controller2_B.i];
-        }
-
-        // Sum: '<S27>/Add2'
-        sliding_controller2_B.humansateration[sliding_controller2_B.k] =
-          sliding_controller2_B.dv1[sliding_controller2_B.k] +
-          sliding_controller2_B.dv2[sliding_controller2_B.k];
-      }
-
-      // MATLAB Function: '<S38>/MATLAB Function'
-      sliding_controll_MATLABFunction(&sliding_controller2_B.In1_e.Position[0],
-        sliding_controller2_B.rtb_Transpose2_b_b);
-
-      // Math: '<S38>/Transpose1' incorporates:
-      //   Math: '<S39>/Transpose2'
-
-      sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
-        sliding_controller2_B.rtb_Transpose2_b_b[0];
-      sliding_controller2_B.wj = sliding_controller2_B.rtb_Transpose2_b_b[2];
-      sliding_controller2_B.rtb_Transpose2_idx_0 =
-        sliding_controller2_B.rtb_Transpose2_b_b[1];
-      sliding_controller2_B.rtb_Transpose2_idx_1 =
-        sliding_controller2_B.rtb_Transpose2_b_b[3];
-
-      // Math: '<S39>/Transpose2' incorporates:
-      //   Math: '<S38>/Transpose1'
-
-      sliding_controller2_B.rtb_Transpose2_b_b[0] =
-        sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
-      sliding_controller2_B.rtb_Transpose2_b_b[1] = sliding_controller2_B.wj;
-      sliding_controller2_B.rtb_Transpose2_b_b[2] =
-        sliding_controller2_B.rtb_Transpose2_idx_0;
-      sliding_controller2_B.rtb_Transpose2_b_b[3] =
-        sliding_controller2_B.rtb_Transpose2_idx_1;
-
-      // MATLAB Function: '<S38>/MATLAB Function1'
-      sliding_control_MATLABFunction1(&sliding_controller2_B.In1_e.Position[0],
-        sliding_controller2_B.rtb_Transpose2_b_b);
-
-      // Math: '<S38>/Transpose2' incorporates:
-      //   Math: '<S39>/Transpose2'
-
-      sliding_controller2_B.rtb_dknee_idx_1 =
-        sliding_controller2_B.rtb_Transpose2_b_b[0];
-      sliding_controller2_B.rtb_knee_idx_0 =
-        sliding_controller2_B.rtb_Transpose2_b_b[2];
-      sliding_controller2_B.rtb_knee_idx_1 =
-        sliding_controller2_B.rtb_Transpose2_b_b[1];
-      sliding_controller2_B.rtb_Transpose2_b_idx_3 =
-        sliding_controller2_B.rtb_Transpose2_b_b[3];
-
-      // Math: '<S39>/Transpose2' incorporates:
-      //   Math: '<S38>/Transpose2'
-
-      sliding_controller2_B.rtb_Transpose2_b_b[0] =
-        sliding_controller2_B.rtb_dknee_idx_1;
-      sliding_controller2_B.rtb_Transpose2_b_b[1] =
-        sliding_controller2_B.rtb_knee_idx_0;
-      sliding_controller2_B.rtb_Transpose2_b_b[2] =
-        sliding_controller2_B.rtb_knee_idx_1;
-      sliding_controller2_B.rtb_Transpose2_b_b[3] =
-        sliding_controller2_B.rtb_Transpose2_b_idx_3;
-
-      // Product: '<S38>/Product2' incorporates:
-      //   Math: '<S38>/Transpose2'
-      //   Math: '<S39>/Transpose2'
-
-      sliding_controller2_B.rtb_Transpose2_idx_2 =
-        sliding_controller2_B.rtb_dknee_idx_1 * sliding_controller2_B.Add_m[0] +
-        sliding_controller2_B.Add_m[1] * sliding_controller2_B.rtb_knee_idx_1;
-      sliding_controller2_B.rtb_Transpose2_idx_3 = sliding_controller2_B.Add_m[0]
-        * sliding_controller2_B.rtb_knee_idx_0 + sliding_controller2_B.Add_m[1] *
-        sliding_controller2_B.rtb_Transpose2_b_idx_3;
-
-      // MATLAB Function: '<S39>/MATLAB Function'
-      sliding_controll_MATLABFunction(&sliding_controller2_B.In1_e.Position[3],
-        sliding_controller2_B.rtb_Transpose2_b_b);
-
-      // Math: '<S39>/Transpose1' incorporates:
-      //   Math: '<S39>/Transpose2'
-
-      sliding_controller2_B.rtb_dknee_idx_1 =
-        sliding_controller2_B.rtb_Transpose2_b_b[0];
-      sliding_controller2_B.rtb_knee_idx_0 =
-        sliding_controller2_B.rtb_Transpose2_b_b[2];
-      sliding_controller2_B.rtb_knee_idx_1 =
-        sliding_controller2_B.rtb_Transpose2_b_b[1];
-      sliding_controller2_B.rtb_Transpose2_b_idx_3 =
-        sliding_controller2_B.rtb_Transpose2_b_b[3];
-
-      // Math: '<S39>/Transpose2' incorporates:
-      //   Math: '<S39>/Transpose1'
-
-      sliding_controller2_B.rtb_Transpose2_b_b[0] =
-        sliding_controller2_B.rtb_dknee_idx_1;
-      sliding_controller2_B.rtb_Transpose2_b_b[1] =
-        sliding_controller2_B.rtb_knee_idx_0;
-      sliding_controller2_B.rtb_Transpose2_b_b[2] =
-        sliding_controller2_B.rtb_knee_idx_1;
-      sliding_controller2_B.rtb_Transpose2_b_b[3] =
-        sliding_controller2_B.rtb_Transpose2_b_idx_3;
-
-      // Sum: '<S39>/Add' incorporates:
-      //   Math: '<S39>/Transpose1'
-      //   Math: '<S39>/Transpose2'
-      //   Product: '<S39>/Product1'
-
-      sliding_controller2_B.Add_m[0] = 0.0;
-      sliding_controller2_B.Add_m[0] += sliding_controller2_B.rtb_dknee_idx_1 *
-        sliding_controller2_B.rtb_Product2_idx_0;
-      sliding_controller2_B.Add_m[0] += sliding_controller2_B.rtb_knee_idx_1 *
-        sliding_controller2_B.rtb_Product2_idx_1;
-      sliding_controller2_B.Add_m[1] = 0.0;
-      sliding_controller2_B.Add_m[1] += sliding_controller2_B.rtb_knee_idx_0 *
-        sliding_controller2_B.rtb_Product2_idx_0;
-      sliding_controller2_B.Add_m[1] +=
-        sliding_controller2_B.rtb_Transpose2_b_idx_3 *
-        sliding_controller2_B.rtb_Product2_idx_1;
-
-      // MATLAB Function: '<S39>/MATLAB Function1'
-      sliding_control_MATLABFunction1(&sliding_controller2_B.In1_e.Position[3],
-        sliding_controller2_B.rtb_Transpose2_b_b);
-
-      // Sum: '<S6>/Sum2' incorporates:
-      //   Constant: '<S38>/Constant'
-
-      sliding_controller2_B.rtb_Product2_idx_0 =
-        sliding_controller2_P.Constant_Value_fk +
-        sliding_controller2_B.humansateration[2];
-
-      // Saturate: '<S6>/human sateration'
-      if (sliding_controller2_B.rtb_Product2_idx_0 >
-          sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          sliding_controller2_P.human_sat;
-      } else if (sliding_controller2_B.rtb_Product2_idx_0 <
-                 -sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          -sliding_controller2_P.human_sat;
-      }
-
-      // Gain: '<S6>/Gain'
-      sliding_controller2_B.Gain[2] = sliding_controller2_P.Gain_Gain *
-        sliding_controller2_B.rtb_Product2_idx_0;
-
-      // Sum: '<S39>/Add' incorporates:
-      //   Math: '<S39>/Transpose2'
-      //   Product: '<S39>/Product2'
-
-      sliding_controller2_B.Add_m[0] +=
-        sliding_controller2_B.rtb_Transpose2_b_b[0] *
-        sliding_controller2_B.Subtract2[0] +
-        sliding_controller2_B.rtb_Transpose2_b_b[1] *
-        sliding_controller2_B.Subtract2[1];
-
-      // Sum: '<S6>/Sum2' incorporates:
-      //   Math: '<S38>/Transpose1'
-      //   Math: '<S39>/Transpose2'
-      //   Product: '<S38>/Product1'
-      //   Sum: '<S38>/Add'
-
-      sliding_controller2_B.rtb_Product2_idx_0 =
-        ((sliding_controller2_B.b_varargout_2_Header_Stamp_Sec *
-          sliding_controller2_B.rtb_Product2_k_idx_0 +
-          sliding_controller2_B.rtb_Transpose2_idx_0 *
-          sliding_controller2_B.rtb_Product2_k_idx_1) +
-         sliding_controller2_B.rtb_Transpose2_idx_2) +
-        sliding_controller2_B.humansateration[0];
-
-      // Saturate: '<S6>/human sateration'
-      if (sliding_controller2_B.rtb_Product2_idx_0 >
-          sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          sliding_controller2_P.human_sat;
-      } else if (sliding_controller2_B.rtb_Product2_idx_0 <
-                 -sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          -sliding_controller2_P.human_sat;
-      }
-
-      // Gain: '<S6>/Gain'
-      sliding_controller2_B.Gain[0] = sliding_controller2_P.Gain_Gain *
-        sliding_controller2_B.rtb_Product2_idx_0;
-
-      // Sum: '<S6>/Sum2'
-      sliding_controller2_B.rtb_Product2_idx_0 = sliding_controller2_B.Add_m[0]
-        + sliding_controller2_B.humansateration[3];
-
-      // Saturate: '<S6>/human sateration'
-      if (sliding_controller2_B.rtb_Product2_idx_0 >
-          sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          sliding_controller2_P.human_sat;
-      } else if (sliding_controller2_B.rtb_Product2_idx_0 <
-                 -sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          -sliding_controller2_P.human_sat;
-      }
-
-      // Gain: '<S6>/Gain'
-      sliding_controller2_B.Gain[3] = sliding_controller2_P.Gain_Gain *
-        sliding_controller2_B.rtb_Product2_idx_0;
-
-      // Sum: '<S39>/Add' incorporates:
-      //   Math: '<S39>/Transpose2'
-      //   Product: '<S39>/Product2'
-
-      sliding_controller2_B.Add_m[1] += sliding_controller2_B.Subtract2[0] *
-        sliding_controller2_B.rtb_Transpose2_b_b[2] +
-        sliding_controller2_B.Subtract2[1] *
-        sliding_controller2_B.rtb_Transpose2_b_b[3];
-
-      // Sum: '<S6>/Sum2' incorporates:
-      //   Math: '<S38>/Transpose1'
-      //   Math: '<S39>/Transpose2'
-      //   Product: '<S38>/Product1'
-      //   Sum: '<S38>/Add'
-
-      sliding_controller2_B.rtb_Product2_idx_0 = ((sliding_controller2_B.wj *
-        sliding_controller2_B.rtb_Product2_k_idx_0 +
-        sliding_controller2_B.rtb_Transpose2_idx_1 *
-        sliding_controller2_B.rtb_Product2_k_idx_1) +
-        sliding_controller2_B.rtb_Transpose2_idx_3) +
-        sliding_controller2_B.humansateration[1];
-
-      // Saturate: '<S6>/human sateration'
-      if (sliding_controller2_B.rtb_Product2_idx_0 >
-          sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          sliding_controller2_P.human_sat;
-      } else if (sliding_controller2_B.rtb_Product2_idx_0 <
-                 -sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          -sliding_controller2_P.human_sat;
-      }
-
-      // Gain: '<S6>/Gain'
-      sliding_controller2_B.Gain[1] = sliding_controller2_P.Gain_Gain *
-        sliding_controller2_B.rtb_Product2_idx_0;
-
-      // Sum: '<S6>/Sum2'
-      sliding_controller2_B.rtb_Product2_idx_0 = sliding_controller2_B.Add_m[1]
-        + sliding_controller2_B.humansateration[4];
-
-      // Saturate: '<S6>/human sateration'
-      if (sliding_controller2_B.rtb_Product2_idx_0 >
-          sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          sliding_controller2_P.human_sat;
-      } else if (sliding_controller2_B.rtb_Product2_idx_0 <
-                 -sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          -sliding_controller2_P.human_sat;
-      }
-
-      // Gain: '<S6>/Gain'
-      sliding_controller2_B.Gain[4] = sliding_controller2_P.Gain_Gain *
-        sliding_controller2_B.rtb_Product2_idx_0;
-
-      // Sum: '<S6>/Sum2' incorporates:
-      //   Constant: '<S39>/Constant'
-
-      sliding_controller2_B.rtb_Product2_idx_0 =
-        sliding_controller2_P.Constant_Value_k +
-        sliding_controller2_B.humansateration[5];
-
-      // Saturate: '<S6>/human sateration'
-      if (sliding_controller2_B.rtb_Product2_idx_0 >
-          sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          sliding_controller2_P.human_sat;
-      } else if (sliding_controller2_B.rtb_Product2_idx_0 <
-                 -sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          -sliding_controller2_P.human_sat;
-      }
-
-      // Gain: '<S6>/Gain'
-      sliding_controller2_B.Gain[5] = sliding_controller2_P.Gain_Gain *
-        sliding_controller2_B.rtb_Product2_idx_0;
-
-      // Sum: '<S6>/Sum2' incorporates:
-      //   Constant: '<S22>/Constant'
-
-      sliding_controller2_B.rtb_Product2_idx_0 =
-        sliding_controller2_P.Constant_Value_cx +
-        sliding_controller2_B.humansateration[6];
-
-      // Saturate: '<S6>/human sateration'
-      if (sliding_controller2_B.rtb_Product2_idx_0 >
-          sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          sliding_controller2_P.human_sat;
-      } else if (sliding_controller2_B.rtb_Product2_idx_0 <
-                 -sliding_controller2_P.human_sat) {
-        sliding_controller2_B.rtb_Product2_idx_0 =
-          -sliding_controller2_P.human_sat;
-      }
-
-      // Gain: '<S6>/Gain'
-      sliding_controller2_B.Gain[6] = sliding_controller2_P.Gain_Gain *
-        sliding_controller2_B.rtb_Product2_idx_0;
-    }
-
-    // BusAssignment: '<S29>/Bus Assignment' incorporates:
-    //   SignalConversion generated from: '<S29>/Bus Assignment'
-
-    sliding_controller2_B.BusAssignment = sliding_controller2_B.msg_o;
-    for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
-         sliding_controller2_B.i++) {
+      // BusAssignment: '<S29>/Bus Assignment'
       sliding_controller2_B.BusAssignment.Q[sliding_controller2_B.i] =
-        sliding_controller2_B.In1_j.Position[sliding_controller2_B.i];
+        sliding_controller2_B.Position[sliding_controller2_B.i];
       sliding_controller2_B.BusAssignment.Qd[sliding_controller2_B.i] =
         sliding_controller2_B.In1_j.Velocity[sliding_controller2_B.i];
+    }
 
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+         sliding_controller2_B.j++) {
       // Sum: '<S29>/Add' incorporates:
       //   Gain: '<S29>/lambda SMC'
 
-      sliding_controller2_B.rtb_Product2_idx_0 = 0.0;
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 7;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.rtb_Product2_idx_0 += lambda2[7 *
-          sliding_controller2_B.k + sliding_controller2_B.i] *
-          sliding_controller2_B.q_add[sliding_controller2_B.k];
+      sliding_controller2_B.b_varargout_2_Header_Stamp_Sec = 0.0;
+      for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
+           sliding_controller2_B.i++) {
+        sliding_controller2_B.b_varargout_2_Header_Stamp_Sec += lambda2[7 *
+          sliding_controller2_B.i + sliding_controller2_B.j] *
+          sliding_controller2_B.q_add[sliding_controller2_B.i];
       }
 
       // Trigonometry: '<S29>/Tanh' incorporates:
@@ -2072,33 +1794,34 @@ void sliding_controller2ModelClass::step()
       //   Gain: '<S29>/surface width SMC'
       //   Sum: '<S29>/Add'
 
-      sliding_controller2_B.B_c[sliding_controller2_B.i] = tanh
-        ((sliding_controller2_B.rtb_Product2_idx_0 +
-          sliding_controller2_B.q_add_c[sliding_controller2_B.i]) *
-         sliding_controller2_P.surfacewidthSMC_Gain);
+      sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.j] = tanh
+        ((sliding_controller2_B.b_varargout_2_Header_Stamp_Sec +
+          sliding_controller2_B.q_add_c[sliding_controller2_B.j]) *
+         sliding_controller2_P.beta[sliding_controller2_B.j]);
     }
 
-    for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 7;
-         sliding_controller2_B.k++) {
+    for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+         sliding_controller2_B.j++) {
       // Sum: '<S29>/Add1'
-      sliding_controller2_B.rtb_Product2_idx_0 = 0.0;
+      sliding_controller2_B.b_varargout_2_Header_Stamp_Sec = 0.0;
 
       // Gain: '<S29>/Gain12'
-      sliding_controller2_B.dv[sliding_controller2_B.k] = 0.0;
+      sliding_controller2_B.rtb_Add_c_f[sliding_controller2_B.j] = 0.0;
       for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
            sliding_controller2_B.i++) {
         // Sum: '<S29>/Add1' incorporates:
         //   Gain: '<S29>/Gain12'
         //   Gain: '<S29>/rho SMC'
 
-        sliding_controller2_B.j = 7 * sliding_controller2_B.i +
-          sliding_controller2_B.k;
-        sliding_controller2_B.rtb_Product2_idx_0 += rho2[sliding_controller2_B.j]
-          * sliding_controller2_B.B_c[sliding_controller2_B.i];
+        sliding_controller2_B.e_j = 7 * sliding_controller2_B.i +
+          sliding_controller2_B.j;
+        sliding_controller2_B.b_varargout_2_Header_Stamp_Sec +=
+          rho2[sliding_controller2_B.e_j] *
+          sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.i];
 
         // Gain: '<S29>/Gain12'
-        sliding_controller2_B.dv[sliding_controller2_B.k] +=
-          lambda2[sliding_controller2_B.j] *
+        sliding_controller2_B.rtb_Add_c_f[sliding_controller2_B.j] +=
+          lambda2[sliding_controller2_B.e_j] *
           sliding_controller2_B.q_add_c[sliding_controller2_B.i];
       }
 
@@ -2106,35 +1829,35 @@ void sliding_controller2ModelClass::step()
       //   Gain: '<S29>/rho SMC'
       //   Sum: '<S29>/Add1'
 
-      sliding_controller2_B.BusAssignment.Qdd[sliding_controller2_B.k] =
-        (sliding_controller2_B.In1_a.Qdd[sliding_controller2_B.k] -
-         sliding_controller2_B.rtb_Product2_idx_0) -
-        sliding_controller2_B.dv[sliding_controller2_B.k];
+      sliding_controller2_B.BusAssignment.Qdd[sliding_controller2_B.j] =
+        (sliding_controller2_B.In1_a.Qdd[sliding_controller2_B.j] -
+         sliding_controller2_B.b_varargout_2_Header_Stamp_Sec) -
+        sliding_controller2_B.rtb_Add_c_f[sliding_controller2_B.j];
     }
 
     // Outputs for Atomic SubSystem: '<S29>/Call Service'
     // MATLABSystem: '<S51>/ServiceCaller'
     isCreated = ServCall_sliding_controller2_1160.getIsCreated();
     if (!isCreated) {
-      for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 16;
-           sliding_controller2_B.k++) {
-        sliding_controller2_B.b_zeroDelimServiceName_g[sliding_controller2_B.k] =
-          tmp_1[sliding_controller2_B.k];
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 16;
+           sliding_controller2_B.j++) {
+        sliding_controller2_B.b_zeroDelimServiceName_j[sliding_controller2_B.j] =
+          tmp_1[sliding_controller2_B.j];
       }
 
-      sliding_controller2_B.b_zeroDelimServiceName_g[16] = '\x00';
+      sliding_controller2_B.b_zeroDelimServiceName_j[16] = '\x00';
       b_varargout_2 = ServCall_sliding_controller2_1160.createServiceCaller
-        (&sliding_controller2_B.b_zeroDelimServiceName_g[0], true, 1.0);
+        (&sliding_controller2_B.b_zeroDelimServiceName_j[0], true, 1.0);
       if (b_varargout_2 != SLSuccess) {
       } else {
         ServCall_sliding_controller2_1160.call
           (&sliding_controller2_B.BusAssignment,
-           &sliding_controller2_B.b_varargout_1_k);
+           &sliding_controller2_B.b_varargout_1_c);
       }
     } else {
       ServCall_sliding_controller2_1160.call
         (&sliding_controller2_B.BusAssignment,
-         &sliding_controller2_B.b_varargout_1_k);
+         &sliding_controller2_B.b_varargout_1_c);
     }
 
     // End of Outputs for SubSystem: '<S29>/Call Service'
@@ -2147,22 +1870,23 @@ void sliding_controller2ModelClass::step()
          sliding_controller2_B.i++) {
       // Outputs for Atomic SubSystem: '<S29>/Call Service'
       // MATLABSystem: '<S51>/ServiceCaller'
-      sliding_controller2_B.rtb_Product2_idx_0 =
-        sliding_controller2_B.b_varargout_1_k.Tau[sliding_controller2_B.i];
+      sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
+        sliding_controller2_B.b_varargout_1_c.Tau[sliding_controller2_B.i];
 
       // End of Outputs for SubSystem: '<S29>/Call Service'
 
       // Saturate: '<S6>/exo sateration'
-      if (sliding_controller2_B.rtb_Product2_idx_0 > exo_sat) {
+      if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec > exo_sat) {
         // Saturate: '<S6>/exo sateration'
         sliding_controller2_B.exosateration[sliding_controller2_B.i] = exo_sat;
-      } else if (sliding_controller2_B.rtb_Product2_idx_0 < -exo_sat) {
+      } else if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec < -exo_sat)
+      {
         // Saturate: '<S6>/exo sateration'
         sliding_controller2_B.exosateration[sliding_controller2_B.i] = -exo_sat;
       } else {
         // Saturate: '<S6>/exo sateration'
         sliding_controller2_B.exosateration[sliding_controller2_B.i] =
-          sliding_controller2_B.rtb_Product2_idx_0;
+          sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
       }
 
       // End of Saturate: '<S6>/exo sateration'
@@ -2172,6 +1896,8 @@ void sliding_controller2ModelClass::step()
         sliding_controller2_B.q_add[sliding_controller2_B.i];
       sliding_controller2_B.BusAssignment3.Velocity[sliding_controller2_B.i] =
         sliding_controller2_B.q_add_c[sliding_controller2_B.i];
+      sliding_controller2_B.BusAssignment3.Effort[sliding_controller2_B.i] =
+        sliding_controller2_B.Saturation[sliding_controller2_B.i];
     }
 
     // Outputs for Atomic SubSystem: '<S6>/Publish2'
@@ -2180,6 +1906,84 @@ void sliding_controller2ModelClass::step()
 
     // End of Outputs for SubSystem: '<S6>/Publish2'
     if (rtmIsMajorTimeStep((&sliding_controller2_M))) {
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+           sliding_controller2_B.j++) {
+        // Sum: '<S27>/Sum3'
+        sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.j] =
+          sliding_controller2_B.In1_a.Q[sliding_controller2_B.j] -
+          sliding_controller2_B.In1_e.Position[sliding_controller2_B.j];
+
+        // Sum: '<S27>/Sum1'
+        sliding_controller2_B.rtb_Add_c_f[sliding_controller2_B.j] =
+          sliding_controller2_B.In1_a.Qd[sliding_controller2_B.j] -
+          sliding_controller2_B.In1_e.Velocity[sliding_controller2_B.j];
+
+        // Gain: '<S27>/human proportional gain'
+        sliding_controller2_B.dv[sliding_controller2_B.j] = 0.0;
+      }
+
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
+           sliding_controller2_B.j++) {
+        // Gain: '<S27>/human derative gain'
+        sliding_controller2_B.q_add_c[sliding_controller2_B.j] = 0.0;
+        for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
+             sliding_controller2_B.i++) {
+          // Gain: '<S27>/human proportional gain' incorporates:
+          //   Gain: '<S27>/human derative gain'
+
+          sliding_controller2_B.e_j = 7 * sliding_controller2_B.i +
+            sliding_controller2_B.j;
+          sliding_controller2_B.dv[sliding_controller2_B.j] +=
+            Km1[sliding_controller2_B.e_j] *
+            sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.i];
+
+          // Gain: '<S27>/human derative gain'
+          sliding_controller2_B.q_add_c[sliding_controller2_B.j] +=
+            Dm1[sliding_controller2_B.e_j] *
+            sliding_controller2_B.rtb_Add_c_f[sliding_controller2_B.i];
+        }
+
+        // Saturate: '<S6>/human sateration' incorporates:
+        //   Sum: '<S27>/Add2'
+
+        sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
+          sliding_controller2_B.dv[sliding_controller2_B.j] +
+          sliding_controller2_B.q_add_c[sliding_controller2_B.j];
+        if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec >
+            sliding_controller2_P.human_sat) {
+          // Saturate: '<S6>/human sateration'
+          sliding_controller2_B.humansateration[sliding_controller2_B.j] =
+            sliding_controller2_P.human_sat;
+        } else if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec <
+                   -sliding_controller2_P.human_sat) {
+          // Saturate: '<S6>/human sateration'
+          sliding_controller2_B.humansateration[sliding_controller2_B.j] =
+            -sliding_controller2_P.human_sat;
+        } else {
+          // Saturate: '<S6>/human sateration'
+          sliding_controller2_B.humansateration[sliding_controller2_B.j] =
+            sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
+        }
+
+        // End of Saturate: '<S6>/human sateration'
+      }
+
+      // MATLAB Function: '<S38>/MATLAB Function'
+      sliding_controll_MATLABFunction(&sliding_controller2_B.In1_e.Position[0],
+        sliding_controller2_B.rtb_y_a_g);
+
+      // MATLAB Function: '<S38>/MATLAB Function1'
+      sliding_control_MATLABFunction1(&sliding_controller2_B.In1_e.Position[0],
+        sliding_controller2_B.rtb_y_a_g);
+
+      // MATLAB Function: '<S39>/MATLAB Function'
+      sliding_controll_MATLABFunction(&sliding_controller2_B.In1_e.Position[3],
+        sliding_controller2_B.rtb_y_a_g);
+
+      // MATLAB Function: '<S39>/MATLAB Function1'
+      sliding_control_MATLABFunction1(&sliding_controller2_B.In1_e.Position[3],
+        sliding_controller2_B.rtb_y_a_g);
+
       // BusAssignment: '<S6>/Bus Assignment2' incorporates:
       //   Constant: '<S6>/Constant'
 
@@ -2233,7 +2037,7 @@ void sliding_controller2ModelClass::step()
     for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
          sliding_controller2_B.i++) {
       sliding_controller2_B.BusAssignment3.Effort[sliding_controller2_B.i] =
-        sliding_controller2_B.Gain[sliding_controller2_B.i];
+        sliding_controller2_B.humansateration[sliding_controller2_B.i];
     }
 
     sliding_controller2_B.BusAssignment3.Header =
@@ -2272,15 +2076,15 @@ void sliding_controller2ModelClass::step()
       // MATLABSystem: '<S60>/ServiceCaller'
       isCreated = ServCall_sliding_controller2_47.getIsCreated();
       if (!isCreated) {
-        for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 21;
-             sliding_controller2_B.k++) {
-          sliding_controller2_B.b_zeroDelimServiceName_c[sliding_controller2_B.k]
-            = tmp[sliding_controller2_B.k];
+        for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 21;
+             sliding_controller2_B.j++) {
+          sliding_controller2_B.b_zeroDelimServiceName_n[sliding_controller2_B.j]
+            = tmp[sliding_controller2_B.j];
         }
 
-        sliding_controller2_B.b_zeroDelimServiceName_c[21] = '\x00';
+        sliding_controller2_B.b_zeroDelimServiceName_n[21] = '\x00';
         b_varargout_2 = ServCall_sliding_controller2_47.createServiceCaller
-          (&sliding_controller2_B.b_zeroDelimServiceName_c[0], true, 5.0);
+          (&sliding_controller2_B.b_zeroDelimServiceName_n[0], true, 5.0);
         if (b_varargout_2 != SLSuccess) {
         } else {
           ServCall_sliding_controller2_47.call(&rtb_BusAssignment_b3,
@@ -2303,10 +2107,10 @@ void sliding_controller2ModelClass::step()
       // MATLABSystem: '<S61>/ServiceCaller'
       isCreated = ServCall_sliding_controller2_48.getIsCreated();
       if (!isCreated) {
-        for (sliding_controller2_B.k = 0; sliding_controller2_B.k < 23;
-             sliding_controller2_B.k++) {
-          sliding_controller2_B.b_zeroDelimServiceName[sliding_controller2_B.k] =
-            tmp_0[sliding_controller2_B.k];
+        for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 23;
+             sliding_controller2_B.j++) {
+          sliding_controller2_B.b_zeroDelimServiceName[sliding_controller2_B.j] =
+            tmp_0[sliding_controller2_B.j];
         }
 
         sliding_controller2_B.b_zeroDelimServiceName[23] = '\x00';
@@ -2521,12 +2325,12 @@ void sliding_controller2ModelClass::initialize()
     sliding_controller2_DW.obj_h.matlabCodegenIsDeleted = false;
     sliding_controller2_DW.obj_h.isInitialized = 1;
     for (i = 0; i < 17; i++) {
-      sliding_controller2_B.b_zeroDelimTopic_g[i] = tmp_1[i];
+      sliding_controller2_B.b_zeroDelimTopic_l[i] = tmp_1[i];
     }
 
-    sliding_controller2_B.b_zeroDelimTopic_g[17] = '\x00';
+    sliding_controller2_B.b_zeroDelimTopic_l[17] = '\x00';
     Sub_sliding_controller2_1277.createSubscriber
-      (&sliding_controller2_B.b_zeroDelimTopic_g[0], 1);
+      (&sliding_controller2_B.b_zeroDelimTopic_l[0], 1);
     sliding_controller2_DW.obj_h.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S14>/SourceBlock'
@@ -2649,10 +2453,11 @@ void sliding_controller2ModelClass::initialize()
 
       sliding_controller2_B.exosateration[i] = sliding_controller2_P.exotau_Y0;
 
-      // SystemInitialize for Gain: '<S6>/Gain' incorporates:
+      // SystemInitialize for Saturate: '<S6>/human sateration' incorporates:
       //   Outport: '<S6>/human tau'
 
-      sliding_controller2_B.Gain[i] = sliding_controller2_P.humantau_Y0;
+      sliding_controller2_B.humansateration[i] =
+        sliding_controller2_P.humantau_Y0;
     }
 
     // End of SystemInitialize for SubSystem: '<Root>/Controller'
@@ -2663,12 +2468,12 @@ void sliding_controller2ModelClass::initialize()
     sliding_controller2_DW.obj_n.matlabCodegenIsDeleted = false;
     sliding_controller2_DW.obj_n.isInitialized = 1;
     for (i = 0; i < 20; i++) {
-      sliding_controller2_B.b_zeroDelimTopic_f[i] = tmp_6[i];
+      sliding_controller2_B.b_zeroDelimTopic_p[i] = tmp_6[i];
     }
 
-    sliding_controller2_B.b_zeroDelimTopic_f[20] = '\x00';
+    sliding_controller2_B.b_zeroDelimTopic_p[20] = '\x00';
     Pub_sliding_controller2_1242.createPublisher
-      (&sliding_controller2_B.b_zeroDelimTopic_f[0], 1);
+      (&sliding_controller2_B.b_zeroDelimTopic_p[0], 1);
     sliding_controller2_DW.obj_n.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S52>/SinkBlock'
@@ -2679,12 +2484,12 @@ void sliding_controller2ModelClass::initialize()
     sliding_controller2_DW.obj_mp.matlabCodegenIsDeleted = false;
     sliding_controller2_DW.obj_mp.isInitialized = 1;
     for (i = 0; i < 22; i++) {
-      sliding_controller2_B.b_zeroDelimTopic_p[i] = tmp_7[i];
+      sliding_controller2_B.b_zeroDelimTopic_m[i] = tmp_7[i];
     }
 
-    sliding_controller2_B.b_zeroDelimTopic_p[22] = '\x00';
+    sliding_controller2_B.b_zeroDelimTopic_m[22] = '\x00';
     Pub_sliding_controller2_1246.createPublisher
-      (&sliding_controller2_B.b_zeroDelimTopic_p[0], 1);
+      (&sliding_controller2_B.b_zeroDelimTopic_m[0], 1);
     sliding_controller2_DW.obj_mp.isSetupComplete = true;
 
     // End of Start for MATLABSystem: '<S53>/SinkBlock'

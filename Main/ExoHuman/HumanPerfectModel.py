@@ -39,8 +39,8 @@ if __name__ == '__main__':
     exo_controller_server = ExoControllerServer.ExoControllerServer(LARRE, True )
     human_controller_server = HumanControllerServer.HumanControllerServer(LARRY)
 
-    LARRE.handle.set_rpy(0, 0, 0)
-    LARRE.handle.set_pos(0.0, 0, 3.0)
+    LARRE.handle.set_rpy(0.25, 0, 0)
+    LARRE.handle.set_pos(0.0, 0, 1.0)
     # LARRE.handle.set_rpy(0, 0, 0)
     # LARRE.handle.set_pos(0.0, 0, 1.0)
     # machine = StateMachine.ExoStateMachine(LARRE)

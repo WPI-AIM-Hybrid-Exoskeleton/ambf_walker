@@ -234,12 +234,12 @@ const mxArray *sf_c19_sliding_controller2_get_eml_resolved_functions_info()
 {
   const mxArray *c19_nameCaptureInfo = NULL;
   const char_T *c19_data[4] = {
-    "789cc553cb4ac34014bd95b6e8a2eacaad7fe08082b8562a58a8545af085a493e4a6193b0f9da4a65df909fe8a1bc1bff067fc00f368da26182216eb8170e770"
-    "32f7dc7b60a072d6ae00c066f86d3c031cd521462329b03dad6b90455eaf14d41435a866ee457a2df47b99724b491fc77e42241538bb692bc124957e6ff280a0",
-    "d153fc09ed587118c71e13d85d24e71113a70bd28c4452743e71d11a764702b4ebcd27e48b24ce2342bf60df6a491e79e4f3c8ff97fa8d7fe997f6df29f14b75"
-    "47e9806adb1832c904f599e5191c07cbef9dfad60be748145b8d4c8e73bff725fd7a857e59fdb679475c259048eabb5432e403c56d876a9358d40fd330028f78",
-    "da2254988e11503e444dc2803835c9f799ed89a86f596e5b3fdca3e8fd34603daee4f3b5bf4abf8fb7fbdd55faa5f82fbf55bd3fab134c9a97fb37faa2ed1c1e"
-    "5cf1c7eb564b1ecfe7e894f894cd0105fcaffb7f01900e67d7", "" };
+    "789cc5534d4bc340109d4a2d5eaa9e04c1ab170fae5ec4b3c5428596da0f3c88c649b26996ee876c52db7af1ee41ff8e7fcaff6092364d130c118bf541987dbc"
+    "ecbc99070ba546b30400dbc1f7f602705e8108d55981dd79dd8034b27a29a7c6d88472ea5ea8bf067eef736e29e9d3893f2312055ddcb4956012a5df9b3e52d0",
+    "d453fc89da91e2304e7b4cd0ee3269854cd497a40509a5f05c73a935ec8e0468d74b26e4cb24ca23c443cebee5823cb2c8e691fd2ff69bfcd22feebf57e017eb"
+    "8ed263d4b631649209f499e5199c0e56df3bf6ade4ce31536c3532394dfc3e56f4ebe5faa5f5dbcb3be22a418944df45c9281f286e3ba84d62a11fa4618c3de2",
+    "698ba0301d638c7c48350902e26892ef333b1661dfa2dc767eb847defba9c256543fdbfbb84ebffba383c375fac5f82fbf75bdbf9bf6059e9c3d5fb14e47d79b"
+    "d7fd6ea37fdaaa2573b40b7c8ae6801cfed7fdbf0052dd6684", "" };
 
   c19_nameCaptureInfo = NULL;
   emlrtNameCaptureMxArrayR2016a(&c19_data[0], 1616U, &c19_nameCaptureInfo);
@@ -252,15 +252,15 @@ static void c19_eML_blk_kernel(SFc19_sliding_controller2InstanceStruct
 {
   real_T c19_a;
   real_T c19_b_a;
-  c19_b_knee[0] = 0.324 * muDoubleScalarCos(c19_b_q[0]);
-  c19_b_knee[1] = 0.324 * muDoubleScalarSin(c19_b_q[0]);
-  c19_a = 0.324 * c19_b_qd[0];
+  c19_b_knee[0] = -0.324 * muDoubleScalarCos(c19_b_q[0]);
+  c19_b_knee[1] = -0.324 * muDoubleScalarSin(c19_b_q[0]);
+  c19_a = -0.324 * c19_b_qd[0];
   c19_b_dknee[0] = c19_a * -muDoubleScalarSin(c19_b_q[0]);
   c19_b_dknee[1] = c19_a * muDoubleScalarCos(c19_b_q[0]);
-  c19_b_a = 0.39 * (c19_b_qd[0] + c19_b_qd[1]);
-  c19_b_ankle[0] = c19_b_knee[0] + 0.39 * muDoubleScalarCos(c19_b_q[0] +
+  c19_b_a = -0.39 * (c19_b_qd[0] + c19_b_qd[1]);
+  c19_b_ankle[0] = c19_b_knee[0] - -0.39 * muDoubleScalarSin(c19_b_q[0] +
     c19_b_q[1]);
-  c19_b_ankle[1] = c19_b_knee[1] + 0.39 * muDoubleScalarSin(c19_b_q[0] +
+  c19_b_ankle[1] = c19_b_knee[1] - -0.39 * muDoubleScalarCos(c19_b_q[0] +
     c19_b_q[1]);
   c19_b_danke[0] = c19_b_dknee[0] + c19_b_a * -muDoubleScalarSin(c19_b_q[0] +
     c19_b_q[1]);
@@ -517,28 +517,28 @@ const char* sf_c19_sliding_controller2_get_post_codegen_info(void)
 {
   int i;
   const char* encStrCodegen [19] = {
-    "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",
+    "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",
     ""
   };
 
-  static char newstr [1333] = "";
+  static char newstr [1345] = "";
   newstr[0] = '\0';
   for (i = 0; i < 19; i++) {
     strcat(newstr, encStrCodegen[i]);
@@ -551,10 +551,10 @@ static void mdlSetWorkWidths_c19_sliding_controller2(SimStruct *S)
 {
   const char* newstr = sf_c19_sliding_controller2_get_post_codegen_info();
   sf_set_work_widths(S, newstr);
-  ssSetChecksum0(S,(672025005U));
-  ssSetChecksum1(S,(1641516495U));
-  ssSetChecksum2(S,(1050467908U));
-  ssSetChecksum3(S,(4160773434U));
+  ssSetChecksum0(S,(614325834U));
+  ssSetChecksum1(S,(4071890510U));
+  ssSetChecksum2(S,(2385365703U));
+  ssSetChecksum3(S,(1589225593U));
 }
 
 static void mdlRTW_c19_sliding_controller2(SimStruct *S)

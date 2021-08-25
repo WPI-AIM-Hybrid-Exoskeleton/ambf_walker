@@ -19,7 +19,7 @@ class WalkSimulinkState(smach.State):
         self.model_name = model_name
         self.joint_state = JointState()
         self.joint_cb = rospy.Subscriber(model_name+ "_jointstate", JointState, self.joint_callback)
-        self.rate = rospy.Rate(100)
+        self.rate = rospy.Rate(10)
         self._controller_name = controller_name
         self.pub = rospy.Publisher(model_name + "simulink_set_points", DesiredJoints, queue_size=1)
         self.pub_start = rospy.Publisher("start_sim", Bool, queue_size=1)
@@ -44,8 +44,6 @@ class WalkSimulinkState(smach.State):
         self.runner.reset()
         self.runner.update_start(start)
         self.count = 0
-
-
 
         rospy.wait_for_service('human_controller_onoff')
         rospy.wait_for_service('exo_controller_onoff')
@@ -83,6 +81,7 @@ class WalkSimulinkState(smach.State):
             msg.controller = self._controller_name
             self.pub.publish(msg)
             self.count += 1
+
             # print(count)
             self.rate.sleep()
 
