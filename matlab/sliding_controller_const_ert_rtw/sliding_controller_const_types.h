@@ -9,7 +9,7 @@
 //
 // Model version                  : 1.205
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Wed Aug 25 09:23:23 2021
+// C/C++ source code generated on : Wed Aug 25 13:45:03 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -21,13 +21,13 @@
 #include "rtwtypes.h"
 
 // Model Code Variants
-#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller_const_std_msgs_Float32_
-#define DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller_const_std_msgs_Float32_
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller_const_std_msgs_Float64_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller_const_std_msgs_Float64_
 
-// MsgType=std_msgs/Float32
-struct SL_Bus_sliding_controller_const_std_msgs_Float32
+// MsgType=std_msgs/Float64
+struct SL_Bus_sliding_controller_const_std_msgs_Float64
 {
-  real32_T Data;
+  real_T Data;
 };
 
 #endif

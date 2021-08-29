@@ -163,9 +163,21 @@ static void set_sim_state_c12_sliding_controller2
 static void sf_gateway_c12_sliding_controller2
   (SFc12_sliding_controller2InstanceStruct *chartInstance)
 {
+  real_T c12_dv1[4];
+  real_T c12_dv[2];
+  int32_T c12_i;
+  int32_T c12_i1;
   chartInstance->c12_JITTransitionAnimation[0] = 0U;
   _sfTime_ = sf_get_time(chartInstance->S);
-  c12_eML_blk_kernel(chartInstance, *chartInstance->c12_q, *chartInstance->c12_y);
+  for (c12_i = 0; c12_i < 2; c12_i++) {
+    c12_dv[c12_i] = (*chartInstance->c12_q)[c12_i];
+  }
+
+  c12_eML_blk_kernel(chartInstance, c12_dv, c12_dv1);
+  for (c12_i1 = 0; c12_i1 < 4; c12_i1++) {
+    (*chartInstance->c12_y)[c12_i1] = c12_dv1[c12_i1];
+  }
+
   c12_do_animation_call_c12_sliding_controller2(chartInstance);
 }
 
@@ -217,12 +229,18 @@ const mxArray *sf_c12_sliding_controller2_get_eml_resolved_functions_info()
 static void c12_eML_blk_kernel(SFc12_sliding_controller2InstanceStruct
   *chartInstance, real_T c12_b_q[2], real_T c12_b_y[4])
 {
-  c12_b_y[0] = -0.324 * muDoubleScalarSin(c12_b_q[0]) - 0.39 * muDoubleScalarSin
+  const mxArray *c12_c_y = NULL;
+  c12_b_y[0] = -0.324 * muDoubleScalarCos(c12_b_q[0]) + -0.39 *
+    muDoubleScalarCos(c12_b_q[0] + c12_b_q[1]);
+  c12_b_y[2] = -0.39 * muDoubleScalarCos(c12_b_q[0] + c12_b_q[1]);
+  c12_b_y[1] = 0.324 * muDoubleScalarSin(c12_b_q[0]) - -0.39 * muDoubleScalarSin
     (c12_b_q[0] + c12_b_q[1]);
-  c12_b_y[2] = 0.324 * muDoubleScalarCos(c12_b_q[0]) + 0.39 * muDoubleScalarSin
-    (c12_b_q[0] + c12_b_q[1]);
-  c12_b_y[1] = -0.39 * muDoubleScalarSin(c12_b_q[0] + c12_b_q[1]);
-  c12_b_y[3] = 0.39 * muDoubleScalarCos(c12_b_q[0] + c12_b_q[1]);
+  c12_b_y[3] = 0.39 * muDoubleScalarSin(c12_b_q[0] + c12_b_q[1]);
+  sf_mex_printf("%s =\\n", "y");
+  c12_c_y = NULL;
+  sf_mex_assign(&c12_c_y, sf_mex_create("y", c12_b_y, 0, 0U, 1U, 0U, 2, 2, 2),
+                false);
+  sf_mex_call(chartInstance->c12_fEmlrtCtx, NULL, "disp", 0U, 1U, 14, c12_c_y);
 }
 
 static void c12_emlrt_marshallIn(SFc12_sliding_controller2InstanceStruct
@@ -301,10 +319,10 @@ static void init_simulink_io_address(SFc12_sliding_controller2InstanceStruct
 /* SFunction Glue Code */
 void sf_c12_sliding_controller2_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(552332206U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2608078302U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1441289006U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(4066884445U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3193823814U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(267299597U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(504614851U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(981118328U);
 }
 
 mxArray *sf_c12_sliding_controller2_third_party_uses_info(void)
@@ -357,7 +375,7 @@ static const mxArray *sf_get_sim_state_info_c12_sliding_controller2(void)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "sjS5Om55RaK9v6MEldWgzUF";
+  return "sITpOBJPN6OXIDOpjmctU7";
 }
 
 static void sf_opaque_initialize_c12_sliding_controller2(void *chartInstanceVar)
@@ -466,23 +484,23 @@ const char* sf_c12_sliding_controller2_get_post_codegen_info(void)
 {
   int i;
   const char* encStrCodegen [18] = {
-    "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",
+    "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",
     ""
   };
 
@@ -499,10 +517,10 @@ static void mdlSetWorkWidths_c12_sliding_controller2(SimStruct *S)
 {
   const char* newstr = sf_c12_sliding_controller2_get_post_codegen_info();
   sf_set_work_widths(S, newstr);
-  ssSetChecksum0(S,(2501929482U));
-  ssSetChecksum1(S,(2041323763U));
-  ssSetChecksum2(S,(3808924622U));
-  ssSetChecksum3(S,(1034168136U));
+  ssSetChecksum0(S,(1551688381U));
+  ssSetChecksum1(S,(1561556856U));
+  ssSetChecksum2(S,(2141638924U));
+  ssSetChecksum3(S,(1613045982U));
 }
 
 static void mdlRTW_c12_sliding_controller2(SimStruct *S)

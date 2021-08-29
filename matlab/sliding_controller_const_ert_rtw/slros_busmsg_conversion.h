@@ -10,7 +10,7 @@
 #include <ros/time.h>
 #include <sensor_msgs/JointState.h>
 #include <std_msgs/Bool.h>
-#include <std_msgs/Float32.h>
+#include <std_msgs/Float64.h>
 #include <std_msgs/Header.h>
 #include <std_srvs/SetBoolRequest.h>
 #include <std_srvs/SetBoolResponse.h>
@@ -36,8 +36,8 @@ void convertToBus(SL_Bus_sliding_controller_const_sensor_msgs_JointState* busPtr
 void convertFromBus(std_msgs::Bool* msgPtr, SL_Bus_sliding_controller_const_std_msgs_Bool const* busPtr);
 void convertToBus(SL_Bus_sliding_controller_const_std_msgs_Bool* busPtr, std_msgs::Bool const* msgPtr);
 
-void convertFromBus(std_msgs::Float32* msgPtr, SL_Bus_sliding_controller_const_std_msgs_Float32 const* busPtr);
-void convertToBus(SL_Bus_sliding_controller_const_std_msgs_Float32* busPtr, std_msgs::Float32 const* msgPtr);
+void convertFromBus(std_msgs::Float64* msgPtr, SL_Bus_sliding_controller_const_std_msgs_Float64 const* busPtr);
+void convertToBus(SL_Bus_sliding_controller_const_std_msgs_Float64* busPtr, std_msgs::Float64 const* msgPtr);
 
 void convertFromBus(std_msgs::Header* msgPtr, SL_Bus_sliding_controller_const_std_msgs_Header const* busPtr);
 void convertToBus(SL_Bus_sliding_controller_const_std_msgs_Header* busPtr, std_msgs::Header const* msgPtr);

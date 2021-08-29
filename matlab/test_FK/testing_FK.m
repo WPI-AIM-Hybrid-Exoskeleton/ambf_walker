@@ -42,8 +42,8 @@ for t = 1:length(joint_angles)
     [left_knee, left_ankle] = forward_kinimatics_leg(joint_angles(t,[1,2]));
     [right_knee, right_ankle] = forward_kinimatics_leg(joint_angles(t,[4,5]));
     
-    x = [ 0 right_knee(1) right_ankle(1) ];
-    y = [ 0 right_knee(2) right_ankle(2) ];
+    x = [ 0 right_knee(1) right_ankle(1) 0 left_knee(1) left_ankle(1) ];
+    y = [ 0 right_knee(2) right_ankle(2) 0 left_knee(2) left_ankle(2) ];
     
     refreshdata
     drawnow

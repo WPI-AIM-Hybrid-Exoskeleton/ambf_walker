@@ -34,7 +34,7 @@ extern SimulinkPublisher<sensor_msgs::JointState, SL_Bus_sliding_controller_cons
 extern SimulinkPublisher<sensor_msgs::JointState, SL_Bus_sliding_controller_const_sensor_msgs_JointState> Pub_sliding_controller_const_1246;
 
 // For Block sliding_controller_const/Publish
-extern SimulinkPublisher<std_msgs::Float32, SL_Bus_sliding_controller_const_std_msgs_Float32> Pub_sliding_controller_const_1177;
+extern SimulinkPublisher<std_msgs::Float64, SL_Bus_sliding_controller_const_std_msgs_Float64> Pub_sliding_controller_const_1177;
 
 // For Block sliding_controller_const/Controller/sliding mode controller/Call Service
 extern SimulinkServiceCaller<rbdl_server::RBDLInverseDynamics, SL_Bus_sliding_controller_const_RBDLInverseDynamicsReques_9pm1f, SL_Bus_sliding_controller_const_RBDLInverseDynamicsRespon_g20gt> ServCall_sliding_controller_const_1160;

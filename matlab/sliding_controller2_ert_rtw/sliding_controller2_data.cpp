@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sliding_controller2'.
 //
-// Model version                  : 1.203
+// Model version                  : 1.213
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Tue Aug 24 18:56:13 2021
+// C/C++ source code generated on : Sun Aug 29 13:53:22 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -30,9 +30,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   // Variable: beta
   //  Referenced by: '<S29>/surface width SMC'
 
-  { 0.50881249047401234, 0.50881249047401234, 0.50881249047401234,
-    0.50881249047401234, 0.50881249047401234, 0.50881249047401234,
-    0.50881249047401234 },
+  { 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8 },
 
   // Variable: gamma
   //  Referenced by: '<S26>/Constant5'
@@ -47,7 +45,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   // Variable: interaction_sat
   //  Referenced by: '<S6>/Saturation'
 
-  50.0,
+  5.0,
 
   // Variable: spring
   //  Referenced by:
@@ -3301,7 +3299,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   //  Referenced by: '<S1>/Constant'
 
   {
-    0.0F                               // Data
+    0.0                                // Data
   },
 
   // Computed Parameter: Constant_Value_g
@@ -3343,26 +3341,6 @@ sliding_controller2ModelClass::P_sliding_controller2_T
 
   // Expression: 0
   //  Referenced by: '<S26>/Integrator'
-
-  0.0,
-
-  // Expression: 1
-  //  Referenced by: '<Root>/Sine Wave Function'
-
-  1.0,
-
-  // Expression: 0
-  //  Referenced by: '<Root>/Sine Wave Function'
-
-  0.0,
-
-  // Expression: 1
-  //  Referenced by: '<Root>/Sine Wave Function'
-
-  1.0,
-
-  // Expression: 0
-  //  Referenced by: '<Root>/Sine Wave Function'
 
   0.0,
 

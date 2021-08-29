@@ -9,7 +9,7 @@
 //
 // Model version                  : 1.205
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Wed Aug 25 09:23:23 2021
+// C/C++ source code generated on : Wed Aug 25 13:45:03 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -267,16 +267,17 @@ class sliding_controller_constModelClass {
     char_T b_zeroDelimTopic_p[21];
     char_T b_zeroDelimTopic_l[18];
     char_T b_zeroDelimServiceName_j[17];
-    SL_Bus_sliding_controller_const_ros_time_Time rtb_CurrentTime_d;
-    real_T rtb_Subtract2_g[2];
-    real_T rtb_danke_m_l[2];
+    char_T b_zeroDelimTopic_d[16];
+    SL_Bus_sliding_controller_const_ros_time_Time rtb_CurrentTime_g;
+    real_T rtb_Subtract2_l[2];
+    real_T rtb_danke_m_d[2];
     real_T rtb_ankle_d[2];
-    real_T rtb_dknee_d[2];
-    real_T rtb_Add_e_l[2];
-    real_T rtb_danke_e_o[2];
-    real_T rtb_Product2_b[2];
-    real_T rtb_danke_n[2];
-    real_T rtb_Add_c_b[2];
+    real_T rtb_dknee_l[2];
+    real_T rtb_Add_e_o[2];
+    real_T rtb_danke_e_b[2];
+    real_T rtb_Product2_n[2];
+    real_T rtb_danke_b[2];
+    real_T rtb_Add_c_l[2];
     real_T wj;
     real_T b_varargout_2_Header_Stamp_Sec;
     real_T rtb_danke_m_idx_1;
@@ -284,12 +285,13 @@ class sliding_controller_constModelClass {
     real_T rtb_dknee_idx_1;
     real_T rtb_danke_tmp;
     real_T rtb_Add_e_tmp;
-    real_T rtb_Add_e_tmp_l;
+    real_T rtb_Add_e_tmp_h;
     real_T smax;
     real_T beta1;
     real_T scale;
     real_T absxk;
     real_T t;
+    SL_Bus_sliding_controller_const_std_msgs_Float64 BusAssignment_m;// '<Root>/Bus Assignment' 
     SL_Bus_ROSVariableLengthArrayInfo b_varargout_2_Effort_SL_Info;
     SL_Bus_sliding_controller_const_std_msgs_Bool In1_k;// '<S57>/In1'
     int32_T j;
@@ -308,14 +310,13 @@ class sliding_controller_constModelClass {
     int32_T ia;
     uint32_T b_varargout_2_Header_Seq;
     uint32_T b_varargout_2_Header_FrameId_SL;
-    uint32_T b_varargout_2_Header_FrameId__b;
+    uint32_T b_varargout_2_Header_FrameId__d;
     uint32_T b_varargout_2_Name_SL_Info_Curr;
     uint32_T b_varargout_2_Name_SL_Info_Rece;
     uint32_T b_varargout_2_Position_SL_Info_;
-    uint32_T b_varargout_2_Position_SL_Inf_j;
+    uint32_T b_varargout_2_Position_SL_Inf_f;
     uint32_T b_varargout_2_Velocity_SL_Info_;
-    uint32_T b_varargout_2_Velocity_SL_Inf_a;
-    SL_Bus_sliding_controller_const_std_msgs_Float32 BusAssignment_m;// '<Root>/Bus Assignment' 
+    uint32_T b_varargout_2_Velocity_SL_Inf_j;
     boolean_T LogicalOperator;         // '<Root>/Logical Operator'
     boolean_T SourceBlock_o1;          // '<S14>/SourceBlock'
     boolean_T SourceBlock_o1_h;        // '<S13>/SourceBlock'
@@ -452,7 +453,7 @@ class sliding_controller_constModelClass {
     SL_Bus_sliding_controller_const_std_msgs_Bool Constant_Value_ea;// Computed Parameter: Constant_Value_ea
                                                                       //  Referenced by: '<S15>/Constant'
 
-    SL_Bus_sliding_controller_const_std_msgs_Float32 Constant_Value_o;// Computed Parameter: Constant_Value_o
+    SL_Bus_sliding_controller_const_std_msgs_Float64 Constant_Value_o;// Computed Parameter: Constant_Value_o
                                                                       //  Referenced by: '<S1>/Constant'
 
     SL_Bus_sliding_controller_const_std_srvs_SetBoolRequest Constant_Value_g;// Computed Parameter: Constant_Value_g
@@ -488,18 +489,6 @@ class sliding_controller_constModelClass {
 
     real_T Constant1_Value[7];  // Expression: [-0.5 0.5 -0.28 -0.5 0.5 -0.28 0]
                                    //  Referenced by: '<S6>/Constant1'
-
-    real_T SineWaveFunction_Amp;       // Expression: 1
-                                          //  Referenced by: '<Root>/Sine Wave Function'
-
-    real_T SineWaveFunction_Bias;      // Expression: 0
-                                          //  Referenced by: '<Root>/Sine Wave Function'
-
-    real_T SineWaveFunction_Freq;      // Expression: 1
-                                          //  Referenced by: '<Root>/Sine Wave Function'
-
-    real_T SineWaveFunction_Phase;     // Expression: 0
-                                          //  Referenced by: '<Root>/Sine Wave Function'
 
     boolean_T Constant_Value_i1;       // Expression: true
                                           //  Referenced by: '<S6>/Constant'
@@ -653,7 +642,9 @@ class sliding_controller_constModelClass {
 //  Block '<S39>/Transpose1' : Unused code path elimination
 //  Block '<S39>/Transpose2' : Unused code path elimination
 //  Block '<S6>/Scope' : Unused code path elimination
+//  Block '<Root>/Scope' : Unused code path elimination
 //  Block '<Root>/To Workspace' : Unused code path elimination
+//  Block '<Root>/Data Type Conversion' : Eliminate redundant data type conversion
 //  Block '<S16>/Data Type Conversion' : Eliminate redundant data type conversion
 
 
