@@ -4,7 +4,7 @@ import smach
 import smach_ros
 import rospy
 
-import InitializeState, WalkInitState, WalkState, MainState, LowerState, InitilizeHumanState, WalkSimulinkState
+import InitializeState, WalkInitState, WalkState, MainState, LowerState, InitilizeHumanState, WalkSimulinkState,PremaSimState
 
 
 class ExoHumanFSM():
@@ -16,19 +16,22 @@ class ExoHumanFSM():
             smach.StateMachine.add('Initialize', InitializeState.InitializeState("exo"),
                                    transitions={'Initialized': 'Main'})
 
-            smach.StateMachine.add('Main', MainState.MainState(["Walk", "Lower", "Done", "Sim"]),
+            smach.StateMachine.add('Main', MainState.MainState(["Walk", "Lower", "Done", "Sim", "SimT"]),
                                    transitions={'Walk': 'Sub_Walk',
                                                 'Lower': 'LowerBody',
                                                 "Done": "Done",
-                                                "Sim":'Simulink_Walk'})
+                                                "Sim":'Simulink_Walk',
+                                                "SimT":'SimTest'})
 
             smach.StateMachine.add('LowerBody', LowerState.LowerState("exo"),
                                    transitions={'Lowered': 'Main'})
 
+            smach.StateMachine.add('SimTest', PremaSimState.PremaSimState("exo"),
+                                   transitions={'Main': 'Main'})
+
             walk_sub = smach.StateMachine(outcomes=['walked'])
 
             simulink_sub = smach.StateMachine(outcomes=['walked'])
-
 
             with simulink_sub:
                 # Add states to the container
