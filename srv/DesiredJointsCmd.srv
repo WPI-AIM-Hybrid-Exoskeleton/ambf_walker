@@ -5,3 +5,4 @@ string controller
 float64[] other
 ---
 bool success
+float64[] tau

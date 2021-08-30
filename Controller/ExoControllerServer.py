@@ -27,6 +27,7 @@ class ExoControllerServer():
         self.error_pub = rospy.Publisher(self.model.model_name + "_Error", Float32MultiArray, queue_size=1)
         self.controller_srv = rospy.ServiceProxy('CalcTau', JointControl)
         self.service = rospy.Service(model.model_name + '_joint_cmd', DesiredJointsCmd, self.joint_cmd_server)
+        self.service = rospy.Service('exo_calc_dyn', DesiredJointsCmd, self.calc_dyn)
         self._tread_running = False
         self._enable_control = False
         self.ctrl_list = []
@@ -90,10 +91,28 @@ class ExoControllerServer():
             dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
             resp1 = dyn_srv("exograv", q, qd, qdd)
             tau = resp1.tau
-            return np.array(tau)
+            return DesiredJointsCmdResponse(tau=tau,success=True)
 
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
+
+    def calc_dyn(self, joints):
+
+        q = self._model.ambf_to_rbdl(np.array(joints.q) )
+        qd = self._model.ambf_to_rbdl(np.array(joints.qd) )
+        qdd = self._model.ambf_to_rbdl(np.array(joints.qdd) )
+        rospy.wait_for_service("InverseDynamics")
+        try:
+            dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
+            resp1 = dyn_srv("exo", q, qd, qdd)
+            tau = resp1.tau
+            joints.tau = tau
+            return
+            #return np.array(tau)
+
+        except rospy.ServiceException as e:
+            print("Service call failed: %s"%e)
+
 
     def set_torque(self):
         self._enable_control = True
