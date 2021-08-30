@@ -1,11 +1,12 @@
 
-exo_sat =150;
-Dm_hip = .70;
-Dm_knee = .70;
-Dm_ankle = .70;
+exo_sat =200;
 
-Km_hip = 30;
-Km_knee = 30;
+Dm_hip = 5.70;
+Dm_knee = 3.0;
+Dm_ankle = 0.70;
+
+Km_hip = 1000;
+Km_knee = 60;
 Km_ankle = 30;
 
 % model 1 gains

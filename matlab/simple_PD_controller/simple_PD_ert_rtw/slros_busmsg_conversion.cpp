@@ -1,6 +1,33 @@
 #include "slros_busmsg_conversion.h"
 
 
+// Conversions between SL_Bus_simple_PD_ambf_walker_DesiredJoints and ambf_walker::DesiredJoints
+
+void convertFromBus(ambf_walker::DesiredJoints* msgPtr, SL_Bus_simple_PD_ambf_walker_DesiredJoints const* busPtr)
+{
+  const std::string rosMessageType("ambf_walker/DesiredJoints");
+
+  convertFromBusVariablePrimitiveArray(msgPtr->controller, busPtr->Controller, busPtr->Controller_SL_Info);
+  convertFromBus(&msgPtr->header, &busPtr->Header);
+  convertFromBusVariablePrimitiveArray(msgPtr->other, busPtr->Other, busPtr->Other_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->q, busPtr->Q, busPtr->Q_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->qd, busPtr->Qd, busPtr->Qd_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->qdd, busPtr->Qdd, busPtr->Qdd_SL_Info);
+}
+
+void convertToBus(SL_Bus_simple_PD_ambf_walker_DesiredJoints* busPtr, ambf_walker::DesiredJoints const* msgPtr)
+{
+  const std::string rosMessageType("ambf_walker/DesiredJoints");
+
+  convertToBusVariablePrimitiveArray(busPtr->Controller, busPtr->Controller_SL_Info, msgPtr->controller, slros::EnabledWarning(rosMessageType, "controller"));
+  convertToBus(&busPtr->Header, &msgPtr->header);
+  convertToBusVariablePrimitiveArray(busPtr->Other, busPtr->Other_SL_Info, msgPtr->other, slros::EnabledWarning(rosMessageType, "other"));
+  convertToBusVariablePrimitiveArray(busPtr->Q, busPtr->Q_SL_Info, msgPtr->q, slros::EnabledWarning(rosMessageType, "q"));
+  convertToBusVariablePrimitiveArray(busPtr->Qd, busPtr->Qd_SL_Info, msgPtr->qd, slros::EnabledWarning(rosMessageType, "qd"));
+  convertToBusVariablePrimitiveArray(busPtr->Qdd, busPtr->Qdd_SL_Info, msgPtr->qdd, slros::EnabledWarning(rosMessageType, "qdd"));
+}
+
+
 // Conversions between SL_Bus_simple_PD_ros_time_Time and ros::Time
 
 void convertFromBus(ros::Time* msgPtr, SL_Bus_simple_PD_ros_time_Time const* busPtr)

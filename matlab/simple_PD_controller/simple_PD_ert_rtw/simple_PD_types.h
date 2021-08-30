@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'simple_PD'.
 //
-// Model version                  : 1.11
+// Model version                  : 1.14
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Sun Aug 22 14:20:24 2021
+// C/C++ source code generated on : Mon Aug 30 12:33:41 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -173,6 +173,48 @@ struct SL_Bus_simple_PD_std_msgs_Float32MultiArray
 
   // IsVarLen=1:VarLenCategory=length:VarLenElem=Data
   SL_Bus_ROSVariableLengthArrayInfo Data_SL_Info;
+};
+
+#endif
+
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_simple_PD_ambf_walker_DesiredJoints_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_simple_PD_ambf_walker_DesiredJoints_
+
+// MsgType=ambf_walker/DesiredJoints
+struct SL_Bus_simple_PD_ambf_walker_DesiredJoints
+{
+  // MsgType=std_msgs/Header
+  SL_Bus_simple_PD_std_msgs_Header Header;
+
+  // IsVarLen=1:VarLenCategory=data:VarLenElem=Q_SL_Info:TruncateAction=warn
+  real_T Q[7];
+
+  // IsVarLen=1:VarLenCategory=length:VarLenElem=Q
+  SL_Bus_ROSVariableLengthArrayInfo Q_SL_Info;
+
+  // IsVarLen=1:VarLenCategory=data:VarLenElem=Qd_SL_Info:TruncateAction=warn
+  real_T Qd[7];
+
+  // IsVarLen=1:VarLenCategory=length:VarLenElem=Qd
+  SL_Bus_ROSVariableLengthArrayInfo Qd_SL_Info;
+
+  // IsVarLen=1:VarLenCategory=data:VarLenElem=Qdd_SL_Info:TruncateAction=warn
+  real_T Qdd[7];
+
+  // IsVarLen=1:VarLenCategory=length:VarLenElem=Qdd
+  SL_Bus_ROSVariableLengthArrayInfo Qdd_SL_Info;
+
+  // IsVarLen=1:VarLenCategory=data:VarLenElem=Other_SL_Info:TruncateAction=warn 
+  real_T Other[7];
+
+  // IsVarLen=1:VarLenCategory=length:VarLenElem=Other
+  SL_Bus_ROSVariableLengthArrayInfo Other_SL_Info;
+
+  // PrimitiveROSType=string:IsVarLen=1:VarLenCategory=data:VarLenElem=Controller_SL_Info:TruncateAction=warn 
+  uint8_T Controller[8];
+
+  // IsVarLen=1:VarLenCategory=length:VarLenElem=Controller
+  SL_Bus_ROSVariableLengthArrayInfo Controller_SL_Info;
 };
 
 #endif

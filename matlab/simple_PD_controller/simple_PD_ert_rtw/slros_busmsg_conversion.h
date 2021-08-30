@@ -2,6 +2,7 @@
 #define _SLROS_BUSMSG_CONVERSION_H_
 
 #include <ros/ros.h>
+#include <ambf_walker/DesiredJoints.h>
 #include <ros/time.h>
 #include <sensor_msgs/JointState.h>
 #include <std_msgs/Bool.h>
@@ -12,6 +13,9 @@
 #include "simple_PD_types.h"
 #include "slros_msgconvert_utils.h"
 
+
+void convertFromBus(ambf_walker::DesiredJoints* msgPtr, SL_Bus_simple_PD_ambf_walker_DesiredJoints const* busPtr);
+void convertToBus(SL_Bus_simple_PD_ambf_walker_DesiredJoints* busPtr, ambf_walker::DesiredJoints const* msgPtr);
 
 void convertFromBus(ros::Time* msgPtr, SL_Bus_simple_PD_ros_time_Time const* busPtr);
 void convertToBus(SL_Bus_simple_PD_ros_time_Time* busPtr, ros::Time const* msgPtr);

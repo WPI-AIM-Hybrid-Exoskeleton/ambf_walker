@@ -64,7 +64,8 @@ class ModelServer(Model.Model):
             self.last_simulink_time = current_time
             dt_msg.data = dt
             self.pub_sim_loop_rate.publish(dt_msg)
-        self.update_torque(list(msg.effort))
+        #self.update_torque(list(msg.effort))
+        self.tau =  list(msg.effort)
 
 
     def torque_cb(self, tau):

@@ -3,6 +3,9 @@
 ros::NodeHandle * SLROSNodePtr;
 const std::string SLROSNodeName = "simple_PD";
 
+// For Block simple_PD/Subscribe
+SimulinkSubscriber<ambf_walker::DesiredJoints, SL_Bus_simple_PD_ambf_walker_DesiredJoints> Sub_simple_PD_291;
+
 // For Block simple_PD/Subscribe1
 SimulinkSubscriber<sensor_msgs::JointState, SL_Bus_simple_PD_sensor_msgs_JointState> Sub_simple_PD_32;
 

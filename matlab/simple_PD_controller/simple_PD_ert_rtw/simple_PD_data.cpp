@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'simple_PD'.
 //
-// Model version                  : 1.11
+// Model version                  : 1.14
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Sun Aug 22 14:20:24 2021
+// C/C++ source code generated on : Mon Aug 30 12:33:41 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -22,20 +22,20 @@
 // Block parameters (default storage)
 P_simple_PD_T simple_PD_P = {
   // Variable: Dm1
-  //  Referenced by: '<S13>/human derative gain'
+  //  Referenced by: '<S15>/human derative gain'
 
-  { 0.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 0.0, 0.0, 0.0, 0.0,
+  { 5.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 3.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    0.0, 0.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 5.7, 0.0, 0.0, 0.0, 0.0, 0.0,
+    0.0, 0.0, 3.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0 },
 
   // Variable: Km1
-  //  Referenced by: '<S13>/human proportional gain'
+  //  Referenced by: '<S15>/human proportional gain'
 
-  { 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0, 0.0 },
+  { 1000.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 60.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+    0.0, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1000.0, 0.0, 0.0, 0.0,
+    0.0, 0.0, 0.0, 0.0, 60.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0,
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0 },
 
   // Computed Parameter: Constant_Value
   //  Referenced by: '<S1>/Constant'
@@ -360,7 +360,7 @@ P_simple_PD_T simple_PD_P = {
   },
 
   // Computed Parameter: Constant_Value_p
-  //  Referenced by: '<S9>/Constant'
+  //  Referenced by: '<S11>/Constant'
 
   {
     {
@@ -1004,7 +1004,7 @@ P_simple_PD_T simple_PD_P = {
   },
 
   // Computed Parameter: Out1_Y0
-  //  Referenced by: '<S18>/Out1'
+  //  Referenced by: '<S21>/Out1'
 
   {
     {
@@ -1326,7 +1326,7 @@ P_simple_PD_T simple_PD_P = {
   },
 
   // Computed Parameter: Constant_Value_e
-  //  Referenced by: '<S6>/Constant'
+  //  Referenced by: '<S8>/Constant'
 
   {
     {
@@ -1648,7 +1648,7 @@ P_simple_PD_T simple_PD_P = {
   },
 
   // Computed Parameter: Constant_Value_j
-  //  Referenced by: '<S15>/Constant'
+  //  Referenced by: '<S17>/Constant'
 
   {
     {
@@ -1961,6 +1961,231 @@ P_simple_PD_T simple_PD_P = {
     }                                  // Data_SL_Info
   },
 
+  // Computed Parameter: exo_Y0_p
+  //  Referenced by: '<S6>/exo'
+
+  {
+    {
+      0U,                              // Seq
+
+      {
+        0.0,                           // Sec
+        0.0                            // Nsec
+      },                               // Stamp
+
+      {
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U }
+      ,                                // FrameId
+
+      {
+        0U,                            // CurrentLength
+        0U                             // ReceivedLength
+      }                                // FrameId_SL_Info
+    },                                 // Header
+
+    {
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }
+    ,                                  // Q
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    },                                 // Q_SL_Info
+
+    {
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }
+    ,                                  // Qd
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    },                                 // Qd_SL_Info
+
+    {
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }
+    ,                                  // Qdd
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    },                                 // Qdd_SL_Info
+
+    {
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }
+    ,                                  // Other
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    },                                 // Other_SL_Info
+
+    {
+      0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U }
+    ,                                  // Controller
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    }                                  // Controller_SL_Info
+  },
+
+  // Computed Parameter: Out1_Y0_p
+  //  Referenced by: '<S20>/Out1'
+
+  {
+    {
+      0U,                              // Seq
+
+      {
+        0.0,                           // Sec
+        0.0                            // Nsec
+      },                               // Stamp
+
+      {
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U }
+      ,                                // FrameId
+
+      {
+        0U,                            // CurrentLength
+        0U                             // ReceivedLength
+      }                                // FrameId_SL_Info
+    },                                 // Header
+
+    {
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }
+    ,                                  // Q
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    },                                 // Q_SL_Info
+
+    {
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }
+    ,                                  // Qd
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    },                                 // Qd_SL_Info
+
+    {
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }
+    ,                                  // Qdd
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    },                                 // Qdd_SL_Info
+
+    {
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }
+    ,                                  // Other
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    },                                 // Other_SL_Info
+
+    {
+      0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U }
+    ,                                  // Controller
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    }                                  // Controller_SL_Info
+  },
+
+  // Computed Parameter: Constant_Value_jk
+  //  Referenced by: '<S7>/Constant'
+
+  {
+    {
+      0U,                              // Seq
+
+      {
+        0.0,                           // Sec
+        0.0                            // Nsec
+      },                               // Stamp
+
+      {
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U,
+        0U, 0U }
+      ,                                // FrameId
+
+      {
+        0U,                            // CurrentLength
+        0U                             // ReceivedLength
+      }                                // FrameId_SL_Info
+    },                                 // Header
+
+    {
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }
+    ,                                  // Q
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    },                                 // Q_SL_Info
+
+    {
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }
+    ,                                  // Qd
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    },                                 // Qd_SL_Info
+
+    {
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }
+    ,                                  // Qdd
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    },                                 // Qdd_SL_Info
+
+    {
+      0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }
+    ,                                  // Other
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    },                                 // Other_SL_Info
+
+    {
+      0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U }
+    ,                                  // Controller
+
+    {
+      0U,                              // CurrentLength
+      0U                               // ReceivedLength
+    }                                  // Controller_SL_Info
+  },
+
   // Computed Parameter: Constant_Value_jz
   //  Referenced by: '<S2>/Constant'
 
@@ -1989,21 +2214,21 @@ P_simple_PD_T simple_PD_P = {
   },
 
   // Computed Parameter: Constant_Value_g
-  //  Referenced by: '<S10>/Constant'
+  //  Referenced by: '<S12>/Constant'
 
   {
     false                              // Data
   },
 
   // Computed Parameter: Out1_Y0_d
-  //  Referenced by: '<S19>/Out1'
+  //  Referenced by: '<S22>/Out1'
 
   {
     false                              // Data
   },
 
   // Computed Parameter: Constant_Value_gu
-  //  Referenced by: '<S7>/Constant'
+  //  Referenced by: '<S9>/Constant'
 
   {
     false                              // Data
@@ -2013,16 +2238,6 @@ P_simple_PD_T simple_PD_P = {
   //  Referenced by: '<S3>/exo tau'
 
   0.0,
-
-  // Expression: [-0.5 0.5 -0.2 -0.5 0.5 -0.2 0]
-  //  Referenced by: '<Root>/Constant'
-
-  { -0.5, 0.5, -0.2, -0.5, 0.5, -0.2, 0.0 },
-
-  // Expression: [0 0 0 0 0 0 0]
-  //  Referenced by: '<Root>/Constant1'
-
-  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 },
 
   // Expression: true
   //  Referenced by: '<S3>/Constant'

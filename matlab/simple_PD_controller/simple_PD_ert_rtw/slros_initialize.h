@@ -8,6 +8,9 @@
 extern ros::NodeHandle * SLROSNodePtr;
 extern const std::string SLROSNodeName;
 
+// For Block simple_PD/Subscribe
+extern SimulinkSubscriber<ambf_walker::DesiredJoints, SL_Bus_simple_PD_ambf_walker_DesiredJoints> Sub_simple_PD_291;
+
 // For Block simple_PD/Subscribe1
 extern SimulinkSubscriber<sensor_msgs::JointState, SL_Bus_simple_PD_sensor_msgs_JointState> Sub_simple_PD_32;
 
