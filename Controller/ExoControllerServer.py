@@ -91,23 +91,24 @@ class ExoControllerServer():
             dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
             resp1 = dyn_srv("exograv", q, qd, qdd)
             tau = resp1.tau
-            return DesiredJointsCmdResponse(tau=tau,success=True)
+            return tau
 
         except rospy.ServiceException as e:
             print("Service call failed: %s"%e)
 
     def calc_dyn(self, joints):
-
+        print(joints.q)
         q = self._model.ambf_to_rbdl(np.array(joints.q) )
         qd = self._model.ambf_to_rbdl(np.array(joints.qd) )
         qdd = self._model.ambf_to_rbdl(np.array(joints.qdd) )
         rospy.wait_for_service("InverseDynamics")
+        print("trying to call")
         try:
             dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
             resp1 = dyn_srv("exo", q, qd, qdd)
             tau = resp1.tau
-            joints.tau = tau
-            return
+            print(tau)
+            return DesiredJointsCmdResponse(tau=tau,success=True)
             #return np.array(tau)
 
         except rospy.ServiceException as e:

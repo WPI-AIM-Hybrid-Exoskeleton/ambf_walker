@@ -28,6 +28,50 @@ void convertToBus(SL_Bus_sliding_controller2_ambf_walker_DesiredJoints* busPtr, 
 }
 
 
+// Conversions between SL_Bus_sliding_controller2_DesiredJointsCmdRequest_9kimzz and ambf_walker::DesiredJointsCmdRequest
+
+void convertFromBus(ambf_walker::DesiredJointsCmdRequest* msgPtr, SL_Bus_sliding_controller2_DesiredJointsCmdRequest_9kimzz const* busPtr)
+{
+  const std::string rosMessageType("ambf_walker/DesiredJointsCmdRequest");
+
+  convertFromBusVariablePrimitiveArray(msgPtr->controller, busPtr->Controller, busPtr->Controller_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->other, busPtr->Other, busPtr->Other_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->q, busPtr->Q, busPtr->Q_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->qd, busPtr->Qd, busPtr->Qd_SL_Info);
+  convertFromBusVariablePrimitiveArray(msgPtr->qdd, busPtr->Qdd, busPtr->Qdd_SL_Info);
+}
+
+void convertToBus(SL_Bus_sliding_controller2_DesiredJointsCmdRequest_9kimzz* busPtr, ambf_walker::DesiredJointsCmdRequest const* msgPtr)
+{
+  const std::string rosMessageType("ambf_walker/DesiredJointsCmdRequest");
+
+  convertToBusVariablePrimitiveArray(busPtr->Controller, busPtr->Controller_SL_Info, msgPtr->controller, slros::EnabledWarning(rosMessageType, "controller"));
+  convertToBusVariablePrimitiveArray(busPtr->Other, busPtr->Other_SL_Info, msgPtr->other, slros::EnabledWarning(rosMessageType, "other"));
+  convertToBusVariablePrimitiveArray(busPtr->Q, busPtr->Q_SL_Info, msgPtr->q, slros::EnabledWarning(rosMessageType, "q"));
+  convertToBusVariablePrimitiveArray(busPtr->Qd, busPtr->Qd_SL_Info, msgPtr->qd, slros::EnabledWarning(rosMessageType, "qd"));
+  convertToBusVariablePrimitiveArray(busPtr->Qdd, busPtr->Qdd_SL_Info, msgPtr->qdd, slros::EnabledWarning(rosMessageType, "qdd"));
+}
+
+
+// Conversions between SL_Bus_sliding_controller2_DesiredJointsCmdResponse_df4541 and ambf_walker::DesiredJointsCmdResponse
+
+void convertFromBus(ambf_walker::DesiredJointsCmdResponse* msgPtr, SL_Bus_sliding_controller2_DesiredJointsCmdResponse_df4541 const* busPtr)
+{
+  const std::string rosMessageType("ambf_walker/DesiredJointsCmdResponse");
+
+  msgPtr->success =  busPtr->Success;
+  convertFromBusVariablePrimitiveArray(msgPtr->tau, busPtr->Tau, busPtr->Tau_SL_Info);
+}
+
+void convertToBus(SL_Bus_sliding_controller2_DesiredJointsCmdResponse_df4541* busPtr, ambf_walker::DesiredJointsCmdResponse const* msgPtr)
+{
+  const std::string rosMessageType("ambf_walker/DesiredJointsCmdResponse");
+
+  busPtr->Success =  msgPtr->success;
+  convertToBusVariablePrimitiveArray(busPtr->Tau, busPtr->Tau_SL_Info, msgPtr->tau, slros::EnabledWarning(rosMessageType, "tau"));
+}
+
+
 // Conversions between SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex and rbdl_server::RBDLInverseDynamicsRequest
 
 void convertFromBus(rbdl_server::RBDLInverseDynamicsRequest* msgPtr, SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex const* busPtr)
@@ -48,23 +92,6 @@ void convertToBus(SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex* b
   convertToBusVariablePrimitiveArray(busPtr->Q, busPtr->Q_SL_Info, msgPtr->q, slros::EnabledWarning(rosMessageType, "q"));
   convertToBusVariablePrimitiveArray(busPtr->Qd, busPtr->Qd_SL_Info, msgPtr->qd, slros::EnabledWarning(rosMessageType, "qd"));
   convertToBusVariablePrimitiveArray(busPtr->Qdd, busPtr->Qdd_SL_Info, msgPtr->qdd, slros::EnabledWarning(rosMessageType, "qdd"));
-}
-
-
-// Conversions between SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h and rbdl_server::RBDLInverseDynamicsResponse
-
-void convertFromBus(rbdl_server::RBDLInverseDynamicsResponse* msgPtr, SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h const* busPtr)
-{
-  const std::string rosMessageType("rbdl_server/RBDLInverseDynamicsResponse");
-
-  convertFromBusVariablePrimitiveArray(msgPtr->tau, busPtr->Tau, busPtr->Tau_SL_Info);
-}
-
-void convertToBus(SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h* busPtr, rbdl_server::RBDLInverseDynamicsResponse const* msgPtr)
-{
-  const std::string rosMessageType("rbdl_server/RBDLInverseDynamicsResponse");
-
-  convertToBusVariablePrimitiveArray(busPtr->Tau, busPtr->Tau_SL_Info, msgPtr->tau, slros::EnabledWarning(rosMessageType, "tau"));
 }
 
 

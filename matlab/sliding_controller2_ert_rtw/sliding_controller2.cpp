@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sliding_controller2'.
 //
-// Model version                  : 1.213
+// Model version                  : 1.216
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Sun Aug 29 14:31:58 2021
+// C/C++ source code generated on : Mon Aug 30 19:05:09 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -21,18 +21,18 @@
 
 // Exported block parameters
 real_T Bn0[7] = { 50.0, 50.0, 5.0, 50.0, 50.0, 5.0, 0.0 } ;// Variable: Bn0
-                                                              //  Referenced by: '<S26>/Constant3'
+                                                              //  Referenced by: '<S28>/Constant3'
 
 
 real_T Bp0[7] = { 200.0, 50.0, 1.0, 200.0, 50.0, 1.0, 0.0 } ;// Variable: Bp0
-                                                                //  Referenced by: '<S26>/Constant2'
+                                                                //  Referenced by: '<S28>/Constant2'
 
 
 real_T Dm1[49] = { 496.5698213482, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0,
   0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
   496.5698213482, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0,
   0.0, 0.0, 0.0, 100.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 } ;// Variable: Dm1
-                                                                     //  Referenced by: '<S27>/human derative gain'
+                                                                     //  Referenced by: '<S29>/human derative gain'
 
 
 real_T Km1[49] = { 6017.73151361233, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
@@ -40,33 +40,33 @@ real_T Km1[49] = { 6017.73151361233, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
   0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6017.73151361233, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
   0.0, 2898.16820260871, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 2898.16820260871,
   0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 } ;// Variable: Km1
-                                               //  Referenced by: '<S27>/human proportional gain'
+                                               //  Referenced by: '<S29>/human proportional gain'
 
 
 real_T Kn0[7] = { 50.0, 50.0, 5.0, 50.0, 50.0, 5.0, 0.0 } ;// Variable: Kn0
-                                                              //  Referenced by: '<S26>/Constant1'
+                                                              //  Referenced by: '<S28>/Constant1'
 
 
 real_T Kp0[7] = { 0.5088, 0.5088, 0.5088, 0.5088, 0.5088, 0.5088, 0.0 } ;// Variable: Kp0
-                                                                      //  Referenced by: '<S26>/Constant'
+                                                                      //  Referenced by: '<S28>/Constant'
 
 
 real_T dampener[4] = { 30.0, 0.0, 0.0, 30.0 } ;// Variable: dampener
                                                   //  Referenced by:
-                                                  //    '<S34>/dampener left shank'
-                                                  //    '<S35>/dampener left thigh'
-                                                  //    '<S36>/dampener right shank'
-                                                  //    '<S37>/dampener right shank'
+                                                  //    '<S36>/dampener left shank'
+                                                  //    '<S37>/dampener left thigh'
+                                                  //    '<S38>/dampener right shank'
+                                                  //    '<S39>/dampener right shank'
 
 
 real_T exo_sat = 150.0;                // Variable: exo_sat
-                                          //  Referenced by: '<S6>/exo sateration'
+                                          //  Referenced by: '<S7>/exo sateration'
 
 real_T invMd[49] = { 0.1, 0.0, 0.0, 0.0, 0.0, 0.0, -0.0, 0.0, 0.1, 0.0, 0.0, 0.0,
   0.0, -0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, -0.0, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0,
   -0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.0, -0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, -0.0,
   -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, 0.1 } ;// Variable: invMd
-                                                //  Referenced by: '<S26>/addmittance gain'
+                                                //  Referenced by: '<S28>/addmittance gain'
 
 
 real_T lambda2[49] = { 1.1277, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.2389, 0.0,
@@ -74,15 +74,15 @@ real_T lambda2[49] = { 1.1277, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.2389, 0.0,
   0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.2389, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
   1.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 } ;// Variable: lambda2
                                                     //  Referenced by:
-                                                    //    '<S29>/Gain12'
-                                                    //    '<S29>/lambda SMC'
+                                                    //    '<S31>/Gain12'
+                                                    //    '<S31>/lambda SMC'
 
 
 real_T rho2[49] = { 70.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0, 0.0,
   0.0, 0.0, 0.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 70.0, 0.0, 0.0,
   0.0, 0.0, 0.0, 0.0, 0.0, 30.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10.0, 0.0,
   0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 } ;// Variable: rho2
-                                          //  Referenced by: '<S29>/rho SMC'
+                                          //  Referenced by: '<S31>/rho SMC'
 
 
 //
@@ -169,10 +169,10 @@ void sliding_controller2ModelClass::rt_ertODEUpdateContinuousStates
 
 //
 // Output and update for atomic system:
-//    '<S19>/exo left'
-//    '<S19>/exo right'
-//    '<S19>/human left'
-//    '<S19>/human right'
+//    '<S21>/exo left'
+//    '<S21>/exo right'
+//    '<S21>/human left'
+//    '<S21>/human right'
 //
 void sliding_controller2ModelClass::sliding_controller2_exoleft(const real_T
   rtu_q[2], const real_T rtu_qd[2], real_T rty_knee[2], real_T rty_dknee[2],
@@ -206,8 +206,8 @@ void sliding_controller2ModelClass::sliding_controller2_exoleft(const real_T
 
 //
 // Output and update for atomic system:
-//    '<S38>/MATLAB Function'
-//    '<S39>/MATLAB Function'
+//    '<S40>/MATLAB Function'
+//    '<S41>/MATLAB Function'
 //
 void sliding_controller2ModelClass::sliding_controll_MATLABFunction(const real_T
   rtu_q[2], real_T rty_y[4])
@@ -220,8 +220,8 @@ void sliding_controller2ModelClass::sliding_controll_MATLABFunction(const real_T
 
 //
 // Output and update for atomic system:
-//    '<S38>/MATLAB Function1'
-//    '<S39>/MATLAB Function1'
+//    '<S40>/MATLAB Function1'
+//    '<S41>/MATLAB Function1'
 //
 void sliding_controller2ModelClass::sliding_control_MATLABFunction1(const real_T
   rtu_q[2], real_T rty_y[4])
@@ -340,7 +340,7 @@ void sliding_controller2ModelClass::sliding_contr_SystemCore_step_k(boolean_T
     sliding_controller2_B.b_varargout_2.Effort_SL_Info;
 }
 
-// Function for MATLAB Function: '<S26>/MATLAB Function'
+// Function for MATLAB Function: '<S28>/MATLAB Function'
 real_T sliding_controller2ModelClass::sliding_controller2_xnrm2(int32_T n, const
   real_T x[7], int32_T ix0)
 {
@@ -394,7 +394,7 @@ real_T rt_hypotd_snf(real_T u0, real_T u1)
   return y;
 }
 
-// Function for MATLAB Function: '<S26>/MATLAB Function'
+// Function for MATLAB Function: '<S28>/MATLAB Function'
 void sliding_controller2ModelClass::sliding_controller2_qrpf(real_T A[7],
   int32_T ia0, int32_T m, int32_T n, real_T *tau, int32_T jpvt[7])
 {
@@ -695,8 +695,8 @@ void sliding_controller2ModelClass::step()
 {
   SL_Bus_sliding_controller2_std_msgs_Bool b_varargout_2_0;
   SL_Bus_sliding_controller2_std_msgs_Bool rtb_BusAssignment2_d;
+  SL_Bus_sliding_controller2_std_srvs_SetBoolRequest rtb_BusAssignment;
   SL_Bus_sliding_controller2_std_srvs_SetBoolRequest rtb_BusAssignment1_k2;
-  SL_Bus_sliding_controller2_std_srvs_SetBoolRequest rtb_BusAssignment_b3;
   int8_T rtAction;
   uint8_T b_varargout_2;
   boolean_T isCreated;
@@ -743,8 +743,8 @@ void sliding_controller2ModelClass::step()
 
   static const uint8_T h_0[6] = { 98U, 108U, 97U, 110U, 99U, 107U };
 
-  static const char_T tmp_1[16] = { '/', 'I', 'n', 'v', 'e', 'r', 's', 'e', 'D',
-    'y', 'n', 'a', 'm', 'i', 'c', 's' };
+  static const char_T tmp_1[13] = { '/', 'e', 'x', 'o', '_', 'c', 'a', 'l', 'c',
+    '_', 'd', 'y', 'n' };
 
   static const uint8_T b_1[12] = { 76U, 101U, 102U, 116U, 72U, 117U, 109U, 97U,
     110U, 72U, 105U, 112U };
@@ -785,7 +785,7 @@ void sliding_controller2ModelClass::step()
     sliding_controller2_B.BusAssignment_m.Data = (rtNaN);
 
     // Outputs for Atomic SubSystem: '<Root>/Publish'
-    // MATLABSystem: '<S11>/SinkBlock'
+    // MATLABSystem: '<S13>/SinkBlock'
     Pub_sliding_controller2_1177.publish(&sliding_controller2_B.BusAssignment_m);
 
     // End of Outputs for SubSystem: '<Root>/Publish'
@@ -849,7 +849,7 @@ void sliding_controller2ModelClass::step()
     // End of MATLAB Function: '<Root>/exo msg'
 
     // Outputs for Atomic SubSystem: '<Root>/Subscribe1'
-    // MATLABSystem: '<S13>/SourceBlock'
+    // MATLABSystem: '<S15>/SourceBlock'
     sliding_control_SystemCore_step(&sliding_controller2_B.SourceBlock_o1_h,
       &sliding_controller2_B.b_varargout_2_Header_Seq,
       &sliding_controller2_B.b_varargout_2_Header_Stamp_Sec,
@@ -869,12 +869,12 @@ void sliding_controller2ModelClass::step()
       sliding_controller2_B.b_varargout_2_Effort,
       &sliding_controller2_B.b_varargout_2_Effort_SL_Info);
 
-    // Outputs for Enabled SubSystem: '<S13>/Enabled Subsystem' incorporates:
-    //   EnablePort: '<S55>/Enable'
+    // Outputs for Enabled SubSystem: '<S15>/Enabled Subsystem' incorporates:
+    //   EnablePort: '<S57>/Enable'
 
     if (sliding_controller2_B.SourceBlock_o1_h) {
-      // Inport: '<S55>/In1' incorporates:
-      //   MATLABSystem: '<S13>/SourceBlock'
+      // Inport: '<S57>/In1' incorporates:
+      //   MATLABSystem: '<S15>/SourceBlock'
 
       sliding_controller2_B.In1_n.Header.Seq =
         sliding_controller2_B.b_varargout_2_Header_Seq;
@@ -916,14 +916,14 @@ void sliding_controller2ModelClass::step()
       sliding_controller2_B.In1_n.Effort_SL_Info =
         sliding_controller2_B.b_varargout_2_Effort_SL_Info;
 
-      // End of Inport: '<S55>/In1'
+      // End of Inport: '<S57>/In1'
     }
 
-    // End of Outputs for SubSystem: '<S13>/Enabled Subsystem'
+    // End of Outputs for SubSystem: '<S15>/Enabled Subsystem'
     // End of Outputs for SubSystem: '<Root>/Subscribe1'
 
     // Outputs for Atomic SubSystem: '<Root>/Subscribe2'
-    // MATLABSystem: '<S14>/SourceBlock'
+    // MATLABSystem: '<S16>/SourceBlock'
     sliding_contr_SystemCore_step_k(&sliding_controller2_B.SourceBlock_o1,
       &sliding_controller2_B.b_varargout_2_Header_Seq,
       &sliding_controller2_B.b_varargout_2_Header_Stamp_Sec,
@@ -943,12 +943,12 @@ void sliding_controller2ModelClass::step()
       sliding_controller2_B.b_varargout_2_Effort,
       &sliding_controller2_B.b_varargout_2_Effort_SL_Info);
 
-    // Outputs for Enabled SubSystem: '<S14>/Enabled Subsystem' incorporates:
-    //   EnablePort: '<S56>/Enable'
+    // Outputs for Enabled SubSystem: '<S16>/Enabled Subsystem' incorporates:
+    //   EnablePort: '<S58>/Enable'
 
     if (sliding_controller2_B.SourceBlock_o1) {
-      // Inport: '<S56>/In1' incorporates:
-      //   MATLABSystem: '<S14>/SourceBlock'
+      // Inport: '<S58>/In1' incorporates:
+      //   MATLABSystem: '<S16>/SourceBlock'
 
       sliding_controller2_B.In1.Header.Seq =
         sliding_controller2_B.b_varargout_2_Header_Seq;
@@ -990,27 +990,27 @@ void sliding_controller2ModelClass::step()
       sliding_controller2_B.In1.Effort_SL_Info =
         sliding_controller2_B.b_varargout_2_Effort_SL_Info;
 
-      // End of Inport: '<S56>/In1'
+      // End of Inport: '<S58>/In1'
     }
 
-    // End of Outputs for SubSystem: '<S14>/Enabled Subsystem'
+    // End of Outputs for SubSystem: '<S16>/Enabled Subsystem'
     // End of Outputs for SubSystem: '<Root>/Subscribe2'
 
     // Outputs for Atomic SubSystem: '<Root>/Subscribe4'
-    // MATLABSystem: '<S15>/SourceBlock' incorporates:
-    //   Inport: '<S57>/In1'
+    // MATLABSystem: '<S17>/SourceBlock' incorporates:
+    //   Inport: '<S59>/In1'
 
     isCreated = Sub_sliding_controller2_1418.getLatestMessage(&b_varargout_2_0);
 
-    // Outputs for Enabled SubSystem: '<S15>/Enabled Subsystem' incorporates:
-    //   EnablePort: '<S57>/Enable'
+    // Outputs for Enabled SubSystem: '<S17>/Enabled Subsystem' incorporates:
+    //   EnablePort: '<S59>/Enable'
 
     if (isCreated) {
       sliding_controller2_B.In1_k = b_varargout_2_0;
     }
 
-    // End of MATLABSystem: '<S15>/SourceBlock'
-    // End of Outputs for SubSystem: '<S15>/Enabled Subsystem'
+    // End of MATLABSystem: '<S17>/SourceBlock'
+    // End of Outputs for SubSystem: '<S17>/Enabled Subsystem'
     // End of Outputs for SubSystem: '<Root>/Subscribe4'
 
     // Logic: '<Root>/Logical Operator'
@@ -1071,7 +1071,7 @@ void sliding_controller2ModelClass::step()
   }
 
   // MATLABSystem: '<Root>/Current Time'
-  currentROSTimeBus(&sliding_controller2_B.rtb_CurrentTime_j);
+  currentROSTimeBus(&sliding_controller2_B.rtb_CurrentTime_l);
 
   // BusAssignment: '<Root>/Bus Assignment1' incorporates:
   //   Constant: '<S5>/Constant'
@@ -1080,60 +1080,56 @@ void sliding_controller2ModelClass::step()
   sliding_controller2_B.BusAssignment1_m =
     sliding_controller2_P.Constant_Value_i;
   sliding_controller2_B.BusAssignment1_m.Stamp =
-    sliding_controller2_B.rtb_CurrentTime_j;
+    sliding_controller2_B.rtb_CurrentTime_l;
   if (rtmIsMajorTimeStep((&sliding_controller2_M))) {
     // Outputs for Atomic SubSystem: '<Root>/Subscribe'
-    // MATLABSystem: '<S12>/SourceBlock' incorporates:
-    //   Inport: '<S54>/In1'
+    // MATLABSystem: '<S14>/SourceBlock' incorporates:
+    //   Inport: '<S56>/In1'
 
     isCreated = Sub_sliding_controller2_35.getLatestMessage
       (&sliding_controller2_B.b_varargout_2_c);
 
-    // Outputs for Enabled SubSystem: '<S12>/Enabled Subsystem' incorporates:
-    //   EnablePort: '<S54>/Enable'
+    // Outputs for Enabled SubSystem: '<S14>/Enabled Subsystem' incorporates:
+    //   EnablePort: '<S56>/Enable'
 
     if (isCreated) {
       sliding_controller2_B.In1_a = sliding_controller2_B.b_varargout_2_c;
     }
 
-    // End of MATLABSystem: '<S12>/SourceBlock'
-    // End of Outputs for SubSystem: '<S12>/Enabled Subsystem'
+    // End of MATLABSystem: '<S14>/SourceBlock'
+    // End of Outputs for SubSystem: '<S14>/Enabled Subsystem'
     // End of Outputs for SubSystem: '<Root>/Subscribe'
 
     // Outputs for Enabled SubSystem: '<Root>/Enabled Subsystem1' incorporates:
-    //   EnablePort: '<S8>/Enable'
+    //   EnablePort: '<S9>/Enable'
 
     if (sliding_controller2_B.SourceBlock_o1_h) {
-      // Inport: '<S8>/In1'
+      // Inport: '<S9>/In1'
       sliding_controller2_B.In1_j = sliding_controller2_B.In1_n;
     }
 
     // End of Outputs for SubSystem: '<Root>/Enabled Subsystem1'
 
     // Outputs for Enabled SubSystem: '<Root>/Enabled Subsystem2' incorporates:
-    //   EnablePort: '<S9>/Enable'
+    //   EnablePort: '<S10>/Enable'
 
     if (sliding_controller2_B.SourceBlock_o1) {
-      // Inport: '<S9>/In1'
+      // Inport: '<S10>/In1'
       sliding_controller2_B.In1_e = sliding_controller2_B.In1;
     }
 
     // End of Outputs for SubSystem: '<Root>/Enabled Subsystem2'
 
-    // MATLAB Function: '<Root>/MATLAB Function - String Array Assign' incorporates:
-    //   Constant: '<S4>/Constant'
+    // MATLAB Function: '<Root>/MATLAB Function - String Array Assign1' incorporates:
+    //   Constant: '<S6>/Constant'
 
-    sliding_controller2_B.msg_o = sliding_controller2_P.Constant_Value_e;
-    sliding_controller2_B.msg_o.ModelName_SL_Info.CurrentLength = 3U;
-    sliding_controller2_B.msg_o.ModelName[0] = 101U;
-    sliding_controller2_B.msg_o.ModelName[1] = 120U;
-    sliding_controller2_B.msg_o.ModelName[2] = 111U;
-    sliding_controller2_B.msg_o.Q_SL_Info.CurrentLength = 7U;
-    sliding_controller2_B.msg_o.Qd_SL_Info.CurrentLength = 7U;
-    sliding_controller2_B.msg_o.Qdd_SL_Info.CurrentLength = 7U;
+    sliding_controller2_B.msg_a = sliding_controller2_P.Constant_Value_dh;
+    sliding_controller2_B.msg_a.Q_SL_Info.CurrentLength = 7U;
+    sliding_controller2_B.msg_a.Qd_SL_Info.CurrentLength = 7U;
+    sliding_controller2_B.msg_a.Qdd_SL_Info.CurrentLength = 7U;
 
     // Outputs for Enabled SubSystem: '<Root>/Controller' incorporates:
-    //   EnablePort: '<S6>/Enable'
+    //   EnablePort: '<S7>/Enable'
 
     if (rtmIsMajorTimeStep((&sliding_controller2_M))) {
       sliding_controller2_DW.Controller_MODE =
@@ -1144,12 +1140,12 @@ void sliding_controller2ModelClass::step()
   }
 
   // Outputs for Enabled SubSystem: '<Root>/Controller' incorporates:
-  //   EnablePort: '<S6>/Enable'
+  //   EnablePort: '<S7>/Enable'
 
   if (sliding_controller2_DW.Controller_MODE) {
     if (rtmIsMajorTimeStep((&sliding_controller2_M))) {
-      // MATLAB Function: '<S6>/human msg' incorporates:
-      //   Constant: '<S20>/Constant'
+      // MATLAB Function: '<S7>/human msg' incorporates:
+      //   Constant: '<S22>/Constant'
 
       sliding_controller2_B.msg_c = sliding_controller2_P.Constant_Value_c;
       sliding_controller2_B.msg_c.Name_SL_Info.CurrentLength = 7U;
@@ -1206,73 +1202,73 @@ void sliding_controller2ModelClass::step()
 
       sliding_controller2_B.msg_c.Name[6].Data_SL_Info.CurrentLength = 6U;
 
-      // End of MATLAB Function: '<S6>/human msg'
+      // End of MATLAB Function: '<S7>/human msg'
       for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
            sliding_controller2_B.i++) {
-        // SignalConversion generated from: '<S6>/Bus Selector1'
+        // SignalConversion generated from: '<S7>/Bus Selector1'
         sliding_controller2_B.Position[sliding_controller2_B.i] =
           sliding_controller2_B.In1_j.Position[sliding_controller2_B.i];
       }
 
-      // MATLAB Function: '<S19>/human left'
+      // MATLAB Function: '<S21>/human left'
       sliding_controller2_exoleft(&sliding_controller2_B.In1_e.Position[0],
         &sliding_controller2_B.In1_e.Velocity[0],
-        sliding_controller2_B.rtb_danke_e_l, sliding_controller2_B.rtb_Add_c_n,
-        sliding_controller2_B.rtb_Product2_o, sliding_controller2_B.rtb_Add_e_d);
+        sliding_controller2_B.rtb_danke_e_d, sliding_controller2_B.rtb_Add_c_b,
+        sliding_controller2_B.rtb_Product2_l, sliding_controller2_B.rtb_Add_e_d);
 
-      // MATLAB Function: '<S19>/exo left'
+      // MATLAB Function: '<S21>/exo left'
       sliding_controller2_exoleft(&sliding_controller2_B.Position[0],
         &sliding_controller2_B.In1_j.Velocity[0],
-        sliding_controller2_B.rtb_danke_m_g, sliding_controller2_B.rtb_ankle_l,
-        sliding_controller2_B.rtb_dknee_d, sliding_controller2_B.rtb_danke_b);
+        sliding_controller2_B.rtb_danke_m_d, sliding_controller2_B.rtb_ankle_g,
+        sliding_controller2_B.rtb_dknee_l, sliding_controller2_B.rtb_danke_o);
 
-      // Sum: '<S34>/Subtract1'
+      // Sum: '<S36>/Subtract1'
       sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
-        sliding_controller2_B.rtb_danke_b[0] -
+        sliding_controller2_B.rtb_danke_o[0] -
         sliding_controller2_B.rtb_Add_e_d[0];
 
-      // Sum: '<S34>/Subtract'
-      sliding_controller2_B.rtb_dknee_idx_0 = sliding_controller2_B.rtb_dknee_d
-        [0] - sliding_controller2_B.rtb_Product2_o[0];
+      // Sum: '<S36>/Subtract'
+      sliding_controller2_B.rtb_dknee_idx_0 = sliding_controller2_B.rtb_dknee_l
+        [0] - sliding_controller2_B.rtb_Product2_l[0];
 
-      // Sum: '<S36>/Subtract1' incorporates:
-      //   Sum: '<S34>/Subtract1'
+      // Sum: '<S38>/Subtract1' incorporates:
+      //   Sum: '<S36>/Subtract1'
 
-      sliding_controller2_B.rtb_danke_b[0] =
+      sliding_controller2_B.rtb_danke_o[0] =
         sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
 
-      // Sum: '<S34>/Subtract1'
-      sliding_controller2_B.wj = sliding_controller2_B.rtb_danke_b[1] -
+      // Sum: '<S36>/Subtract1'
+      sliding_controller2_B.wj = sliding_controller2_B.rtb_danke_o[1] -
         sliding_controller2_B.rtb_Add_e_d[1];
 
-      // Sum: '<S34>/Subtract'
-      sliding_controller2_B.rtb_dknee_idx_1 = sliding_controller2_B.rtb_dknee_d
-        [1] - sliding_controller2_B.rtb_Product2_o[1];
+      // Sum: '<S36>/Subtract'
+      sliding_controller2_B.rtb_dknee_idx_1 = sliding_controller2_B.rtb_dknee_l
+        [1] - sliding_controller2_B.rtb_Product2_l[1];
 
-      // Sum: '<S36>/Subtract1' incorporates:
-      //   Sum: '<S34>/Subtract1'
+      // Sum: '<S38>/Subtract1' incorporates:
+      //   Sum: '<S36>/Subtract1'
 
-      sliding_controller2_B.rtb_danke_b[1] = sliding_controller2_B.wj;
+      sliding_controller2_B.rtb_danke_o[1] = sliding_controller2_B.wj;
 
-      // Sum: '<S36>/Subtract2' incorporates:
-      //   Gain: '<S34>/dampener left shank'
-      //   Gain: '<S34>/spring left shank'
-      //   Sum: '<S34>/Subtract1'
-      //   Sum: '<S34>/Subtract2'
+      // Sum: '<S38>/Subtract2' incorporates:
+      //   Gain: '<S36>/dampener left shank'
+      //   Gain: '<S36>/spring left shank'
+      //   Sum: '<S36>/Subtract1'
+      //   Sum: '<S36>/Subtract2'
 
-      sliding_controller2_B.rtb_Subtract2_d[0] = (sliding_controller2_P.spring[0]
+      sliding_controller2_B.rtb_Subtract2_j[0] = (sliding_controller2_P.spring[0]
         * sliding_controller2_B.rtb_dknee_idx_0 + sliding_controller2_P.spring[2]
         * sliding_controller2_B.rtb_dknee_idx_1) + (dampener[0] *
         sliding_controller2_B.b_varargout_2_Header_Stamp_Sec +
         sliding_controller2_B.wj * dampener[2]);
-      sliding_controller2_B.rtb_Subtract2_d[1] = (sliding_controller2_P.spring[1]
+      sliding_controller2_B.rtb_Subtract2_j[1] = (sliding_controller2_P.spring[1]
         * sliding_controller2_B.rtb_dknee_idx_0 + sliding_controller2_P.spring[3]
         * sliding_controller2_B.rtb_dknee_idx_1) +
         (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec * dampener[1] +
          sliding_controller2_B.wj * dampener[3]);
 
-      // MATLAB Function: '<S45>/MATLAB Function1' incorporates:
-      //   MATLAB Function: '<S45>/MATLAB Function'
+      // MATLAB Function: '<S47>/MATLAB Function1' incorporates:
+      //   MATLAB Function: '<S47>/MATLAB Function'
 
       sliding_controller2_B.wj = sliding_controller2_B.Position[0] +
         sliding_controller2_B.Position[1];
@@ -1284,49 +1280,49 @@ void sliding_controller2ModelClass::step()
       sliding_controller2_B.rtb_Add_e_tmp_tmp_l = 0.324 * sin
         (sliding_controller2_B.Position[0]);
 
-      // Sum: '<S44>/Add' incorporates:
-      //   MATLAB Function: '<S45>/MATLAB Function1'
-      //   Product: '<S45>/Product2'
+      // Sum: '<S46>/Add' incorporates:
+      //   MATLAB Function: '<S47>/MATLAB Function1'
+      //   Product: '<S47>/Product2'
 
       sliding_controller2_B.rtb_Add_e_tmp =
         sliding_controller2_B.rtb_Add_e_tmp_tmp *
-        sliding_controller2_B.rtb_Subtract2_d[0] +
+        sliding_controller2_B.rtb_Subtract2_j[0] +
         (sliding_controller2_B.rtb_Add_e_tmp_tmp_l - -0.39 *
          sliding_controller2_B.b_varargout_2_Header_Stamp_Sec) *
-        sliding_controller2_B.rtb_Subtract2_d[1];
+        sliding_controller2_B.rtb_Subtract2_j[1];
       sliding_controller2_B.rtb_Add_e_d[0] = sliding_controller2_B.rtb_Add_e_tmp;
 
-      // Sum: '<S35>/Subtract'
+      // Sum: '<S37>/Subtract'
       sliding_controller2_B.rtb_danke_m_idx_0 =
-        sliding_controller2_B.rtb_danke_m_g[0] -
-        sliding_controller2_B.rtb_danke_e_l[0];
+        sliding_controller2_B.rtb_danke_m_d[0] -
+        sliding_controller2_B.rtb_danke_e_d[0];
 
-      // Sum: '<S35>/Subtract1'
-      sliding_controller2_B.rtb_ankle_idx_0 = sliding_controller2_B.rtb_ankle_l
-        [0] - sliding_controller2_B.rtb_Add_c_n[0];
+      // Sum: '<S37>/Subtract1'
+      sliding_controller2_B.rtb_ankle_idx_0 = sliding_controller2_B.rtb_ankle_g
+        [0] - sliding_controller2_B.rtb_Add_c_b[0];
 
-      // Sum: '<S44>/Add' incorporates:
-      //   MATLAB Function: '<S45>/MATLAB Function1'
-      //   Product: '<S45>/Product2'
+      // Sum: '<S46>/Add' incorporates:
+      //   MATLAB Function: '<S47>/MATLAB Function1'
+      //   Product: '<S47>/Product2'
 
       sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
-        sliding_controller2_B.wj * sliding_controller2_B.rtb_Subtract2_d[0] +
+        sliding_controller2_B.wj * sliding_controller2_B.rtb_Subtract2_j[0] +
         0.39 * sliding_controller2_B.b_varargout_2_Header_Stamp_Sec *
-        sliding_controller2_B.rtb_Subtract2_d[1];
+        sliding_controller2_B.rtb_Subtract2_j[1];
       sliding_controller2_B.rtb_Add_e_d[1] =
         sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
 
-      // Sum: '<S35>/Subtract'
-      sliding_controller2_B.wj = sliding_controller2_B.rtb_danke_m_g[1] -
-        sliding_controller2_B.rtb_danke_e_l[1];
+      // Sum: '<S37>/Subtract'
+      sliding_controller2_B.wj = sliding_controller2_B.rtb_danke_m_d[1] -
+        sliding_controller2_B.rtb_danke_e_d[1];
 
-      // Sum: '<S35>/Subtract1'
-      sliding_controller2_B.rtb_ankle_idx_1 = sliding_controller2_B.rtb_ankle_l
-        [1] - sliding_controller2_B.rtb_Add_c_n[1];
+      // Sum: '<S37>/Subtract1'
+      sliding_controller2_B.rtb_ankle_idx_1 = sliding_controller2_B.rtb_ankle_g
+        [1] - sliding_controller2_B.rtb_Add_c_b[1];
 
-      // Sum: '<S35>/Subtract2' incorporates:
-      //   Gain: '<S35>/dampener left thigh'
-      //   Gain: '<S35>/spring left thigh'
+      // Sum: '<S37>/Subtract2' incorporates:
+      //   Gain: '<S37>/dampener left thigh'
+      //   Gain: '<S37>/spring left thigh'
 
       sliding_controller2_B.unnamed_idx_0_b = (sliding_controller2_P.spring[0] *
         sliding_controller2_B.rtb_danke_m_idx_0 + sliding_controller2_P.spring[2]
@@ -1339,47 +1335,47 @@ void sliding_controller2ModelClass::step()
         sliding_controller2_B.rtb_ankle_idx_0 + dampener[3] *
         sliding_controller2_B.rtb_ankle_idx_1);
 
-      // MATLAB Function: '<S19>/human right'
+      // MATLAB Function: '<S21>/human right'
       sliding_controller2_exoleft(&sliding_controller2_B.In1_e.Position[3],
         &sliding_controller2_B.In1_e.Velocity[3],
-        sliding_controller2_B.rtb_danke_b, sliding_controller2_B.rtb_Subtract2_d,
-        sliding_controller2_B.rtb_Product2_o,
-        sliding_controller2_B.rtb_danke_e_l);
+        sliding_controller2_B.rtb_danke_o, sliding_controller2_B.rtb_Subtract2_j,
+        sliding_controller2_B.rtb_Product2_l,
+        sliding_controller2_B.rtb_danke_e_d);
 
-      // MATLAB Function: '<S19>/exo right'
+      // MATLAB Function: '<S21>/exo right'
       sliding_controller2_exoleft(&sliding_controller2_B.Position[3],
         &sliding_controller2_B.In1_j.Velocity[3],
-        sliding_controller2_B.rtb_Add_e_d, sliding_controller2_B.rtb_dknee_d,
-        sliding_controller2_B.rtb_ankle_l, sliding_controller2_B.rtb_danke_m_g);
+        sliding_controller2_B.rtb_Add_e_d, sliding_controller2_B.rtb_dknee_l,
+        sliding_controller2_B.rtb_ankle_g, sliding_controller2_B.rtb_danke_m_d);
 
-      // MATLAB Function: '<S44>/MATLAB Function' incorporates:
-      //   MATLAB Function: '<S44>/MATLAB Function1'
+      // MATLAB Function: '<S46>/MATLAB Function' incorporates:
+      //   MATLAB Function: '<S46>/MATLAB Function1'
 
       sliding_controller2_B.Saturation_tmp_tmp = sliding_controller2_B.Position
         [3] + sliding_controller2_B.Position[4];
       sliding_controller2_B.Saturation_tmp = sin
         (sliding_controller2_B.Saturation_tmp_tmp);
 
-      // Sum: '<S37>/Subtract'
+      // Sum: '<S39>/Subtract'
       sliding_controller2_B.rtb_danke_m_idx_0 =
         sliding_controller2_B.rtb_Add_e_d[0] -
-        sliding_controller2_B.rtb_danke_b[0];
+        sliding_controller2_B.rtb_danke_o[0];
 
-      // Sum: '<S37>/Subtract1'
-      sliding_controller2_B.rtb_dknee_idx_0 = sliding_controller2_B.rtb_dknee_d
-        [0] - sliding_controller2_B.rtb_Subtract2_d[0];
+      // Sum: '<S39>/Subtract1'
+      sliding_controller2_B.rtb_dknee_idx_0 = sliding_controller2_B.rtb_dknee_l
+        [0] - sliding_controller2_B.rtb_Subtract2_j[0];
 
-      // Sum: '<S37>/Subtract'
+      // Sum: '<S39>/Subtract'
       sliding_controller2_B.rtb_ankle_idx_0 = sliding_controller2_B.rtb_Add_e_d
-        [1] - sliding_controller2_B.rtb_danke_b[1];
+        [1] - sliding_controller2_B.rtb_danke_o[1];
 
-      // Sum: '<S37>/Subtract1'
-      sliding_controller2_B.rtb_dknee_idx_1 = sliding_controller2_B.rtb_dknee_d
-        [1] - sliding_controller2_B.rtb_Subtract2_d[1];
+      // Sum: '<S39>/Subtract1'
+      sliding_controller2_B.rtb_dknee_idx_1 = sliding_controller2_B.rtb_dknee_l
+        [1] - sliding_controller2_B.rtb_Subtract2_j[1];
 
-      // Sum: '<S37>/Subtract2' incorporates:
-      //   Gain: '<S37>/dampener right shank'
-      //   Gain: '<S37>/spring right thigh'
+      // Sum: '<S39>/Subtract2' incorporates:
+      //   Gain: '<S39>/dampener right shank'
+      //   Gain: '<S39>/spring right thigh'
 
       sliding_controller2_B.unnamed_idx_0 = (sliding_controller2_P.spring[0] *
         sliding_controller2_B.rtb_danke_m_idx_0 + sliding_controller2_P.spring[2]
@@ -1392,26 +1388,26 @@ void sliding_controller2ModelClass::step()
         sliding_controller2_B.rtb_dknee_idx_0 + dampener[3] *
         sliding_controller2_B.rtb_dknee_idx_1);
 
-      // Sum: '<S36>/Subtract'
-      sliding_controller2_B.rtb_ankle_idx_0 = sliding_controller2_B.rtb_ankle_l
-        [0] - sliding_controller2_B.rtb_Product2_o[0];
+      // Sum: '<S38>/Subtract'
+      sliding_controller2_B.rtb_ankle_idx_0 = sliding_controller2_B.rtb_ankle_g
+        [0] - sliding_controller2_B.rtb_Product2_l[0];
 
-      // Sum: '<S36>/Subtract1'
+      // Sum: '<S38>/Subtract1'
       sliding_controller2_B.rtb_danke_m_idx_0 =
-        sliding_controller2_B.rtb_danke_m_g[0] -
-        sliding_controller2_B.rtb_danke_e_l[0];
+        sliding_controller2_B.rtb_danke_m_d[0] -
+        sliding_controller2_B.rtb_danke_e_d[0];
 
-      // Sum: '<S36>/Subtract'
-      sliding_controller2_B.rtb_ankle_idx_1 = sliding_controller2_B.rtb_ankle_l
-        [1] - sliding_controller2_B.rtb_Product2_o[1];
+      // Sum: '<S38>/Subtract'
+      sliding_controller2_B.rtb_ankle_idx_1 = sliding_controller2_B.rtb_ankle_g
+        [1] - sliding_controller2_B.rtb_Product2_l[1];
 
-      // Sum: '<S36>/Subtract1'
-      sliding_controller2_B.wj = sliding_controller2_B.rtb_danke_m_g[1] -
-        sliding_controller2_B.rtb_danke_e_l[1];
+      // Sum: '<S38>/Subtract1'
+      sliding_controller2_B.wj = sliding_controller2_B.rtb_danke_m_d[1] -
+        sliding_controller2_B.rtb_danke_e_d[1];
 
-      // Sum: '<S36>/Subtract2' incorporates:
-      //   Gain: '<S36>/dampener right shank'
-      //   Gain: '<S36>/spring right thigh'
+      // Sum: '<S38>/Subtract2' incorporates:
+      //   Gain: '<S38>/dampener right shank'
+      //   Gain: '<S38>/spring right thigh'
 
       sliding_controller2_B.rtb_dknee_idx_1 = (sliding_controller2_P.spring[0] *
         sliding_controller2_B.rtb_ankle_idx_0 + sliding_controller2_P.spring[2] *
@@ -1424,11 +1420,11 @@ void sliding_controller2ModelClass::step()
         sliding_controller2_B.rtb_danke_m_idx_0 + dampener[3] *
         sliding_controller2_B.wj);
 
-      // Saturate: '<S6>/Saturation' incorporates:
-      //   Constant: '<S45>/Constant'
-      //   MATLAB Function: '<S45>/MATLAB Function'
-      //   Product: '<S45>/Product1'
-      //   Sum: '<S45>/Add'
+      // Saturate: '<S7>/Saturation' incorporates:
+      //   Constant: '<S47>/Constant'
+      //   MATLAB Function: '<S47>/MATLAB Function'
+      //   Product: '<S47>/Product1'
+      //   Sum: '<S47>/Add'
 
       sliding_controller2_B.q_add_c[2] = sliding_controller2_P.Constant_Value_pa;
       sliding_controller2_B.q_add_c[0] =
@@ -1439,8 +1435,8 @@ void sliding_controller2ModelClass::step()
           * -0.39) * sliding_controller2_B.unnamed_idx_1) +
         sliding_controller2_B.rtb_Add_e_tmp;
 
-      // MATLAB Function: '<S44>/MATLAB Function' incorporates:
-      //   MATLAB Function: '<S44>/MATLAB Function1'
+      // MATLAB Function: '<S46>/MATLAB Function' incorporates:
+      //   MATLAB Function: '<S46>/MATLAB Function1'
 
       sliding_controller2_B.rtb_Add_e_tmp_tmp = cos
         (sliding_controller2_B.Saturation_tmp_tmp) * -0.39;
@@ -1448,16 +1444,16 @@ void sliding_controller2ModelClass::step()
         sliding_controller2_B.rtb_Add_e_tmp_tmp + -0.324 * cos
         (sliding_controller2_B.Position[3]);
 
-      // Saturate: '<S6>/Saturation' incorporates:
-      //   Constant: '<S23>/Constant'
-      //   Constant: '<S44>/Constant'
-      //   MATLAB Function: '<S44>/MATLAB Function'
-      //   MATLAB Function: '<S44>/MATLAB Function1'
-      //   Product: '<S44>/Product1'
-      //   Product: '<S44>/Product2'
-      //   Product: '<S45>/Product1'
-      //   Sum: '<S44>/Add'
-      //   Sum: '<S45>/Add'
+      // Saturate: '<S7>/Saturation' incorporates:
+      //   Constant: '<S25>/Constant'
+      //   Constant: '<S46>/Constant'
+      //   MATLAB Function: '<S46>/MATLAB Function'
+      //   MATLAB Function: '<S46>/MATLAB Function1'
+      //   Product: '<S46>/Product1'
+      //   Product: '<S46>/Product2'
+      //   Product: '<S47>/Product1'
+      //   Sum: '<S46>/Add'
+      //   Sum: '<S47>/Add'
 
       sliding_controller2_B.q_add_c[3] = (sliding_controller2_B.rtb_Add_e_tmp *
         sliding_controller2_B.unnamed_idx_0 + (0.324 * sin
@@ -1484,38 +1480,38 @@ void sliding_controller2ModelClass::step()
       sliding_controller2_B.q_add_c[6] = sliding_controller2_P.Constant_Value_l;
       for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
            sliding_controller2_B.i++) {
-        // Saturate: '<S6>/Saturation'
+        // Saturate: '<S7>/Saturation'
         sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
           sliding_controller2_B.q_add_c[sliding_controller2_B.i];
         if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec >
             sliding_controller2_P.interaction_sat) {
-          // Saturate: '<S6>/Saturation'
+          // Saturate: '<S7>/Saturation'
           sliding_controller2_B.Saturation[sliding_controller2_B.i] =
             sliding_controller2_P.interaction_sat;
         } else if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec <
                    -sliding_controller2_P.interaction_sat) {
-          // Saturate: '<S6>/Saturation'
+          // Saturate: '<S7>/Saturation'
           sliding_controller2_B.Saturation[sliding_controller2_B.i] =
             -sliding_controller2_P.interaction_sat;
         } else {
-          // Saturate: '<S6>/Saturation'
+          // Saturate: '<S7>/Saturation'
           sliding_controller2_B.Saturation[sliding_controller2_B.i] =
             sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
         }
 
-        // Sum: '<S26>/Sum'
+        // Sum: '<S28>/Sum'
         sliding_controller2_B.Sum[sliding_controller2_B.i] =
           sliding_controller2_B.In1_a.Other[sliding_controller2_B.i] -
           sliding_controller2_B.Saturation[sliding_controller2_B.i];
       }
 
-      // MATLAB Function: '<S26>/MATLAB Function' incorporates:
-      //   Constant: '<S26>/Constant'
-      //   Constant: '<S26>/Constant1'
-      //   Constant: '<S26>/Constant2'
-      //   Constant: '<S26>/Constant3'
-      //   Constant: '<S26>/Constant4'
-      //   Constant: '<S26>/Constant5'
+      // MATLAB Function: '<S28>/MATLAB Function' incorporates:
+      //   Constant: '<S28>/Constant'
+      //   Constant: '<S28>/Constant1'
+      //   Constant: '<S28>/Constant2'
+      //   Constant: '<S28>/Constant3'
+      //   Constant: '<S28>/Constant4'
+      //   Constant: '<S28>/Constant5'
 
       for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 49;
            sliding_controller2_B.j++) {
@@ -1693,17 +1689,17 @@ void sliding_controller2ModelClass::step()
         }
       }
 
-      // End of MATLAB Function: '<S26>/MATLAB Function'
+      // End of MATLAB Function: '<S28>/MATLAB Function'
     }
 
     for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
          sliding_controller2_B.i++) {
-      // Integrator: '<S26>/Integrator'
+      // Integrator: '<S28>/Integrator'
       sliding_controller2_B.qd_add[sliding_controller2_B.i] =
         sliding_controller2_X.Integrator_CSTATE[sliding_controller2_B.i];
 
-      // Product: '<S26>/Product' incorporates:
-      //   Integrator: '<S26>/Integrator1'
+      // Product: '<S28>/Product' incorporates:
+      //   Integrator: '<S28>/Integrator1'
 
       sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.i] = 0.0;
       for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
@@ -1714,15 +1710,15 @@ void sliding_controller2ModelClass::step()
           sliding_controller2_X.Integrator1_CSTATE[sliding_controller2_B.j];
       }
 
-      // End of Product: '<S26>/Product'
+      // End of Product: '<S28>/Product'
 
-      // Product: '<S26>/Product1'
+      // Product: '<S28>/Product1'
       sliding_controller2_B.B_f[sliding_controller2_B.i] = 0.0;
     }
 
     for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
          sliding_controller2_B.j++) {
-      // Product: '<S26>/Product1'
+      // Product: '<S28>/Product1'
       for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
            sliding_controller2_B.i++) {
         sliding_controller2_B.B_f[sliding_controller2_B.j] +=
@@ -1731,60 +1727,60 @@ void sliding_controller2ModelClass::step()
           sliding_controller2_B.qd_add[sliding_controller2_B.i];
       }
 
-      // Sum: '<S26>/Sum6' incorporates:
-      //   Sum: '<S26>/Add1'
+      // Sum: '<S28>/Sum6' incorporates:
+      //   Sum: '<S28>/Add1'
 
       sliding_controller2_B.dv[sliding_controller2_B.j] =
         sliding_controller2_B.Sum[sliding_controller2_B.j] -
         (sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.j] +
          sliding_controller2_B.B_f[sliding_controller2_B.j]);
 
-      // Gain: '<S26>/addmittance gain'
+      // Gain: '<S28>/addmittance gain'
       sliding_controller2_B.qd_add_n[sliding_controller2_B.j] = 0.0;
     }
 
-    // BusAssignment: '<S29>/Bus Assignment' incorporates:
-    //   SignalConversion generated from: '<S29>/Bus Assignment'
+    // BusAssignment: '<S31>/Bus Assignment1' incorporates:
+    //   SignalConversion generated from: '<S31>/Bus Assignment1'
 
-    sliding_controller2_B.BusAssignment = sliding_controller2_B.msg_o;
+    sliding_controller2_B.BusAssignment1_j = sliding_controller2_B.msg_a;
     for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
          sliding_controller2_B.i++) {
       for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
            sliding_controller2_B.j++) {
-        // Gain: '<S26>/addmittance gain'
+        // Gain: '<S28>/addmittance gain'
         sliding_controller2_B.qd_add_n[sliding_controller2_B.i] += invMd[7 *
           sliding_controller2_B.j + sliding_controller2_B.i] *
           sliding_controller2_B.dv[sliding_controller2_B.j];
       }
 
-      // Sum: '<S26>/Sum2' incorporates:
-      //   Sum: '<S26>/Sum8'
+      // Sum: '<S28>/Sum2' incorporates:
+      //   Sum: '<S28>/Sum8'
 
       sliding_controller2_B.q_add_c[sliding_controller2_B.i] =
         sliding_controller2_B.In1_j.Velocity[sliding_controller2_B.i] -
         (sliding_controller2_B.qd_add[sliding_controller2_B.i] +
          sliding_controller2_B.In1_a.Qd[sliding_controller2_B.i]);
 
-      // Sum: '<S26>/Sum1' incorporates:
-      //   Integrator: '<S26>/Integrator1'
-      //   Sum: '<S26>/Sum7'
+      // Sum: '<S28>/Sum1' incorporates:
+      //   Integrator: '<S28>/Integrator1'
+      //   Sum: '<S28>/Sum7'
 
       sliding_controller2_B.q_add[sliding_controller2_B.i] =
         sliding_controller2_B.Position[sliding_controller2_B.i] -
         (sliding_controller2_B.In1_a.Q[sliding_controller2_B.i] +
          sliding_controller2_X.Integrator1_CSTATE[sliding_controller2_B.i]);
 
-      // BusAssignment: '<S29>/Bus Assignment'
-      sliding_controller2_B.BusAssignment.Q[sliding_controller2_B.i] =
+      // BusAssignment: '<S31>/Bus Assignment1'
+      sliding_controller2_B.BusAssignment1_j.Q[sliding_controller2_B.i] =
         sliding_controller2_B.Position[sliding_controller2_B.i];
-      sliding_controller2_B.BusAssignment.Qd[sliding_controller2_B.i] =
+      sliding_controller2_B.BusAssignment1_j.Qd[sliding_controller2_B.i] =
         sliding_controller2_B.In1_j.Velocity[sliding_controller2_B.i];
     }
 
     for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
          sliding_controller2_B.j++) {
-      // Sum: '<S29>/Add' incorporates:
-      //   Gain: '<S29>/lambda SMC'
+      // Sum: '<S31>/Add' incorporates:
+      //   Gain: '<S31>/lambda SMC'
 
       sliding_controller2_B.b_varargout_2_Header_Stamp_Sec = 0.0;
       for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
@@ -1794,10 +1790,10 @@ void sliding_controller2ModelClass::step()
           sliding_controller2_B.q_add[sliding_controller2_B.i];
       }
 
-      // Trigonometry: '<S29>/Tanh' incorporates:
-      //   Gain: '<S29>/lambda SMC'
-      //   Gain: '<S29>/surface width SMC'
-      //   Sum: '<S29>/Add'
+      // Trigonometry: '<S31>/Tanh' incorporates:
+      //   Gain: '<S31>/lambda SMC'
+      //   Gain: '<S31>/surface width SMC'
+      //   Sum: '<S31>/Add'
 
       sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.j] = tanh
         ((sliding_controller2_B.b_varargout_2_Header_Stamp_Sec +
@@ -1807,16 +1803,16 @@ void sliding_controller2ModelClass::step()
 
     for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
          sliding_controller2_B.j++) {
-      // Sum: '<S29>/Add1'
+      // Sum: '<S31>/Add1'
       sliding_controller2_B.b_varargout_2_Header_Stamp_Sec = 0.0;
 
-      // Gain: '<S29>/Gain12'
+      // Gain: '<S31>/Gain12'
       sliding_controller2_B.B_f[sliding_controller2_B.j] = 0.0;
       for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
            sliding_controller2_B.i++) {
-        // Sum: '<S29>/Add1' incorporates:
-        //   Gain: '<S29>/Gain12'
-        //   Gain: '<S29>/rho SMC'
+        // Sum: '<S31>/Add1' incorporates:
+        //   Gain: '<S31>/Gain12'
+        //   Gain: '<S31>/rho SMC'
 
         sliding_controller2_B.e_j = 7 * sliding_controller2_B.i +
           sliding_controller2_B.j;
@@ -1824,79 +1820,79 @@ void sliding_controller2ModelClass::step()
           rho2[sliding_controller2_B.e_j] *
           sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.i];
 
-        // Gain: '<S29>/Gain12'
+        // Gain: '<S31>/Gain12'
         sliding_controller2_B.B_f[sliding_controller2_B.j] +=
           lambda2[sliding_controller2_B.e_j] *
           sliding_controller2_B.q_add_c[sliding_controller2_B.i];
       }
 
-      // BusAssignment: '<S29>/Bus Assignment' incorporates:
-      //   Gain: '<S29>/rho SMC'
-      //   Sum: '<S29>/Add1'
+      // BusAssignment: '<S31>/Bus Assignment1' incorporates:
+      //   Gain: '<S31>/rho SMC'
+      //   Sum: '<S31>/Add1'
 
-      sliding_controller2_B.BusAssignment.Qdd[sliding_controller2_B.j] =
+      sliding_controller2_B.BusAssignment1_j.Qdd[sliding_controller2_B.j] =
         (sliding_controller2_B.In1_a.Qdd[sliding_controller2_B.j] -
          sliding_controller2_B.b_varargout_2_Header_Stamp_Sec) -
         sliding_controller2_B.B_f[sliding_controller2_B.j];
     }
 
-    // Outputs for Atomic SubSystem: '<S29>/Call Service'
-    // MATLABSystem: '<S51>/ServiceCaller'
-    isCreated = ServCall_sliding_controller2_1160.getIsCreated();
+    // Outputs for Atomic SubSystem: '<S31>/Call Service1'
+    // MATLABSystem: '<S53>/ServiceCaller'
+    isCreated = ServCall_sliding_controller2_1472.getIsCreated();
     if (!isCreated) {
-      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 16;
+      for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 13;
            sliding_controller2_B.j++) {
-        sliding_controller2_B.b_zeroDelimServiceName_l[sliding_controller2_B.j] =
+        sliding_controller2_B.b_zeroDelimServiceName_n[sliding_controller2_B.j] =
           tmp_1[sliding_controller2_B.j];
       }
 
-      sliding_controller2_B.b_zeroDelimServiceName_l[16] = '\x00';
-      b_varargout_2 = ServCall_sliding_controller2_1160.createServiceCaller
-        (&sliding_controller2_B.b_zeroDelimServiceName_l[0], true, 1.0);
+      sliding_controller2_B.b_zeroDelimServiceName_n[13] = '\x00';
+      b_varargout_2 = ServCall_sliding_controller2_1472.createServiceCaller
+        (&sliding_controller2_B.b_zeroDelimServiceName_n[0], true, 1.0);
       if (b_varargout_2 != SLSuccess) {
       } else {
-        ServCall_sliding_controller2_1160.call
-          (&sliding_controller2_B.BusAssignment,
+        ServCall_sliding_controller2_1472.call
+          (&sliding_controller2_B.BusAssignment1_j,
            &sliding_controller2_B.b_varargout_1_c);
       }
     } else {
-      ServCall_sliding_controller2_1160.call
-        (&sliding_controller2_B.BusAssignment,
+      ServCall_sliding_controller2_1472.call
+        (&sliding_controller2_B.BusAssignment1_j,
          &sliding_controller2_B.b_varargout_1_c);
     }
 
-    // End of Outputs for SubSystem: '<S29>/Call Service'
+    // End of Outputs for SubSystem: '<S31>/Call Service1'
 
-    // BusAssignment: '<S6>/Bus Assignment3' incorporates:
-    //   SignalConversion generated from: '<S6>/Bus Assignment3'
+    // BusAssignment: '<S7>/Bus Assignment3' incorporates:
+    //   SignalConversion generated from: '<S7>/Bus Assignment3'
 
     sliding_controller2_B.BusAssignment3 = sliding_controller2_B.msg_c;
     for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
          sliding_controller2_B.i++) {
-      // Outputs for Atomic SubSystem: '<S29>/Call Service'
-      // MATLABSystem: '<S51>/ServiceCaller'
+      // Outputs for Atomic SubSystem: '<S31>/Call Service1'
+      // MATLABSystem: '<S53>/ServiceCaller'
       sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
         sliding_controller2_B.b_varargout_1_c.Tau[sliding_controller2_B.i];
 
-      // End of Outputs for SubSystem: '<S29>/Call Service'
+      // End of Outputs for SubSystem: '<S31>/Call Service1'
 
-      // Saturate: '<S6>/exo sateration'
+      // Saturate: '<S7>/exo sateration'
       if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec > exo_sat) {
-        // Saturate: '<S6>/exo sateration'
+        // Saturate: '<S7>/exo sateration'
         sliding_controller2_B.exosateration[sliding_controller2_B.i] = exo_sat;
       } else if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec < -exo_sat)
       {
-        // Saturate: '<S6>/exo sateration'
+        // Saturate: '<S7>/exo sateration'
         sliding_controller2_B.exosateration[sliding_controller2_B.i] = -exo_sat;
       } else {
-        // Saturate: '<S6>/exo sateration'
+        // Saturate: '<S7>/exo sateration'
         sliding_controller2_B.exosateration[sliding_controller2_B.i] =
           sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
       }
 
-      // End of Saturate: '<S6>/exo sateration'
+      // End of Saturate: '<S7>/exo sateration'
 
-      // BusAssignment: '<S6>/Bus Assignment3'
+      // BusAssignment: '<S7>/Bus Assignment3'
       sliding_controller2_B.BusAssignment3.Position[sliding_controller2_B.i] =
         sliding_controller2_B.q_add[sliding_controller2_B.i];
       sliding_controller2_B.BusAssignment3.Velocity[sliding_controller2_B.i] =
@@ -1905,36 +1901,36 @@ void sliding_controller2ModelClass::step()
         sliding_controller2_B.Saturation[sliding_controller2_B.i];
     }
 
-    // Outputs for Atomic SubSystem: '<S6>/Publish2'
-    // MATLABSystem: '<S25>/SinkBlock'
+    // Outputs for Atomic SubSystem: '<S7>/Publish2'
+    // MATLABSystem: '<S27>/SinkBlock'
     Pub_sliding_controller2_1454.publish(&sliding_controller2_B.BusAssignment3);
 
-    // End of Outputs for SubSystem: '<S6>/Publish2'
+    // End of Outputs for SubSystem: '<S7>/Publish2'
     if (rtmIsMajorTimeStep((&sliding_controller2_M))) {
       for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
            sliding_controller2_B.j++) {
-        // Sum: '<S27>/Sum3'
+        // Sum: '<S29>/Sum3'
         sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.j] =
           sliding_controller2_B.In1_a.Q[sliding_controller2_B.j] -
           sliding_controller2_B.In1_e.Position[sliding_controller2_B.j];
 
-        // Sum: '<S27>/Sum1'
+        // Sum: '<S29>/Sum1'
         sliding_controller2_B.B_f[sliding_controller2_B.j] =
           sliding_controller2_B.In1_a.Qd[sliding_controller2_B.j] -
           sliding_controller2_B.In1_e.Velocity[sliding_controller2_B.j];
 
-        // Gain: '<S27>/human proportional gain'
+        // Gain: '<S29>/human proportional gain'
         sliding_controller2_B.dv[sliding_controller2_B.j] = 0.0;
       }
 
       for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 7;
            sliding_controller2_B.j++) {
-        // Gain: '<S27>/human derative gain'
+        // Gain: '<S29>/human derative gain'
         sliding_controller2_B.q_add_c[sliding_controller2_B.j] = 0.0;
         for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
              sliding_controller2_B.i++) {
-          // Gain: '<S27>/human proportional gain' incorporates:
-          //   Gain: '<S27>/human derative gain'
+          // Gain: '<S29>/human proportional gain' incorporates:
+          //   Gain: '<S29>/human derative gain'
 
           sliding_controller2_B.e_j = 7 * sliding_controller2_B.i +
             sliding_controller2_B.j;
@@ -1942,70 +1938,70 @@ void sliding_controller2ModelClass::step()
             Km1[sliding_controller2_B.e_j] *
             sliding_controller2_B.b_varargout_2_Effort[sliding_controller2_B.i];
 
-          // Gain: '<S27>/human derative gain'
+          // Gain: '<S29>/human derative gain'
           sliding_controller2_B.q_add_c[sliding_controller2_B.j] +=
             Dm1[sliding_controller2_B.e_j] *
             sliding_controller2_B.B_f[sliding_controller2_B.i];
         }
 
-        // Saturate: '<S6>/human sateration' incorporates:
-        //   Sum: '<S27>/Add2'
+        // Saturate: '<S7>/human sateration' incorporates:
+        //   Sum: '<S29>/Add2'
 
         sliding_controller2_B.b_varargout_2_Header_Stamp_Sec =
           sliding_controller2_B.dv[sliding_controller2_B.j] +
           sliding_controller2_B.q_add_c[sliding_controller2_B.j];
         if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec >
             sliding_controller2_P.human_sat) {
-          // Saturate: '<S6>/human sateration'
+          // Saturate: '<S7>/human sateration'
           sliding_controller2_B.humansateration[sliding_controller2_B.j] =
             sliding_controller2_P.human_sat;
         } else if (sliding_controller2_B.b_varargout_2_Header_Stamp_Sec <
                    -sliding_controller2_P.human_sat) {
-          // Saturate: '<S6>/human sateration'
+          // Saturate: '<S7>/human sateration'
           sliding_controller2_B.humansateration[sliding_controller2_B.j] =
             -sliding_controller2_P.human_sat;
         } else {
-          // Saturate: '<S6>/human sateration'
+          // Saturate: '<S7>/human sateration'
           sliding_controller2_B.humansateration[sliding_controller2_B.j] =
             sliding_controller2_B.b_varargout_2_Header_Stamp_Sec;
         }
 
-        // End of Saturate: '<S6>/human sateration'
+        // End of Saturate: '<S7>/human sateration'
       }
 
-      // MATLAB Function: '<S38>/MATLAB Function'
+      // MATLAB Function: '<S40>/MATLAB Function'
       sliding_controll_MATLABFunction(&sliding_controller2_B.In1_e.Position[0],
         sliding_controller2_B.rtb_y_f_g);
 
-      // MATLAB Function: '<S38>/MATLAB Function1'
+      // MATLAB Function: '<S40>/MATLAB Function1'
       sliding_control_MATLABFunction1(&sliding_controller2_B.In1_e.Position[0],
         sliding_controller2_B.rtb_y_f_g);
 
-      // MATLAB Function: '<S39>/MATLAB Function'
+      // MATLAB Function: '<S41>/MATLAB Function'
       sliding_controll_MATLABFunction(&sliding_controller2_B.In1_e.Position[3],
         sliding_controller2_B.rtb_y_f_g);
 
-      // MATLAB Function: '<S39>/MATLAB Function1'
+      // MATLAB Function: '<S41>/MATLAB Function1'
       sliding_control_MATLABFunction1(&sliding_controller2_B.In1_e.Position[3],
         sliding_controller2_B.rtb_y_f_g);
 
-      // BusAssignment: '<S6>/Bus Assignment2' incorporates:
-      //   Constant: '<S6>/Constant'
+      // BusAssignment: '<S7>/Bus Assignment2' incorporates:
+      //   Constant: '<S7>/Constant'
 
       rtb_BusAssignment2_d.Data = sliding_controller2_P.Constant_Value_i1;
 
-      // Outputs for Atomic SubSystem: '<S6>/Publish1'
-      // MATLABSystem: '<S24>/SinkBlock'
+      // Outputs for Atomic SubSystem: '<S7>/Publish1'
+      // MATLABSystem: '<S26>/SinkBlock'
       Pub_sliding_controller2_1405.publish(&rtb_BusAssignment2_d);
 
-      // End of Outputs for SubSystem: '<S6>/Publish1'
+      // End of Outputs for SubSystem: '<S7>/Publish1'
     }
   }
 
   // End of Outputs for SubSystem: '<Root>/Controller'
 
   // Outputs for Enabled SubSystem: '<Root>/Enabled Subsystem' incorporates:
-  //   EnablePort: '<S7>/Enable'
+  //   EnablePort: '<S8>/Enable'
 
   if (rtmIsMajorTimeStep((&sliding_controller2_M)) && rtmIsMajorTimeStep
       ((&sliding_controller2_M))) {
@@ -2014,8 +2010,8 @@ void sliding_controller2ModelClass::step()
   }
 
   if (sliding_controller2_DW.EnabledSubsystem_MODE) {
-    // BusAssignment: '<S7>/Bus Assignment1' incorporates:
-    //   SignalConversion generated from: '<S7>/Bus Assignment1'
+    // BusAssignment: '<S8>/Bus Assignment1' incorporates:
+    //   SignalConversion generated from: '<S8>/Bus Assignment1'
 
     sliding_controller2_B.BusAssignment3 = sliding_controller2_B.msg_n;
     for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
@@ -2027,16 +2023,16 @@ void sliding_controller2ModelClass::step()
     sliding_controller2_B.BusAssignment3.Header =
       sliding_controller2_B.BusAssignment1_m;
 
-    // End of BusAssignment: '<S7>/Bus Assignment1'
+    // End of BusAssignment: '<S8>/Bus Assignment1'
 
-    // Outputs for Atomic SubSystem: '<S7>/Publish1'
-    // MATLABSystem: '<S52>/SinkBlock'
+    // Outputs for Atomic SubSystem: '<S8>/Publish1'
+    // MATLABSystem: '<S54>/SinkBlock'
     Pub_sliding_controller2_1242.publish(&sliding_controller2_B.BusAssignment3);
 
-    // End of Outputs for SubSystem: '<S7>/Publish1'
+    // End of Outputs for SubSystem: '<S8>/Publish1'
 
-    // BusAssignment: '<S7>/Bus Assignment2' incorporates:
-    //   SignalConversion generated from: '<S7>/Bus Assignment2'
+    // BusAssignment: '<S8>/Bus Assignment2' incorporates:
+    //   SignalConversion generated from: '<S8>/Bus Assignment2'
 
     sliding_controller2_B.BusAssignment3 = sliding_controller2_B.msg;
     for (sliding_controller2_B.i = 0; sliding_controller2_B.i < 7;
@@ -2048,18 +2044,18 @@ void sliding_controller2ModelClass::step()
     sliding_controller2_B.BusAssignment3.Header =
       sliding_controller2_B.BusAssignment1_m;
 
-    // End of BusAssignment: '<S7>/Bus Assignment2'
+    // End of BusAssignment: '<S8>/Bus Assignment2'
 
-    // Outputs for Atomic SubSystem: '<S7>/Publish2'
-    // MATLABSystem: '<S53>/SinkBlock'
+    // Outputs for Atomic SubSystem: '<S8>/Publish2'
+    // MATLABSystem: '<S55>/SinkBlock'
     Pub_sliding_controller2_1246.publish(&sliding_controller2_B.BusAssignment3);
 
-    // End of Outputs for SubSystem: '<S7>/Publish2'
+    // End of Outputs for SubSystem: '<S8>/Publish2'
   }
 
   // End of Outputs for SubSystem: '<Root>/Enabled Subsystem'
   if (rtmIsMajorTimeStep((&sliding_controller2_M))) {
-    // If: '<S16>/If'
+    // If: '<S18>/If'
     if (rtmIsMajorTimeStep((&sliding_controller2_M))) {
       rtAction = 1;
       sliding_controller2_DW.If_ActiveSubsystem = 1;
@@ -2068,16 +2064,16 @@ void sliding_controller2ModelClass::step()
     }
 
     if (rtAction == 0) {
-      // Outputs for IfAction SubSystem: '<S16>/If Action Subsystem' incorporates:
-      //   ActionPort: '<S58>/Action Port'
+      // Outputs for IfAction SubSystem: '<S18>/If Action Subsystem' incorporates:
+      //   ActionPort: '<S60>/Action Port'
 
-      // BusAssignment: '<S58>/Bus Assignment' incorporates:
-      //   Constant: '<S16>/Constant'
+      // BusAssignment: '<S60>/Bus Assignment' incorporates:
+      //   Constant: '<S18>/Constant'
 
-      rtb_BusAssignment_b3.Data = sliding_controller2_P.Constant_Value_op;
+      rtb_BusAssignment.Data = sliding_controller2_P.Constant_Value_op;
 
-      // Outputs for Atomic SubSystem: '<S58>/Call Service'
-      // MATLABSystem: '<S60>/ServiceCaller'
+      // Outputs for Atomic SubSystem: '<S60>/Call Service'
+      // MATLABSystem: '<S62>/ServiceCaller'
       isCreated = ServCall_sliding_controller2_47.getIsCreated();
       if (!isCreated) {
         for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 21;
@@ -2091,24 +2087,24 @@ void sliding_controller2ModelClass::step()
           (&sliding_controller2_B.b_zeroDelimServiceName_m[0], true, 5.0);
         if (b_varargout_2 != SLSuccess) {
         } else {
-          ServCall_sliding_controller2_47.call(&rtb_BusAssignment_b3,
+          ServCall_sliding_controller2_47.call(&rtb_BusAssignment,
             &sliding_controller2_B.b_varargout_1);
         }
       } else {
-        ServCall_sliding_controller2_47.call(&rtb_BusAssignment_b3,
+        ServCall_sliding_controller2_47.call(&rtb_BusAssignment,
           &sliding_controller2_B.b_varargout_1);
       }
 
-      // End of MATLABSystem: '<S60>/ServiceCaller'
-      // End of Outputs for SubSystem: '<S58>/Call Service'
+      // End of MATLABSystem: '<S62>/ServiceCaller'
+      // End of Outputs for SubSystem: '<S60>/Call Service'
 
-      // BusAssignment: '<S58>/Bus Assignment1' incorporates:
-      //   Constant: '<S16>/Constant'
+      // BusAssignment: '<S60>/Bus Assignment1' incorporates:
+      //   Constant: '<S18>/Constant'
 
       rtb_BusAssignment1_k2.Data = sliding_controller2_P.Constant_Value_op;
 
-      // Outputs for Atomic SubSystem: '<S58>/Call Service1'
-      // MATLABSystem: '<S61>/ServiceCaller'
+      // Outputs for Atomic SubSystem: '<S60>/Call Service1'
+      // MATLABSystem: '<S63>/ServiceCaller'
       isCreated = ServCall_sliding_controller2_48.getIsCreated();
       if (!isCreated) {
         for (sliding_controller2_B.j = 0; sliding_controller2_B.j < 23;
@@ -2130,12 +2126,12 @@ void sliding_controller2ModelClass::step()
           &sliding_controller2_B.b_varargout_1);
       }
 
-      // End of MATLABSystem: '<S61>/ServiceCaller'
-      // End of Outputs for SubSystem: '<S58>/Call Service1'
-      // End of Outputs for SubSystem: '<S16>/If Action Subsystem'
+      // End of MATLABSystem: '<S63>/ServiceCaller'
+      // End of Outputs for SubSystem: '<S60>/Call Service1'
+      // End of Outputs for SubSystem: '<S18>/If Action Subsystem'
     }
 
-    // End of If: '<S16>/If'
+    // End of If: '<S18>/If'
   }
 
   if (rtmIsMajorTimeStep((&sliding_controller2_M))) {
@@ -2173,10 +2169,10 @@ void sliding_controller2ModelClass::sliding_controller2_derivatives()
   // Derivatives for Enabled SubSystem: '<Root>/Controller'
   if (sliding_controller2_DW.Controller_MODE) {
     for (i = 0; i < 7; i++) {
-      // Derivatives for Integrator: '<S26>/Integrator1'
+      // Derivatives for Integrator: '<S28>/Integrator1'
       _rtXdot->Integrator1_CSTATE[i] = sliding_controller2_B.qd_add[i];
 
-      // Derivatives for Integrator: '<S26>/Integrator'
+      // Derivatives for Integrator: '<S28>/Integrator'
       _rtXdot->Integrator_CSTATE[i] = sliding_controller2_B.qd_add_n[i];
     }
   } else {
@@ -2276,11 +2272,11 @@ void sliding_controller2ModelClass::initialize()
     static const char_T tmp_7[22] = { '/', 'h', 'u', 'm', 'a', 'n', '_', 's',
       'i', 'm', 'u', 'l', 'i', 'n', 'k', '_', 't', 'o', 'r', 'q', 'u', 'e' };
 
-    // Start for If: '<S16>/If'
+    // Start for If: '<S18>/If'
     sliding_controller2_DW.If_ActiveSubsystem = -1;
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Publish'
-    // Start for MATLABSystem: '<S11>/SinkBlock'
+    // Start for MATLABSystem: '<S13>/SinkBlock'
     sliding_controller2_DW.obj_m.matlabCodegenIsDeleted = false;
     sliding_controller2_DW.obj_m.isInitialized = 1;
     for (i = 0; i < 8; i++) {
@@ -2291,19 +2287,19 @@ void sliding_controller2ModelClass::initialize()
     Pub_sliding_controller2_1177.createPublisher(&b_zeroDelimTopic[0], 1);
     sliding_controller2_DW.obj_m.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S11>/SinkBlock'
+    // End of Start for MATLABSystem: '<S13>/SinkBlock'
     // End of SystemInitialize for SubSystem: '<Root>/Publish'
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe1'
-    // SystemInitialize for Enabled SubSystem: '<S13>/Enabled Subsystem'
-    // SystemInitialize for Outport: '<S55>/Out1' incorporates:
-    //   Inport: '<S55>/In1'
+    // SystemInitialize for Enabled SubSystem: '<S15>/Enabled Subsystem'
+    // SystemInitialize for Outport: '<S57>/Out1' incorporates:
+    //   Inport: '<S57>/In1'
 
     sliding_controller2_B.In1_n = sliding_controller2_P.Out1_Y0;
 
-    // End of SystemInitialize for SubSystem: '<S13>/Enabled Subsystem'
+    // End of SystemInitialize for SubSystem: '<S15>/Enabled Subsystem'
 
-    // Start for MATLABSystem: '<S13>/SourceBlock'
+    // Start for MATLABSystem: '<S15>/SourceBlock'
     sliding_controller2_DW.obj_cg.matlabCodegenIsDeleted = false;
     sliding_controller2_DW.obj_cg.isInitialized = 1;
     for (i = 0; i < 15; i++) {
@@ -2314,21 +2310,21 @@ void sliding_controller2ModelClass::initialize()
     Sub_sliding_controller2_1262.createSubscriber(&b_zeroDelimTopic_0[0], 1);
     sliding_controller2_DW.obj_cg.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S13>/SourceBlock'
+    // End of Start for MATLABSystem: '<S15>/SourceBlock'
     // End of SystemInitialize for SubSystem: '<Root>/Subscribe1'
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe2'
-    // SystemInitialize for Enabled SubSystem: '<S14>/Enabled Subsystem'
-    // SystemInitialize for Outport: '<S56>/Out1' incorporates:
-    //   Inport: '<S56>/In1'
+    // SystemInitialize for Enabled SubSystem: '<S16>/Enabled Subsystem'
+    // SystemInitialize for Outport: '<S58>/Out1' incorporates:
+    //   Inport: '<S58>/In1'
 
     sliding_controller2_B.In1 = sliding_controller2_P.Out1_Y0_f;
 
-    // End of SystemInitialize for SubSystem: '<S14>/Enabled Subsystem'
+    // End of SystemInitialize for SubSystem: '<S16>/Enabled Subsystem'
 
-    // Start for MATLABSystem: '<S14>/SourceBlock'
-    sliding_controller2_DW.obj_h.matlabCodegenIsDeleted = false;
-    sliding_controller2_DW.obj_h.isInitialized = 1;
+    // Start for MATLABSystem: '<S16>/SourceBlock'
+    sliding_controller2_DW.obj_hv.matlabCodegenIsDeleted = false;
+    sliding_controller2_DW.obj_hv.isInitialized = 1;
     for (i = 0; i < 17; i++) {
       sliding_controller2_B.b_zeroDelimTopic_p[i] = tmp_1[i];
     }
@@ -2336,21 +2332,21 @@ void sliding_controller2ModelClass::initialize()
     sliding_controller2_B.b_zeroDelimTopic_p[17] = '\x00';
     Sub_sliding_controller2_1277.createSubscriber
       (&sliding_controller2_B.b_zeroDelimTopic_p[0], 1);
-    sliding_controller2_DW.obj_h.isSetupComplete = true;
+    sliding_controller2_DW.obj_hv.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S14>/SourceBlock'
+    // End of Start for MATLABSystem: '<S16>/SourceBlock'
     // End of SystemInitialize for SubSystem: '<Root>/Subscribe2'
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe4'
-    // SystemInitialize for Enabled SubSystem: '<S15>/Enabled Subsystem'
-    // SystemInitialize for Outport: '<S57>/Out1' incorporates:
-    //   Inport: '<S57>/In1'
+    // SystemInitialize for Enabled SubSystem: '<S17>/Enabled Subsystem'
+    // SystemInitialize for Outport: '<S59>/Out1' incorporates:
+    //   Inport: '<S59>/In1'
 
     sliding_controller2_B.In1_k = sliding_controller2_P.Out1_Y0_d;
 
-    // End of SystemInitialize for SubSystem: '<S15>/Enabled Subsystem'
+    // End of SystemInitialize for SubSystem: '<S17>/Enabled Subsystem'
 
-    // Start for MATLABSystem: '<S15>/SourceBlock'
+    // Start for MATLABSystem: '<S17>/SourceBlock'
     sliding_controller2_DW.obj_c.matlabCodegenIsDeleted = false;
     sliding_controller2_DW.obj_c.isInitialized = 1;
     for (i = 0; i < 10; i++) {
@@ -2361,19 +2357,19 @@ void sliding_controller2ModelClass::initialize()
     Sub_sliding_controller2_1418.createSubscriber(&b_zeroDelimTopic_1[0], 1);
     sliding_controller2_DW.obj_c.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S15>/SourceBlock'
+    // End of Start for MATLABSystem: '<S17>/SourceBlock'
     // End of SystemInitialize for SubSystem: '<Root>/Subscribe4'
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Subscribe'
-    // SystemInitialize for Enabled SubSystem: '<S12>/Enabled Subsystem'
-    // SystemInitialize for Outport: '<S54>/Out1' incorporates:
-    //   Inport: '<S54>/In1'
+    // SystemInitialize for Enabled SubSystem: '<S14>/Enabled Subsystem'
+    // SystemInitialize for Outport: '<S56>/Out1' incorporates:
+    //   Inport: '<S56>/In1'
 
     sliding_controller2_B.In1_a = sliding_controller2_P.Out1_Y0_i;
 
-    // End of SystemInitialize for SubSystem: '<S12>/Enabled Subsystem'
+    // End of SystemInitialize for SubSystem: '<S14>/Enabled Subsystem'
 
-    // Start for MATLABSystem: '<S12>/SourceBlock'
+    // Start for MATLABSystem: '<S14>/SourceBlock'
     sliding_controller2_DW.obj_g.matlabCodegenIsDeleted = false;
     sliding_controller2_DW.obj_g.isInitialized = 1;
     for (i = 0; i < 23; i++) {
@@ -2385,20 +2381,20 @@ void sliding_controller2ModelClass::initialize()
       (&sliding_controller2_B.b_zeroDelimTopic[0], 1);
     sliding_controller2_DW.obj_g.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S12>/SourceBlock'
+    // End of Start for MATLABSystem: '<S14>/SourceBlock'
     // End of SystemInitialize for SubSystem: '<Root>/Subscribe'
 
     // SystemInitialize for Enabled SubSystem: '<Root>/Enabled Subsystem1'
-    // SystemInitialize for Outport: '<S8>/exo' incorporates:
-    //   Inport: '<S8>/In1'
+    // SystemInitialize for Outport: '<S9>/exo' incorporates:
+    //   Inport: '<S9>/In1'
 
     sliding_controller2_B.In1_j = sliding_controller2_P.exo_Y0;
 
     // End of SystemInitialize for SubSystem: '<Root>/Enabled Subsystem1'
 
     // SystemInitialize for Enabled SubSystem: '<Root>/Enabled Subsystem2'
-    // SystemInitialize for Outport: '<S9>/human' incorporates:
-    //   Inport: '<S9>/In1'
+    // SystemInitialize for Outport: '<S10>/human' incorporates:
+    //   Inport: '<S10>/In1'
 
     sliding_controller2_B.In1_e = sliding_controller2_P.human_Y0;
 
@@ -2406,25 +2402,25 @@ void sliding_controller2ModelClass::initialize()
 
     // SystemInitialize for Enabled SubSystem: '<Root>/Controller'
     for (i = 0; i < 7; i++) {
-      // InitializeConditions for Integrator: '<S26>/Integrator1'
+      // InitializeConditions for Integrator: '<S28>/Integrator1'
       sliding_controller2_X.Integrator1_CSTATE[i] =
         sliding_controller2_P.Integrator1_IC[i];
 
-      // InitializeConditions for Integrator: '<S26>/Integrator'
+      // InitializeConditions for Integrator: '<S28>/Integrator'
       sliding_controller2_X.Integrator_CSTATE[i] =
         sliding_controller2_P.Integrator_IC;
     }
 
-    // SystemInitialize for Atomic SubSystem: '<S29>/Call Service'
-    // Start for MATLABSystem: '<S51>/ServiceCaller'
-    sliding_controller2_DW.obj_ox.matlabCodegenIsDeleted = false;
-    sliding_controller2_DW.obj_ox.isInitialized = 1;
-    sliding_controller2_DW.obj_ox.isSetupComplete = true;
+    // SystemInitialize for Atomic SubSystem: '<S31>/Call Service1'
+    // Start for MATLABSystem: '<S53>/ServiceCaller'
+    sliding_controller2_DW.obj_h.matlabCodegenIsDeleted = false;
+    sliding_controller2_DW.obj_h.isInitialized = 1;
+    sliding_controller2_DW.obj_h.isSetupComplete = true;
 
-    // End of SystemInitialize for SubSystem: '<S29>/Call Service'
+    // End of SystemInitialize for SubSystem: '<S31>/Call Service1'
 
-    // SystemInitialize for Atomic SubSystem: '<S6>/Publish2'
-    // Start for MATLABSystem: '<S25>/SinkBlock'
+    // SystemInitialize for Atomic SubSystem: '<S7>/Publish2'
+    // Start for MATLABSystem: '<S27>/SinkBlock'
     sliding_controller2_DW.obj_j.matlabCodegenIsDeleted = false;
     sliding_controller2_DW.obj_j.isInitialized = 1;
     for (i = 0; i < 11; i++) {
@@ -2435,11 +2431,11 @@ void sliding_controller2ModelClass::initialize()
     Pub_sliding_controller2_1454.createPublisher(&b_zeroDelimTopic_2[0], 1);
     sliding_controller2_DW.obj_j.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S25>/SinkBlock'
-    // End of SystemInitialize for SubSystem: '<S6>/Publish2'
+    // End of Start for MATLABSystem: '<S27>/SinkBlock'
+    // End of SystemInitialize for SubSystem: '<S7>/Publish2'
 
-    // SystemInitialize for Atomic SubSystem: '<S6>/Publish1'
-    // Start for MATLABSystem: '<S24>/SinkBlock'
+    // SystemInitialize for Atomic SubSystem: '<S7>/Publish1'
+    // Start for MATLABSystem: '<S26>/SinkBlock'
     sliding_controller2_DW.obj_o.matlabCodegenIsDeleted = false;
     sliding_controller2_DW.obj_o.isInitialized = 1;
     for (i = 0; i < 9; i++) {
@@ -2450,16 +2446,16 @@ void sliding_controller2ModelClass::initialize()
     Pub_sliding_controller2_1405.createPublisher(&b_zeroDelimTopic_3[0], 1);
     sliding_controller2_DW.obj_o.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S24>/SinkBlock'
-    // End of SystemInitialize for SubSystem: '<S6>/Publish1'
+    // End of Start for MATLABSystem: '<S26>/SinkBlock'
+    // End of SystemInitialize for SubSystem: '<S7>/Publish1'
     for (i = 0; i < 7; i++) {
-      // SystemInitialize for Saturate: '<S6>/exo sateration' incorporates:
-      //   Outport: '<S6>/exo tau'
+      // SystemInitialize for Saturate: '<S7>/exo sateration' incorporates:
+      //   Outport: '<S7>/exo tau'
 
       sliding_controller2_B.exosateration[i] = sliding_controller2_P.exotau_Y0;
 
-      // SystemInitialize for Saturate: '<S6>/human sateration' incorporates:
-      //   Outport: '<S6>/human tau'
+      // SystemInitialize for Saturate: '<S7>/human sateration' incorporates:
+      //   Outport: '<S7>/human tau'
 
       sliding_controller2_B.humansateration[i] =
         sliding_controller2_P.humantau_Y0;
@@ -2468,8 +2464,8 @@ void sliding_controller2ModelClass::initialize()
     // End of SystemInitialize for SubSystem: '<Root>/Controller'
 
     // SystemInitialize for Enabled SubSystem: '<Root>/Enabled Subsystem'
-    // SystemInitialize for Atomic SubSystem: '<S7>/Publish1'
-    // Start for MATLABSystem: '<S52>/SinkBlock'
+    // SystemInitialize for Atomic SubSystem: '<S8>/Publish1'
+    // Start for MATLABSystem: '<S54>/SinkBlock'
     sliding_controller2_DW.obj_n.matlabCodegenIsDeleted = false;
     sliding_controller2_DW.obj_n.isInitialized = 1;
     for (i = 0; i < 20; i++) {
@@ -2481,11 +2477,11 @@ void sliding_controller2ModelClass::initialize()
       (&sliding_controller2_B.b_zeroDelimTopic_n[0], 1);
     sliding_controller2_DW.obj_n.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S52>/SinkBlock'
-    // End of SystemInitialize for SubSystem: '<S7>/Publish1'
+    // End of Start for MATLABSystem: '<S54>/SinkBlock'
+    // End of SystemInitialize for SubSystem: '<S8>/Publish1'
 
-    // SystemInitialize for Atomic SubSystem: '<S7>/Publish2'
-    // Start for MATLABSystem: '<S53>/SinkBlock'
+    // SystemInitialize for Atomic SubSystem: '<S8>/Publish2'
+    // Start for MATLABSystem: '<S55>/SinkBlock'
     sliding_controller2_DW.obj_mp.matlabCodegenIsDeleted = false;
     sliding_controller2_DW.obj_mp.isInitialized = 1;
     for (i = 0; i < 22; i++) {
@@ -2497,27 +2493,27 @@ void sliding_controller2ModelClass::initialize()
       (&sliding_controller2_B.b_zeroDelimTopic_g[0], 1);
     sliding_controller2_DW.obj_mp.isSetupComplete = true;
 
-    // End of Start for MATLABSystem: '<S53>/SinkBlock'
-    // End of SystemInitialize for SubSystem: '<S7>/Publish2'
+    // End of Start for MATLABSystem: '<S55>/SinkBlock'
+    // End of SystemInitialize for SubSystem: '<S8>/Publish2'
     // End of SystemInitialize for SubSystem: '<Root>/Enabled Subsystem'
 
-    // SystemInitialize for IfAction SubSystem: '<S16>/If Action Subsystem'
-    // SystemInitialize for Atomic SubSystem: '<S58>/Call Service'
-    // Start for MATLABSystem: '<S60>/ServiceCaller'
+    // SystemInitialize for IfAction SubSystem: '<S18>/If Action Subsystem'
+    // SystemInitialize for Atomic SubSystem: '<S60>/Call Service'
+    // Start for MATLABSystem: '<S62>/ServiceCaller'
     sliding_controller2_DW.obj_b.matlabCodegenIsDeleted = false;
     sliding_controller2_DW.obj_b.isInitialized = 1;
     sliding_controller2_DW.obj_b.isSetupComplete = true;
 
-    // End of SystemInitialize for SubSystem: '<S58>/Call Service'
+    // End of SystemInitialize for SubSystem: '<S60>/Call Service'
 
-    // SystemInitialize for Atomic SubSystem: '<S58>/Call Service1'
-    // Start for MATLABSystem: '<S61>/ServiceCaller'
+    // SystemInitialize for Atomic SubSystem: '<S60>/Call Service1'
+    // Start for MATLABSystem: '<S63>/ServiceCaller'
     sliding_controller2_DW.obj_i.matlabCodegenIsDeleted = false;
     sliding_controller2_DW.obj_i.isInitialized = 1;
     sliding_controller2_DW.obj_i.isSetupComplete = true;
 
-    // End of SystemInitialize for SubSystem: '<S58>/Call Service1'
-    // End of SystemInitialize for SubSystem: '<S16>/If Action Subsystem'
+    // End of SystemInitialize for SubSystem: '<S60>/Call Service1'
+    // End of SystemInitialize for SubSystem: '<S18>/If Action Subsystem'
 
     // Start for MATLABSystem: '<Root>/Current Time'
     // set.SampleTime setter for SampleTime
@@ -2534,39 +2530,39 @@ void sliding_controller2ModelClass::initialize()
 void sliding_controller2ModelClass::terminate()
 {
   // Terminate for Atomic SubSystem: '<Root>/Publish'
-  // Terminate for MATLABSystem: '<S11>/SinkBlock'
+  // Terminate for MATLABSystem: '<S13>/SinkBlock'
   if (!sliding_controller2_DW.obj_m.matlabCodegenIsDeleted) {
     sliding_controller2_DW.obj_m.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S11>/SinkBlock'
+  // End of Terminate for MATLABSystem: '<S13>/SinkBlock'
   // End of Terminate for SubSystem: '<Root>/Publish'
 
   // Terminate for Atomic SubSystem: '<Root>/Subscribe1'
-  // Terminate for MATLABSystem: '<S13>/SourceBlock'
+  // Terminate for MATLABSystem: '<S15>/SourceBlock'
   if (!sliding_controller2_DW.obj_cg.matlabCodegenIsDeleted) {
     sliding_controller2_DW.obj_cg.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S13>/SourceBlock'
+  // End of Terminate for MATLABSystem: '<S15>/SourceBlock'
   // End of Terminate for SubSystem: '<Root>/Subscribe1'
 
   // Terminate for Atomic SubSystem: '<Root>/Subscribe2'
-  // Terminate for MATLABSystem: '<S14>/SourceBlock'
-  if (!sliding_controller2_DW.obj_h.matlabCodegenIsDeleted) {
-    sliding_controller2_DW.obj_h.matlabCodegenIsDeleted = true;
+  // Terminate for MATLABSystem: '<S16>/SourceBlock'
+  if (!sliding_controller2_DW.obj_hv.matlabCodegenIsDeleted) {
+    sliding_controller2_DW.obj_hv.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S14>/SourceBlock'
+  // End of Terminate for MATLABSystem: '<S16>/SourceBlock'
   // End of Terminate for SubSystem: '<Root>/Subscribe2'
 
   // Terminate for Atomic SubSystem: '<Root>/Subscribe4'
-  // Terminate for MATLABSystem: '<S15>/SourceBlock'
+  // Terminate for MATLABSystem: '<S17>/SourceBlock'
   if (!sliding_controller2_DW.obj_c.matlabCodegenIsDeleted) {
     sliding_controller2_DW.obj_c.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S15>/SourceBlock'
+  // End of Terminate for MATLABSystem: '<S17>/SourceBlock'
   // End of Terminate for SubSystem: '<Root>/Subscribe4'
 
   // Terminate for MATLABSystem: '<Root>/Current Time'
@@ -2577,82 +2573,82 @@ void sliding_controller2ModelClass::terminate()
   // End of Terminate for MATLABSystem: '<Root>/Current Time'
 
   // Terminate for Atomic SubSystem: '<Root>/Subscribe'
-  // Terminate for MATLABSystem: '<S12>/SourceBlock'
+  // Terminate for MATLABSystem: '<S14>/SourceBlock'
   if (!sliding_controller2_DW.obj_g.matlabCodegenIsDeleted) {
     sliding_controller2_DW.obj_g.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S12>/SourceBlock'
+  // End of Terminate for MATLABSystem: '<S14>/SourceBlock'
   // End of Terminate for SubSystem: '<Root>/Subscribe'
 
   // Terminate for Enabled SubSystem: '<Root>/Controller'
-  // Terminate for Atomic SubSystem: '<S29>/Call Service'
-  // Terminate for MATLABSystem: '<S51>/ServiceCaller'
-  if (!sliding_controller2_DW.obj_ox.matlabCodegenIsDeleted) {
-    sliding_controller2_DW.obj_ox.matlabCodegenIsDeleted = true;
+  // Terminate for Atomic SubSystem: '<S31>/Call Service1'
+  // Terminate for MATLABSystem: '<S53>/ServiceCaller'
+  if (!sliding_controller2_DW.obj_h.matlabCodegenIsDeleted) {
+    sliding_controller2_DW.obj_h.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S51>/ServiceCaller'
-  // End of Terminate for SubSystem: '<S29>/Call Service'
+  // End of Terminate for MATLABSystem: '<S53>/ServiceCaller'
+  // End of Terminate for SubSystem: '<S31>/Call Service1'
 
-  // Terminate for Atomic SubSystem: '<S6>/Publish2'
-  // Terminate for MATLABSystem: '<S25>/SinkBlock'
+  // Terminate for Atomic SubSystem: '<S7>/Publish2'
+  // Terminate for MATLABSystem: '<S27>/SinkBlock'
   if (!sliding_controller2_DW.obj_j.matlabCodegenIsDeleted) {
     sliding_controller2_DW.obj_j.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S25>/SinkBlock'
-  // End of Terminate for SubSystem: '<S6>/Publish2'
+  // End of Terminate for MATLABSystem: '<S27>/SinkBlock'
+  // End of Terminate for SubSystem: '<S7>/Publish2'
 
-  // Terminate for Atomic SubSystem: '<S6>/Publish1'
-  // Terminate for MATLABSystem: '<S24>/SinkBlock'
+  // Terminate for Atomic SubSystem: '<S7>/Publish1'
+  // Terminate for MATLABSystem: '<S26>/SinkBlock'
   if (!sliding_controller2_DW.obj_o.matlabCodegenIsDeleted) {
     sliding_controller2_DW.obj_o.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S24>/SinkBlock'
-  // End of Terminate for SubSystem: '<S6>/Publish1'
+  // End of Terminate for MATLABSystem: '<S26>/SinkBlock'
+  // End of Terminate for SubSystem: '<S7>/Publish1'
   // End of Terminate for SubSystem: '<Root>/Controller'
 
   // Terminate for Enabled SubSystem: '<Root>/Enabled Subsystem'
-  // Terminate for Atomic SubSystem: '<S7>/Publish1'
-  // Terminate for MATLABSystem: '<S52>/SinkBlock'
+  // Terminate for Atomic SubSystem: '<S8>/Publish1'
+  // Terminate for MATLABSystem: '<S54>/SinkBlock'
   if (!sliding_controller2_DW.obj_n.matlabCodegenIsDeleted) {
     sliding_controller2_DW.obj_n.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S52>/SinkBlock'
-  // End of Terminate for SubSystem: '<S7>/Publish1'
+  // End of Terminate for MATLABSystem: '<S54>/SinkBlock'
+  // End of Terminate for SubSystem: '<S8>/Publish1'
 
-  // Terminate for Atomic SubSystem: '<S7>/Publish2'
-  // Terminate for MATLABSystem: '<S53>/SinkBlock'
+  // Terminate for Atomic SubSystem: '<S8>/Publish2'
+  // Terminate for MATLABSystem: '<S55>/SinkBlock'
   if (!sliding_controller2_DW.obj_mp.matlabCodegenIsDeleted) {
     sliding_controller2_DW.obj_mp.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S53>/SinkBlock'
-  // End of Terminate for SubSystem: '<S7>/Publish2'
+  // End of Terminate for MATLABSystem: '<S55>/SinkBlock'
+  // End of Terminate for SubSystem: '<S8>/Publish2'
   // End of Terminate for SubSystem: '<Root>/Enabled Subsystem'
 
-  // Terminate for IfAction SubSystem: '<S16>/If Action Subsystem'
-  // Terminate for Atomic SubSystem: '<S58>/Call Service'
-  // Terminate for MATLABSystem: '<S60>/ServiceCaller'
+  // Terminate for IfAction SubSystem: '<S18>/If Action Subsystem'
+  // Terminate for Atomic SubSystem: '<S60>/Call Service'
+  // Terminate for MATLABSystem: '<S62>/ServiceCaller'
   if (!sliding_controller2_DW.obj_b.matlabCodegenIsDeleted) {
     sliding_controller2_DW.obj_b.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S60>/ServiceCaller'
-  // End of Terminate for SubSystem: '<S58>/Call Service'
+  // End of Terminate for MATLABSystem: '<S62>/ServiceCaller'
+  // End of Terminate for SubSystem: '<S60>/Call Service'
 
-  // Terminate for Atomic SubSystem: '<S58>/Call Service1'
-  // Terminate for MATLABSystem: '<S61>/ServiceCaller'
+  // Terminate for Atomic SubSystem: '<S60>/Call Service1'
+  // Terminate for MATLABSystem: '<S63>/ServiceCaller'
   if (!sliding_controller2_DW.obj_i.matlabCodegenIsDeleted) {
     sliding_controller2_DW.obj_i.matlabCodegenIsDeleted = true;
   }
 
-  // End of Terminate for MATLABSystem: '<S61>/ServiceCaller'
-  // End of Terminate for SubSystem: '<S58>/Call Service1'
-  // End of Terminate for SubSystem: '<S16>/If Action Subsystem'
+  // End of Terminate for MATLABSystem: '<S63>/ServiceCaller'
+  // End of Terminate for SubSystem: '<S60>/Call Service1'
+  // End of Terminate for SubSystem: '<S18>/If Action Subsystem'
 }
 
 // Constructor
