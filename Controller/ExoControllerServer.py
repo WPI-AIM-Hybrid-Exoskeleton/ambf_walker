@@ -102,12 +102,11 @@ class ExoControllerServer():
         qd = self._model.ambf_to_rbdl(np.array(joints.qd) )
         qdd = self._model.ambf_to_rbdl(np.array(joints.qdd) )
         rospy.wait_for_service("InverseDynamics")
-        print("trying to call")
+
         try:
             dyn_srv = rospy.ServiceProxy('InverseDynamics', RBDLInverseDynamics)
             resp1 = dyn_srv("exo", q, qd, qdd)
             tau = resp1.tau
-            print(tau)
             return DesiredJointsCmdResponse(tau=tau,success=True)
             #return np.array(tau)
 

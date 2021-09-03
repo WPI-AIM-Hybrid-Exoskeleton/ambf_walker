@@ -36,8 +36,8 @@ extern SimulinkPublisher<sensor_msgs::JointState, SL_Bus_sliding_controller2_sen
 // For Block sliding_controller2/Publish
 extern SimulinkPublisher<std_msgs::Float64, SL_Bus_sliding_controller2_std_msgs_Float64> Pub_sliding_controller2_1177;
 
-// For Block sliding_controller2/Controller/sliding mode controller/Call Service1
-extern SimulinkServiceCaller<ambf_walker::DesiredJointsCmd, SL_Bus_sliding_controller2_DesiredJointsCmdRequest_9kimzz, SL_Bus_sliding_controller2_DesiredJointsCmdResponse_df4541> ServCall_sliding_controller2_1472;
+// For Block sliding_controller2/Controller/sliding mode controller/Call Service
+extern SimulinkServiceCaller<rbdl_server::RBDLInverseDynamics, SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex, SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h> ServCall_sliding_controller2_1160;
 
 // For Block sliding_controller2/Subsystem1/If Action Subsystem/Call Service
 extern SimulinkServiceCaller<std_srvs::SetBool, SL_Bus_sliding_controller2_std_srvs_SetBoolRequest, SL_Bus_sliding_controller2_std_srvs_SetBoolResponse> ServCall_sliding_controller2_47;

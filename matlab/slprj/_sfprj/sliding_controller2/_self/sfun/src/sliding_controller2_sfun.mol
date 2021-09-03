@@ -13,8 +13,11 @@ c14_sliding_controller2.o
 c15_sliding_controller2.o
 c16_sliding_controller2.o
 c17_sliding_controller2.o
+c18_sliding_controller2.o
 c19_sliding_controller2.o
 c20_sliding_controller2.o
+c21_sliding_controller2.o
+c22_sliding_controller2.o
 c28_sliding_controller2.o
 c29_sliding_controller2.o
 sliding_controller2_sfun_registry.o

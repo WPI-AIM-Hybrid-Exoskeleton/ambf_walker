@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sliding_controller2'.
 //
-// Model version                  : 1.216
+// Model version                  : 1.224
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Mon Aug 30 19:05:09 2021
+// C/C++ source code generated on : Fri Sep  3 16:19:00 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)

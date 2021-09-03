@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sliding_controller2'.
 //
-// Model version                  : 1.216
+// Model version                  : 1.224
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Mon Aug 30 19:05:09 2021
+// C/C++ source code generated on : Fri Sep  3 16:19:00 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -30,7 +30,9 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   // Variable: beta
   //  Referenced by: '<S31>/surface width SMC'
 
-  { 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8 },
+  { 0.50881249047401234, 0.50881249047401234, 0.50881249047401234,
+    0.50881249047401234, 0.50881249047401234, 0.50881249047401234,
+    0.50881249047401234 },
 
   // Variable: gamma
   //  Referenced by: '<S28>/Constant5'
@@ -45,7 +47,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   // Variable: interaction_sat
   //  Referenced by: '<S7>/Saturation'
 
-  5.0,
+  10.0,
 
   // Variable: spring
   //  Referenced by:
@@ -1667,7 +1669,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   },
 
   // Computed Parameter: Out1_Y0
-  //  Referenced by: '<S57>/Out1'
+  //  Referenced by: '<S60>/Out1'
 
   {
     {
@@ -2311,7 +2313,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   },
 
   // Computed Parameter: Out1_Y0_f
-  //  Referenced by: '<S58>/Out1'
+  //  Referenced by: '<S61>/Out1'
 
   {
     {
@@ -2955,7 +2957,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   },
 
   // Computed Parameter: Out1_Y0_i
-  //  Referenced by: '<S56>/Out1'
+  //  Referenced by: '<S59>/Out1'
 
   {
     {
@@ -3223,7 +3225,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   },
 
   // Computed Parameter: Constant_Value_f
-  //  Referenced by: '<S62>/Constant'
+  //  Referenced by: '<S65>/Constant'
 
   {
     false,                             // Success
@@ -3245,7 +3247,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   },
 
   // Computed Parameter: Constant_Value_dy
-  //  Referenced by: '<S63>/Constant'
+  //  Referenced by: '<S66>/Constant'
 
   {
     false,                             // Success
@@ -3267,7 +3269,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   },
 
   // Computed Parameter: exointernalcontrollerstate_Y0
-  //  Referenced by: '<S60>/exo internal controller state'
+  //  Referenced by: '<S63>/exo internal controller state'
 
   {
     false,                             // Success
@@ -3289,7 +3291,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   },
 
   // Computed Parameter: humaninternalcontrollerstate1_Y
-  //  Referenced by: '<S60>/human internal controller state1'
+  //  Referenced by: '<S63>/human internal controller state1'
 
   {
     false,                             // Success
@@ -3310,12 +3312,10 @@ sliding_controller2ModelClass::P_sliding_controller2_T
     }                                  // Message_SL_Info
   },
 
-  // Computed Parameter: Constant_Value_bv
+  // Computed Parameter: Constant_Value_bi
   //  Referenced by: '<S53>/Constant'
 
   {
-    false,                             // Success
-
     {
       0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }
     ,                                  // Tau
@@ -3334,7 +3334,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   },
 
   // Computed Parameter: Out1_Y0_d
-  //  Referenced by: '<S59>/Out1'
+  //  Referenced by: '<S62>/Out1'
 
   {
     false                              // Data
@@ -3355,7 +3355,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   },
 
   // Computed Parameter: Constant_Value_g
-  //  Referenced by: '<S61>/Constant'
+  //  Referenced by: '<S64>/Constant'
 
   {
     false                              // Data

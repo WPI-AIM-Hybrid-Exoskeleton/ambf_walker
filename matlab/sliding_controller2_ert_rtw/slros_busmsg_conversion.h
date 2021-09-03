@@ -2,12 +2,12 @@
 #define _SLROS_BUSMSG_CONVERSION_H_
 
 #include <ros/ros.h>
-#include <ambf_walker/DesiredJointsCmd.h>
+#include <rbdl_server/RBDLInverseDynamics.h>
 #include <std_srvs/SetBool.h>
 #include <ambf_walker/DesiredJoints.h>
 #include <ambf_walker/DesiredJointsCmdRequest.h>
-#include <ambf_walker/DesiredJointsCmdResponse.h>
 #include <rbdl_server/RBDLInverseDynamicsRequest.h>
+#include <rbdl_server/RBDLInverseDynamicsResponse.h>
 #include <ros/time.h>
 #include <sensor_msgs/JointState.h>
 #include <std_msgs/Bool.h>
@@ -25,11 +25,11 @@ void convertToBus(SL_Bus_sliding_controller2_ambf_walker_DesiredJoints* busPtr, 
 void convertFromBus(ambf_walker::DesiredJointsCmdRequest* msgPtr, SL_Bus_sliding_controller2_DesiredJointsCmdRequest_9kimzz const* busPtr);
 void convertToBus(SL_Bus_sliding_controller2_DesiredJointsCmdRequest_9kimzz* busPtr, ambf_walker::DesiredJointsCmdRequest const* msgPtr);
 
-void convertFromBus(ambf_walker::DesiredJointsCmdResponse* msgPtr, SL_Bus_sliding_controller2_DesiredJointsCmdResponse_df4541 const* busPtr);
-void convertToBus(SL_Bus_sliding_controller2_DesiredJointsCmdResponse_df4541* busPtr, ambf_walker::DesiredJointsCmdResponse const* msgPtr);
-
 void convertFromBus(rbdl_server::RBDLInverseDynamicsRequest* msgPtr, SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex const* busPtr);
 void convertToBus(SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex* busPtr, rbdl_server::RBDLInverseDynamicsRequest const* msgPtr);
+
+void convertFromBus(rbdl_server::RBDLInverseDynamicsResponse* msgPtr, SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h const* busPtr);
+void convertToBus(SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h* busPtr, rbdl_server::RBDLInverseDynamicsResponse const* msgPtr);
 
 void convertFromBus(ros::Time* msgPtr, SL_Bus_sliding_controller2_ros_time_Time const* busPtr);
 void convertToBus(SL_Bus_sliding_controller2_ros_time_Time* busPtr, ros::Time const* msgPtr);

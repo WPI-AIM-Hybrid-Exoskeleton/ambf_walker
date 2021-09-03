@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sliding_controller2'.
 //
-// Model version                  : 1.216
+// Model version                  : 1.224
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Mon Aug 30 19:05:09 2021
+// C/C++ source code generated on : Fri Sep  3 16:19:00 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -214,8 +214,8 @@ class sliding_controller2ModelClass {
   struct B_sliding_controller2_T {
     SL_Bus_sliding_controller2_sensor_msgs_JointState msg;// '<Root>/human msg'
     SL_Bus_sliding_controller2_sensor_msgs_JointState msg_n;// '<Root>/exo msg'
-    SL_Bus_sliding_controller2_sensor_msgs_JointState In1;// '<S58>/In1'
-    SL_Bus_sliding_controller2_sensor_msgs_JointState In1_n;// '<S57>/In1'
+    SL_Bus_sliding_controller2_sensor_msgs_JointState In1;// '<S61>/In1'
+    SL_Bus_sliding_controller2_sensor_msgs_JointState In1_n;// '<S60>/In1'
     SL_Bus_sliding_controller2_sensor_msgs_JointState In1_e;// '<S10>/In1'
     SL_Bus_sliding_controller2_sensor_msgs_JointState In1_j;// '<S9>/In1'
     SL_Bus_sliding_controller2_sensor_msgs_JointState msg_c;// '<S7>/human msg'
@@ -223,23 +223,21 @@ class sliding_controller2ModelClass {
     SL_Bus_sliding_controller2_sensor_msgs_JointState b_varargout_2;
     SL_Bus_sliding_controller2_sensor_msgs_JointState b_varargout_2_m;
     SL_Bus_sliding_controller2_std_msgs_String b_varargout_2_Name[16];
-    SL_Bus_sliding_controller2_ambf_walker_DesiredJoints In1_a;// '<S56>/In1'
+    SL_Bus_sliding_controller2_ambf_walker_DesiredJoints In1_a;// '<S59>/In1'
     SL_Bus_sliding_controller2_ambf_walker_DesiredJoints b_varargout_2_c;
-    real_T K[49];                      // '<S28>/MATLAB Function'
-    real_T B[49];                      // '<S28>/MATLAB Function'
     real_T change[49];
     real_T Kp0_k[49];
     real_T Kn0_c[49];
     real_T Bp0_b[49];
     real_T Bn0_p[49];
     real_T Y[49];
-    SL_Bus_sliding_controller2_DesiredJointsCmdRequest_9kimzz msg_a;
-                             // '<Root>/MATLAB Function - String Array Assign1'
-    SL_Bus_sliding_controller2_DesiredJointsCmdRequest_9kimzz BusAssignment1_j;// '<S31>/Bus Assignment1' 
+    SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex msg_o;
+                              // '<Root>/MATLAB Function - String Array Assign'
+    SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex BusAssignment;// '<S31>/Bus Assignment' 
     SL_Bus_sliding_controller2_std_msgs_Header BusAssignment1_m;// '<Root>/Bus Assignment1' 
     SL_Bus_sliding_controller2_std_srvs_SetBoolResponse b_varargout_1;
     uint8_T b_varargout_2_Header_FrameId[128];
-    SL_Bus_sliding_controller2_DesiredJointsCmdResponse_df4541 b_varargout_1_c;
+    SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h b_varargout_1_c;
     real_T Position[7];
     real_T Saturation[7];              // '<S7>/Saturation'
     real_T Sum[7];                     // '<S28>/Sum'
@@ -247,38 +245,43 @@ class sliding_controller2ModelClass {
     real_T qd_add_n[7];                // '<S28>/addmittance gain'
     real_T exosateration[7];           // '<S7>/exo sateration'
     real_T humansateration[7];         // '<S7>/human sateration'
+    real_T y[7];                       // '<S31>/MATLAB Function1'
+    real_T y_f[7];                     // '<S31>/MATLAB Function'
+    real_T K[49];                      // '<S28>/MATLAB Function'
+    real_T B[49];                      // '<S28>/MATLAB Function'
     real_T B_f[7];
-    real_T b_varargout_2_Effort[7];
     real_T q_add[7];                   // '<S28>/Sum1'
     real_T q_add_c[7];                 // '<S28>/Sum2'
+    real_T rtb_Add1_i_g[7];
     real_T dv[7];
+    real_T y_g[7];                     // '<S31>/MATLAB Function2'
     real_T work[7];
     real_T vn1[7];
     real_T vn2[7];
-    real_T rtb_y_f_g[4];
+    real_T rtb_y_f_m[4];
     int32_T jpvt[7];
     char_T b_zeroDelimServiceName[24];
     char_T b_zeroDelimTopic[24];
-    char_T b_zeroDelimTopic_g[23];
-    char_T b_zeroDelimServiceName_m[22];
-    char_T b_zeroDelimTopic_n[21];
-    char_T b_zeroDelimTopic_p[18];
-    SL_Bus_sliding_controller2_ros_time_Time rtb_CurrentTime_l;
-    real_T rtb_Subtract2_j[2];
+    char_T b_zeroDelimTopic_n[23];
+    char_T b_zeroDelimServiceName_p[22];
+    char_T b_zeroDelimTopic_l[21];
+    char_T b_zeroDelimTopic_j[18];
+    char_T b_zeroDelimServiceName_d[17];
+    SL_Bus_sliding_controller2_ros_time_Time rtb_CurrentTime_g;
+    real_T rtb_Subtract2_l[2];
     real_T rtb_danke_m_d[2];
-    real_T rtb_ankle_g[2];
+    real_T rtb_ankle_d[2];
     real_T rtb_dknee_l[2];
-    real_T rtb_Add_e_d[2];
-    real_T rtb_danke_e_d[2];
-    real_T rtb_Product2_l[2];
-    real_T rtb_danke_o[2];
-    real_T rtb_Add_c_b[2];
-    char_T b_zeroDelimServiceName_n[14];
+    real_T rtb_Add_e_o[2];
+    real_T rtb_danke_e_b[2];
+    real_T rtb_Product2_n[2];
+    real_T rtb_danke_b[2];
+    real_T rtb_Add_c_l[2];
     real_T wj;
     real_T b_varargout_2_Header_Stamp_Sec;
     real_T Saturation_tmp;
     real_T unnamed_idx_0;
-    real_T unnamed_idx_0_b;
+    real_T unnamed_idx_0_h;
     real_T unnamed_idx_1;
     real_T rtb_danke_m_idx_0;
     real_T rtb_ankle_idx_0;
@@ -287,7 +290,6 @@ class sliding_controller2ModelClass {
     real_T rtb_dknee_idx_1;
     real_T rtb_Add_e_tmp_tmp;
     real_T Saturation_tmp_tmp;
-    real_T rtb_Add_e_tmp_tmp_l;
     real_T rtb_Add_e_tmp;
     real_T smax;
     real_T beta1;
@@ -296,7 +298,7 @@ class sliding_controller2ModelClass {
     real_T t;
     SL_Bus_sliding_controller2_std_msgs_Float64 BusAssignment_m;// '<Root>/Bus Assignment' 
     SL_Bus_ROSVariableLengthArrayInfo b_varargout_2_Effort_SL_Info;
-    SL_Bus_sliding_controller2_std_msgs_Bool In1_k;// '<S59>/In1'
+    SL_Bus_sliding_controller2_std_msgs_Bool In1_k;// '<S62>/In1'
     int32_T j;
     int32_T e_j;
     int32_T i;
@@ -313,13 +315,13 @@ class sliding_controller2ModelClass {
     int32_T ia;
     uint32_T b_varargout_2_Header_Seq;
     uint32_T b_varargout_2_Header_FrameId_SL;
-    uint32_T b_varargout_2_Header_FrameId__b;
+    uint32_T b_varargout_2_Header_FrameId__d;
     uint32_T b_varargout_2_Name_SL_Info_Curr;
     uint32_T b_varargout_2_Name_SL_Info_Rece;
     uint32_T b_varargout_2_Position_SL_Info_;
-    uint32_T b_varargout_2_Position_SL_Inf_j;
+    uint32_T b_varargout_2_Position_SL_Inf_f;
     uint32_T b_varargout_2_Velocity_SL_Info_;
-    uint32_T b_varargout_2_Velocity_SL_Inf_a;
+    uint32_T b_varargout_2_Velocity_SL_Inf_j;
     boolean_T LogicalOperator;         // '<Root>/Logical Operator'
     boolean_T SourceBlock_o1;          // '<S16>/SourceBlock'
     boolean_T SourceBlock_o1_h;        // '<S15>/SourceBlock'
@@ -329,15 +331,15 @@ class sliding_controller2ModelClass {
   struct DW_sliding_controller2_T {
     ros_slros_internal_block_Curr_T obj;// '<Root>/Current Time'
     ros_slroscpp_internal_block_P_T obj_m;// '<S13>/SinkBlock'
-    ros_slroscpp_internal_block_P_T obj_mp;// '<S55>/SinkBlock'
-    ros_slroscpp_internal_block_P_T obj_n;// '<S54>/SinkBlock'
+    ros_slroscpp_internal_block_P_T obj_mp;// '<S58>/SinkBlock'
+    ros_slroscpp_internal_block_P_T obj_n;// '<S57>/SinkBlock'
     ros_slroscpp_internal_block_P_T obj_j;// '<S27>/SinkBlock'
     ros_slroscpp_internal_block_P_T obj_o;// '<S26>/SinkBlock'
-    ros_slroscpp_internal_block_S_T obj_i;// '<S63>/ServiceCaller'
-    ros_slroscpp_internal_block_S_T obj_b;// '<S62>/ServiceCaller'
-    ros_slroscpp_internal_block_S_T obj_h;// '<S53>/ServiceCaller'
+    ros_slroscpp_internal_block_S_T obj_i;// '<S66>/ServiceCaller'
+    ros_slroscpp_internal_block_S_T obj_b;// '<S65>/ServiceCaller'
+    ros_slroscpp_internal_block_S_T obj_ox;// '<S53>/ServiceCaller'
     ros_slroscpp_internal_block_k_T obj_c;// '<S17>/SourceBlock'
-    ros_slroscpp_internal_block_k_T obj_hv;// '<S16>/SourceBlock'
+    ros_slroscpp_internal_block_k_T obj_h;// '<S16>/SourceBlock'
     ros_slroscpp_internal_block_k_T obj_cg;// '<S15>/SourceBlock'
     ros_slroscpp_internal_block_k_T obj_g;// '<S14>/SourceBlock'
     int8_T If_ActiveSubsystem;         // '<S18>/If'
@@ -403,19 +405,19 @@ class sliding_controller2ModelClass {
                                                                   //  Referenced by: '<S10>/human'
 
     SL_Bus_sliding_controller2_sensor_msgs_JointState Out1_Y0;// Computed Parameter: Out1_Y0
-                                                                 //  Referenced by: '<S57>/Out1'
+                                                                 //  Referenced by: '<S60>/Out1'
 
     SL_Bus_sliding_controller2_sensor_msgs_JointState Constant_Value_a;// Computed Parameter: Constant_Value_a
                                                                       //  Referenced by: '<S15>/Constant'
 
     SL_Bus_sliding_controller2_sensor_msgs_JointState Out1_Y0_f;// Computed Parameter: Out1_Y0_f
-                                                                   //  Referenced by: '<S58>/Out1'
+                                                                   //  Referenced by: '<S61>/Out1'
 
     SL_Bus_sliding_controller2_sensor_msgs_JointState Constant_Value_j;// Computed Parameter: Constant_Value_j
                                                                       //  Referenced by: '<S16>/Constant'
 
     SL_Bus_sliding_controller2_ambf_walker_DesiredJoints Out1_Y0_i;// Computed Parameter: Out1_Y0_i
-                                                                      //  Referenced by: '<S56>/Out1'
+                                                                      //  Referenced by: '<S59>/Out1'
 
     SL_Bus_sliding_controller2_ambf_walker_DesiredJoints Constant_Value_b;// Computed Parameter: Constant_Value_b
                                                                       //  Referenced by: '<S14>/Constant'
@@ -430,29 +432,30 @@ class sliding_controller2ModelClass {
                                                                    //  Referenced by: '<S5>/Constant'
 
     SL_Bus_sliding_controller2_std_srvs_SetBoolResponse Constant_Value_f;// Computed Parameter: Constant_Value_f
-                                                                      //  Referenced by: '<S62>/Constant'
+                                                                      //  Referenced by: '<S65>/Constant'
 
     SL_Bus_sliding_controller2_std_srvs_SetBoolResponse Constant_Value_dy;// Computed Parameter: Constant_Value_dy
-                                                                      //  Referenced by: '<S63>/Constant'
+                                                                      //  Referenced by: '<S66>/Constant'
 
     SL_Bus_sliding_controller2_std_srvs_SetBoolResponse
       exointernalcontrollerstate_Y0;
                             // Computed Parameter: exointernalcontrollerstate_Y0
-                               //  Referenced by: '<S60>/exo internal controller state'
+                               //  Referenced by: '<S63>/exo internal controller state'
 
     SL_Bus_sliding_controller2_std_srvs_SetBoolResponse
       humaninternalcontrollerstate1_Y;
                           // Computed Parameter: humaninternalcontrollerstate1_Y
-                             //  Referenced by: '<S60>/human internal controller state1'
+                             //  Referenced by: '<S63>/human internal controller state1'
 
-    SL_Bus_sliding_controller2_DesiredJointsCmdResponse_df4541 Constant_Value_bv;// Computed Parameter: Constant_Value_bv
-                                                                      //  Referenced by: '<S53>/Constant'
+    SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h
+      Constant_Value_bi;               // Computed Parameter: Constant_Value_bi
+                                          //  Referenced by: '<S53>/Constant'
 
     SL_Bus_sliding_controller2_std_msgs_Bool Constant_Value_p;// Computed Parameter: Constant_Value_p
                                                                  //  Referenced by: '<S23>/Constant'
 
     SL_Bus_sliding_controller2_std_msgs_Bool Out1_Y0_d;// Computed Parameter: Out1_Y0_d
-                                                          //  Referenced by: '<S59>/Out1'
+                                                          //  Referenced by: '<S62>/Out1'
 
     SL_Bus_sliding_controller2_std_msgs_Bool Constant_Value_ea;// Computed Parameter: Constant_Value_ea
                                                                   //  Referenced by: '<S17>/Constant'
@@ -461,7 +464,7 @@ class sliding_controller2ModelClass {
                                                                     //  Referenced by: '<S1>/Constant'
 
     SL_Bus_sliding_controller2_std_srvs_SetBoolRequest Constant_Value_g;// Computed Parameter: Constant_Value_g
-                                                                      //  Referenced by: '<S61>/Constant'
+                                                                      //  Referenced by: '<S64>/Constant'
 
     real_T exotau_Y0;                  // Computed Parameter: exotau_Y0
                                           //  Referenced by: '<S7>/exo tau'
@@ -582,6 +585,10 @@ class sliding_controller2ModelClass {
   // private member function(s) for subsystem '<S40>/MATLAB Function1'
   static void sliding_control_MATLABFunction1(const real_T rtu_q[2], real_T
     rty_y[4]);
+
+  // private member function(s) for subsystem '<S31>/MATLAB Function'
+  static void sliding_contro_MATLABFunction_c(const real_T rtu_u[7], real_T
+    rty_y[7]);
 
   // private member function(s) for subsystem '<Root>'
   void sliding_control_SystemCore_step(boolean_T *varargout_1, uint32_T
@@ -707,17 +714,20 @@ class sliding_controller2ModelClass {
 //  '<S50>'  : 'sliding_controller2/Controller/F->tau1/Subsystem1/MATLAB Function'
 //  '<S51>'  : 'sliding_controller2/Controller/F->tau1/Subsystem1/MATLAB Function1'
 //  '<S52>'  : 'sliding_controller2/Controller/addmittance/MATLAB Function'
-//  '<S53>'  : 'sliding_controller2/Controller/sliding mode controller/Call Service1'
-//  '<S54>'  : 'sliding_controller2/Enabled Subsystem/Publish1'
-//  '<S55>'  : 'sliding_controller2/Enabled Subsystem/Publish2'
-//  '<S56>'  : 'sliding_controller2/Subscribe/Enabled Subsystem'
-//  '<S57>'  : 'sliding_controller2/Subscribe1/Enabled Subsystem'
-//  '<S58>'  : 'sliding_controller2/Subscribe2/Enabled Subsystem'
-//  '<S59>'  : 'sliding_controller2/Subscribe4/Enabled Subsystem'
-//  '<S60>'  : 'sliding_controller2/Subsystem1/If Action Subsystem'
-//  '<S61>'  : 'sliding_controller2/Subsystem1/If Action Subsystem/Blank Message'
-//  '<S62>'  : 'sliding_controller2/Subsystem1/If Action Subsystem/Call Service'
-//  '<S63>'  : 'sliding_controller2/Subsystem1/If Action Subsystem/Call Service1'
+//  '<S53>'  : 'sliding_controller2/Controller/sliding mode controller/Call Service'
+//  '<S54>'  : 'sliding_controller2/Controller/sliding mode controller/MATLAB Function'
+//  '<S55>'  : 'sliding_controller2/Controller/sliding mode controller/MATLAB Function1'
+//  '<S56>'  : 'sliding_controller2/Controller/sliding mode controller/MATLAB Function2'
+//  '<S57>'  : 'sliding_controller2/Enabled Subsystem/Publish1'
+//  '<S58>'  : 'sliding_controller2/Enabled Subsystem/Publish2'
+//  '<S59>'  : 'sliding_controller2/Subscribe/Enabled Subsystem'
+//  '<S60>'  : 'sliding_controller2/Subscribe1/Enabled Subsystem'
+//  '<S61>'  : 'sliding_controller2/Subscribe2/Enabled Subsystem'
+//  '<S62>'  : 'sliding_controller2/Subscribe4/Enabled Subsystem'
+//  '<S63>'  : 'sliding_controller2/Subsystem1/If Action Subsystem'
+//  '<S64>'  : 'sliding_controller2/Subsystem1/If Action Subsystem/Blank Message'
+//  '<S65>'  : 'sliding_controller2/Subsystem1/If Action Subsystem/Call Service'
+//  '<S66>'  : 'sliding_controller2/Subsystem1/If Action Subsystem/Call Service1'
 
 #endif                                 // RTW_HEADER_sliding_controller2_h_
 

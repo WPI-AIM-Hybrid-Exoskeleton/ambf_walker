@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sliding_controller2'.
 //
-// Model version                  : 1.216
+// Model version                  : 1.224
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Mon Aug 30 19:05:09 2021
+// C/C++ source code generated on : Fri Sep  3 16:19:00 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -209,14 +209,12 @@ struct SL_Bus_sliding_controller2_std_msgs_Bool
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_DesiredJointsCmdResponse_df4541_
-#define DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_DesiredJointsCmdResponse_df4541_
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h_
 
-// MsgType=ambf_walker/DesiredJointsCmdResponse
-struct SL_Bus_sliding_controller2_DesiredJointsCmdResponse_df4541
+// MsgType=rbdl_server/RBDLInverseDynamicsResponse
+struct SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h
 {
-  boolean_T Success;
-
   // IsVarLen=1:VarLenCategory=data:VarLenElem=Tau_SL_Info:TruncateAction=warn
   real_T Tau[7];
 
