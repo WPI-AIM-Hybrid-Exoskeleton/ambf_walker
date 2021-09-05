@@ -19,6 +19,8 @@ c20_sliding_controller_rbdl.o
 c21_sliding_controller_rbdl.o
 c22_sliding_controller_rbdl.o
 c23_sliding_controller_rbdl.o
+c24_sliding_controller_rbdl.o
+c25_sliding_controller_rbdl.o
 c26_sliding_controller_rbdl.o
 c28_sliding_controller_rbdl.o
 c29_sliding_controller_rbdl.o

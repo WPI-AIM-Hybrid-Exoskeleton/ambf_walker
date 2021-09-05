@@ -21,6 +21,8 @@
 #include "c21_sliding_controller_rbdl.h"
 #include "c22_sliding_controller_rbdl.h"
 #include "c23_sliding_controller_rbdl.h"
+#include "c24_sliding_controller_rbdl.h"
+#include "c25_sliding_controller_rbdl.h"
 #include "c26_sliding_controller_rbdl.h"
 #include "c28_sliding_controller_rbdl.h"
 #include "c29_sliding_controller_rbdl.h"
@@ -147,6 +149,16 @@ unsigned int sf_sliding_controller_rbdl_method_dispatcher(SimStruct
 
   if (chartFileNumber==23) {
     c23_sliding_controller_rbdl_method_dispatcher(simstructPtr, method, data);
+    return 1;
+  }
+
+  if (chartFileNumber==24) {
+    c24_sliding_controller_rbdl_method_dispatcher(simstructPtr, method, data);
+    return 1;
+  }
+
+  if (chartFileNumber==25) {
+    c25_sliding_controller_rbdl_method_dispatcher(simstructPtr, method, data);
     return 1;
   }
 
@@ -350,6 +362,22 @@ unsigned int sf_sliding_controller_rbdl_process_check_sum_call( int nlhs,
           break;
         }
 
+       case 24:
+        {
+          extern void sf_c24_sliding_controller_rbdl_get_check_sum(mxArray *
+            plhs[]);
+          sf_c24_sliding_controller_rbdl_get_check_sum(plhs);
+          break;
+        }
+
+       case 25:
+        {
+          extern void sf_c25_sliding_controller_rbdl_get_check_sum(mxArray *
+            plhs[]);
+          sf_c25_sliding_controller_rbdl_get_check_sum(plhs);
+          break;
+        }
+
        case 26:
         {
           extern void sf_c26_sliding_controller_rbdl_get_check_sum(mxArray *
@@ -456,7 +484,7 @@ unsigned int sf_sliding_controller_rbdl_get_eml_resolved_functions_info( int
 
      case 6:
       {
-        if (strcmp(instanceChksum, "s1iNKbPsT8ydOMDUg1ruQfG") == 0) {
+        if (strcmp(instanceChksum, "svi1IOD2u267XmhzOouF1CC") == 0) {
           extern const mxArray
             *sf_c6_sliding_controller_rbdl_get_eml_resolved_functions_info(void);
           mxArray *persistentMxArray = (mxArray *)
@@ -482,7 +510,7 @@ unsigned int sf_sliding_controller_rbdl_get_eml_resolved_functions_info( int
 
      case 8:
       {
-        if (strcmp(instanceChksum, "sfyie85e4RPqcu3zKnkAS7F") == 0) {
+        if (strcmp(instanceChksum, "svi1IOD2u267XmhzOouF1CC") == 0) {
           extern const mxArray
             *sf_c8_sliding_controller_rbdl_get_eml_resolved_functions_info(void);
           mxArray *persistentMxArray = (mxArray *)
@@ -688,6 +716,32 @@ unsigned int sf_sliding_controller_rbdl_get_eml_resolved_functions_info( int
         }
       }
 
+     case 24:
+      {
+        if (strcmp(instanceChksum, "sdegTANPF1GH9p3UVy5QBRH") == 0) {
+          extern const mxArray
+            *sf_c24_sliding_controller_rbdl_get_eml_resolved_functions_info(void);
+          mxArray *persistentMxArray = (mxArray *)
+            sf_c24_sliding_controller_rbdl_get_eml_resolved_functions_info();
+          plhs[0] = mxDuplicateArray(persistentMxArray);
+          mxDestroyArray(persistentMxArray);
+          break;
+        }
+      }
+
+     case 25:
+      {
+        if (strcmp(instanceChksum, "sdegTANPF1GH9p3UVy5QBRH") == 0) {
+          extern const mxArray
+            *sf_c25_sliding_controller_rbdl_get_eml_resolved_functions_info(void);
+          mxArray *persistentMxArray = (mxArray *)
+            sf_c25_sliding_controller_rbdl_get_eml_resolved_functions_info();
+          plhs[0] = mxDuplicateArray(persistentMxArray);
+          mxDestroyArray(persistentMxArray);
+          break;
+        }
+      }
+
      case 26:
       {
         if (strcmp(instanceChksum, "sd6D4Ot9C8kffXwxtaQFSbB") == 0) {
@@ -784,7 +838,7 @@ unsigned int sf_sliding_controller_rbdl_third_party_uses_info( int nlhs, mxArray
 
      case 6:
       {
-        if (strcmp(tpChksum, "s1iNKbPsT8ydOMDUg1ruQfG") == 0) {
+        if (strcmp(tpChksum, "svi1IOD2u267XmhzOouF1CC") == 0) {
           extern mxArray *sf_c6_sliding_controller_rbdl_third_party_uses_info
             (void);
           plhs[0] = sf_c6_sliding_controller_rbdl_third_party_uses_info();
@@ -804,7 +858,7 @@ unsigned int sf_sliding_controller_rbdl_third_party_uses_info( int nlhs, mxArray
 
      case 8:
       {
-        if (strcmp(tpChksum, "sfyie85e4RPqcu3zKnkAS7F") == 0) {
+        if (strcmp(tpChksum, "svi1IOD2u267XmhzOouF1CC") == 0) {
           extern mxArray *sf_c8_sliding_controller_rbdl_third_party_uses_info
             (void);
           plhs[0] = sf_c8_sliding_controller_rbdl_third_party_uses_info();
@@ -962,6 +1016,26 @@ unsigned int sf_sliding_controller_rbdl_third_party_uses_info( int nlhs, mxArray
         }
       }
 
+     case 24:
+      {
+        if (strcmp(tpChksum, "sdegTANPF1GH9p3UVy5QBRH") == 0) {
+          extern mxArray *sf_c24_sliding_controller_rbdl_third_party_uses_info
+            (void);
+          plhs[0] = sf_c24_sliding_controller_rbdl_third_party_uses_info();
+          break;
+        }
+      }
+
+     case 25:
+      {
+        if (strcmp(tpChksum, "sdegTANPF1GH9p3UVy5QBRH") == 0) {
+          extern mxArray *sf_c25_sliding_controller_rbdl_third_party_uses_info
+            (void);
+          plhs[0] = sf_c25_sliding_controller_rbdl_third_party_uses_info();
+          break;
+        }
+      }
+
      case 26:
       {
         if (strcmp(tpChksum, "sd6D4Ot9C8kffXwxtaQFSbB") == 0) {
@@ -1040,7 +1114,7 @@ unsigned int sf_sliding_controller_rbdl_jit_fallback_info( int nlhs, mxArray *
 
      case 6:
       {
-        if (strcmp(tpChksum, "s1iNKbPsT8ydOMDUg1ruQfG") == 0) {
+        if (strcmp(tpChksum, "svi1IOD2u267XmhzOouF1CC") == 0) {
           extern mxArray *sf_c6_sliding_controller_rbdl_jit_fallback_info(void);
           plhs[0] = sf_c6_sliding_controller_rbdl_jit_fallback_info();
           break;
@@ -1058,7 +1132,7 @@ unsigned int sf_sliding_controller_rbdl_jit_fallback_info( int nlhs, mxArray *
 
      case 8:
       {
-        if (strcmp(tpChksum, "sfyie85e4RPqcu3zKnkAS7F") == 0) {
+        if (strcmp(tpChksum, "svi1IOD2u267XmhzOouF1CC") == 0) {
           extern mxArray *sf_c8_sliding_controller_rbdl_jit_fallback_info(void);
           plhs[0] = sf_c8_sliding_controller_rbdl_jit_fallback_info();
           break;
@@ -1200,6 +1274,24 @@ unsigned int sf_sliding_controller_rbdl_jit_fallback_info( int nlhs, mxArray *
         }
       }
 
+     case 24:
+      {
+        if (strcmp(tpChksum, "sdegTANPF1GH9p3UVy5QBRH") == 0) {
+          extern mxArray *sf_c24_sliding_controller_rbdl_jit_fallback_info(void);
+          plhs[0] = sf_c24_sliding_controller_rbdl_jit_fallback_info();
+          break;
+        }
+      }
+
+     case 25:
+      {
+        if (strcmp(tpChksum, "sdegTANPF1GH9p3UVy5QBRH") == 0) {
+          extern mxArray *sf_c25_sliding_controller_rbdl_jit_fallback_info(void);
+          plhs[0] = sf_c25_sliding_controller_rbdl_jit_fallback_info();
+          break;
+        }
+      }
+
      case 26:
       {
         if (strcmp(tpChksum, "sd6D4Ot9C8kffXwxtaQFSbB") == 0) {
@@ -1279,7 +1371,7 @@ unsigned int sf_sliding_controller_rbdl_get_post_codegen_info( int nlhs, mxArray
 
      case 6:
       {
-        if (strcmp(tpChksum, "s1iNKbPsT8ydOMDUg1ruQfG") == 0) {
+        if (strcmp(tpChksum, "svi1IOD2u267XmhzOouF1CC") == 0) {
           const char *sf_c6_sliding_controller_rbdl_get_post_codegen_info(void);
           const char* encoded_post_codegen_info =
             sf_c6_sliding_controller_rbdl_get_post_codegen_info();
@@ -1301,7 +1393,7 @@ unsigned int sf_sliding_controller_rbdl_get_post_codegen_info( int nlhs, mxArray
 
      case 8:
       {
-        if (strcmp(tpChksum, "sfyie85e4RPqcu3zKnkAS7F") == 0) {
+        if (strcmp(tpChksum, "svi1IOD2u267XmhzOouF1CC") == 0) {
           const char *sf_c8_sliding_controller_rbdl_get_post_codegen_info(void);
           const char* encoded_post_codegen_info =
             sf_c8_sliding_controller_rbdl_get_post_codegen_info();
@@ -1475,6 +1567,28 @@ unsigned int sf_sliding_controller_rbdl_get_post_codegen_info( int nlhs, mxArray
         }
       }
 
+     case 24:
+      {
+        if (strcmp(tpChksum, "sdegTANPF1GH9p3UVy5QBRH") == 0) {
+          const char *sf_c24_sliding_controller_rbdl_get_post_codegen_info(void);
+          const char* encoded_post_codegen_info =
+            sf_c24_sliding_controller_rbdl_get_post_codegen_info();
+          plhs[0] = sf_mex_decode(encoded_post_codegen_info);
+          break;
+        }
+      }
+
+     case 25:
+      {
+        if (strcmp(tpChksum, "sdegTANPF1GH9p3UVy5QBRH") == 0) {
+          const char *sf_c25_sliding_controller_rbdl_get_post_codegen_info(void);
+          const char* encoded_post_codegen_info =
+            sf_c25_sliding_controller_rbdl_get_post_codegen_info();
+          plhs[0] = sf_mex_decode(encoded_post_codegen_info);
+          break;
+        }
+      }
+
      case 26:
       {
         if (strcmp(tpChksum, "sd6D4Ot9C8kffXwxtaQFSbB") == 0) {
@@ -1558,7 +1672,7 @@ unsigned int sf_sliding_controller_rbdl_updateBuildInfo_args_info( int nlhs,
 
      case 6:
       {
-        if (strcmp(tpChksum, "s1iNKbPsT8ydOMDUg1ruQfG") == 0) {
+        if (strcmp(tpChksum, "svi1IOD2u267XmhzOouF1CC") == 0) {
           extern mxArray
             *sf_c6_sliding_controller_rbdl_updateBuildInfo_args_info(void);
           plhs[0] = sf_c6_sliding_controller_rbdl_updateBuildInfo_args_info();
@@ -1578,7 +1692,7 @@ unsigned int sf_sliding_controller_rbdl_updateBuildInfo_args_info( int nlhs,
 
      case 8:
       {
-        if (strcmp(tpChksum, "sfyie85e4RPqcu3zKnkAS7F") == 0) {
+        if (strcmp(tpChksum, "svi1IOD2u267XmhzOouF1CC") == 0) {
           extern mxArray
             *sf_c8_sliding_controller_rbdl_updateBuildInfo_args_info(void);
           plhs[0] = sf_c8_sliding_controller_rbdl_updateBuildInfo_args_info();
@@ -1732,6 +1846,26 @@ unsigned int sf_sliding_controller_rbdl_updateBuildInfo_args_info( int nlhs,
           extern mxArray
             *sf_c23_sliding_controller_rbdl_updateBuildInfo_args_info(void);
           plhs[0] = sf_c23_sliding_controller_rbdl_updateBuildInfo_args_info();
+          break;
+        }
+      }
+
+     case 24:
+      {
+        if (strcmp(tpChksum, "sdegTANPF1GH9p3UVy5QBRH") == 0) {
+          extern mxArray
+            *sf_c24_sliding_controller_rbdl_updateBuildInfo_args_info(void);
+          plhs[0] = sf_c24_sliding_controller_rbdl_updateBuildInfo_args_info();
+          break;
+        }
+      }
+
+     case 25:
+      {
+        if (strcmp(tpChksum, "sdegTANPF1GH9p3UVy5QBRH") == 0) {
+          extern mxArray
+            *sf_c25_sliding_controller_rbdl_updateBuildInfo_args_info(void);
+          plhs[0] = sf_c25_sliding_controller_rbdl_updateBuildInfo_args_info();
           break;
         }
       }

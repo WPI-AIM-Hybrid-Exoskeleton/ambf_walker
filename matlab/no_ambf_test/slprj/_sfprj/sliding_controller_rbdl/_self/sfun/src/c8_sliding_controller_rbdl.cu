@@ -66,95 +66,20 @@ static void mdl_cleanup_runtime_resources_c8_sliding_controller_rbdl
 static void initSimStructsc8_sliding_controller_rbdl
   (SFc8_sliding_controller_rbdlInstanceStruct *chartInstance);
 static void c8_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_b_msg, const char_T *c8_identifier,
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_y);
+  *chartInstance, const mxArray *c8_b_y, const char_T *c8_identifier, real_T
+  c8_c_y[7]);
 static void c8_b_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId,
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_y);
-static void c8_c_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId,
-  c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *c8_y);
-static uint32_T c8_d_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId);
-static c8_SL_Bus_sliding_controller_rbdl_ros_time_Time c8_e_emlrt_marshallIn
-  (SFc8_sliding_controller_rbdlInstanceStruct *chartInstance, const mxArray
-   *c8_u, const emlrtMsgIdentifier *c8_parentId);
-static real_T c8_f_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId);
-static void c8_g_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId,
-  uint8_T c8_y[128]);
-static c8_SL_Bus_ROSVariableLengthArrayInfo c8_h_emlrt_marshallIn
-  (SFc8_sliding_controller_rbdlInstanceStruct *chartInstance, const mxArray
-   *c8_u, const emlrtMsgIdentifier *c8_parentId);
-static void c8_i_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId,
-  c8_SL_Bus_sliding_controller_rbdl_std_msgs_String c8_y[16]);
-static void c8_j_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId,
-  real_T c8_y[7]);
-static uint8_T c8_k_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct *
+  *chartInstance, const mxArray *c8_b_u, const emlrtMsgIdentifier *c8_parentId,
+  real_T c8_b_y[7]);
+static uint8_T c8_c_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct *
   chartInstance, const mxArray *c8_b_is_active_c8_sliding_controller_rbdl, const
   char_T *c8_identifier);
-static uint8_T c8_l_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct *
-  chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId);
+static uint8_T c8_d_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct *
+  chartInstance, const mxArray *c8_b_u, const emlrtMsgIdentifier *c8_parentId);
 static void c8_eML_blk_kernel(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState
-  *c8_b_blankMsg);
-static __global__ void c8_sf_gateway_c8_sliding_controller_rbdl_kernel1
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg,
-   c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg);
-static __global__ void c8_sf_gateway_c8_sliding_controller_rbdl_kernel2(const
-  int32_T c8_i1, c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState
-  *c8_b_blankMsg, c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState
-  *c8_b_msg);
-static __global__ void c8_sf_gateway_c8_sliding_controller_rbdl_kernel3
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg,
-   c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg);
-static __global__ void c8_sf_gateway_c8_sliding_controller_rbdl_kernel4
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg,
-   c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_r);
-static __global__ void c8_sf_gateway_c8_sliding_controller_rbdl_kernel5(const
-  int32_T c8_i5, c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState
-  *c8_b_msg, c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_r);
-static __global__ void c8_sf_gateway_c8_sliding_controller_rbdl_kernel6
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg,
-   c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_r);
-static __global__ void c8_sf_gateway_c8_sliding_controller_rbdl_kernel7(const
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_r,
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg);
-static __global__ void c8_sf_gateway_c8_sliding_controller_rbdl_kernel8(const
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_r, const int32_T
-  c8_i9, c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg);
-static __global__ void c8_sf_gateway_c8_sliding_controller_rbdl_kernel9(const
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_r,
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg);
-static __global__ void c8_eML_blk_kernel_kernel10
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg);
-static __global__ void c8_eML_blk_kernel_kernel11(const uint8_T c8_uv[12],
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg);
-static __global__ void c8_eML_blk_kernel_kernel12
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg);
-static __global__ void c8_eML_blk_kernel_kernel13(const uint8_T c8_uv1[13],
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg);
-static __global__ void c8_eML_blk_kernel_kernel14
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg);
-static __global__ void c8_eML_blk_kernel_kernel15(const uint8_T c8_uv2[14],
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg);
-static __global__ void c8_eML_blk_kernel_kernel16
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg);
-static __global__ void c8_eML_blk_kernel_kernel17(const uint8_T c8_uv3[13],
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg);
-static __global__ void c8_eML_blk_kernel_kernel18
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg);
-static __global__ void c8_eML_blk_kernel_kernel19(const uint8_T c8_uv4[14],
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg);
-static __global__ void c8_eML_blk_kernel_kernel20
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg);
-static __global__ void c8_eML_blk_kernel_kernel21(const uint8_T c8_uv5[15],
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg);
-static __global__ void c8_eML_blk_kernel_kernel22
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg);
+  *chartInstance, real_T c8_b_u[7]);
+static __global__ void c8_sf_gateway_c8_sliding_controller_rbdl_kernel1(real_T
+  c8_b_u[7], real_T c8_b_y[7]);
 static void init_dsm_address_info(SFc8_sliding_controller_rbdlInstanceStruct
   *chartInstance);
 static void init_simulink_io_address(SFc8_sliding_controller_rbdlInstanceStruct *
@@ -170,13 +95,6 @@ static void initialize_c8_sliding_controller_rbdl
   _sfTime_ = sf_get_time(chartInstance->S);
   chartInstance->c8_is_active_c8_sliding_controller_rbdl = 0U;
   cudaGetLastError();
-  cudaMalloc(&chartInstance->c8_gpu_uv5, 15UL);
-  cudaMalloc(&chartInstance->c8_gpu_uv4, 14UL);
-  cudaMalloc(&chartInstance->c8_gpu_uv3, 13UL);
-  cudaMalloc(&chartInstance->c8_gpu_uv2, 14UL);
-  cudaMalloc(&chartInstance->c8_gpu_uv1, 13UL);
-  cudaMalloc(&chartInstance->c8_gpu_uv, 12UL);
-  cudaMalloc(&chartInstance->c8_gpu_blankMsg, 2536UL);
 }
 
 static void initialize_params_c8_sliding_controller_rbdl
@@ -211,311 +129,23 @@ static void ext_mode_exec_c8_sliding_controller_rbdl
 static const mxArray *get_sim_state_c8_sliding_controller_rbdl
   (SFc8_sliding_controller_rbdlInstanceStruct *chartInstance)
 {
-  static const char_T *c8_sv[9] = { "Header", "Name", "Name_SL_Info", "Position",
-    "Position_SL_Info", "Velocity", "Velocity_SL_Info", "Effort",
-    "Effort_SL_Info" };
-
-  static const char_T *c8_sv1[4] = { "Seq", "Stamp", "FrameId",
-    "FrameId_SL_Info" };
-
-  static const char_T *c8_sv2[2] = { "Sec", "Nsec" };
-
-  static const char_T *c8_sv3[2] = { "CurrentLength", "ReceivedLength" };
-
-  static const char_T *c8_sv4[2] = { "Data", "Data_SL_Info" };
-
-  c8_SL_Bus_sliding_controller_rbdl_std_msgs_String c8_g_u[16];
-  const c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *c8_r;
-  const mxArray *c8_ab_y = NULL;
   const mxArray *c8_b_y = NULL;
-  const mxArray *c8_bb_y = NULL;
   const mxArray *c8_c_y = NULL;
-  const mxArray *c8_cb_y = NULL;
   const mxArray *c8_d_y = NULL;
-  const mxArray *c8_db_y = NULL;
-  const mxArray *c8_e_y = NULL;
-  const mxArray *c8_eb_y = NULL;
-  const mxArray *c8_f_y = NULL;
-  const mxArray *c8_fb_y = NULL;
-  const mxArray *c8_g_y = NULL;
-  const mxArray *c8_gb_y = NULL;
-  const mxArray *c8_h_y = NULL;
-  const mxArray *c8_i_y = NULL;
-  const mxArray *c8_j_y = NULL;
-  const mxArray *c8_k_y = NULL;
-  const mxArray *c8_l_y = NULL;
-  const mxArray *c8_m_y = NULL;
-  const mxArray *c8_n_y = NULL;
-  const mxArray *c8_o_y = NULL;
-  const mxArray *c8_p_y = NULL;
-  const mxArray *c8_q_y = NULL;
-  const mxArray *c8_r_y = NULL;
-  const mxArray *c8_s_y = NULL;
   const mxArray *c8_st;
-  const mxArray *c8_t_y = NULL;
-  const mxArray *c8_u_y = NULL;
-  const mxArray *c8_v_y = NULL;
-  const mxArray *c8_w_y = NULL;
-  const mxArray *c8_x_y = NULL;
-  const mxArray *c8_y = NULL;
-  const mxArray *c8_y_y = NULL;
-  real_T c8_l_u[7];
-  real_T c8_b_u;
-  real_T c8_c_u;
-  real_T c8_u_Stamp_Nsec;
-  real_T c8_u_Stamp_Sec;
-  int32_T c8_iv[1];
-  int32_T c8_b_i;
-  int32_T c8_i;
-  int32_T c8_i1;
-  int32_T c8_i2;
-  int32_T c8_i3;
-  int32_T c8_i4;
-  int32_T c8_i5;
-  int32_T c8_i6;
-  int32_T c8_i7;
-  uint32_T c8_e_u;
-  uint32_T c8_f_u;
-  uint32_T c8_h_u;
-  uint32_T c8_i_u;
-  uint32_T c8_j_u;
-  uint32_T c8_k_u;
-  uint32_T c8_m_u;
-  uint32_T c8_n_u;
-  uint32_T c8_o_u;
-  uint32_T c8_p_u;
-  uint32_T c8_q_u;
-  uint32_T c8_r_u;
-  uint32_T c8_u;
-  uint32_T c8_u_CurrentLength;
-  uint32_T c8_u_FrameId_SL_Info_CurrentLength;
-  uint32_T c8_u_FrameId_SL_Info_ReceivedLength;
-  uint32_T c8_u_ReceivedLength;
-  uint32_T c8_u_Seq;
-  uint8_T c8_d_u[128];
-  uint8_T c8_u_FrameId[128];
   c8_st = NULL;
-  c8_y = NULL;
-  sf_mex_assign(&c8_y, sf_mex_createcellmatrix(2, 1), false);
   c8_b_y = NULL;
-  sf_mex_assign(&c8_b_y, sf_mex_createstruct("structure", 9, c8_sv, 2, 1, 1),
-                false);
-  c8_u_Seq = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[0];
-  c8_u_Stamp_Sec = *(real_T *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_ros_time_Time *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[8])[0];
-  c8_u_Stamp_Nsec = *(real_T *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_ros_time_Time *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[8])[8];
-  for (c8_i = 0; c8_i < 128; c8_i++) {
-    c8_u_FrameId[c8_i] = ((uint8_T *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-      chartInstance->c8_msg)[0])[24])[c8_i];
-  }
-
-  c8_u_FrameId_SL_Info_CurrentLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[152])[0];
-  c8_u_FrameId_SL_Info_ReceivedLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[152])[4];
+  sf_mex_assign(&c8_b_y, sf_mex_createcellmatrix(2, 1), false);
   c8_c_y = NULL;
-  sf_mex_assign(&c8_c_y, sf_mex_createstruct("structure", 4, c8_sv1, 2, 1, 1),
-                false);
-  c8_u = c8_u_Seq;
+  sf_mex_assign(&c8_c_y, sf_mex_create("y", *chartInstance->c8_y, 0, 0U, 1U, 0U,
+    1, 7), false);
+  sf_mex_setcell(c8_b_y, 0, c8_c_y);
   c8_d_y = NULL;
-  sf_mex_assign(&c8_d_y, sf_mex_create("y", &c8_u, 7, 0U, 0U, 0U, 0), false);
-  sf_mex_setfieldbynum(c8_c_y, 0, "Seq", c8_d_y, 0);
-  c8_e_y = NULL;
-  sf_mex_assign(&c8_e_y, sf_mex_createstruct("structure", 2, c8_sv2, 2, 1, 1),
-                false);
-  c8_b_u = c8_u_Stamp_Sec;
-  c8_f_y = NULL;
-  sf_mex_assign(&c8_f_y, sf_mex_create("y", &c8_b_u, 0, 0U, 0U, 0U, 0), false);
-  sf_mex_setfieldbynum(c8_e_y, 0, "Sec", c8_f_y, 0);
-  c8_c_u = c8_u_Stamp_Nsec;
-  c8_g_y = NULL;
-  sf_mex_assign(&c8_g_y, sf_mex_create("y", &c8_c_u, 0, 0U, 0U, 0U, 0), false);
-  sf_mex_setfieldbynum(c8_e_y, 0, "Nsec", c8_g_y, 1);
-  sf_mex_setfieldbynum(c8_c_y, 0, "Stamp", c8_e_y, 1);
-  for (c8_i1 = 0; c8_i1 < 128; c8_i1++) {
-    c8_d_u[c8_i1] = c8_u_FrameId[c8_i1];
-  }
-
-  c8_h_y = NULL;
-  sf_mex_assign(&c8_h_y, sf_mex_create("y", c8_d_u, 3, 0U, 1U, 0U, 1, 128),
-                false);
-  sf_mex_setfieldbynum(c8_c_y, 0, "FrameId", c8_h_y, 2);
-  c8_i_y = NULL;
-  sf_mex_assign(&c8_i_y, sf_mex_createstruct("structure", 2, c8_sv3, 2, 1, 1),
-                false);
-  c8_e_u = c8_u_FrameId_SL_Info_CurrentLength;
-  c8_j_y = NULL;
-  sf_mex_assign(&c8_j_y, sf_mex_create("y", &c8_e_u, 7, 0U, 0U, 0U, 0), false);
-  sf_mex_setfieldbynum(c8_i_y, 0, "CurrentLength", c8_j_y, 0);
-  c8_f_u = c8_u_FrameId_SL_Info_ReceivedLength;
-  c8_k_y = NULL;
-  sf_mex_assign(&c8_k_y, sf_mex_create("y", &c8_f_u, 7, 0U, 0U, 0U, 0), false);
-  sf_mex_setfieldbynum(c8_i_y, 0, "ReceivedLength", c8_k_y, 1);
-  sf_mex_setfieldbynum(c8_c_y, 0, "FrameId_SL_Info", c8_i_y, 3);
-  sf_mex_setfieldbynum(c8_b_y, 0, "Header", c8_c_y, 0);
-  for (c8_i2 = 0; c8_i2 < 16; c8_i2++) {
-    for (c8_i3 = 0; c8_i3 < 128; c8_i3++) {
-      c8_g_u[c8_i2].Data[c8_i3] = ((uint8_T *)&((char_T *)
-        (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-        (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-        chartInstance->c8_msg)[160])[136 * (int32_T)c8_i2])[0])[c8_i3];
-    }
-
-    c8_g_u[c8_i2].Data_SL_Info.CurrentLength = *(uint32_T *)&((char_T *)
-      (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      chartInstance->c8_msg)[160])[136 * (int32_T)c8_i2])[128])[0];
-    c8_g_u[c8_i2].Data_SL_Info.ReceivedLength = *(uint32_T *)&((char_T *)
-      (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      chartInstance->c8_msg)[160])[136 * (int32_T)c8_i2])[128])[4];
-  }
-
-  c8_l_y = NULL;
-  c8_iv[0] = 16;
-  sf_mex_assign(&c8_l_y, sf_mex_createstructarray("structure", 1, c8_iv, 2,
-    c8_sv4), false);
-  for (c8_b_i = 0; c8_b_i < 16; c8_b_i++) {
-    c8_r = &c8_g_u[c8_b_i];
-    for (c8_i4 = 0; c8_i4 < 128; c8_i4++) {
-      c8_d_u[c8_i4] = c8_r->Data[c8_i4];
-    }
-
-    c8_n_y = NULL;
-    sf_mex_assign(&c8_n_y, sf_mex_create("y", c8_d_u, 3, 0U, 1U, 0U, 1, 128),
-                  false);
-    sf_mex_setfieldbynum(c8_l_y, c8_b_i, "Data", c8_n_y, 0);
-    c8_u_CurrentLength = c8_r->Data_SL_Info.CurrentLength;
-    c8_u_ReceivedLength = c8_r->Data_SL_Info.ReceivedLength;
-    c8_p_y = NULL;
-    sf_mex_assign(&c8_p_y, sf_mex_createstruct("structure", 2, c8_sv3, 2, 1, 1),
-                  false);
-    c8_j_u = c8_u_CurrentLength;
-    c8_r_y = NULL;
-    sf_mex_assign(&c8_r_y, sf_mex_create("y", &c8_j_u, 7, 0U, 0U, 0U, 0), false);
-    sf_mex_setfieldbynum(c8_p_y, 0, "CurrentLength", c8_r_y, 0);
-    c8_k_u = c8_u_ReceivedLength;
-    c8_s_y = NULL;
-    sf_mex_assign(&c8_s_y, sf_mex_create("y", &c8_k_u, 7, 0U, 0U, 0U, 0), false);
-    sf_mex_setfieldbynum(c8_p_y, 0, "ReceivedLength", c8_s_y, 1);
-    sf_mex_setfieldbynum(c8_l_y, c8_b_i, "Data_SL_Info", c8_p_y, 1);
-  }
-
-  sf_mex_setfieldbynum(c8_b_y, 0, "Name", c8_l_y, 1);
-  c8_u_CurrentLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2336])[0];
-  c8_u_ReceivedLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2336])[4];
-  c8_m_y = NULL;
-  sf_mex_assign(&c8_m_y, sf_mex_createstruct("structure", 2, c8_sv3, 2, 1, 1),
-                false);
-  c8_h_u = c8_u_CurrentLength;
-  c8_o_y = NULL;
-  sf_mex_assign(&c8_o_y, sf_mex_create("y", &c8_h_u, 7, 0U, 0U, 0U, 0), false);
-  sf_mex_setfieldbynum(c8_m_y, 0, "CurrentLength", c8_o_y, 0);
-  c8_i_u = c8_u_ReceivedLength;
-  c8_q_y = NULL;
-  sf_mex_assign(&c8_q_y, sf_mex_create("y", &c8_i_u, 7, 0U, 0U, 0U, 0), false);
-  sf_mex_setfieldbynum(c8_m_y, 0, "ReceivedLength", c8_q_y, 1);
-  sf_mex_setfieldbynum(c8_b_y, 0, "Name_SL_Info", c8_m_y, 2);
-  for (c8_i5 = 0; c8_i5 < 7; c8_i5++) {
-    c8_l_u[c8_i5] = ((real_T *)&((char_T *)chartInstance->c8_msg)[2344])[c8_i5];
-  }
-
-  c8_t_y = NULL;
-  sf_mex_assign(&c8_t_y, sf_mex_create("y", c8_l_u, 0, 0U, 1U, 0U, 1, 7), false);
-  sf_mex_setfieldbynum(c8_b_y, 0, "Position", c8_t_y, 3);
-  c8_u_CurrentLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2400])[0];
-  c8_u_ReceivedLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2400])[4];
-  c8_u_y = NULL;
-  sf_mex_assign(&c8_u_y, sf_mex_createstruct("structure", 2, c8_sv3, 2, 1, 1),
-                false);
-  c8_m_u = c8_u_CurrentLength;
-  c8_v_y = NULL;
-  sf_mex_assign(&c8_v_y, sf_mex_create("y", &c8_m_u, 7, 0U, 0U, 0U, 0), false);
-  sf_mex_setfieldbynum(c8_u_y, 0, "CurrentLength", c8_v_y, 0);
-  c8_n_u = c8_u_ReceivedLength;
-  c8_w_y = NULL;
-  sf_mex_assign(&c8_w_y, sf_mex_create("y", &c8_n_u, 7, 0U, 0U, 0U, 0), false);
-  sf_mex_setfieldbynum(c8_u_y, 0, "ReceivedLength", c8_w_y, 1);
-  sf_mex_setfieldbynum(c8_b_y, 0, "Position_SL_Info", c8_u_y, 4);
-  for (c8_i6 = 0; c8_i6 < 7; c8_i6++) {
-    c8_l_u[c8_i6] = ((real_T *)&((char_T *)chartInstance->c8_msg)[2408])[c8_i6];
-  }
-
-  c8_x_y = NULL;
-  sf_mex_assign(&c8_x_y, sf_mex_create("y", c8_l_u, 0, 0U, 1U, 0U, 1, 7), false);
-  sf_mex_setfieldbynum(c8_b_y, 0, "Velocity", c8_x_y, 5);
-  c8_u_CurrentLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2464])[0];
-  c8_u_ReceivedLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2464])[4];
-  c8_y_y = NULL;
-  sf_mex_assign(&c8_y_y, sf_mex_createstruct("structure", 2, c8_sv3, 2, 1, 1),
-                false);
-  c8_o_u = c8_u_CurrentLength;
-  c8_ab_y = NULL;
-  sf_mex_assign(&c8_ab_y, sf_mex_create("y", &c8_o_u, 7, 0U, 0U, 0U, 0), false);
-  sf_mex_setfieldbynum(c8_y_y, 0, "CurrentLength", c8_ab_y, 0);
-  c8_p_u = c8_u_ReceivedLength;
-  c8_bb_y = NULL;
-  sf_mex_assign(&c8_bb_y, sf_mex_create("y", &c8_p_u, 7, 0U, 0U, 0U, 0), false);
-  sf_mex_setfieldbynum(c8_y_y, 0, "ReceivedLength", c8_bb_y, 1);
-  sf_mex_setfieldbynum(c8_b_y, 0, "Velocity_SL_Info", c8_y_y, 6);
-  for (c8_i7 = 0; c8_i7 < 7; c8_i7++) {
-    c8_l_u[c8_i7] = ((real_T *)&((char_T *)chartInstance->c8_msg)[2472])[c8_i7];
-  }
-
-  c8_cb_y = NULL;
-  sf_mex_assign(&c8_cb_y, sf_mex_create("y", c8_l_u, 0, 0U, 1U, 0U, 1, 7), false);
-  sf_mex_setfieldbynum(c8_b_y, 0, "Effort", c8_cb_y, 7);
-  c8_u_CurrentLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2528])[0];
-  c8_u_ReceivedLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2528])[4];
-  c8_db_y = NULL;
-  sf_mex_assign(&c8_db_y, sf_mex_createstruct("structure", 2, c8_sv3, 2, 1, 1),
-                false);
-  c8_q_u = c8_u_CurrentLength;
-  c8_eb_y = NULL;
-  sf_mex_assign(&c8_eb_y, sf_mex_create("y", &c8_q_u, 7, 0U, 0U, 0U, 0), false);
-  sf_mex_setfieldbynum(c8_db_y, 0, "CurrentLength", c8_eb_y, 0);
-  c8_r_u = c8_u_ReceivedLength;
-  c8_fb_y = NULL;
-  sf_mex_assign(&c8_fb_y, sf_mex_create("y", &c8_r_u, 7, 0U, 0U, 0U, 0), false);
-  sf_mex_setfieldbynum(c8_db_y, 0, "ReceivedLength", c8_fb_y, 1);
-  sf_mex_setfieldbynum(c8_b_y, 0, "Effort_SL_Info", c8_db_y, 8);
-  sf_mex_setcell(c8_y, 0, c8_b_y);
-  c8_gb_y = NULL;
-  sf_mex_assign(&c8_gb_y, sf_mex_create("y",
+  sf_mex_assign(&c8_d_y, sf_mex_create("y",
     &chartInstance->c8_is_active_c8_sliding_controller_rbdl, 3, 0U, 0U, 0U, 0),
                 false);
-  sf_mex_setcell(c8_y, 1, c8_gb_y);
-  sf_mex_assign(&c8_st, c8_y, false);
+  sf_mex_setcell(c8_b_y, 1, c8_d_y);
+  sf_mex_assign(&c8_st, c8_b_y, false);
   return c8_st;
 }
 
@@ -523,348 +153,36 @@ static void set_sim_state_c8_sliding_controller_rbdl
   (SFc8_sliding_controller_rbdlInstanceStruct *chartInstance, const mxArray
    *c8_st)
 {
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState c8_r;
-  const mxArray *c8_u;
-  int32_T c8_i;
-  int32_T c8_i1;
-  int32_T c8_i2;
-  int32_T c8_i3;
-  c8_u = sf_mex_dup(c8_st);
-  c8_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell(c8_u, 0)), "msg",
-                      &c8_r);
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)
-                 &((char_T *)chartInstance->c8_msg)[0])[0] = c8_r.Header.Seq;
-  *(real_T *)&((char_T *)(c8_SL_Bus_sliding_controller_rbdl_ros_time_Time *)
-               &((char_T *)(c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)
-                 &((char_T *)chartInstance->c8_msg)[0])[8])[0] =
-    c8_r.Header.Stamp.Sec;
-  *(real_T *)&((char_T *)(c8_SL_Bus_sliding_controller_rbdl_ros_time_Time *)
-               &((char_T *)(c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)
-                 &((char_T *)chartInstance->c8_msg)[0])[8])[8] =
-    c8_r.Header.Stamp.Nsec;
-  for (c8_i = 0; c8_i < 128; c8_i++) {
-    ((uint8_T *)&((char_T *)(c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)
-                  &((char_T *)chartInstance->c8_msg)[0])[24])[c8_i] =
-      c8_r.Header.FrameId[c8_i];
-  }
-
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[152])[0] =
-    c8_r.Header.FrameId_SL_Info.CurrentLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[152])[4] =
-    c8_r.Header.FrameId_SL_Info.ReceivedLength;
-  for (c8_i1 = 0; c8_i1 < 16; c8_i1++) {
-    for (c8_i2 = 0; c8_i2 < 128; c8_i2++) {
-      ((uint8_T *)&((char_T *)(c8_SL_Bus_sliding_controller_rbdl_std_msgs_String
-         *)&((char_T *)(c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)
-             &((char_T *)chartInstance->c8_msg)[160])[136 * (int32_T)c8_i1])[0])
-        [c8_i2] = c8_r.Name[c8_i1].Data[c8_i2];
-    }
-
-    *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      chartInstance->c8_msg)[160])[136 * (int32_T)c8_i1])[128])[0] =
-      c8_r.Name[c8_i1].Data_SL_Info.CurrentLength;
-    *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      chartInstance->c8_msg)[160])[136 * (int32_T)c8_i1])[128])[4] =
-      c8_r.Name[c8_i1].Data_SL_Info.ReceivedLength;
-  }
-
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2336])[0] = c8_r.Name_SL_Info.CurrentLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2336])[4] = c8_r.Name_SL_Info.ReceivedLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2400])[0] = c8_r.Position_SL_Info.CurrentLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2400])[4] = c8_r.Position_SL_Info.ReceivedLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2464])[0] = c8_r.Velocity_SL_Info.CurrentLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2464])[4] = c8_r.Velocity_SL_Info.ReceivedLength;
-  for (c8_i3 = 0; c8_i3 < 7; c8_i3++) {
-    ((real_T *)&((char_T *)chartInstance->c8_msg)[2344])[c8_i3] =
-      c8_r.Position[c8_i3];
-    ((real_T *)&((char_T *)chartInstance->c8_msg)[2408])[c8_i3] =
-      c8_r.Velocity[c8_i3];
-    ((real_T *)&((char_T *)chartInstance->c8_msg)[2472])[c8_i3] =
-      c8_r.Effort[c8_i3];
-  }
-
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2528])[0] = c8_r.Effort_SL_Info.CurrentLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2528])[4] = c8_r.Effort_SL_Info.ReceivedLength;
-  chartInstance->c8_is_active_c8_sliding_controller_rbdl = c8_k_emlrt_marshallIn
-    (chartInstance, sf_mex_dup(sf_mex_getcell(c8_u, 1)),
+  const mxArray *c8_b_u;
+  c8_b_u = sf_mex_dup(c8_st);
+  c8_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell(c8_b_u, 0)), "y",
+                      *chartInstance->c8_y);
+  chartInstance->c8_is_active_c8_sliding_controller_rbdl = c8_c_emlrt_marshallIn
+    (chartInstance, sf_mex_dup(sf_mex_getcell(c8_b_u, 1)),
      "is_active_c8_sliding_controller_rbdl");
-  sf_mex_destroy(&c8_u);
+  sf_mex_destroy(&c8_b_u);
   sf_mex_destroy(&c8_st);
 }
 
 static void sf_gateway_c8_sliding_controller_rbdl
   (SFc8_sliding_controller_rbdlInstanceStruct *chartInstance)
 {
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState c8_r;
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_gpu_blankMsg;
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_gpu_msg;
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_gpu_r;
-  int32_T c8_i1;
-  int32_T c8_i5;
-  int32_T c8_i9;
-  cudaMalloc(&c8_gpu_r, 2536UL);
-  cudaMalloc(&c8_gpu_msg, 2536UL);
-  cudaMalloc(&c8_b_gpu_blankMsg, 2536UL);
+  real_T (*c8_gpu_u)[7];
+  real_T (*c8_gpu_y)[7];
+  cudaMalloc(&c8_gpu_y, 56UL);
+  cudaMalloc(&c8_gpu_u, 56UL);
   chartInstance->c8_JITTransitionAnimation[0] = 0U;
   _sfTime_ = sf_get_time(chartInstance->S);
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)
-                 &((char_T *)chartInstance->c8_msg)[0])[0] = *(uint32_T *)
-    &((char_T *)(c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-       chartInstance->c8_blankMsg)[0])[0];
-  *(real_T *)&((char_T *)(c8_SL_Bus_sliding_controller_rbdl_ros_time_Time *)
-               &((char_T *)(c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)
-                 &((char_T *)chartInstance->c8_msg)[0])[8])[0] = *(real_T *)
-    &((char_T *)(c8_SL_Bus_sliding_controller_rbdl_ros_time_Time *)&((char_T *)
-       (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-        chartInstance->c8_blankMsg)[0])[8])[0];
-  *(real_T *)&((char_T *)(c8_SL_Bus_sliding_controller_rbdl_ros_time_Time *)
-               &((char_T *)(c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)
-                 &((char_T *)chartInstance->c8_msg)[0])[8])[8] = *(real_T *)
-    &((char_T *)(c8_SL_Bus_sliding_controller_rbdl_ros_time_Time *)&((char_T *)
-       (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-        chartInstance->c8_blankMsg)[0])[8])[8];
-  cudaMemcpy(c8_b_gpu_blankMsg, chartInstance->c8_blankMsg, 2536UL,
-             cudaMemcpyHostToDevice);
-  cudaMemcpy(c8_gpu_msg, chartInstance->c8_msg, 2536UL, cudaMemcpyHostToDevice);
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel1<<<dim3(1U, 1U, 1U), dim3(128U,
-    1U, 1U)>>>(c8_b_gpu_blankMsg, c8_gpu_msg);
-  cudaMemcpy(chartInstance->c8_msg, c8_gpu_msg, 2536UL, cudaMemcpyDeviceToHost);
-  cudaMemcpy(chartInstance->c8_blankMsg, c8_b_gpu_blankMsg, 2536UL,
-             cudaMemcpyDeviceToHost);
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[152])[0] = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_blankMsg)[0])[152])[0];
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[152])[4] = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_blankMsg)[0])[152])[4];
-  for (c8_i1 = 0; c8_i1 < 16; c8_i1++) {
-    cudaMemcpy(c8_b_gpu_blankMsg, chartInstance->c8_blankMsg, 2536UL,
-               cudaMemcpyHostToDevice);
-    cudaMemcpy(c8_gpu_msg, chartInstance->c8_msg, 2536UL, cudaMemcpyHostToDevice);
-    c8_sf_gateway_c8_sliding_controller_rbdl_kernel2<<<dim3(1U, 1U, 1U), dim3
-      (128U, 1U, 1U)>>>(c8_i1, c8_b_gpu_blankMsg, c8_gpu_msg);
-    cudaMemcpy(chartInstance->c8_msg, c8_gpu_msg, 2536UL, cudaMemcpyDeviceToHost);
-    cudaMemcpy(chartInstance->c8_blankMsg, c8_b_gpu_blankMsg, 2536UL,
-               cudaMemcpyDeviceToHost);
-    *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      chartInstance->c8_msg)[160])[136 * (int32_T)c8_i1])[128])[0] = *(uint32_T *)
-      &((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-         (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-          (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-           chartInstance->c8_blankMsg)[160])[136 * (int32_T)c8_i1])[128])[0];
-    *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      chartInstance->c8_msg)[160])[136 * (int32_T)c8_i1])[128])[4] = *(uint32_T *)
-      &((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-         (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-          (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-           chartInstance->c8_blankMsg)[160])[136 * (int32_T)c8_i1])[128])[4];
-  }
-
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2336])[0] = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_blankMsg)[2336])[0];
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2336])[4] = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_blankMsg)[2336])[4];
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2400])[0] = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_blankMsg)[2400])[0];
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2400])[4] = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_blankMsg)[2400])[4];
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2464])[0] = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_blankMsg)[2464])[0];
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2464])[4] = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_blankMsg)[2464])[4];
-  cudaMemcpy(c8_b_gpu_blankMsg, chartInstance->c8_blankMsg, 2536UL,
-             cudaMemcpyHostToDevice);
-  cudaMemcpy(c8_gpu_msg, chartInstance->c8_msg, 2536UL, cudaMemcpyHostToDevice);
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel3<<<dim3(1U, 1U, 1U), dim3(32U,
-    1U, 1U)>>>(c8_b_gpu_blankMsg, c8_gpu_msg);
-  cudaMemcpy(chartInstance->c8_msg, c8_gpu_msg, 2536UL, cudaMemcpyDeviceToHost);
-  cudaMemcpy(chartInstance->c8_blankMsg, c8_b_gpu_blankMsg, 2536UL,
-             cudaMemcpyDeviceToHost);
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2528])[0] = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_blankMsg)[2528])[0];
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2528])[4] = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_blankMsg)[2528])[4];
-  c8_r.Header.Seq = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[0];
-  c8_r.Header.Stamp.Sec = *(real_T *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_ros_time_Time *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[8])[0];
-  c8_r.Header.Stamp.Nsec = *(real_T *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_ros_time_Time *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[8])[8];
-  cudaMemcpy(c8_gpu_r, &c8_r, 2536UL, cudaMemcpyHostToDevice);
-  cudaMemcpy(c8_gpu_msg, chartInstance->c8_msg, 2536UL, cudaMemcpyHostToDevice);
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel4<<<dim3(1U, 1U, 1U), dim3(128U,
-    1U, 1U)>>>(c8_gpu_msg, c8_gpu_r);
-  cudaMemcpy(chartInstance->c8_msg, c8_gpu_msg, 2536UL, cudaMemcpyDeviceToHost);
-  cudaMemcpy(&c8_r, c8_gpu_r, 2536UL, cudaMemcpyDeviceToHost);
-  c8_r.Header.FrameId_SL_Info.CurrentLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[152])[0];
-  c8_r.Header.FrameId_SL_Info.ReceivedLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[152])[4];
-  for (c8_i5 = 0; c8_i5 < 16; c8_i5++) {
-    cudaMemcpy(c8_gpu_r, &c8_r, 2536UL, cudaMemcpyHostToDevice);
-    cudaMemcpy(c8_gpu_msg, chartInstance->c8_msg, 2536UL, cudaMemcpyHostToDevice);
-    c8_sf_gateway_c8_sliding_controller_rbdl_kernel5<<<dim3(1U, 1U, 1U), dim3
-      (128U, 1U, 1U)>>>(c8_i5, c8_gpu_msg, c8_gpu_r);
-    cudaMemcpy(chartInstance->c8_msg, c8_gpu_msg, 2536UL, cudaMemcpyDeviceToHost);
-    cudaMemcpy(&c8_r, c8_gpu_r, 2536UL, cudaMemcpyDeviceToHost);
-    c8_r.Name[c8_i5].Data_SL_Info.CurrentLength = *(uint32_T *)&((char_T *)
-      (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      chartInstance->c8_msg)[160])[136 * (int32_T)c8_i5])[128])[0];
-    c8_r.Name[c8_i5].Data_SL_Info.ReceivedLength = *(uint32_T *)&((char_T *)
-      (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      chartInstance->c8_msg)[160])[136 * (int32_T)c8_i5])[128])[4];
-  }
-
-  c8_r.Name_SL_Info.CurrentLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2336])[0];
-  c8_r.Name_SL_Info.ReceivedLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2336])[4];
-  c8_r.Position_SL_Info.CurrentLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2400])[0];
-  c8_r.Position_SL_Info.ReceivedLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2400])[4];
-  c8_r.Velocity_SL_Info.CurrentLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2464])[0];
-  c8_r.Velocity_SL_Info.ReceivedLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2464])[4];
-  cudaMemcpy(c8_gpu_r, &c8_r, 2536UL, cudaMemcpyHostToDevice);
-  cudaMemcpy(c8_gpu_msg, chartInstance->c8_msg, 2536UL, cudaMemcpyHostToDevice);
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel6<<<dim3(1U, 1U, 1U), dim3(32U,
-    1U, 1U)>>>(c8_gpu_msg, c8_gpu_r);
-  cudaMemcpy(chartInstance->c8_msg, c8_gpu_msg, 2536UL, cudaMemcpyDeviceToHost);
-  cudaMemcpy(&c8_r, c8_gpu_r, 2536UL, cudaMemcpyDeviceToHost);
-  c8_r.Effort_SL_Info.CurrentLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2528])[0];
-  c8_r.Effort_SL_Info.ReceivedLength = *(uint32_T *)&((char_T *)
-    (c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)chartInstance->c8_msg)
-    [2528])[4];
-  c8_eML_blk_kernel(chartInstance, &c8_r);
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)
-                 &((char_T *)chartInstance->c8_msg)[0])[0] = c8_r.Header.Seq;
-  *(real_T *)&((char_T *)(c8_SL_Bus_sliding_controller_rbdl_ros_time_Time *)
-               &((char_T *)(c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)
-                 &((char_T *)chartInstance->c8_msg)[0])[8])[0] =
-    c8_r.Header.Stamp.Sec;
-  *(real_T *)&((char_T *)(c8_SL_Bus_sliding_controller_rbdl_ros_time_Time *)
-               &((char_T *)(c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)
-                 &((char_T *)chartInstance->c8_msg)[0])[8])[8] =
-    c8_r.Header.Stamp.Nsec;
-  cudaMemcpy(c8_gpu_r, &c8_r, 2536UL, cudaMemcpyHostToDevice);
-  cudaMemcpy(c8_gpu_msg, chartInstance->c8_msg, 2536UL, cudaMemcpyHostToDevice);
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel7<<<dim3(1U, 1U, 1U), dim3(128U,
-    1U, 1U)>>>(c8_gpu_r, c8_gpu_msg);
-  cudaMemcpy(chartInstance->c8_msg, c8_gpu_msg, 2536UL, cudaMemcpyDeviceToHost);
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[152])[0] =
-    c8_r.Header.FrameId_SL_Info.CurrentLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    (c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *)&((char_T *)
-    chartInstance->c8_msg)[0])[152])[4] =
-    c8_r.Header.FrameId_SL_Info.ReceivedLength;
-  for (c8_i9 = 0; c8_i9 < 16; c8_i9++) {
-    cudaMemcpy(c8_gpu_msg, chartInstance->c8_msg, 2536UL, cudaMemcpyHostToDevice);
-    c8_sf_gateway_c8_sliding_controller_rbdl_kernel8<<<dim3(1U, 1U, 1U), dim3
-      (128U, 1U, 1U)>>>(c8_gpu_r, c8_i9, c8_gpu_msg);
-    cudaMemcpy(chartInstance->c8_msg, c8_gpu_msg, 2536UL, cudaMemcpyDeviceToHost);
-    *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      chartInstance->c8_msg)[160])[136 * (int32_T)c8_i9])[128])[0] =
-      c8_r.Name[c8_i9].Data_SL_Info.CurrentLength;
-    *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      (c8_SL_Bus_sliding_controller_rbdl_std_msgs_String *)&((char_T *)
-      chartInstance->c8_msg)[160])[136 * (int32_T)c8_i9])[128])[4] =
-      c8_r.Name[c8_i9].Data_SL_Info.ReceivedLength;
-  }
-
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2336])[0] = c8_r.Name_SL_Info.CurrentLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2336])[4] = c8_r.Name_SL_Info.ReceivedLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2400])[0] = c8_r.Position_SL_Info.CurrentLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2400])[4] = c8_r.Position_SL_Info.ReceivedLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2464])[0] = c8_r.Velocity_SL_Info.CurrentLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2464])[4] = c8_r.Velocity_SL_Info.ReceivedLength;
-  cudaMemcpy(c8_gpu_msg, chartInstance->c8_msg, 2536UL, cudaMemcpyHostToDevice);
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel9<<<dim3(1U, 1U, 1U), dim3(32U,
-    1U, 1U)>>>(c8_gpu_r, c8_gpu_msg);
-  cudaMemcpy(chartInstance->c8_msg, c8_gpu_msg, 2536UL, cudaMemcpyDeviceToHost);
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2528])[0] = c8_r.Effort_SL_Info.CurrentLength;
-  *(uint32_T *)&((char_T *)(c8_SL_Bus_ROSVariableLengthArrayInfo *)&((char_T *)
-    chartInstance->c8_msg)[2528])[4] = c8_r.Effort_SL_Info.ReceivedLength;
+  cudaMemcpy(*c8_gpu_u, *chartInstance->c8_u, 56UL, cudaMemcpyHostToDevice);
+  cudaMemcpy(*c8_gpu_y, *chartInstance->c8_y, 56UL, cudaMemcpyHostToDevice);
+  c8_sf_gateway_c8_sliding_controller_rbdl_kernel1<<<dim3(1U, 1U, 1U), dim3(32U,
+    1U, 1U)>>>(*c8_gpu_u, *c8_gpu_y);
+  cudaMemcpy(*chartInstance->c8_y, *c8_gpu_y, 56UL, cudaMemcpyDeviceToHost);
+  cudaMemcpy(*chartInstance->c8_u, *c8_gpu_u, 56UL, cudaMemcpyDeviceToHost);
+  c8_eML_blk_kernel(chartInstance, *chartInstance->c8_y);
   c8_do_animation_call_c8_sliding_controller_rbdl(chartInstance);
-  cudaFree(c8_b_gpu_blankMsg);
-  cudaFree(c8_gpu_msg);
-  cudaFree(c8_gpu_r);
+  cudaFree(*c8_gpu_u);
+  cudaFree(*c8_gpu_y);
 }
 
 static void mdl_start_c8_sliding_controller_rbdl
@@ -876,13 +194,6 @@ static void mdl_terminate_c8_sliding_controller_rbdl
   (SFc8_sliding_controller_rbdlInstanceStruct *chartInstance)
 {
   cudaError_t c8_errCode;
-  cudaFree(*chartInstance->c8_gpu_uv5);
-  cudaFree(*chartInstance->c8_gpu_uv4);
-  cudaFree(*chartInstance->c8_gpu_uv3);
-  cudaFree(*chartInstance->c8_gpu_uv2);
-  cudaFree(*chartInstance->c8_gpu_uv1);
-  cudaFree(*chartInstance->c8_gpu_uv);
-  cudaFree(chartInstance->c8_gpu_blankMsg);
   c8_errCode = cudaGetLastError();
   if (c8_errCode != cudaSuccess) {
     emlrtThinCUDAError((uint32_T)c8_errCode, (char_T *)cudaGetErrorName
@@ -920,582 +231,72 @@ const mxArray *sf_c8_sliding_controller_rbdl_get_eml_resolved_functions_info()
 }
 
 static void c8_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_b_msg, const char_T *c8_identifier,
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_y)
+  *chartInstance, const mxArray *c8_b_y, const char_T *c8_identifier, real_T
+  c8_c_y[7])
 {
   emlrtMsgIdentifier c8_thisId;
   c8_thisId.fIdentifier = const_cast<const char_T *>(c8_identifier);
   c8_thisId.fParent = NULL;
   c8_thisId.bParentIsCell = false;
-  c8_b_emlrt_marshallIn(chartInstance, sf_mex_dup(c8_b_msg), &c8_thisId, c8_y);
-  sf_mex_destroy(&c8_b_msg);
+  c8_b_emlrt_marshallIn(chartInstance, sf_mex_dup(c8_b_y), &c8_thisId, c8_c_y);
+  sf_mex_destroy(&c8_b_y);
 }
 
 static void c8_b_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId,
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_y)
-{
-  static const char_T *c8_fieldNames[9] = { "Header", "Name", "Name_SL_Info",
-    "Position", "Position_SL_Info", "Velocity", "Velocity_SL_Info", "Effort",
-    "Effort_SL_Info" };
-
-  emlrtMsgIdentifier c8_thisId;
-  c8_thisId.fParent = c8_parentId;
-  c8_thisId.bParentIsCell = false;
-  sf_mex_check_struct(c8_parentId, c8_u, 9, c8_fieldNames, 0U, NULL);
-  c8_thisId.fIdentifier = "Header";
-  c8_c_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getfield(c8_u, "Header",
-    "Header", 0)), &c8_thisId, &c8_y->Header);
-  c8_thisId.fIdentifier = "Name";
-  c8_i_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getfield(c8_u, "Name",
-    "Name", 0)), &c8_thisId, c8_y->Name);
-  c8_thisId.fIdentifier = "Name_SL_Info";
-  c8_y->Name_SL_Info = c8_h_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getfield(c8_u, "Name_SL_Info", "Name_SL_Info", 0)), &c8_thisId);
-  c8_thisId.fIdentifier = "Position";
-  c8_j_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getfield(c8_u,
-    "Position", "Position", 0)), &c8_thisId, c8_y->Position);
-  c8_thisId.fIdentifier = "Position_SL_Info";
-  c8_y->Position_SL_Info = c8_h_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getfield(c8_u, "Position_SL_Info", "Position_SL_Info", 0)),
-    &c8_thisId);
-  c8_thisId.fIdentifier = "Velocity";
-  c8_j_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getfield(c8_u,
-    "Velocity", "Velocity", 0)), &c8_thisId, c8_y->Velocity);
-  c8_thisId.fIdentifier = "Velocity_SL_Info";
-  c8_y->Velocity_SL_Info = c8_h_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getfield(c8_u, "Velocity_SL_Info", "Velocity_SL_Info", 0)),
-    &c8_thisId);
-  c8_thisId.fIdentifier = "Effort";
-  c8_j_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getfield(c8_u, "Effort",
-    "Effort", 0)), &c8_thisId, c8_y->Effort);
-  c8_thisId.fIdentifier = "Effort_SL_Info";
-  c8_y->Effort_SL_Info = c8_h_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getfield(c8_u, "Effort_SL_Info", "Effort_SL_Info", 0)), &c8_thisId);
-  sf_mex_destroy(&c8_u);
-}
-
-static void c8_c_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId,
-  c8_SL_Bus_sliding_controller_rbdl_std_msgs_Header *c8_y)
-{
-  static const char_T *c8_fieldNames[4] = { "Seq", "Stamp", "FrameId",
-    "FrameId_SL_Info" };
-
-  emlrtMsgIdentifier c8_thisId;
-  c8_thisId.fParent = c8_parentId;
-  c8_thisId.bParentIsCell = false;
-  sf_mex_check_struct(c8_parentId, c8_u, 4, c8_fieldNames, 0U, NULL);
-  c8_thisId.fIdentifier = "Seq";
-  c8_y->Seq = c8_d_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getfield
-    (c8_u, "Seq", "Seq", 0)), &c8_thisId);
-  c8_thisId.fIdentifier = "Stamp";
-  c8_y->Stamp = c8_e_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getfield
-    (c8_u, "Stamp", "Stamp", 0)), &c8_thisId);
-  c8_thisId.fIdentifier = "FrameId";
-  c8_g_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getfield(c8_u,
-    "FrameId", "FrameId", 0)), &c8_thisId, c8_y->FrameId);
-  c8_thisId.fIdentifier = "FrameId_SL_Info";
-  c8_y->FrameId_SL_Info = c8_h_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getfield(c8_u, "FrameId_SL_Info", "FrameId_SL_Info", 0)), &c8_thisId);
-  sf_mex_destroy(&c8_u);
-}
-
-static uint32_T c8_d_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId)
-{
-  uint32_T c8_b_u;
-  uint32_T c8_y;
-  sf_mex_import(c8_parentId, sf_mex_dup(c8_u), &c8_b_u, 1, 7, 0U, 0, 0U, 0);
-  c8_y = c8_b_u;
-  sf_mex_destroy(&c8_u);
-  return c8_y;
-}
-
-static c8_SL_Bus_sliding_controller_rbdl_ros_time_Time c8_e_emlrt_marshallIn
-  (SFc8_sliding_controller_rbdlInstanceStruct *chartInstance, const mxArray
-   *c8_u, const emlrtMsgIdentifier *c8_parentId)
-{
-  static const char_T *c8_fieldNames[2] = { "Sec", "Nsec" };
-
-  c8_SL_Bus_sliding_controller_rbdl_ros_time_Time c8_y;
-  emlrtMsgIdentifier c8_thisId;
-  c8_thisId.fParent = c8_parentId;
-  c8_thisId.bParentIsCell = false;
-  sf_mex_check_struct(c8_parentId, c8_u, 2, c8_fieldNames, 0U, NULL);
-  c8_thisId.fIdentifier = "Sec";
-  c8_y.Sec = c8_f_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getfield
-    (c8_u, "Sec", "Sec", 0)), &c8_thisId);
-  c8_thisId.fIdentifier = "Nsec";
-  c8_y.Nsec = c8_f_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getfield
-    (c8_u, "Nsec", "Nsec", 0)), &c8_thisId);
-  sf_mex_destroy(&c8_u);
-  return c8_y;
-}
-
-static real_T c8_f_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId)
-{
-  real_T c8_d;
-  real_T c8_y;
-  sf_mex_import(c8_parentId, sf_mex_dup(c8_u), &c8_d, 1, 0, 0U, 0, 0U, 0);
-  c8_y = c8_d;
-  sf_mex_destroy(&c8_u);
-  return c8_y;
-}
-
-static void c8_g_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId,
-  uint8_T c8_y[128])
-{
-  int32_T c8_i;
-  uint8_T c8_uv[128];
-  sf_mex_import(c8_parentId, sf_mex_dup(c8_u), c8_uv, 1, 3, 0U, 1, 0U, 1, 128);
-  for (c8_i = 0; c8_i < 128; c8_i++) {
-    c8_y[c8_i] = c8_uv[c8_i];
-  }
-
-  sf_mex_destroy(&c8_u);
-}
-
-static c8_SL_Bus_ROSVariableLengthArrayInfo c8_h_emlrt_marshallIn
-  (SFc8_sliding_controller_rbdlInstanceStruct *chartInstance, const mxArray
-   *c8_u, const emlrtMsgIdentifier *c8_parentId)
-{
-  static const char_T *c8_fieldNames[2] = { "CurrentLength", "ReceivedLength" };
-
-  c8_SL_Bus_ROSVariableLengthArrayInfo c8_y;
-  emlrtMsgIdentifier c8_thisId;
-  c8_thisId.fParent = c8_parentId;
-  c8_thisId.bParentIsCell = false;
-  sf_mex_check_struct(c8_parentId, c8_u, 2, c8_fieldNames, 0U, NULL);
-  c8_thisId.fIdentifier = "CurrentLength";
-  c8_y.CurrentLength = c8_d_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getfield(c8_u, "CurrentLength", "CurrentLength", 0)), &c8_thisId);
-  c8_thisId.fIdentifier = "ReceivedLength";
-  c8_y.ReceivedLength = c8_d_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getfield(c8_u, "ReceivedLength", "ReceivedLength", 0)), &c8_thisId);
-  sf_mex_destroy(&c8_u);
-  return c8_y;
-}
-
-static void c8_i_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId,
-  c8_SL_Bus_sliding_controller_rbdl_std_msgs_String c8_y[16])
-{
-  static const char_T *c8_fieldNames[2] = { "Data", "Data_SL_Info" };
-
-  emlrtMsgIdentifier c8_thisId;
-  int32_T c8_i;
-  uint32_T c8_uv[1];
-  c8_uv[0] = 16U;
-  c8_thisId.fParent = c8_parentId;
-  c8_thisId.bParentIsCell = false;
-  sf_mex_check_struct(c8_parentId, c8_u, 2, c8_fieldNames, 1U, c8_uv);
-  for (c8_i = 0; c8_i < 16; c8_i++) {
-    c8_thisId.fIdentifier = "Data";
-    c8_g_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getfield(c8_u, "Data",
-      "Data", c8_i)), &c8_thisId, c8_y[c8_i].Data);
-    c8_thisId.fIdentifier = "Data_SL_Info";
-    c8_y[c8_i].Data_SL_Info = c8_h_emlrt_marshallIn(chartInstance, sf_mex_dup
-      (sf_mex_getfield(c8_u, "Data_SL_Info", "Data_SL_Info", c8_i)), &c8_thisId);
-  }
-
-  sf_mex_destroy(&c8_u);
-}
-
-static void c8_j_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId,
-  real_T c8_y[7])
+  *chartInstance, const mxArray *c8_b_u, const emlrtMsgIdentifier *c8_parentId,
+  real_T c8_b_y[7])
 {
   real_T c8_dv[7];
   int32_T c8_i;
-  sf_mex_import(c8_parentId, sf_mex_dup(c8_u), c8_dv, 1, 0, 0U, 1, 0U, 1, 7);
+  sf_mex_import(c8_parentId, sf_mex_dup(c8_b_u), c8_dv, 1, 0, 0U, 1, 0U, 1, 7);
   for (c8_i = 0; c8_i < 7; c8_i++) {
-    c8_y[c8_i] = c8_dv[c8_i];
+    c8_b_y[c8_i] = c8_dv[c8_i];
   }
 
-  sf_mex_destroy(&c8_u);
+  sf_mex_destroy(&c8_b_u);
 }
 
-static uint8_T c8_k_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct *
+static uint8_T c8_c_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct *
   chartInstance, const mxArray *c8_b_is_active_c8_sliding_controller_rbdl, const
   char_T *c8_identifier)
 {
   emlrtMsgIdentifier c8_thisId;
-  uint8_T c8_y;
+  uint8_T c8_b_y;
   c8_thisId.fIdentifier = const_cast<const char_T *>(c8_identifier);
   c8_thisId.fParent = NULL;
   c8_thisId.bParentIsCell = false;
-  c8_y = c8_l_emlrt_marshallIn(chartInstance, sf_mex_dup
+  c8_b_y = c8_d_emlrt_marshallIn(chartInstance, sf_mex_dup
     (c8_b_is_active_c8_sliding_controller_rbdl), &c8_thisId);
   sf_mex_destroy(&c8_b_is_active_c8_sliding_controller_rbdl);
-  return c8_y;
+  return c8_b_y;
 }
 
-static uint8_T c8_l_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct *
-  chartInstance, const mxArray *c8_u, const emlrtMsgIdentifier *c8_parentId)
+static uint8_T c8_d_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct *
+  chartInstance, const mxArray *c8_b_u, const emlrtMsgIdentifier *c8_parentId)
 {
-  uint8_T c8_b_u;
-  uint8_T c8_y;
-  sf_mex_import(c8_parentId, sf_mex_dup(c8_u), &c8_b_u, 1, 3, 0U, 0, 0U, 0);
-  c8_y = c8_b_u;
-  sf_mex_destroy(&c8_u);
-  return c8_y;
+  uint8_T c8_b_y;
+  uint8_T c8_c_u;
+  sf_mex_import(c8_parentId, sf_mex_dup(c8_b_u), &c8_c_u, 1, 3, 0U, 0, 0U, 0);
+  c8_b_y = c8_c_u;
+  sf_mex_destroy(&c8_b_u);
+  return c8_b_y;
 }
 
 static void c8_eML_blk_kernel(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState
-  *c8_b_blankMsg)
+  *chartInstance, real_T c8_b_u[7])
 {
-  static uint8_T c8_uv5[15] = { 82U, 105U, 103U, 104U, 116U, 72U, 117U, 109U,
-    97U, 110U, 65U, 110U, 107U, 108U, 101U };
-
-  static uint8_T c8_uv2[14] = { 76U, 101U, 102U, 116U, 72U, 117U, 109U, 97U,
-    110U, 65U, 110U, 107U, 108U, 101U };
-
-  static uint8_T c8_uv4[14] = { 82U, 105U, 103U, 104U, 116U, 72U, 117U, 109U,
-    97U, 110U, 75U, 110U, 101U, 101U };
-
-  static uint8_T c8_uv1[13] = { 76U, 101U, 102U, 116U, 72U, 117U, 109U, 97U,
-    110U, 75U, 110U, 101U, 101U };
-
-  static uint8_T c8_uv3[13] = { 82U, 105U, 103U, 104U, 116U, 72U, 117U, 109U,
-    97U, 110U, 72U, 105U, 112U };
-
-  static uint8_T c8_uv[12] = { 76U, 101U, 102U, 116U, 72U, 117U, 109U, 97U, 110U,
-    72U, 105U, 112U };
-
-  cudaMemcpy(chartInstance->c8_gpu_blankMsg, c8_b_blankMsg, 2536UL,
-             cudaMemcpyHostToDevice);
-  c8_eML_blk_kernel_kernel10<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
-    (chartInstance->c8_gpu_blankMsg);
-  cudaMemcpy(*chartInstance->c8_gpu_uv, c8_uv, 12UL, cudaMemcpyHostToDevice);
-  c8_eML_blk_kernel_kernel11<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
-    (*chartInstance->c8_gpu_uv, chartInstance->c8_gpu_blankMsg);
-  c8_eML_blk_kernel_kernel12<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
-    (chartInstance->c8_gpu_blankMsg);
-  cudaMemcpy(*chartInstance->c8_gpu_uv1, c8_uv1, 13UL, cudaMemcpyHostToDevice);
-  c8_eML_blk_kernel_kernel13<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
-    (*chartInstance->c8_gpu_uv1, chartInstance->c8_gpu_blankMsg);
-  c8_eML_blk_kernel_kernel14<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
-    (chartInstance->c8_gpu_blankMsg);
-  cudaMemcpy(*chartInstance->c8_gpu_uv2, c8_uv2, 14UL, cudaMemcpyHostToDevice);
-  c8_eML_blk_kernel_kernel15<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
-    (*chartInstance->c8_gpu_uv2, chartInstance->c8_gpu_blankMsg);
-  c8_eML_blk_kernel_kernel16<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
-    (chartInstance->c8_gpu_blankMsg);
-  cudaMemcpy(*chartInstance->c8_gpu_uv3, c8_uv3, 13UL, cudaMemcpyHostToDevice);
-  c8_eML_blk_kernel_kernel17<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
-    (*chartInstance->c8_gpu_uv3, chartInstance->c8_gpu_blankMsg);
-  c8_eML_blk_kernel_kernel18<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
-    (chartInstance->c8_gpu_blankMsg);
-  cudaMemcpy(*chartInstance->c8_gpu_uv4, c8_uv4, 14UL, cudaMemcpyHostToDevice);
-  c8_eML_blk_kernel_kernel19<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
-    (*chartInstance->c8_gpu_uv4, chartInstance->c8_gpu_blankMsg);
-  c8_eML_blk_kernel_kernel20<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
-    (chartInstance->c8_gpu_blankMsg);
-  cudaMemcpy(*chartInstance->c8_gpu_uv5, c8_uv5, 15UL, cudaMemcpyHostToDevice);
-  c8_eML_blk_kernel_kernel21<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
-    (*chartInstance->c8_gpu_uv5, chartInstance->c8_gpu_blankMsg);
-  c8_eML_blk_kernel_kernel22<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
-    (chartInstance->c8_gpu_blankMsg);
-  cudaMemcpy(c8_b_blankMsg, chartInstance->c8_gpu_blankMsg, 2536UL,
-             cudaMemcpyDeviceToHost);
 }
 
-static __global__ __launch_bounds__(128, 1) void
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel1
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg,
-   c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg)
+static __global__ __launch_bounds__(32, 1) void
+  c8_sf_gateway_c8_sliding_controller_rbdl_kernel1(real_T c8_b_u[7], real_T
+  c8_b_y[7])
 {
   uint64_T c8_threadId;
   int32_T c8_i;
   c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c8_i = (int32_T)c8_threadId;
-  if (c8_i < 128) {
-    c8_b_msg->Header.FrameId[c8_i] = c8_b_blankMsg->Header.FrameId[c8_i];
-  }
-}
-
-static __global__ __launch_bounds__(128, 1) void
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel2(const int32_T c8_i1,
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg,
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i2;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i2 = (int32_T)c8_threadId;
-  if (c8_i2 < 128) {
-    c8_b_msg->Name[c8_i1].Data[c8_i2] = c8_b_blankMsg->Name[c8_i1].Data[c8_i2];
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel3
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg,
-   c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i3;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i3 = (int32_T)c8_threadId;
-  if (c8_i3 < 7) {
-    c8_b_msg->Position[c8_i3] = c8_b_blankMsg->Position[c8_i3];
-    c8_b_msg->Velocity[c8_i3] = c8_b_blankMsg->Velocity[c8_i3];
-    c8_b_msg->Effort[c8_i3] = c8_b_blankMsg->Effort[c8_i3];
-  }
-}
-
-static __global__ __launch_bounds__(128, 1) void
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel4
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg,
-   c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_r)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i4;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i4 = (int32_T)c8_threadId;
-  if (c8_i4 < 128) {
-    c8_r->Header.FrameId[c8_i4] = c8_b_msg->Header.FrameId[c8_i4];
-  }
-}
-
-static __global__ __launch_bounds__(128, 1) void
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel5(const int32_T c8_i5,
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg,
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_r)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i6;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i6 = (int32_T)c8_threadId;
-  if (c8_i6 < 128) {
-    c8_r->Name[c8_i5].Data[c8_i6] = c8_b_msg->Name[c8_i5].Data[c8_i6];
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel6
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg,
-   c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_r)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i7;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i7 = (int32_T)c8_threadId;
-  if (c8_i7 < 7) {
-    c8_r->Position[c8_i7] = c8_b_msg->Position[c8_i7];
-    c8_r->Velocity[c8_i7] = c8_b_msg->Velocity[c8_i7];
-    c8_r->Effort[c8_i7] = c8_b_msg->Effort[c8_i7];
-  }
-}
-
-static __global__ __launch_bounds__(128, 1) void
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel7(const
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_r,
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i8;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i8 = (int32_T)c8_threadId;
-  if (c8_i8 < 128) {
-    c8_b_msg->Header.FrameId[c8_i8] = c8_r->Header.FrameId[c8_i8];
-  }
-}
-
-static __global__ __launch_bounds__(128, 1) void
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel8(const
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_r, const int32_T
-  c8_i9, c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i10;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i10 = (int32_T)c8_threadId;
-  if (c8_i10 < 128) {
-    c8_b_msg->Name[c8_i9].Data[c8_i10] = c8_r->Name[c8_i9].Data[c8_i10];
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel9(const
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_r,
-  c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_msg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i11;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i11 = (int32_T)c8_threadId;
-  if (c8_i11 < 7) {
-    c8_b_msg->Position[c8_i11] = c8_r->Position[c8_i11];
-    c8_b_msg->Velocity[c8_i11] = c8_r->Velocity[c8_i11];
-    c8_b_msg->Effort[c8_i11] = c8_r->Effort[c8_i11];
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void c8_eML_blk_kernel_kernel10
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_tmpIdx;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_tmpIdx = (int32_T)c8_threadId;
-  if (c8_tmpIdx < 1) {
-    c8_b_blankMsg->Name_SL_Info.CurrentLength = 6U;
-    c8_b_blankMsg->Effort_SL_Info.CurrentLength = 6U;
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void c8_eML_blk_kernel_kernel11(const
-  uint8_T c8_uv[12], c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState
-  *c8_b_blankMsg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i = (int32_T)c8_threadId;
-  if (c8_i < 12) {
-    c8_b_blankMsg->Name[0].Data[c8_i] = c8_uv[c8_i];
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void c8_eML_blk_kernel_kernel12
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_tmpIdx;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_tmpIdx = (int32_T)c8_threadId;
-  if (c8_tmpIdx < 1) {
-    c8_b_blankMsg->Name[0].Data_SL_Info.CurrentLength = 12U;
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void c8_eML_blk_kernel_kernel13(const
-  uint8_T c8_uv1[13], c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState
-  *c8_b_blankMsg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i1;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i1 = (int32_T)c8_threadId;
-  if (c8_i1 < 13) {
-    c8_b_blankMsg->Name[1].Data[c8_i1] = c8_uv1[c8_i1];
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void c8_eML_blk_kernel_kernel14
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_tmpIdx;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_tmpIdx = (int32_T)c8_threadId;
-  if (c8_tmpIdx < 1) {
-    c8_b_blankMsg->Name[1].Data_SL_Info.CurrentLength = 13U;
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void c8_eML_blk_kernel_kernel15(const
-  uint8_T c8_uv2[14], c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState
-  *c8_b_blankMsg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i2;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i2 = (int32_T)c8_threadId;
-  if (c8_i2 < 14) {
-    c8_b_blankMsg->Name[2].Data[c8_i2] = c8_uv2[c8_i2];
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void c8_eML_blk_kernel_kernel16
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_tmpIdx;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_tmpIdx = (int32_T)c8_threadId;
-  if (c8_tmpIdx < 1) {
-    c8_b_blankMsg->Name[2].Data_SL_Info.CurrentLength = 14U;
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void c8_eML_blk_kernel_kernel17(const
-  uint8_T c8_uv3[13], c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState
-  *c8_b_blankMsg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i3;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i3 = (int32_T)c8_threadId;
-  if (c8_i3 < 13) {
-    c8_b_blankMsg->Name[3].Data[c8_i3] = c8_uv3[c8_i3];
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void c8_eML_blk_kernel_kernel18
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_tmpIdx;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_tmpIdx = (int32_T)c8_threadId;
-  if (c8_tmpIdx < 1) {
-    c8_b_blankMsg->Name[3].Data_SL_Info.CurrentLength = 13U;
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void c8_eML_blk_kernel_kernel19(const
-  uint8_T c8_uv4[14], c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState
-  *c8_b_blankMsg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i4;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i4 = (int32_T)c8_threadId;
-  if (c8_i4 < 14) {
-    c8_b_blankMsg->Name[4].Data[c8_i4] = c8_uv4[c8_i4];
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void c8_eML_blk_kernel_kernel20
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_tmpIdx;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_tmpIdx = (int32_T)c8_threadId;
-  if (c8_tmpIdx < 1) {
-    c8_b_blankMsg->Name[4].Data_SL_Info.CurrentLength = 14U;
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void c8_eML_blk_kernel_kernel21(const
-  uint8_T c8_uv5[15], c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState
-  *c8_b_blankMsg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_i5;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i5 = (int32_T)c8_threadId;
-  if (c8_i5 < 15) {
-    c8_b_blankMsg->Name[5].Data[c8_i5] = c8_uv5[c8_i5];
-  }
-}
-
-static __global__ __launch_bounds__(32, 1) void c8_eML_blk_kernel_kernel22
-  (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c8_b_blankMsg)
-{
-  uint64_T c8_threadId;
-  int32_T c8_tmpIdx;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_tmpIdx = (int32_T)c8_threadId;
-  if (c8_tmpIdx < 1) {
-    c8_b_blankMsg->Name[5].Data_SL_Info.CurrentLength = 15U;
+  if (c8_i < 7) {
+    c8_b_y[c8_i] = c8_b_u[c8_i];
   }
 }
 
@@ -1508,12 +309,10 @@ static void init_simulink_io_address(SFc8_sliding_controller_rbdlInstanceStruct 
   chartInstance)
 {
   chartInstance->c8_fEmlrtCtx = (void *)sfrtGetEmlrtCtx(chartInstance->S);
-  chartInstance->c8_blankMsg =
-    (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *)
-    ssGetInputPortSignal_wrapper(chartInstance->S, 0);
-  chartInstance->c8_msg =
-    (c8_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *)
-    ssGetOutputPortSignal_wrapper(chartInstance->S, 1);
+  chartInstance->c8_u = (real_T (*)[7])ssGetInputPortSignal_wrapper
+    (chartInstance->S, 0);
+  chartInstance->c8_y = (real_T (*)[7])ssGetOutputPortSignal_wrapper
+    (chartInstance->S, 1);
 }
 
 #include <stdio.h>
@@ -1523,10 +322,10 @@ static void init_simulink_io_address(SFc8_sliding_controller_rbdlInstanceStruct 
 /* SFunction Glue Code */
 void sf_c8_sliding_controller_rbdl_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(980522040U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1002027171U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(4013666779U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(639975863U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2438127827U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3025077116U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(880705944U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3519700120U);
 }
 
 mxArray *sf_c8_sliding_controller_rbdl_third_party_uses_info(void)
@@ -1567,8 +366,8 @@ static const mxArray *sf_get_sim_state_info_c8_sliding_controller_rbdl(void)
   mxArray *mxInfo = mxCreateStructMatrix(1, 1, 2, infoFields);
   mxArray *mxVarInfo = sf_mex_decode(
     "eNpjYPT0ZQACPhDBxMDABqQ4IEwwYIXyGaFijHBxFri4AhCXVBakgsSLi5I9U4B0XmIumJ9YWuG"
-    "Zl5YPNt+CAWE+GxbzGZHM54SKQ8AHe8r0iziA9Bsg6WfBop8ZSb8AkJdbnA4JF2j4kG+/ggNl+i"
-    "H2RxBwvwqK+yH8zOL4xOSSzLLU+GSL+OKczJTMvPT45Py8kqL8nJzUoviipJQcePwDAQBAYx5T"
+    "Zl5YPNt+CAWE+GxbzGZHM54SKQ8AHe8r0iziA9Bsg6WchoF8AyKqEhQuUJt9+BQfK9EPsjyDgfh"
+    "UU90P4mcXxicklmWWp8ckW8cU5mSmZeenxyfl5JUX5OTmpRfFFSSk5DEj+BAB5SR2B"
     );
   mxArray *mxChecksum = mxCreateDoubleMatrix(1, 4, mxREAL);
   sf_c8_sliding_controller_rbdl_get_check_sum(&mxChecksum);
@@ -1579,7 +378,7 @@ static const mxArray *sf_get_sim_state_info_c8_sliding_controller_rbdl(void)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "sfyie85e4RPqcu3zKnkAS7F";
+  return "svi1IOD2u267XmhzOouF1CC";
 }
 
 static void sf_opaque_initialize_c8_sliding_controller_rbdl(void
@@ -1691,27 +490,27 @@ const char* sf_c8_sliding_controller_rbdl_get_post_codegen_info(void)
 {
   int i;
   const char* encStrCodegen [18] = {
-    "eNrtV91q1EAUTtcqCipFBG8EvRD0UlCxF/603R9cbG0xrXq3TCdnN8NOZuL8bLteeq9vIvoCvoW",
-    "IzyAIPoJnkux2m02y1sWiYiBNJ/nOmXPOd35mvYX2hofXebxXLnjeKXyexrvmpdfJbL0wcafvF7",
-    "3r2foNCgkbbRFFIu1VXoJE8BS05NYwKdqiKwthTHRBgaCIjaUyZdo0iyxnot+ygjp9+nnIaOiH0",
-    "vJgDWVJsCn4ELXF1myhngZTQE0LIDChkrYXtjjpjS1WZq8eAu1rG1W5oMH4NnZm6Q3LDYs5NPeB",
-    "toU2BC3WB7b5hhiom/1SN52n2h8BZRRzRkShtyHRPsQYYAM7cYB/N61Bp/IwGhJl1iAkA9DrrJ/",
-    "olALyOpnGD7tMECMVI7wZ8boTnLZti6M9GzIAXhEQtG1NAenHkglTzr/fQk+bguxyaMCu7ZVr8+",
-    "GldeQ/Y7AHqjRu3bocgCI92BSlmyYBae4nbI2zZBpmWATPiFqlyJ+GoDR7MXO0T5An2EaJMhgkT",
-    "rb1tmIDDG+pNhu1XWbOKhkbpWTrWbBEW3MAVSyMtbWoqBPOdSlsW8brMACeaG0QQ6phqdZinNYs",
-    "2JYYYJfe5dVgBUPiM1hdioAV0jXIAZK+8wQby2EktdrIqI7J21hfn/48DWsLA6pLKBR1AUWYBox",
-    "ZEt5ybQHTjnsEolUmMa8InGbILJSnu1Y09qTqY0wqmsiBC47RUmCke8glVsKOxqKpgjkuZ+EooS",
-    "EErsEwDhtYNogtiIl2rW0V627AzLABmioWF7BqseqwDTVdQg1j2BF9IfdES8nIz3p8Gl4AzDaiB",
-    "BO9NexfatjC3YuocPPspncwz87+xDwbyeWfNyb0LBTo8Sae+X3P1Kr3reF/C6P5OyF3LrfPYk7O",
-    "4ZbwXv304vV9tbL5+f29b+++fnw7z/4fakeb/+ez9eVRox0XzmAqXx320YRdiwX6L03oX8rWujt",
-    "ksHwHbj/dekntrVePRX/Vv9tK+Zlhby1n7+j9VdfxMcuS/FS0HWQHE7cmNh3XTv/yhL2nZsTjTP",
-    "Y+vb4/nE/+4kqex6J4nTgUrxOucg/l7a/vf3VlPvl0/xcz7L+W4/taMtc7xHUL6NDljuYswErvU",
-    "CmMkpyD6qjdgOfr81fz/ahy3jHL/S12/pf7/bz/zPw6bjnvmOXm9e+oc/xPw1fNAy+HX/qD/Zj3",
-    "fPW78V+8o52DrmTrB+OfOvWQ8aDg1Jt9xiNst+jrP5CnPwDHQLYX",
+    "eNrtV91u00gUdqMuAgmqCq3gBgmkrbRcLki7cLNQ6iTaSC2p1i1wgRRNxyfxKOMZMz9usy/AxYp",
+    "79imWSx6DSx5jH4EztpNmHduhRFSAsOQ6Y3/nzDnnOz9Tb6235+G1gff2Vc+7gM+LeLe8/PqhWK",
+    "/N3fn7de/nYv0KhYSN94kisfYaL0Fi+BO05NYwKXpiKCthTAxBgaCITaQyddo0iy1nYty1gjp9+",
+    "mnEaBRE0vJwB2VJ2Bd8gtoSa/ZRT5spoKYLEJpISTuKupyMZhYrc+xHQMfaxk0uaDCBTZxZes9y",
+    "wxIOnROgPaENQYv1qW2BIQZ8c1LrpvNUB1OgjBPOiKj0NiI6gAQDbOAwCfFv3xp0qgyjEVFmByK",
+    "Sgt5l40ynFFDWyTR+OGKCGKkY4Z2Y+05w0bZ9jvbsyRB4Q0DQth0FZJxIJkw9/0EXPe0IcsShDU",
+    "d2VK8tgBfWkf+EwTGo2rgNfZmCIiPoi9pNs4B0TjK2ZlmyCDMshidEPaLIn4awNnsxc3RAkCc4Q",
+    "Ik6GGRO9vSBYimGt1abjXsuM5eVjI1zsvUyWKatk0ITCzNtXSp8wrmuhR3IZBdS4JnWNjGkGZZr",
+    "rcZpzcIDiQF26V1fDVYwJL6A+VKErJKutATI+s5jbCz/R1KrjYx9TN727u7i50VYTxhQQ0Khqgs",
+    "owjRgzLLw1msLmXbcIxCtMpl5VeA8Q5ahPD20on0s1Rhj0tBETl1wjNYCYz1CLrESDjUWTRPMcb",
+    "kMRwmNIHQNhnHYw7JBbEVMtGttj7DuUmYmbdBUsaSCVYtVh22o4xJqksChGAt5LLpKxkHR4/PwA",
+    "mC2ESWYGO1g/1KTLu5eRYWbZ794p/Ps8kfMs6lc+Xl7Ts9ahR5v7lne91Kred8W/lqbzt85uSul",
+    "fdZLcg63iffVl9eC4a9///T787f/vHv5+t9V9n/TOtv83yjWN6aNdlY46UK+Ouwfc3atV+i/Pqd",
+    "/s1jrlN3p9dt37d3f7j2Lo7/60nbv+H7OzxJ7WyV7p+9vuY6PWZblp6K9sDiYuDWx+bh2+u/P2X",
+    "thSTwuFe/z67+Hq8n/uF3mcX2J/Cb+mpTy9tP3v7W9mny+/7Ml9m+V+N7K5vqAuG4BA3p/oDkLs",
+    "dIHVAqjJOegBuoo5OX6/NR8P6ucd85yX4ud3+U+P+8fM7/OW847Z7lV/TvrHP/S8E3zwCvhN79g",
+    "P1Y9X31u/HvvbOegm8X6wexfHT9iPKw49Raf8Qg7rPr6DeTpByAMsuQ=",
     ""
   };
 
-  static char newstr [1253] = "";
+  static char newstr [1257] = "";
   newstr[0] = '\0';
   for (i = 0; i < 18; i++) {
     strcat(newstr, encStrCodegen[i]);
@@ -1724,10 +523,10 @@ static void mdlSetWorkWidths_c8_sliding_controller_rbdl(SimStruct *S)
 {
   const char* newstr = sf_c8_sliding_controller_rbdl_get_post_codegen_info();
   sf_set_work_widths(S, newstr);
-  ssSetChecksum0(S,(2186859585U));
-  ssSetChecksum1(S,(1329623613U));
-  ssSetChecksum2(S,(3980177366U));
-  ssSetChecksum3(S,(2394811053U));
+  ssSetChecksum0(S,(1393985298U));
+  ssSetChecksum1(S,(596325734U));
+  ssSetChecksum2(S,(2578996285U));
+  ssSetChecksum3(S,(2946009040U));
 }
 
 static void mdlRTW_c8_sliding_controller_rbdl(SimStruct *S)
