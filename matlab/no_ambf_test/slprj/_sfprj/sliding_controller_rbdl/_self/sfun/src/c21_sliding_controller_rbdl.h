@@ -24,7 +24,7 @@ struct SFc21_sliding_controller_rbdlInstanceStruct
   uint8_T c21_JITStateAnimation[1];
   uint8_T c21_JITTransitionAnimation[1];
   void *c21_fEmlrtCtx;
-  real_T (*c21_u)[7];
+  real_T (*c21_u)[6];
   real_T (*c21_y)[7];
 };
 

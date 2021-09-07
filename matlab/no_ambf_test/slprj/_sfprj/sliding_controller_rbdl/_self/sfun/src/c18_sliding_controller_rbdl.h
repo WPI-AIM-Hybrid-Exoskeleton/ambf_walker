@@ -24,7 +24,7 @@ struct SFc18_sliding_controller_rbdlInstanceStruct
   uint8_T c18_JITStateAnimation[1];
   uint8_T c18_JITTransitionAnimation[1];
   void *c18_fEmlrtCtx;
-  real_T (*c18_u)[7];
+  real_T (*c18_u)[6];
   real_T (*c18_y)[7];
 };
 

@@ -2,7 +2,6 @@
 
 #include "sliding_controller_rbdl_sfun.h"
 #include "c8_sliding_controller_rbdl.h"
-#include "MWCudaDimUtility.hpp"
 #ifdef utFree
 #undef utFree
 #endif
@@ -65,21 +64,19 @@ static void mdl_cleanup_runtime_resources_c8_sliding_controller_rbdl
   (SFc8_sliding_controller_rbdlInstanceStruct *chartInstance);
 static void initSimStructsc8_sliding_controller_rbdl
   (SFc8_sliding_controller_rbdlInstanceStruct *chartInstance);
+static void c8_eML_blk_kernel(SFc8_sliding_controller_rbdlInstanceStruct
+  *chartInstance, real_T c8_b_u[7], real_T c8_b_y[6]);
 static void c8_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
   *chartInstance, const mxArray *c8_b_y, const char_T *c8_identifier, real_T
-  c8_c_y[7]);
+  c8_c_y[6]);
 static void c8_b_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
   *chartInstance, const mxArray *c8_b_u, const emlrtMsgIdentifier *c8_parentId,
-  real_T c8_b_y[7]);
+  real_T c8_b_y[6]);
 static uint8_T c8_c_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct *
   chartInstance, const mxArray *c8_b_is_active_c8_sliding_controller_rbdl, const
   char_T *c8_identifier);
 static uint8_T c8_d_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct *
   chartInstance, const mxArray *c8_b_u, const emlrtMsgIdentifier *c8_parentId);
-static void c8_eML_blk_kernel(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, real_T c8_b_u[7]);
-static __global__ void c8_sf_gateway_c8_sliding_controller_rbdl_kernel1(real_T
-  c8_b_u[7], real_T c8_b_y[7]);
 static void init_dsm_address_info(SFc8_sliding_controller_rbdlInstanceStruct
   *chartInstance);
 static void init_simulink_io_address(SFc8_sliding_controller_rbdlInstanceStruct *
@@ -138,7 +135,7 @@ static const mxArray *get_sim_state_c8_sliding_controller_rbdl
   sf_mex_assign(&c8_b_y, sf_mex_createcellmatrix(2, 1), false);
   c8_c_y = NULL;
   sf_mex_assign(&c8_c_y, sf_mex_create("y", *chartInstance->c8_y, 0, 0U, 1U, 0U,
-    1, 7), false);
+    1, 6), false);
   sf_mex_setcell(c8_b_y, 0, c8_c_y);
   c8_d_y = NULL;
   sf_mex_assign(&c8_d_y, sf_mex_create("y",
@@ -167,22 +164,10 @@ static void set_sim_state_c8_sliding_controller_rbdl
 static void sf_gateway_c8_sliding_controller_rbdl
   (SFc8_sliding_controller_rbdlInstanceStruct *chartInstance)
 {
-  real_T (*c8_gpu_u)[7];
-  real_T (*c8_gpu_y)[7];
-  cudaMalloc(&c8_gpu_y, 56UL);
-  cudaMalloc(&c8_gpu_u, 56UL);
   chartInstance->c8_JITTransitionAnimation[0] = 0U;
   _sfTime_ = sf_get_time(chartInstance->S);
-  cudaMemcpy(*c8_gpu_u, *chartInstance->c8_u, 56UL, cudaMemcpyHostToDevice);
-  cudaMemcpy(*c8_gpu_y, *chartInstance->c8_y, 56UL, cudaMemcpyHostToDevice);
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel1<<<dim3(1U, 1U, 1U), dim3(32U,
-    1U, 1U)>>>(*c8_gpu_u, *c8_gpu_y);
-  cudaMemcpy(*chartInstance->c8_y, *c8_gpu_y, 56UL, cudaMemcpyDeviceToHost);
-  cudaMemcpy(*chartInstance->c8_u, *c8_gpu_u, 56UL, cudaMemcpyDeviceToHost);
-  c8_eML_blk_kernel(chartInstance, *chartInstance->c8_y);
+  c8_eML_blk_kernel(chartInstance, *chartInstance->c8_u, *chartInstance->c8_y);
   c8_do_animation_call_c8_sliding_controller_rbdl(chartInstance);
-  cudaFree(*c8_gpu_u);
-  cudaFree(*c8_gpu_y);
 }
 
 static void mdl_start_c8_sliding_controller_rbdl
@@ -230,9 +215,20 @@ const mxArray *sf_c8_sliding_controller_rbdl_get_eml_resolved_functions_info()
   return c8_nameCaptureInfo;
 }
 
+static void c8_eML_blk_kernel(SFc8_sliding_controller_rbdlInstanceStruct
+  *chartInstance, real_T c8_b_u[7], real_T c8_b_y[6])
+{
+  c8_b_y[0] = c8_b_u[2];
+  c8_b_y[1] = c8_b_u[3];
+  c8_b_y[2] = c8_b_u[6];
+  c8_b_y[3] = c8_b_u[0];
+  c8_b_y[4] = c8_b_u[4];
+  c8_b_y[5] = c8_b_u[5];
+}
+
 static void c8_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
   *chartInstance, const mxArray *c8_b_y, const char_T *c8_identifier, real_T
-  c8_c_y[7])
+  c8_c_y[6])
 {
   emlrtMsgIdentifier c8_thisId;
   c8_thisId.fIdentifier = const_cast<const char_T *>(c8_identifier);
@@ -244,12 +240,12 @@ static void c8_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
 
 static void c8_b_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct
   *chartInstance, const mxArray *c8_b_u, const emlrtMsgIdentifier *c8_parentId,
-  real_T c8_b_y[7])
+  real_T c8_b_y[6])
 {
-  real_T c8_dv[7];
+  real_T c8_dv[6];
   int32_T c8_i;
-  sf_mex_import(c8_parentId, sf_mex_dup(c8_b_u), c8_dv, 1, 0, 0U, 1, 0U, 1, 7);
-  for (c8_i = 0; c8_i < 7; c8_i++) {
+  sf_mex_import(c8_parentId, sf_mex_dup(c8_b_u), c8_dv, 1, 0, 0U, 1, 0U, 1, 6);
+  for (c8_i = 0; c8_i < 6; c8_i++) {
     c8_b_y[c8_i] = c8_dv[c8_i];
   }
 
@@ -282,24 +278,6 @@ static uint8_T c8_d_emlrt_marshallIn(SFc8_sliding_controller_rbdlInstanceStruct 
   return c8_b_y;
 }
 
-static void c8_eML_blk_kernel(SFc8_sliding_controller_rbdlInstanceStruct
-  *chartInstance, real_T c8_b_u[7])
-{
-}
-
-static __global__ __launch_bounds__(32, 1) void
-  c8_sf_gateway_c8_sliding_controller_rbdl_kernel1(real_T c8_b_u[7], real_T
-  c8_b_y[7])
-{
-  uint64_T c8_threadId;
-  int32_T c8_i;
-  c8_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c8_i = (int32_T)c8_threadId;
-  if (c8_i < 7) {
-    c8_b_y[c8_i] = c8_b_u[c8_i];
-  }
-}
-
 static void init_dsm_address_info(SFc8_sliding_controller_rbdlInstanceStruct
   *chartInstance)
 {
@@ -311,7 +289,7 @@ static void init_simulink_io_address(SFc8_sliding_controller_rbdlInstanceStruct 
   chartInstance->c8_fEmlrtCtx = (void *)sfrtGetEmlrtCtx(chartInstance->S);
   chartInstance->c8_u = (real_T (*)[7])ssGetInputPortSignal_wrapper
     (chartInstance->S, 0);
-  chartInstance->c8_y = (real_T (*)[7])ssGetOutputPortSignal_wrapper
+  chartInstance->c8_y = (real_T (*)[6])ssGetOutputPortSignal_wrapper
     (chartInstance->S, 1);
 }
 
@@ -322,10 +300,10 @@ static void init_simulink_io_address(SFc8_sliding_controller_rbdlInstanceStruct 
 /* SFunction Glue Code */
 void sf_c8_sliding_controller_rbdl_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2438127827U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3025077116U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(880705944U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3519700120U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2339256118U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2737773724U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(583777407U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1172739197U);
 }
 
 mxArray *sf_c8_sliding_controller_rbdl_third_party_uses_info(void)
@@ -378,7 +356,7 @@ static const mxArray *sf_get_sim_state_info_c8_sliding_controller_rbdl(void)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "svi1IOD2u267XmhzOouF1CC";
+  return "s0lpZ3UsJHBzJBVszsMYZmF";
 }
 
 static void sf_opaque_initialize_c8_sliding_controller_rbdl(void
@@ -490,23 +468,23 @@ const char* sf_c8_sliding_controller_rbdl_get_post_codegen_info(void)
 {
   int i;
   const char* encStrCodegen [18] = {
-    "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",
+    "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",
     ""
   };
 
@@ -523,10 +501,10 @@ static void mdlSetWorkWidths_c8_sliding_controller_rbdl(SimStruct *S)
 {
   const char* newstr = sf_c8_sliding_controller_rbdl_get_post_codegen_info();
   sf_set_work_widths(S, newstr);
-  ssSetChecksum0(S,(1393985298U));
-  ssSetChecksum1(S,(596325734U));
-  ssSetChecksum2(S,(2578996285U));
-  ssSetChecksum3(S,(2946009040U));
+  ssSetChecksum0(S,(849861154U));
+  ssSetChecksum1(S,(1766385219U));
+  ssSetChecksum2(S,(1629983199U));
+  ssSetChecksum3(S,(924404553U));
 }
 
 static void mdlRTW_c8_sliding_controller_rbdl(SimStruct *S)

@@ -237,12 +237,12 @@ const mxArray *sf_c10_sliding_controller_rbdl_get_eml_resolved_functions_info()
 {
   const mxArray *c10_nameCaptureInfo = NULL;
   const char_T *c10_data[4] = {
-    "789ce593cb4ac34014864fa51637f5b2e94b088e75e5be2a8a5884163722f1243969c6cc452653dbbaf10df4297c171fcb246d7a09868862371e08277ffecc7c"
-    "677e18a85d5cd500603b795a2f00e70dc8aa396db03beb1bb05a45bf56d2f3da84facabad4df4b786f33ed6965696ca742a1a4f94a5f4bae50d9fee491c050ac",
-    "c513f9991370417d2ea9b72cbaa992674bd65ca456fade09c98b7a4309268c17138a6591e591d67dc979eb157914ab9847f1bf9c37fe212fdfbf55c1cbfd409b"
-    "111adf89b8e2122df76247d0e0f7e7ceb98dd239a68eaf87aea005efe3973c2ce5adfab7a7772cd49298421ba2e224065af8011a97796893349c51cc62e33194",
-    "6ee08c504464581290409729ed645f2dc5967d1de0819c71aa72dcf9e6b9caee5313b6b2fefeba8febe4e5f55f78ebba8f978713de7ee60f517474dce9b65dd7"
-    "bbf1edc9628eeb0a4ed51c50a2ff7aff4fb0e86ac3", "" };
+    "789cc593cd4ac34014856fa516375537fa188e2d08dd57c5222d428b1b9138496e9a31f32393a96dddb8ecd2c7d26772659226fd098688c57a21dc9c9ccc7c77"
+    "0e0c543add0a00ec474ff715e0aa0649d5e70d0ed3be03eb95f72b053dab5da8aead8bfd4ec47b4bb5a3a4c189990b49052e56ba4a3049a5194c9f1034868a3f",
+    "a39b381ee3386002fbaba2172b71b9622d446cc5ef6d1f9da03f12a0fd7039215f15491e713d149cb75a9247bef279e4ffcb78935ff2b2fd8f4b7899ef293da6"
+    "dab5022699a08639a1c571b8f9b9336ead708eb9e3aa91cd71c9fbd890470b79ebfeddc53df1954022a9f1a964c8878abb1ed53671a889d2b0c62109b543a8b0",
+    "3d6b4c79809a4401716a13a9ace4abc1d090ef033c1129a72cc7831f9eabe83ed5612fe9ada333ba4ddeecf3bdb94d5e56ffc5dbd67dbc3e9db2c60b7b0c8266"
+    "abdd6bd8b673eb9af3e51c37259cb239a040fff5fe5f7dd56cd0", "" };
 
   c10_nameCaptureInfo = NULL;
   emlrtNameCaptureMxArrayR2016a(&c10_data[0], 1632U, &c10_nameCaptureInfo);
@@ -524,28 +524,28 @@ const char* sf_c10_sliding_controller_rbdl_get_post_codegen_info(void)
 {
   int i;
   const char* encStrCodegen [19] = {
-    "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",
+    "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",
     ""
   };
 
-  static char newstr [1337] = "";
+  static char newstr [1341] = "";
   newstr[0] = '\0';
   for (i = 0; i < 19; i++) {
     strcat(newstr, encStrCodegen[i]);
@@ -558,10 +558,10 @@ static void mdlSetWorkWidths_c10_sliding_controller_rbdl(SimStruct *S)
 {
   const char* newstr = sf_c10_sliding_controller_rbdl_get_post_codegen_info();
   sf_set_work_widths(S, newstr);
-  ssSetChecksum0(S,(1697364346U));
-  ssSetChecksum1(S,(1755135983U));
-  ssSetChecksum2(S,(287926502U));
-  ssSetChecksum3(S,(3395648020U));
+  ssSetChecksum0(S,(3042620282U));
+  ssSetChecksum1(S,(2411386699U));
+  ssSetChecksum2(S,(753018669U));
+  ssSetChecksum3(S,(4282078351U));
 }
 
 static void mdlRTW_c10_sliding_controller_rbdl(SimStruct *S)

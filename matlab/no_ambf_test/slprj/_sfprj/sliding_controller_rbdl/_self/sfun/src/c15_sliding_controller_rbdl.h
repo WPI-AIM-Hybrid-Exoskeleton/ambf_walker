@@ -170,7 +170,7 @@ struct SFc15_sliding_controller_rbdlInstanceStruct
   void *c15_fEmlrtCtx;
   c15_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c15_blankMsg;
   c15_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c15_msg;
-  uint8_T (*c15_gpu_uv6)[6];
+  uint8_T (*c15_gpu_uv6)[5];
   uint8_T (*c15_gpu_uv5)[10];
   uint8_T (*c15_gpu_uv4)[9];
   uint8_T (*c15_gpu_uv3)[8];

@@ -65,7 +65,7 @@ static void mdl_cleanup_runtime_resources_c21_sliding_controller_rbdl
 static void initSimStructsc21_sliding_controller_rbdl
   (SFc21_sliding_controller_rbdlInstanceStruct *chartInstance);
 static void c21_eML_blk_kernel(SFc21_sliding_controller_rbdlInstanceStruct
-  *chartInstance, real_T c21_b_u[7], real_T c21_b_y[7]);
+  *chartInstance, real_T c21_b_u[6], real_T c21_b_y[7]);
 static void c21_emlrt_marshallIn(SFc21_sliding_controller_rbdlInstanceStruct
   *chartInstance, const mxArray *c21_b_y, const char_T *c21_identifier, real_T
   c21_c_y[7]);
@@ -217,10 +217,10 @@ const mxArray *sf_c21_sliding_controller_rbdl_get_eml_resolved_functions_info()
 }
 
 static void c21_eML_blk_kernel(SFc21_sliding_controller_rbdlInstanceStruct
-  *chartInstance, real_T c21_b_u[7], real_T c21_b_y[7])
+  *chartInstance, real_T c21_b_u[6], real_T c21_b_y[7])
 {
   c21_b_y[0] = c21_b_u[3];
-  c21_b_y[1] = c21_b_u[6];
+  c21_b_y[1] = 0.0;
   c21_b_y[2] = c21_b_u[0];
   c21_b_y[3] = c21_b_u[1];
   c21_b_y[4] = c21_b_u[4];
@@ -292,7 +292,7 @@ static void init_simulink_io_address(SFc21_sliding_controller_rbdlInstanceStruct
   *chartInstance)
 {
   chartInstance->c21_fEmlrtCtx = (void *)sfrtGetEmlrtCtx(chartInstance->S);
-  chartInstance->c21_u = (real_T (*)[7])ssGetInputPortSignal_wrapper
+  chartInstance->c21_u = (real_T (*)[6])ssGetInputPortSignal_wrapper
     (chartInstance->S, 0);
   chartInstance->c21_y = (real_T (*)[7])ssGetOutputPortSignal_wrapper
     (chartInstance->S, 1);
@@ -305,10 +305,10 @@ static void init_simulink_io_address(SFc21_sliding_controller_rbdlInstanceStruct
 /* SFunction Glue Code */
 void sf_c21_sliding_controller_rbdl_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3007509169U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1926089682U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2239166282U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3770191902U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3669229500U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(490348266U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2982423110U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1200777508U);
 }
 
 mxArray *sf_c21_sliding_controller_rbdl_third_party_uses_info(void)
@@ -361,7 +361,7 @@ static const mxArray *sf_get_sim_state_info_c21_sliding_controller_rbdl(void)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "sdegTANPF1GH9p3UVy5QBRH";
+  return "sStKXtzIzHLETxtLQhJoVxG";
 }
 
 static void sf_opaque_initialize_c21_sliding_controller_rbdl(void
@@ -473,27 +473,27 @@ const char* sf_c21_sliding_controller_rbdl_get_post_codegen_info(void)
 {
   int i;
   const char* encStrCodegen [18] = {
-    "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",
+    "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",
     ""
   };
 
-  static char newstr [1261] = "";
+  static char newstr [1257] = "";
   newstr[0] = '\0';
   for (i = 0; i < 18; i++) {
     strcat(newstr, encStrCodegen[i]);
@@ -506,10 +506,10 @@ static void mdlSetWorkWidths_c21_sliding_controller_rbdl(SimStruct *S)
 {
   const char* newstr = sf_c21_sliding_controller_rbdl_get_post_codegen_info();
   sf_set_work_widths(S, newstr);
-  ssSetChecksum0(S,(3042383101U));
-  ssSetChecksum1(S,(4119015307U));
-  ssSetChecksum2(S,(1566679822U));
-  ssSetChecksum3(S,(505804526U));
+  ssSetChecksum0(S,(1448337289U));
+  ssSetChecksum1(S,(3838859999U));
+  ssSetChecksum2(S,(1857238302U));
+  ssSetChecksum3(S,(397799444U));
 }
 
 static void mdlRTW_c21_sliding_controller_rbdl(SimStruct *S)

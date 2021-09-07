@@ -25,7 +25,7 @@ struct SFc6_sliding_controller_rbdlInstanceStruct
   uint8_T c6_JITTransitionAnimation[1];
   void *c6_fEmlrtCtx;
   real_T (*c6_u)[7];
-  real_T (*c6_y)[7];
+  real_T (*c6_y)[6];
 };
 
 #endif                                 /* struct_SFc6_sliding_controller_rbdlInstanceStruct */

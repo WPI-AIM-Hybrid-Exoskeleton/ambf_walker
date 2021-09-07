@@ -158,7 +158,7 @@ static __global__ void c15_eML_blk_kernel_kernel21(const uint8_T c15_uv5[10],
   c15_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c15_b_blankMsg);
 static __global__ void c15_eML_blk_kernel_kernel22
   (c15_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c15_b_blankMsg);
-static __global__ void c15_eML_blk_kernel_kernel23(const uint8_T c15_uv6[6],
+static __global__ void c15_eML_blk_kernel_kernel23(const uint8_T c15_uv6[5],
   c15_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c15_b_blankMsg);
 static __global__ void c15_eML_blk_kernel_kernel24
   (c15_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c15_b_blankMsg);
@@ -177,7 +177,7 @@ static void initialize_c15_sliding_controller_rbdl
   _sfTime_ = sf_get_time(chartInstance->S);
   chartInstance->c15_is_active_c15_sliding_controller_rbdl = 0U;
   cudaGetLastError();
-  cudaMalloc(&chartInstance->c15_gpu_uv6, 6UL);
+  cudaMalloc(&chartInstance->c15_gpu_uv6, 5UL);
   cudaMalloc(&chartInstance->c15_gpu_uv5, 10UL);
   cudaMalloc(&chartInstance->c15_gpu_uv4, 9UL);
   cudaMalloc(&chartInstance->c15_gpu_uv3, 8UL);
@@ -1199,7 +1199,7 @@ static void c15_eML_blk_kernel(SFc15_sliding_controller_rbdlInstanceStruct
 
   static uint8_T c15_uv[7] = { 76U, 101U, 102U, 116U, 72U, 105U, 112U };
 
-  static uint8_T c15_uv6[6] = { 98U, 108U, 97U, 110U, 99U, 107U };
+  static uint8_T c15_uv6[5] = { 98U, 108U, 97U, 110U, 107U };
 
   cudaMemcpy(chartInstance->c15_gpu_blankMsg, c15_b_blankMsg, 2536UL,
              cudaMemcpyHostToDevice);
@@ -1235,7 +1235,7 @@ static void c15_eML_blk_kernel(SFc15_sliding_controller_rbdlInstanceStruct
     (*chartInstance->c15_gpu_uv5, chartInstance->c15_gpu_blankMsg);
   c15_eML_blk_kernel_kernel22<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
     (chartInstance->c15_gpu_blankMsg);
-  cudaMemcpy(*chartInstance->c15_gpu_uv6, c15_uv6, 6UL, cudaMemcpyHostToDevice);
+  cudaMemcpy(*chartInstance->c15_gpu_uv6, c15_uv6, 5UL, cudaMemcpyHostToDevice);
   c15_eML_blk_kernel_kernel23<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
     (*chartInstance->c15_gpu_uv6, chartInstance->c15_gpu_blankMsg);
   c15_eML_blk_kernel_kernel24<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
@@ -1544,14 +1544,14 @@ static __global__ __launch_bounds__(32, 1) void c15_eML_blk_kernel_kernel22
 }
 
 static __global__ __launch_bounds__(32, 1) void c15_eML_blk_kernel_kernel23(
-  const uint8_T c15_uv6[6],
+  const uint8_T c15_uv6[5],
   c15_SL_Bus_sliding_controller_rbdl_sensor_msgs_JointState *c15_b_blankMsg)
 {
   uint64_T c15_threadId;
   int32_T c15_i6;
   c15_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c15_i6 = (int32_T)c15_threadId;
-  if (c15_i6 < 6) {
+  if (c15_i6 < 5) {
     c15_b_blankMsg->Name[6].Data[c15_i6] = c15_uv6[c15_i6];
   }
 }
@@ -1564,7 +1564,7 @@ static __global__ __launch_bounds__(32, 1) void c15_eML_blk_kernel_kernel24
   c15_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c15_tmpIdx = (int32_T)c15_threadId;
   if (c15_tmpIdx < 1) {
-    c15_b_blankMsg->Name[6].Data_SL_Info.CurrentLength = 6U;
+    c15_b_blankMsg->Name[6].Data_SL_Info.CurrentLength = 5U;
   }
 }
 
@@ -1592,10 +1592,10 @@ static void init_simulink_io_address(SFc15_sliding_controller_rbdlInstanceStruct
 /* SFunction Glue Code */
 void sf_c15_sliding_controller_rbdl_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2930104188U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2719151010U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1089992033U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1160281909U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1017066570U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(900358353U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3723687242U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(94851012U);
 }
 
 mxArray *sf_c15_sliding_controller_rbdl_third_party_uses_info(void)
@@ -1649,7 +1649,7 @@ static const mxArray *sf_get_sim_state_info_c15_sliding_controller_rbdl(void)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "sB9iJytQ0ZIB64f1KmLeG7B";
+  return "sI1iUPGK3ymmR5QqRIigpLG";
 }
 
 static void sf_opaque_initialize_c15_sliding_controller_rbdl(void
@@ -1761,27 +1761,27 @@ const char* sf_c15_sliding_controller_rbdl_get_post_codegen_info(void)
 {
   int i;
   const char* encStrCodegen [18] = {
-    "eNrtV0tv1EgQdoYsWsRD0QqJy0rLBcERJNhlL7thXjAwIQEn7Govo067Ztyadre3H5PMmQsXfgX",
-    "iirhx4MCBP8GVf8BPoNr2TCYe20MYEQHCkuO0/VV1VX316PFWOhseXufwXv/F807i82e8a156/Z",
-    "StV2bu9P2qdzlbP0UhYaMtokikvcpLkAgegpbcGiZFR/RlIYyJPigQFLGxVKZMm2aR5UwM21ZQp",
-    "0//EzIa+qG0PKijLAk2BR+jttiaLdTTZAqoaQMEJlTSDsI2J4OpxcrsNUKgQ22jKhc0GN/Gziy9",
-    "YblhMYfWPtCO0IagxfrANt8QAw2zX+qm81T7E6CMYs6IKPQ2JNqHGANsYCcO8O+mNehUHkZDokw",
-    "dQjIC3WXDRKcUkNfJNH7YZYIYqRjhrYg3nOC8bVsc7dmQAfCKgKBtdQVkGEsmTDn/fhs9bQmyy6",
-    "EJu3ZQrs2H/60j/xGDPVClces35AgUGcCmKN00CUhrP2FrmiXzMMMieETULYr8aQhKsxczR/sEe",
-    "YJtlCiDQeJkR28rNsLwlmqzUcdl5qKSsVFKtl4ES7S1RlDFwlRbm4oG4VyXwrZl3IUR8ERrkxhS",
-    "DUu1FuO0ZsG2xAC79C6vBisYEp/BGlIErJCuUQ6Q9J372FgOI6nVRkYNTN5mtzv/eR7WEQZUn1A",
-    "o6gKKMA0YsyS85doCph33CESrTGJeETjNkEUoT/etaO5JNcSYVDSRAxcco6XASA+QS6yEHY1FUw",
-    "VzXC7CUUJDCFyDYRw2sGwQWxAT7VrbLay7ETPjJmiqWFzAqsWqwzbUcgk1jmFHDIXcE20lIz/r8",
-    "Wl4ATDbiBJMDOrYv9S4jbsXUeHm2VXvYJ6d+YR5NpHLP6/M6Fkp0OPNPPP7nqpV71vD/1Ym83dG",
-    "7mxun9WcnMOt4f3i7eNnr5+cvnfn8fP35FXtzTL7v6wdbf6fy9a/ThrttHBGc/nqsHdm7Fot0H9",
-    "hRv9attb1P9ndsXlw9b9O/ffr/Wv3oi7c/qOe8rPA3lrO3sn7i67jY5Yl+aloJ8gOJm5NbDqunf",
-    "6bM/aeXBCPU9n79Prw93Ly59fzPBbF68SheJ1wlXsobz9//4vry8mn+/+7wP5LOb4vJXO9R1y3g",
-    "B69dqOnOQuw1HtUCqMk56B6ajfgufr83Hw/qpx3zHLfip0/5L48758yv45bzjtmuWX9O+oc/9rw",
-    "VfPAy+HXvmI/lj1ffWn8O+9o56DfsvVf0586jZDxoODUm33GI2y/6Ot3kKcfASB5tQ8=",
+    "eNrtV91u00gUdkMXLRLLVgiJG6TlBu0K7QVoF4kLBCV/YG1Ku3XDchdNxyfxKOMZMz9pI+0r7GN",
+    "wzw1vwENwySPwCJyxnTR1bIcSUQFaS6479nfOnHO+8zPxNvwdD68reG9f9byL+PwR74aXXT/k64",
+    "2FO3u/6f2ar/9DIWHjPaJIrL3aS5AY9kFLbg2TwhdDWQpjYggKBEVsIpWp0qZZbDkT464V1OnT/",
+    "0SMRkEkLQ+bKEvCXcGnqC2xZg/1tJkCaroAoYmUtKOoy8lobrEyR60I6FjbuM4FDSawiTNL71hu",
+    "WMKhcwzUF9oQtFif2BYYYqBljivddJ7qYAaUccIZEaXeRkQHkGCADfSTEP/uWoNOFWE0Iso0ISI",
+    "T0D02TnVKAUWdTOOHQyaIkYoR3ol5ywku27bH0Z4dGQKvCQja1lRAxolkwlTzH3TR044ghxzacG",
+    "hH1doCeGkd+c8ZHIGqjNuwJSegyAh2ReWmaUA6xylb8yxZhhkWw3OiHlPkT0NYmb2YOTogyBMco",
+    "EQVDFInfX2g2ATDW6nNxr7LzFUlY+OMbL0KlmrrTKCOhbm2LhUtwrmuhB3IpAcT4KnWNjGkHpZp",
+    "LcdpzcIDiQF26V1dDVYwJD6HtaQIWSldkwIg7TvPsLGcRlKrjYxbmLztXm/58zLMFwbUkFAo6wK",
+    "KMA0YszS81dpCph33CESrTGpeGTjLkFUoTw+taB9JNcaY1DSRExcco5XAWI+QS6yEvsaiqYM5Ll",
+    "fhKKERhK7BMA47WDaILYmJdq3tMdbdhJlpGzRVLClh1WLVYRvquISaJtAXYyGPRFfJOMh7fBZeA",
+    "Mw2ogQToyb2LzXt4u5lVLh5dsc7mWeXP2GezeSKz98W9GyU6PEWnsV9LzXq923gfxuz+bsg91Nh",
+    "n82CnMNt4f3md/7n29uvmi9u/Pzg3/77O+vs/7pxtvl/JV/fmDXaeeFMlvLVYZ8u2LVZov/6gv6",
+    "tfK39u6y/9+SvP6ZxvH/v75f7PhslvScZPyvsbRTsnb2/6To+Zlman4r6YX4wcWtis3Ht9N9fsP",
+    "fiinhcyt9n14dH68lf2y7yWBavC6fidcFV7qm8/fz9b26vJ5/t/2KF/bcKfN9K5/qAuG4BA3r33",
+    "kBzFmKpD6gURknOQQ3UYcgL9fm5+X5WOe+c5b4VO/+X+/K8f8r8Om8575zl1vXvrHP8a8PXzQOv",
+    "gN/6iv1Y93z1pfHvvLOdg37J1w/nP3VaEeNhyak3/4xH2GHZ1+8gTz8CZayzVw==",
     ""
   };
 
-  static char newstr [1269] = "";
+  static char newstr [1265] = "";
   newstr[0] = '\0';
   for (i = 0; i < 18; i++) {
     strcat(newstr, encStrCodegen[i]);
@@ -1794,10 +1794,10 @@ static void mdlSetWorkWidths_c15_sliding_controller_rbdl(SimStruct *S)
 {
   const char* newstr = sf_c15_sliding_controller_rbdl_get_post_codegen_info();
   sf_set_work_widths(S, newstr);
-  ssSetChecksum0(S,(2743321518U));
-  ssSetChecksum1(S,(1259047099U));
-  ssSetChecksum2(S,(3785720648U));
-  ssSetChecksum3(S,(3204626273U));
+  ssSetChecksum0(S,(879504565U));
+  ssSetChecksum1(S,(1118120644U));
+  ssSetChecksum2(S,(1007623256U));
+  ssSetChecksum3(S,(820008316U));
 }
 
 static void mdlRTW_c15_sliding_controller_rbdl(SimStruct *S)

@@ -71,58 +71,58 @@ static void mdl_cleanup_runtime_resources_c17_sliding_controller_rbdl
 static void initSimStructsc17_sliding_controller_rbdl
   (SFc17_sliding_controller_rbdlInstanceStruct *chartInstance);
 static void c17_eML_blk_kernel(SFc17_sliding_controller_rbdlInstanceStruct
-  *chartInstance, real_T c17_b_Kp0[7], real_T c17_b_Kn0[7], real_T c17_b_Bp0[7],
-  real_T c17_b_Bn0[7], real_T c17_b_beta[2], real_T c17_b_alpha[2], real_T
-  c17_b_Tid[7], real_T c17_b_Th[7], real_T c17_b_qd[7], real_T c17_b_K[49],
-  real_T c17_b_B[49]);
+  *chartInstance, real_T c17_b_Kp0[6], real_T c17_b_Kn0[6], real_T c17_b_Bp0[6],
+  real_T c17_b_Bn0[6], real_T c17_b_beta[2], real_T c17_b_alpha[2], real_T
+  c17_b_Tid[6], real_T c17_b_Th[6], real_T c17_b_qd[6], real_T c17_b_K[36],
+  real_T c17_b_B[36]);
 static void c17_emlrt_marshallIn(SFc17_sliding_controller_rbdlInstanceStruct
   *chartInstance, const mxArray *c17_b_B, const char_T *c17_identifier, real_T
-  c17_y[49]);
+  c17_y[36]);
 static void c17_b_emlrt_marshallIn(SFc17_sliding_controller_rbdlInstanceStruct
   *chartInstance, const mxArray *c17_u, const emlrtMsgIdentifier *c17_parentId,
-  real_T c17_y[49]);
+  real_T c17_y[36]);
 static uint8_T c17_c_emlrt_marshallIn
   (SFc17_sliding_controller_rbdlInstanceStruct *chartInstance, const mxArray
    *c17_b_is_active_c17_sliding_controller_rbdl, const char_T *c17_identifier);
 static uint8_T c17_d_emlrt_marshallIn
   (SFc17_sliding_controller_rbdlInstanceStruct *chartInstance, const mxArray
    *c17_u, const emlrtMsgIdentifier *c17_parentId);
-static __global__ void c17_eML_blk_kernel_kernel1(real_T c17_b_Kp0[49]);
-static __global__ void c17_eML_blk_kernel_kernel2(const real_T c17_b_Kp0[7],
-  real_T c17_c_Kp0[49]);
-static __global__ void c17_eML_blk_kernel_kernel3(real_T c17_b_Kn0[49]);
-static __global__ void c17_eML_blk_kernel_kernel4(const real_T c17_b_Kn0[7],
-  real_T c17_c_Kn0[49]);
-static __global__ void c17_eML_blk_kernel_kernel5(real_T c17_b_Bp0[49]);
-static __global__ void c17_eML_blk_kernel_kernel6(const real_T c17_b_Bp0[7],
-  real_T c17_c_Bp0[49]);
-static __global__ void c17_eML_blk_kernel_kernel7(real_T c17_b_Bn0[49]);
-static __global__ void c17_eML_blk_kernel_kernel8(const real_T c17_b_Tid[7],
-  const real_T c17_b_qd[7], const real_T c17_b_Th[7], const real_T c17_b_Bn0[7],
-  ptrdiff_t c17_jpvt_t[7], real_T c17_A[7], real_T c17_x[7], real_T c17_b_x[7],
-  real_T c17_c_Bn0[49]);
-static __global__ void c17_eML_blk_kernel_kernel9(const ptrdiff_t c17_jpvt_t[7],
-  int32_T c17_jpvt[7]);
-static __global__ void c17_eML_blk_kernel_kernel10(int32_T c17_jpvt[7], real_T
-  c17_A[7]);
-static __global__ void c17_eML_blk_kernel_kernel11(real_T c17_change[49]);
-static __global__ void c17_eML_blk_kernel_kernel12(const real_T c17_b_Th[7],
-  real_T c17_b_B[7]);
-static __global__ void c17_eML_blk_kernel_kernel13(real_T c17_b_B[7]);
-static __global__ void c17_eML_blk_kernel_kernel14(const int32_T c17_jpvt[7],
-  const int32_T c17_rankA, real_T c17_A[7], real_T c17_b_B[7], real_T
-  c17_change[49]);
-static __global__ void c17_eML_blk_kernel_kernel15(const real_T c17_change[49],
-  real_T c17_Y[49]);
-static __global__ void c17_eML_blk_kernel_kernel16(const real_T c17_Y[49],
-  real_T c17_b_K[49], real_T c17_change[49]);
-static __global__ void c17_eML_blk_kernel_kernel17(real_T c17_b_K[49]);
-static __global__ void c17_eML_blk_kernel_kernel18(real_T c17_b_B[49]);
-static __global__ void c17_eML_blk_kernel_kernel19(const real_T c17_b_Bn0[49],
-  const real_T c17_b_alpha[2], const real_T c17_b_Bp0[49], const real_T
-  c17_b_Kp0[49], const real_T c17_change[49], const real_T c17_b_beta[2], const
-  real_T c17_b_Kn0[49], const real_T c17_x[7], const real_T c17_b_x[7], real_T
-  c17_b_K[49], real_T c17_b_B[49]);
+static __global__ void c17_eML_blk_kernel_kernel1(real_T c17_b_Kp0[36]);
+static __global__ void c17_eML_blk_kernel_kernel2(const real_T c17_b_Kp0[6],
+  real_T c17_c_Kp0[36]);
+static __global__ void c17_eML_blk_kernel_kernel3(real_T c17_b_Kn0[36]);
+static __global__ void c17_eML_blk_kernel_kernel4(const real_T c17_b_Kn0[6],
+  real_T c17_c_Kn0[36]);
+static __global__ void c17_eML_blk_kernel_kernel5(real_T c17_b_Bp0[36]);
+static __global__ void c17_eML_blk_kernel_kernel6(const real_T c17_b_Bp0[6],
+  real_T c17_c_Bp0[36]);
+static __global__ void c17_eML_blk_kernel_kernel7(real_T c17_b_Bn0[36]);
+static __global__ void c17_eML_blk_kernel_kernel8(const real_T c17_b_Tid[6],
+  const real_T c17_b_qd[6], const real_T c17_b_Th[6], const real_T c17_b_Bn0[6],
+  ptrdiff_t c17_jpvt_t[6], real_T c17_A[6], real_T c17_x[6], real_T c17_b_x[6],
+  real_T c17_c_Bn0[36]);
+static __global__ void c17_eML_blk_kernel_kernel9(const ptrdiff_t c17_jpvt_t[6],
+  int32_T c17_jpvt[6]);
+static __global__ void c17_eML_blk_kernel_kernel10(int32_T c17_jpvt[6], real_T
+  c17_A[6]);
+static __global__ void c17_eML_blk_kernel_kernel11(real_T c17_change[36]);
+static __global__ void c17_eML_blk_kernel_kernel12(const real_T c17_b_Th[6],
+  real_T c17_b_B[6]);
+static __global__ void c17_eML_blk_kernel_kernel13(real_T c17_b_B[6]);
+static __global__ void c17_eML_blk_kernel_kernel14(const int32_T c17_jpvt[6],
+  const int32_T c17_rankA, real_T c17_A[6], real_T c17_b_B[6], real_T
+  c17_change[36]);
+static __global__ void c17_eML_blk_kernel_kernel15(const real_T c17_change[36],
+  real_T c17_Y[36]);
+static __global__ void c17_eML_blk_kernel_kernel16(const real_T c17_Y[36],
+  real_T c17_b_K[36], real_T c17_change[36]);
+static __global__ void c17_eML_blk_kernel_kernel17(real_T c17_b_K[36]);
+static __global__ void c17_eML_blk_kernel_kernel18(real_T c17_b_B[36]);
+static __global__ void c17_eML_blk_kernel_kernel19(const real_T c17_b_Bn0[36],
+  const real_T c17_b_alpha[2], const real_T c17_b_Bp0[36], const real_T
+  c17_b_Kp0[36], const real_T c17_change[36], const real_T c17_b_beta[2], const
+  real_T c17_b_Kn0[36], const real_T c17_x[6], const real_T c17_b_x[6], real_T
+  c17_b_K[36], real_T c17_b_B[36]);
 static void init_dsm_address_info(SFc17_sliding_controller_rbdlInstanceStruct
   *chartInstance);
 static void init_simulink_io_address(SFc17_sliding_controller_rbdlInstanceStruct
@@ -141,29 +141,29 @@ static void initialize_c17_sliding_controller_rbdl
   cudaGetLastError();
   cudaMalloc(&chartInstance->c17_gpu_beta, 16UL);
   cudaMalloc(&chartInstance->c17_gpu_alpha, 16UL);
-  cudaMalloc(&chartInstance->c17_gpu_B, 392UL);
-  cudaMalloc(&chartInstance->c17_gpu_K, 392UL);
-  cudaMalloc(&chartInstance->c17_gpu_Y, 392UL);
+  cudaMalloc(&chartInstance->c17_gpu_B, 288UL);
+  cudaMalloc(&chartInstance->c17_gpu_K, 288UL);
+  cudaMalloc(&chartInstance->c17_gpu_Y, 288UL);
   cudaMalloc(&chartInstance->c17_gpu_info_t, 4UL);
   cudaMalloc(&chartInstance->c17_gpu_tau, 8UL);
-  cudaMalloc(&chartInstance->c17_b_gpu_B, 56UL);
-  cudaMalloc(&chartInstance->c17_gpu_change, 392UL);
-  cudaMalloc(&chartInstance->c17_gpu_jpvt, 28UL);
-  cudaMalloc(&chartInstance->c17_gpu_x, 56UL);
-  cudaMalloc(&chartInstance->c17_b_gpu_x, 56UL);
-  cudaMalloc(&chartInstance->c17_gpu_A, 56UL);
-  cudaMalloc(&chartInstance->c17_gpu_jpvt_t, 56UL);
-  cudaMalloc(&chartInstance->c17_gpu_Bn0, 56UL);
-  cudaMalloc(&chartInstance->c17_gpu_Th, 56UL);
-  cudaMalloc(&chartInstance->c17_gpu_qd, 56UL);
-  cudaMalloc(&chartInstance->c17_gpu_Tid, 56UL);
-  cudaMalloc(&chartInstance->c17_b_gpu_Bn0, 392UL);
-  cudaMalloc(&chartInstance->c17_gpu_Bp0, 56UL);
-  cudaMalloc(&chartInstance->c17_b_gpu_Bp0, 392UL);
-  cudaMalloc(&chartInstance->c17_gpu_Kn0, 56UL);
-  cudaMalloc(&chartInstance->c17_b_gpu_Kn0, 392UL);
-  cudaMalloc(&chartInstance->c17_gpu_Kp0, 56UL);
-  cudaMalloc(&chartInstance->c17_b_gpu_Kp0, 392UL);
+  cudaMalloc(&chartInstance->c17_b_gpu_B, 48UL);
+  cudaMalloc(&chartInstance->c17_gpu_change, 288UL);
+  cudaMalloc(&chartInstance->c17_gpu_jpvt, 24UL);
+  cudaMalloc(&chartInstance->c17_gpu_x, 48UL);
+  cudaMalloc(&chartInstance->c17_b_gpu_x, 48UL);
+  cudaMalloc(&chartInstance->c17_gpu_A, 48UL);
+  cudaMalloc(&chartInstance->c17_gpu_jpvt_t, 48UL);
+  cudaMalloc(&chartInstance->c17_gpu_Bn0, 48UL);
+  cudaMalloc(&chartInstance->c17_gpu_Th, 48UL);
+  cudaMalloc(&chartInstance->c17_gpu_qd, 48UL);
+  cudaMalloc(&chartInstance->c17_gpu_Tid, 48UL);
+  cudaMalloc(&chartInstance->c17_b_gpu_Bn0, 288UL);
+  cudaMalloc(&chartInstance->c17_gpu_Bp0, 48UL);
+  cudaMalloc(&chartInstance->c17_b_gpu_Bp0, 288UL);
+  cudaMalloc(&chartInstance->c17_gpu_Kn0, 48UL);
+  cudaMalloc(&chartInstance->c17_b_gpu_Kn0, 288UL);
+  cudaMalloc(&chartInstance->c17_gpu_Kp0, 48UL);
+  cudaMalloc(&chartInstance->c17_b_gpu_Kp0, 288UL);
 }
 
 static void initialize_params_c17_sliding_controller_rbdl
@@ -208,11 +208,11 @@ static const mxArray *get_sim_state_c17_sliding_controller_rbdl
   sf_mex_assign(&c17_y, sf_mex_createcellmatrix(3, 1), false);
   c17_b_y = NULL;
   sf_mex_assign(&c17_b_y, sf_mex_create("y", *chartInstance->c17_B, 0, 0U, 1U,
-    0U, 2, 7, 7), false);
+    0U, 2, 6, 6), false);
   sf_mex_setcell(c17_y, 0, c17_b_y);
   c17_c_y = NULL;
   sf_mex_assign(&c17_c_y, sf_mex_create("y", *chartInstance->c17_K, 0, 0U, 1U,
-    0U, 2, 7, 7), false);
+    0U, 2, 6, 6), false);
   sf_mex_setcell(c17_y, 1, c17_c_y);
   c17_d_y = NULL;
   sf_mex_assign(&c17_d_y, sf_mex_create("y",
@@ -243,15 +243,15 @@ static void set_sim_state_c17_sliding_controller_rbdl
 static void sf_gateway_c17_sliding_controller_rbdl
   (SFc17_sliding_controller_rbdlInstanceStruct *chartInstance)
 {
-  real_T c17_dv10[49];
-  real_T c17_dv9[49];
-  real_T c17_dv[7];
-  real_T c17_dv1[7];
-  real_T c17_dv2[7];
-  real_T c17_dv3[7];
-  real_T c17_dv6[7];
-  real_T c17_dv7[7];
-  real_T c17_dv8[7];
+  real_T c17_dv10[36];
+  real_T c17_dv9[36];
+  real_T c17_dv[6];
+  real_T c17_dv1[6];
+  real_T c17_dv2[6];
+  real_T c17_dv3[6];
+  real_T c17_dv6[6];
+  real_T c17_dv7[6];
+  real_T c17_dv8[6];
   real_T c17_dv4[2];
   real_T c17_dv5[2];
   int32_T c17_i;
@@ -267,19 +267,19 @@ static void sf_gateway_c17_sliding_controller_rbdl
   int32_T c17_i9;
   chartInstance->c17_JITTransitionAnimation[0] = 0U;
   _sfTime_ = sf_get_time(chartInstance->S);
-  for (c17_i = 0; c17_i < 7; c17_i++) {
+  for (c17_i = 0; c17_i < 6; c17_i++) {
     c17_dv[c17_i] = (*chartInstance->c17_Kp0)[c17_i];
   }
 
-  for (c17_i1 = 0; c17_i1 < 7; c17_i1++) {
+  for (c17_i1 = 0; c17_i1 < 6; c17_i1++) {
     c17_dv1[c17_i1] = (*chartInstance->c17_Kn0)[c17_i1];
   }
 
-  for (c17_i2 = 0; c17_i2 < 7; c17_i2++) {
+  for (c17_i2 = 0; c17_i2 < 6; c17_i2++) {
     c17_dv2[c17_i2] = (*chartInstance->c17_Bp0)[c17_i2];
   }
 
-  for (c17_i3 = 0; c17_i3 < 7; c17_i3++) {
+  for (c17_i3 = 0; c17_i3 < 6; c17_i3++) {
     c17_dv3[c17_i3] = (*chartInstance->c17_Bn0)[c17_i3];
   }
 
@@ -291,25 +291,25 @@ static void sf_gateway_c17_sliding_controller_rbdl
     c17_dv5[c17_i5] = (*chartInstance->c17_alpha)[c17_i5];
   }
 
-  for (c17_i6 = 0; c17_i6 < 7; c17_i6++) {
+  for (c17_i6 = 0; c17_i6 < 6; c17_i6++) {
     c17_dv6[c17_i6] = (*chartInstance->c17_Tid)[c17_i6];
   }
 
-  for (c17_i7 = 0; c17_i7 < 7; c17_i7++) {
+  for (c17_i7 = 0; c17_i7 < 6; c17_i7++) {
     c17_dv7[c17_i7] = (*chartInstance->c17_Th)[c17_i7];
   }
 
-  for (c17_i8 = 0; c17_i8 < 7; c17_i8++) {
+  for (c17_i8 = 0; c17_i8 < 6; c17_i8++) {
     c17_dv8[c17_i8] = (*chartInstance->c17_qd)[c17_i8];
   }
 
   c17_eML_blk_kernel(chartInstance, c17_dv, c17_dv1, c17_dv2, c17_dv3, c17_dv4,
                      c17_dv5, c17_dv6, c17_dv7, c17_dv8, c17_dv9, c17_dv10);
-  for (c17_i9 = 0; c17_i9 < 49; c17_i9++) {
+  for (c17_i9 = 0; c17_i9 < 36; c17_i9++) {
     (*chartInstance->c17_B)[c17_i9] = c17_dv10[c17_i9];
   }
 
-  for (c17_i10 = 0; c17_i10 < 49; c17_i10++) {
+  for (c17_i10 = 0; c17_i10 < 36; c17_i10++) {
     (*chartInstance->c17_K)[c17_i10] = c17_dv9[c17_i10];
   }
 
@@ -390,14 +390,14 @@ const mxArray *sf_c17_sliding_controller_rbdl_get_eml_resolved_functions_info()
 }
 
 static void c17_eML_blk_kernel(SFc17_sliding_controller_rbdlInstanceStruct
-  *chartInstance, real_T c17_b_Kp0[7], real_T c17_b_Kn0[7], real_T c17_b_Bp0[7],
-  real_T c17_b_Bn0[7], real_T c17_b_beta[2], real_T c17_b_alpha[2], real_T
-  c17_b_Tid[7], real_T c17_b_Th[7], real_T c17_b_qd[7], real_T c17_b_K[49],
-  real_T c17_b_B[49])
+  *chartInstance, real_T c17_b_Kp0[6], real_T c17_b_Kn0[6], real_T c17_b_Bp0[6],
+  real_T c17_b_Bn0[6], real_T c17_b_beta[2], real_T c17_b_alpha[2], real_T
+  c17_b_Tid[6], real_T c17_b_Th[6], real_T c17_b_qd[6], real_T c17_b_K[36],
+  real_T c17_b_B[36])
 {
-  ptrdiff_t c17_jpvt_t[7];
+  ptrdiff_t c17_jpvt_t[6];
   ptrdiff_t c17_info_t;
-  real_T c17_A[7];
+  real_T c17_A[6];
   real_T c17_tau;
   real_T c17_tol;
   int32_T c17_b_info_t;
@@ -406,29 +406,29 @@ static void c17_eML_blk_kernel(SFc17_sliding_controller_rbdlInstanceStruct
   boolean_T c17_A_dirtyOnGpu;
   c17_eML_blk_kernel_kernel1<<<dim3(1U, 1U, 1U), dim3(64U, 1U, 1U)>>>
     (*chartInstance->c17_b_gpu_Kp0);
-  cudaMemcpy(*chartInstance->c17_gpu_Kp0, c17_b_Kp0, 56UL,
+  cudaMemcpy(*chartInstance->c17_gpu_Kp0, c17_b_Kp0, 48UL,
              cudaMemcpyHostToDevice);
   c17_eML_blk_kernel_kernel2<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
     (*chartInstance->c17_gpu_Kp0, *chartInstance->c17_b_gpu_Kp0);
   c17_eML_blk_kernel_kernel3<<<dim3(1U, 1U, 1U), dim3(64U, 1U, 1U)>>>
     (*chartInstance->c17_b_gpu_Kn0);
-  cudaMemcpy(*chartInstance->c17_gpu_Kn0, c17_b_Kn0, 56UL,
+  cudaMemcpy(*chartInstance->c17_gpu_Kn0, c17_b_Kn0, 48UL,
              cudaMemcpyHostToDevice);
   c17_eML_blk_kernel_kernel4<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
     (*chartInstance->c17_gpu_Kn0, *chartInstance->c17_b_gpu_Kn0);
   c17_eML_blk_kernel_kernel5<<<dim3(1U, 1U, 1U), dim3(64U, 1U, 1U)>>>
     (*chartInstance->c17_b_gpu_Bp0);
-  cudaMemcpy(*chartInstance->c17_gpu_Bp0, c17_b_Bp0, 56UL,
+  cudaMemcpy(*chartInstance->c17_gpu_Bp0, c17_b_Bp0, 48UL,
              cudaMemcpyHostToDevice);
   c17_eML_blk_kernel_kernel6<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
     (*chartInstance->c17_gpu_Bp0, *chartInstance->c17_b_gpu_Bp0);
   c17_eML_blk_kernel_kernel7<<<dim3(1U, 1U, 1U), dim3(64U, 1U, 1U)>>>
     (*chartInstance->c17_b_gpu_Bn0);
-  cudaMemcpy(*chartInstance->c17_gpu_Tid, c17_b_Tid, 56UL,
+  cudaMemcpy(*chartInstance->c17_gpu_Tid, c17_b_Tid, 48UL,
              cudaMemcpyHostToDevice);
-  cudaMemcpy(*chartInstance->c17_gpu_qd, c17_b_qd, 56UL, cudaMemcpyHostToDevice);
-  cudaMemcpy(*chartInstance->c17_gpu_Th, c17_b_Th, 56UL, cudaMemcpyHostToDevice);
-  cudaMemcpy(*chartInstance->c17_gpu_Bn0, c17_b_Bn0, 56UL,
+  cudaMemcpy(*chartInstance->c17_gpu_qd, c17_b_qd, 48UL, cudaMemcpyHostToDevice);
+  cudaMemcpy(*chartInstance->c17_gpu_Th, c17_b_Th, 48UL, cudaMemcpyHostToDevice);
+  cudaMemcpy(*chartInstance->c17_gpu_Bn0, c17_b_Bn0, 48UL,
              cudaMemcpyHostToDevice);
   c17_eML_blk_kernel_kernel8<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
     (*chartInstance->c17_gpu_Tid, *chartInstance->c17_gpu_qd,
@@ -436,10 +436,10 @@ static void c17_eML_blk_kernel(SFc17_sliding_controller_rbdlInstanceStruct
      *chartInstance->c17_gpu_jpvt_t, *chartInstance->c17_gpu_A,
      *chartInstance->c17_b_gpu_x, *chartInstance->c17_gpu_x,
      *chartInstance->c17_b_gpu_Bn0);
-  cudaMemcpy(c17_A, *chartInstance->c17_gpu_A, 56UL, cudaMemcpyDeviceToHost);
-  cudaMemcpy(c17_jpvt_t, *chartInstance->c17_gpu_jpvt_t, 56UL,
+  cudaMemcpy(c17_A, *chartInstance->c17_gpu_A, 48UL, cudaMemcpyDeviceToHost);
+  cudaMemcpy(c17_jpvt_t, *chartInstance->c17_gpu_jpvt_t, 48UL,
              cudaMemcpyDeviceToHost);
-  c17_info_t = LAPACKE_dgeqp3(102, (ptrdiff_t)1, (ptrdiff_t)7, &c17_A[0],
+  c17_info_t = LAPACKE_dgeqp3(102, (ptrdiff_t)1, (ptrdiff_t)6, &c17_A[0],
     (ptrdiff_t)1, &c17_jpvt_t[0], &c17_tau);
   c17_A_dirtyOnGpu = false;
   c17_A_dirtyOnCpu = true;
@@ -450,7 +450,7 @@ static void c17_eML_blk_kernel(SFc17_sliding_controller_rbdlInstanceStruct
     c17_A_dirtyOnCpu = false;
     c17_A_dirtyOnGpu = true;
   } else {
-    cudaMemcpy(*chartInstance->c17_gpu_jpvt_t, c17_jpvt_t, 56UL,
+    cudaMemcpy(*chartInstance->c17_gpu_jpvt_t, c17_jpvt_t, 48UL,
                cudaMemcpyHostToDevice);
     c17_eML_blk_kernel_kernel9<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
       (*chartInstance->c17_gpu_jpvt_t, *chartInstance->c17_gpu_jpvt);
@@ -458,10 +458,10 @@ static void c17_eML_blk_kernel(SFc17_sliding_controller_rbdlInstanceStruct
 
   c17_rankA = 0;
   if (c17_A_dirtyOnGpu) {
-    cudaMemcpy(c17_A, *chartInstance->c17_gpu_A, 56UL, cudaMemcpyDeviceToHost);
+    cudaMemcpy(c17_A, *chartInstance->c17_gpu_A, 48UL, cudaMemcpyDeviceToHost);
   }
 
-  c17_tol = 1.5543122344752192E-14 * muDoubleScalarAbs(c17_A[0]);
+  c17_tol = 1.3322676295501878E-14 * muDoubleScalarAbs(c17_A[0]);
   if (!(muDoubleScalarAbs(c17_A[0]) <= c17_tol)) {
     c17_rankA = 1;
   }
@@ -472,12 +472,12 @@ static void c17_eML_blk_kernel(SFc17_sliding_controller_rbdlInstanceStruct
     (*chartInstance->c17_gpu_Th, *chartInstance->c17_b_gpu_B);
   c17_b_info_t = 0;
   if (c17_A_dirtyOnCpu) {
-    cudaMemcpy(*chartInstance->c17_gpu_A, c17_A, 56UL, cudaMemcpyHostToDevice);
+    cudaMemcpy(*chartInstance->c17_gpu_A, c17_A, 48UL, cudaMemcpyHostToDevice);
   }
 
   cudaMemcpy(chartInstance->c17_gpu_tau, &c17_tau, 8UL, cudaMemcpyHostToDevice);
   cusolverDnDormqr_bufferSize(getCuSolverGlobalHandle(), CUBLAS_SIDE_LEFT,
-    CUBLAS_OP_T, 1, 7, 1, (double *)&(*chartInstance->c17_gpu_A)[0], 1, (double *)
+    CUBLAS_OP_T, 1, 6, 1, (double *)&(*chartInstance->c17_gpu_A)[0], 1, (double *)
     chartInstance->c17_gpu_tau, (double *)&(*chartInstance->c17_b_gpu_B)[0], 1,
     getCuSolverWorkspaceReq());
   setCuSolverWorkspaceTypeSize(8);
@@ -485,7 +485,7 @@ static void c17_eML_blk_kernel(SFc17_sliding_controller_rbdlInstanceStruct
   cudaMemcpy(chartInstance->c17_gpu_info_t, &c17_b_info_t, 4UL,
              cudaMemcpyHostToDevice);
   cusolverDnDormqr(getCuSolverGlobalHandle(), CUBLAS_SIDE_LEFT, CUBLAS_OP_T, 1,
-                   7, 1, (double *)&(*chartInstance->c17_gpu_A)[0], 1, (double *)
+                   6, 1, (double *)&(*chartInstance->c17_gpu_A)[0], 1, (double *)
                    chartInstance->c17_gpu_tau, (double *)
                    &(*chartInstance->c17_b_gpu_B)[0], 1, (real_T *)
                    getCuSolverWorkspaceBuff(), *getCuSolverWorkspaceReq(),
@@ -520,13 +520,13 @@ static void c17_eML_blk_kernel(SFc17_sliding_controller_rbdlInstanceStruct
      *chartInstance->c17_b_gpu_Kn0, *chartInstance->c17_b_gpu_x,
      *chartInstance->c17_gpu_x, *chartInstance->c17_gpu_K,
      *chartInstance->c17_gpu_B);
-  cudaMemcpy(c17_b_K, *chartInstance->c17_gpu_K, 392UL, cudaMemcpyDeviceToHost);
-  cudaMemcpy(c17_b_B, *chartInstance->c17_gpu_B, 392UL, cudaMemcpyDeviceToHost);
+  cudaMemcpy(c17_b_K, *chartInstance->c17_gpu_K, 288UL, cudaMemcpyDeviceToHost);
+  cudaMemcpy(c17_b_B, *chartInstance->c17_gpu_B, 288UL, cudaMemcpyDeviceToHost);
 }
 
 static void c17_emlrt_marshallIn(SFc17_sliding_controller_rbdlInstanceStruct
   *chartInstance, const mxArray *c17_b_B, const char_T *c17_identifier, real_T
-  c17_y[49])
+  c17_y[36])
 {
   emlrtMsgIdentifier c17_thisId;
   c17_thisId.fIdentifier = const_cast<const char_T *>(c17_identifier);
@@ -538,13 +538,13 @@ static void c17_emlrt_marshallIn(SFc17_sliding_controller_rbdlInstanceStruct
 
 static void c17_b_emlrt_marshallIn(SFc17_sliding_controller_rbdlInstanceStruct
   *chartInstance, const mxArray *c17_u, const emlrtMsgIdentifier *c17_parentId,
-  real_T c17_y[49])
+  real_T c17_y[36])
 {
-  real_T c17_dv[49];
+  real_T c17_dv[36];
   int32_T c17_i;
-  sf_mex_import(c17_parentId, sf_mex_dup(c17_u), c17_dv, 1, 0, 0U, 1, 0U, 2, 7,
-                7);
-  for (c17_i = 0; c17_i < 49; c17_i++) {
+  sf_mex_import(c17_parentId, sf_mex_dup(c17_u), c17_dv, 1, 0, 0U, 1, 0U, 2, 6,
+                6);
+  for (c17_i = 0; c17_i < 36; c17_i++) {
     c17_y[c17_i] = c17_dv[c17_i];
   }
 
@@ -579,100 +579,100 @@ static uint8_T c17_d_emlrt_marshallIn
 }
 
 static __global__ __launch_bounds__(64, 1) void c17_eML_blk_kernel_kernel1
-  (real_T c17_b_Kp0[49])
+  (real_T c17_b_Kp0[36])
 {
   uint64_T c17_threadId;
   int32_T c17_i;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_i = (int32_T)c17_threadId;
-  if (c17_i < 49) {
+  if (c17_i < 36) {
     c17_b_Kp0[c17_i] = 0.0;
   }
 }
 
 static __global__ __launch_bounds__(32, 1) void c17_eML_blk_kernel_kernel2(const
-  real_T c17_b_Kp0[7], real_T c17_c_Kp0[49])
+  real_T c17_b_Kp0[6], real_T c17_c_Kp0[36])
 {
   uint64_T c17_threadId;
   int32_T c17_j;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_j = (int32_T)c17_threadId;
-  if (c17_j < 7) {
-    c17_c_Kp0[c17_j + 7 * c17_j] = c17_b_Kp0[c17_j];
+  if (c17_j < 6) {
+    c17_c_Kp0[c17_j + 6 * c17_j] = c17_b_Kp0[c17_j];
   }
 }
 
 static __global__ __launch_bounds__(64, 1) void c17_eML_blk_kernel_kernel3
-  (real_T c17_b_Kn0[49])
+  (real_T c17_b_Kn0[36])
 {
   uint64_T c17_threadId;
   int32_T c17_i1;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_i1 = (int32_T)c17_threadId;
-  if (c17_i1 < 49) {
+  if (c17_i1 < 36) {
     c17_b_Kn0[c17_i1] = 0.0;
   }
 }
 
 static __global__ __launch_bounds__(32, 1) void c17_eML_blk_kernel_kernel4(const
-  real_T c17_b_Kn0[7], real_T c17_c_Kn0[49])
+  real_T c17_b_Kn0[6], real_T c17_c_Kn0[36])
 {
   uint64_T c17_threadId;
   int32_T c17_j;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_j = (int32_T)c17_threadId;
-  if (c17_j < 7) {
-    c17_c_Kn0[c17_j + 7 * c17_j] = c17_b_Kn0[c17_j];
+  if (c17_j < 6) {
+    c17_c_Kn0[c17_j + 6 * c17_j] = c17_b_Kn0[c17_j];
   }
 }
 
 static __global__ __launch_bounds__(64, 1) void c17_eML_blk_kernel_kernel5
-  (real_T c17_b_Bp0[49])
+  (real_T c17_b_Bp0[36])
 {
   uint64_T c17_threadId;
   int32_T c17_i2;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_i2 = (int32_T)c17_threadId;
-  if (c17_i2 < 49) {
+  if (c17_i2 < 36) {
     c17_b_Bp0[c17_i2] = 0.0;
   }
 }
 
 static __global__ __launch_bounds__(32, 1) void c17_eML_blk_kernel_kernel6(const
-  real_T c17_b_Bp0[7], real_T c17_c_Bp0[49])
+  real_T c17_b_Bp0[6], real_T c17_c_Bp0[36])
 {
   uint64_T c17_threadId;
   int32_T c17_j;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_j = (int32_T)c17_threadId;
-  if (c17_j < 7) {
-    c17_c_Bp0[c17_j + 7 * c17_j] = c17_b_Bp0[c17_j];
+  if (c17_j < 6) {
+    c17_c_Bp0[c17_j + 6 * c17_j] = c17_b_Bp0[c17_j];
   }
 }
 
 static __global__ __launch_bounds__(64, 1) void c17_eML_blk_kernel_kernel7
-  (real_T c17_b_Bn0[49])
+  (real_T c17_b_Bn0[36])
 {
   uint64_T c17_threadId;
   int32_T c17_i3;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_i3 = (int32_T)c17_threadId;
-  if (c17_i3 < 49) {
+  if (c17_i3 < 36) {
     c17_b_Bn0[c17_i3] = 0.0;
   }
 }
 
 static __global__ __launch_bounds__(32, 1) void c17_eML_blk_kernel_kernel8(const
-  real_T c17_b_Tid[7], const real_T c17_b_qd[7], const real_T c17_b_Th[7], const
-  real_T c17_b_Bn0[7], ptrdiff_t c17_jpvt_t[7], real_T c17_A[7], real_T c17_x[7],
-  real_T c17_b_x[7], real_T c17_c_Bn0[49])
+  real_T c17_b_Tid[6], const real_T c17_b_qd[6], const real_T c17_b_Th[6], const
+  real_T c17_b_Bn0[6], ptrdiff_t c17_jpvt_t[6], real_T c17_A[6], real_T c17_x[6],
+  real_T c17_b_x[6], real_T c17_c_Bn0[36])
 {
   uint64_T c17_threadId;
   int32_T c17_j;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_j = (int32_T)c17_threadId;
-  if (c17_j < 7) {
-    c17_c_Bn0[c17_j + 7 * c17_j] = c17_b_Bn0[c17_j];
+  if (c17_j < 6) {
+    c17_c_Bn0[c17_j + 6 * c17_j] = c17_b_Bn0[c17_j];
     c17_b_x[c17_j] = c17_b_Th[c17_j];
     c17_b_x[c17_j] = mwGpuSign(c17_b_x[c17_j]);
     c17_x[c17_j] = c17_b_qd[c17_j];
@@ -683,69 +683,69 @@ static __global__ __launch_bounds__(32, 1) void c17_eML_blk_kernel_kernel8(const
 }
 
 static __global__ __launch_bounds__(32, 1) void c17_eML_blk_kernel_kernel9(const
-  ptrdiff_t c17_jpvt_t[7], int32_T c17_jpvt[7])
+  ptrdiff_t c17_jpvt_t[6], int32_T c17_jpvt[6])
 {
   uint64_T c17_threadId;
   int32_T c17_k;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_k = (int32_T)c17_threadId;
-  if (c17_k < 7) {
+  if (c17_k < 6) {
     c17_jpvt[c17_k] = (int32_T)c17_jpvt_t[c17_k];
   }
 }
 
 static __global__ __launch_bounds__(32, 1) void c17_eML_blk_kernel_kernel10
-  (int32_T c17_jpvt[7], real_T c17_A[7])
+  (int32_T c17_jpvt[6], real_T c17_A[6])
 {
   uint64_T c17_threadId;
   int32_T c17_j;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_j = (int32_T)c17_threadId;
-  if (c17_j < 7) {
+  if (c17_j < 6) {
     c17_A[c17_j] = CUDART_NAN;
     c17_jpvt[c17_j] = c17_j + 1;
   }
 }
 
 static __global__ __launch_bounds__(64, 1) void c17_eML_blk_kernel_kernel11
-  (real_T c17_change[49])
+  (real_T c17_change[36])
 {
   uint64_T c17_threadId;
   int32_T c17_i4;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_i4 = (int32_T)c17_threadId;
-  if (c17_i4 < 49) {
+  if (c17_i4 < 36) {
     c17_change[c17_i4] = 0.0;
   }
 }
 
 static __global__ __launch_bounds__(32, 1) void c17_eML_blk_kernel_kernel12(
-  const real_T c17_b_Th[7], real_T c17_b_B[7])
+  const real_T c17_b_Th[6], real_T c17_b_B[6])
 {
   uint64_T c17_threadId;
   int32_T c17_i5;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_i5 = (int32_T)c17_threadId;
-  if (c17_i5 < 7) {
+  if (c17_i5 < 6) {
     c17_b_B[c17_i5] = c17_b_Th[c17_i5];
   }
 }
 
 static __global__ __launch_bounds__(32, 1) void c17_eML_blk_kernel_kernel13
-  (real_T c17_b_B[7])
+  (real_T c17_b_B[6])
 {
   uint64_T c17_threadId;
   int32_T c17_i6;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_i6 = (int32_T)c17_threadId;
-  if (c17_i6 < 7) {
+  if (c17_i6 < 6) {
     c17_b_B[c17_i6] = CUDART_NAN;
   }
 }
 
 static __global__ __launch_bounds__(32, 1) void c17_eML_blk_kernel_kernel14(
-  const int32_T c17_jpvt[7], const int32_T c17_rankA, real_T c17_A[7], real_T
-  c17_b_B[7], real_T c17_change[49])
+  const int32_T c17_jpvt[6], const int32_T c17_rankA, real_T c17_A[6], real_T
+  c17_b_B[6], real_T c17_change[36])
 {
   uint64_T c17_threadId;
   int32_T c17_i;
@@ -753,90 +753,90 @@ static __global__ __launch_bounds__(32, 1) void c17_eML_blk_kernel_kernel14(
   int32_T c17_k;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_k = (int32_T)c17_threadId;
-  if (c17_k < 7) {
+  if (c17_k < 6) {
     for (c17_i = 0; c17_i < c17_rankA; c17_i++) {
-      c17_change[(c17_jpvt[0] + 7 * c17_k) - 1] = c17_b_B[c17_k];
+      c17_change[(c17_jpvt[0] + 6 * c17_k) - 1] = c17_b_B[c17_k];
     }
 
     for (c17_j = 0; c17_j < c17_rankA; c17_j++) {
-      c17_change[(c17_jpvt[c17_rankA - 1] + 7 * c17_k) - 1] /= c17_A[(c17_rankA
+      c17_change[(c17_jpvt[c17_rankA - 1] + 6 * c17_k) - 1] /= c17_A[(c17_rankA
         + c17_rankA) - 2];
     }
   }
 }
 
 static __global__ __launch_bounds__(64, 1) void c17_eML_blk_kernel_kernel15(
-  const real_T c17_change[49], real_T c17_Y[49])
+  const real_T c17_change[36], real_T c17_Y[36])
 {
   uint64_T c17_threadId;
   int32_T c17_i7;
   int32_T c17_i8;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
-  c17_i8 = (int32_T)(c17_threadId % 7UL);
-  c17_i7 = (int32_T)((c17_threadId - (uint64_T)c17_i8) / 7UL);
-  if ((c17_i7 < 7) && (c17_i8 < 7)) {
-    c17_Y[c17_i8 + 7 * c17_i7] = c17_change[c17_i7 + 7 * c17_i8];
+  c17_i8 = (int32_T)(c17_threadId % 6UL);
+  c17_i7 = (int32_T)((c17_threadId - (uint64_T)c17_i8) / 6UL);
+  if ((c17_i7 < 6) && (c17_i8 < 6)) {
+    c17_Y[c17_i8 + 6 * c17_i7] = c17_change[c17_i7 + 6 * c17_i8];
   }
 }
 
 static __global__ __launch_bounds__(64, 1) void c17_eML_blk_kernel_kernel16(
-  const real_T c17_Y[49], real_T c17_b_K[49], real_T c17_change[49])
+  const real_T c17_Y[36], real_T c17_b_K[36], real_T c17_change[36])
 {
   uint64_T c17_threadId;
   int32_T c17_k;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_k = (int32_T)c17_threadId;
-  if (c17_k < 49) {
+  if (c17_k < 36) {
     c17_change[c17_k] = fabs(c17_Y[c17_k]);
     c17_b_K[c17_k] = 0.0;
   }
 }
 
 static __global__ __launch_bounds__(32, 1) void c17_eML_blk_kernel_kernel17
-  (real_T c17_b_K[49])
+  (real_T c17_b_K[36])
 {
   uint64_T c17_threadId;
   int32_T c17_k;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_k = (int32_T)c17_threadId;
-  if (c17_k < 7) {
-    c17_b_K[c17_k + 7 * c17_k] = 1.0;
+  if (c17_k < 6) {
+    c17_b_K[c17_k + 6 * c17_k] = 1.0;
   }
 }
 
 static __global__ __launch_bounds__(64, 1) void c17_eML_blk_kernel_kernel18
-  (real_T c17_b_B[49])
+  (real_T c17_b_B[36])
 {
   uint64_T c17_threadId;
   int32_T c17_i9;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_i9 = (int32_T)c17_threadId;
-  if (c17_i9 < 49) {
+  if (c17_i9 < 36) {
     c17_b_B[c17_i9] = 0.0;
   }
 }
 
 static __global__ __launch_bounds__(32, 1) void c17_eML_blk_kernel_kernel19(
-  const real_T c17_b_Bn0[49], const real_T c17_b_alpha[2], const real_T
-  c17_b_Bp0[49], const real_T c17_b_Kp0[49], const real_T c17_change[49], const
-  real_T c17_b_beta[2], const real_T c17_b_Kn0[49], const real_T c17_x[7], const
-  real_T c17_b_x[7], real_T c17_b_K[49], real_T c17_b_B[49])
+  const real_T c17_b_Bn0[36], const real_T c17_b_alpha[2], const real_T
+  c17_b_Bp0[36], const real_T c17_b_Kp0[36], const real_T c17_change[36], const
+  real_T c17_b_beta[2], const real_T c17_b_Kn0[36], const real_T c17_x[6], const
+  real_T c17_b_x[6], real_T c17_b_K[36], real_T c17_b_B[36])
 {
   uint64_T c17_threadId;
   int32_T c17_ii;
   c17_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
   c17_ii = (int32_T)c17_threadId;
-  if (c17_ii < 7) {
-    c17_b_B[c17_ii + 7 * c17_ii] = 1.0;
+  if (c17_ii < 6) {
+    c17_b_B[c17_ii + 6 * c17_ii] = 1.0;
     if (c17_b_x[c17_ii] == c17_x[c17_ii]) {
-      c17_b_K[c17_ii + 7 * c17_ii] = c17_b_Kp0[c17_ii + 7 * c17_ii] +
+      c17_b_K[c17_ii + 6 * c17_ii] = c17_b_Kp0[c17_ii + 6 * c17_ii] +
         c17_b_beta[0] * c17_change[c17_ii];
-      c17_b_B[c17_ii + 7 * c17_ii] = c17_b_Bp0[c17_ii + 7 * c17_ii] +
+      c17_b_B[c17_ii + 6 * c17_ii] = c17_b_Bp0[c17_ii + 6 * c17_ii] +
         c17_b_alpha[0] * c17_change[c17_ii];
     } else {
-      c17_b_K[c17_ii + 7 * c17_ii] = c17_b_Kn0[c17_ii + 7 * c17_ii] -
+      c17_b_K[c17_ii + 6 * c17_ii] = c17_b_Kn0[c17_ii + 6 * c17_ii] -
         c17_b_beta[1] * c17_change[c17_ii];
-      c17_b_B[c17_ii + 7 * c17_ii] = c17_b_Bn0[c17_ii + 7 * c17_ii] -
+      c17_b_B[c17_ii + 6 * c17_ii] = c17_b_Bn0[c17_ii + 6 * c17_ii] -
         c17_b_alpha[1] * c17_change[c17_ii];
     }
   }
@@ -851,27 +851,27 @@ static void init_simulink_io_address(SFc17_sliding_controller_rbdlInstanceStruct
   *chartInstance)
 {
   chartInstance->c17_fEmlrtCtx = (void *)sfrtGetEmlrtCtx(chartInstance->S);
-  chartInstance->c17_Kp0 = (real_T (*)[7])ssGetInputPortSignal_wrapper
+  chartInstance->c17_Kp0 = (real_T (*)[6])ssGetInputPortSignal_wrapper
     (chartInstance->S, 0);
-  chartInstance->c17_Kn0 = (real_T (*)[7])ssGetInputPortSignal_wrapper
+  chartInstance->c17_Kn0 = (real_T (*)[6])ssGetInputPortSignal_wrapper
     (chartInstance->S, 1);
-  chartInstance->c17_Bp0 = (real_T (*)[7])ssGetInputPortSignal_wrapper
+  chartInstance->c17_Bp0 = (real_T (*)[6])ssGetInputPortSignal_wrapper
     (chartInstance->S, 2);
-  chartInstance->c17_Bn0 = (real_T (*)[7])ssGetInputPortSignal_wrapper
+  chartInstance->c17_Bn0 = (real_T (*)[6])ssGetInputPortSignal_wrapper
     (chartInstance->S, 3);
   chartInstance->c17_beta = (real_T (*)[2])ssGetInputPortSignal_wrapper
     (chartInstance->S, 4);
   chartInstance->c17_alpha = (real_T (*)[2])ssGetInputPortSignal_wrapper
     (chartInstance->S, 5);
-  chartInstance->c17_Tid = (real_T (*)[7])ssGetInputPortSignal_wrapper
+  chartInstance->c17_Tid = (real_T (*)[6])ssGetInputPortSignal_wrapper
     (chartInstance->S, 6);
-  chartInstance->c17_K = (real_T (*)[49])ssGetOutputPortSignal_wrapper
+  chartInstance->c17_K = (real_T (*)[36])ssGetOutputPortSignal_wrapper
     (chartInstance->S, 1);
-  chartInstance->c17_Th = (real_T (*)[7])ssGetInputPortSignal_wrapper
+  chartInstance->c17_Th = (real_T (*)[6])ssGetInputPortSignal_wrapper
     (chartInstance->S, 7);
-  chartInstance->c17_qd = (real_T (*)[7])ssGetInputPortSignal_wrapper
+  chartInstance->c17_qd = (real_T (*)[6])ssGetInputPortSignal_wrapper
     (chartInstance->S, 8);
-  chartInstance->c17_B = (real_T (*)[49])ssGetOutputPortSignal_wrapper
+  chartInstance->c17_B = (real_T (*)[36])ssGetOutputPortSignal_wrapper
     (chartInstance->S, 2);
 }
 
@@ -882,10 +882,10 @@ static void init_simulink_io_address(SFc17_sliding_controller_rbdlInstanceStruct
 /* SFunction Glue Code */
 void sf_c17_sliding_controller_rbdl_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(184866213U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3943974275U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1621223579U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3836141733U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(216709722U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(633274381U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(4277968906U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3250424110U);
 }
 
 mxArray *sf_c17_sliding_controller_rbdl_third_party_uses_info(void)
@@ -940,7 +940,7 @@ static const mxArray *sf_get_sim_state_info_c17_sliding_controller_rbdl(void)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "sZ5qVxZToNvS2ZkiuiWRnEB";
+  return "siB67nyLXRLMbo1kYaCR9pH";
 }
 
 static void sf_opaque_initialize_c17_sliding_controller_rbdl(void
@@ -1052,28 +1052,28 @@ const char* sf_c17_sliding_controller_rbdl_get_post_codegen_info(void)
 {
   int i;
   const char* encStrCodegen [19] = {
-    "eNrtV8tu20YUpRQ3iIEmENoA3RRoUCBIlm3QoF0ljl4oUTs2QtkpvBHGwytxoOEMMw/a/od200U",
-    "/oP2JLvsZ/Yds8gm5Q1KyQpFUbDVpWpQATQ157plzH3Nn7LX8PQ+vW3h3PvW86/i8gXfby6+Pin",
-    "Fr6c7fb3n3ivHPaCRsfEAUibXXeAkSwzPQklvDpPDFRFbCmJiAAkERm0hl6tg0iy1nYja0gjo+/",
-    "TxiNAoiaXnYRVsS7gt+jmyJNQfI02cKqBkChCZS0k6jISfThWJlTnsR0Jm2cZMLGkxgEydL71lu",
-    "WMJhcAbUF9oQVKwvtAWGGOiZs1o3nac6mANlnHBGRKW3EdEBJBhgA4dJiH/3rUGnyjAaEWW6EJE",
-    "U9C6bZZxSQJmTafxwwgQxUjHCBzHvOcNVbQcc9ezJEHhDQFBbVwGZJZIJU5//YIieDgQ54dCHEz",
-    "utZwvghXXJP2JwCqo2bpOeTEGRKeyL2kmzgAzOsmwtqmQVZlgMR0Q9oZg/DWFt9WLl6IBgnmCEF",
-    "nUwyJz09UixFMNby2Zj31XmuiVj4zzZeh0sYxuk0JSFBduQih7hXNfCRjLZhRR4xtonhjTDctZq",
-    "nNYsHEkMsCvv+tVgBcPEF7CeFCGrTFdaAmR95yk2ljeR1Goj4x4Wb393d/XzKswXBtSEUKjqAoo",
-    "wDRizLLz1bCHTLvcIRFUmk1cFzitkHcrTEyv6p1LNMCYNTeTCBZfRWmCsp5hLXAmHGhdNE8zlch",
-    "2OEhpB6BoM47CHywaxFTHRrrU9wXWXMnPeB00VSyqyanHVYRsauII6T+BQzIQ8FUMl46Do8Xl4A",
-    "bDaiBJMTLvYv9T5EGevSoXbz77yLvazj99iP5vblZ/3l3haFTze0tPhd5bw2+038duledvzd/Or",
-    "hudmad6tEo/DdfD+45OHv91oP/B//f0n/5tfXtJyHMp6Wit6WtlvZ5dcu9x54FYx/nzeeBcLKV2",
-    "pX4f9fknXVgX/Z0v8nWKsjx++ODo7HsmnafDgeMYse/5MDLoZ35/tZr3XSnrn7++4HQCrLqtXRf",
-    "2wOKi4MbH59u34v1vSe31NPLaL9/n16vFm9l/ulPO4tca+g7+6pTr+5/TfvpL+H/42/Xd2NrPP5",
-    "/9xjf67pXq9m51TxsR1PxjTr78da85CbF1jKoVRknNQY3US8pKfV12vl7Xz3rPdv0Xn/3bvPu9v",
-    "sx9vX9GuveH+/77sNvXvsueSDw3ftB94JXznA/Zj0/Piu8b/5V3uHPdFMX60+NetFzEeVpzii89",
-    "4JJ9Uff0P1OlrU3q3Bw==",
+    "eNrtV92O20QUdtKlYhGsIoHEDRIVUgWXFCFKL4BtnIRGJOxqvVvKVTQZn8RDxjNmfrKbJ+hVH4C",
+    "36RP0uje8A7wBZ2wnmzq2093QUhCWvM7Y3/nmOz9zZtZr9IceXgd4t973vJv4fBvvppddb+Xjxt",
+    "qdvd/zPs3HT9BI2PiYKBJrr/YSJIYT0JJbw6Toi4kshTExAQWCIjaRylSxaRZbzsSsZwV1fPqni",
+    "NEoiKTlYRttSXgk+ALZEmuOkafDFFDTAwhNpKSdRj1OpivFypz7EdCZtnGdCxpMYBMnSw8tNyzh",
+    "0L0A2hfaEFSsL7UFhhjwzUWlm85THSyBMk44I6LU24joABIMsIGzJMS/R9agU0UYjYgybYjIHPS",
+    "AzVJOKaDIyTR+GDNBjFSM8G7MfWe4qe2Yo56hDIHXBAS1tRWQWSKZMNX5D3roaVeQMYcOjO20mi",
+    "2AX61L/kMG56Aq4zbx5RwUmcKRqJw0DUj3Is3Wqko2YYbF8JCo+xTzpyGsrF6sHB0QzBOcokUVD",
+    "FIn+/pUsTmGt5LNxn1XmduWjI2zZOttsJStO4e6LKzYelT4hHNdCTuVyQDmwFPWDjGkHpaxluO0",
+    "ZuGpxAC78q5eDVYwTHwO86UIWWm65gVA2nd+xMbyIpJabWTsY/F2BoPNz5uwvjCgJoRCWRdQhGn",
+    "AmKXhrWYLmXa5RyCqMqm8MnBWIdtQnp5Y0TmXaoYxqWkily64jFYCYz3FXOJKONO4aOpgLpfbcJ",
+    "TQCELXYBiHIS4bxJbERLvWdh/X3ZyZRQc0VSwpyarFVYdtqOsKapHAmZgJeS56SsZB3uOz8AJgt",
+    "RElmJi2sX+pRQ9nL0uF288+9y73s3dfYj9b2hWfn63xNEp4vLWnwx+u4febL+L3C/M2l++WVwXP",
+    "e4V59wo8DtdyaXn6S/j4zy++fHbwzW+/H77zfTEORT2NDT2N9LezS25c7TxwkI8/Wjbe1UKab9S",
+    "vwz5Y07VXwv/hGn8rH2vW/uquWAwenQyGY3ln9jPxT+4lD1K+p816vTcKepfvb7kdAKsurVdF+2",
+    "F+UHFjYrPt2/F/vab35pZ47Ofvs+uP73az/+SwmMe9LfYt/NUu1PE/p/+Da+n/4W/Tf+twN/ts/",
+    "kdb9N8u1Ovt9JwyIq77wYjeuTvSnIXYukZUCqMk56BGahzygp/XXa9XtfNes92/Ref/dq8+7y+z",
+    "H+9f06654/7/uux29e+q55I3DV+3H3gFfOsN9mPX8+Krxj/3rnaO+zgff7v6182PGA9LTvH5Zzy",
+    "ST8q+/gfq9C8c/rcL",
     ""
   };
 
-  static char newstr [1297] = "";
+  static char newstr [1293] = "";
   newstr[0] = '\0';
   for (i = 0; i < 19; i++) {
     strcat(newstr, encStrCodegen[i]);
@@ -1086,10 +1086,10 @@ static void mdlSetWorkWidths_c17_sliding_controller_rbdl(SimStruct *S)
 {
   const char* newstr = sf_c17_sliding_controller_rbdl_get_post_codegen_info();
   sf_set_work_widths(S, newstr);
-  ssSetChecksum0(S,(2721387192U));
-  ssSetChecksum1(S,(1228014088U));
-  ssSetChecksum2(S,(1233953686U));
-  ssSetChecksum3(S,(1676382772U));
+  ssSetChecksum0(S,(1684717667U));
+  ssSetChecksum1(S,(875753863U));
+  ssSetChecksum2(S,(2570915534U));
+  ssSetChecksum3(S,(1191854301U));
 }
 
 static void mdlRTW_c17_sliding_controller_rbdl(SimStruct *S)

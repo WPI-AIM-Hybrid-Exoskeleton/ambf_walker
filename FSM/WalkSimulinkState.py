@@ -70,9 +70,10 @@ class WalkSimulinkState(smach.State):
             qd = self.runner.dx
             qdd = self.runner.ddx
             size_diff = abs(len(q) - len(self.joint_state.position))
-            q = np.append(q, size_diff*[0.0])
-            qd = np.append(qd, size_diff*[0.0])
-            qdd = np.append(qdd, size_diff*[0.0])
+            # q = np.append(q, size_diff*[0.0])
+            # qd = np.append(qd, size_diff*[0.0])
+            # qdd = np.append(qdd, size_diff*[0.0])
+
             Td = -self.ilqr_tau[self.count]
             msg.q = q
             msg.qd = qd

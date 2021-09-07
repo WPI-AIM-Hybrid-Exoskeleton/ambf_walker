@@ -24,6 +24,8 @@ c25_sliding_controller_rbdl.o
 c26_sliding_controller_rbdl.o
 c28_sliding_controller_rbdl.o
 c29_sliding_controller_rbdl.o
+c33_sliding_controller_rbdl.o
+c34_sliding_controller_rbdl.o
 sliding_controller_rbdl_sfun_registry.o
 half_type.o
 -L/usr/local/MATLAB/R2021a/bin/glnxa64
