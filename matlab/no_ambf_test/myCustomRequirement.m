@@ -29,23 +29,32 @@ function vals=myCustomRequirement(data)
 
 
 ref = data.Nominal.desired_pos.Data;
-
+ref_vel = data.Nominal.desired_vel.Data;
 
 exo = data.Nominal.exo_pos.Data;
-ref_vel = data.Nominal.desired_vel.Data;
 exo_vel = data.Nominal.exo_vel.Data;
+
+human = data.Nominal.human_pos.Data;
+human_vel = data.Nominal.human_vel.Data;
 
 
 e_exo = ( exo - ref).^2;
-exo_error = sqrt( sum(sum(e_exo,3)) / length(e_exo));
+exo_pos_error = sum( sqrt(sum(e_exo) / length(e_exo) ) );
 
 
-e_vel = ( exo_vel - ref_vel).^2;
-vel_error = sqrt(sum(sum(e_vel,3)) / length(e_vel));
+ed_exo = ( exo_vel - ref_vel).^2;
+exo_vel_error = sum( sqrt(sum(ed_exo) / length(ed_exo) ) );
 
 
+e_human = ( human - ref).^2;
+human_pos_error = sum( sqrt(sum(e_human) / length(e_human) ) );
 
-vals =  sum(exo_error + vel_error,2) 
+
+ed_human = ( human_vel - ref_vel).^2;
+human_vel_error = sum( sqrt(sum(ed_human) / length(ed_human) ) );
+
+
+vals =  exo_pos_error + exo_vel_error + human_pos_error + human_vel_error;
 
 
 end

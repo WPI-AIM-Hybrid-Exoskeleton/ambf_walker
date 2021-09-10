@@ -166,21 +166,9 @@ static void set_sim_state_c14_sliding_controller_rbdl
 static void sf_gateway_c14_sliding_controller_rbdl
   (SFc14_sliding_controller_rbdlInstanceStruct *chartInstance)
 {
-  real_T c14_dv1[4];
-  real_T c14_dv[2];
-  int32_T c14_i;
-  int32_T c14_i1;
   chartInstance->c14_JITTransitionAnimation[0] = 0U;
   _sfTime_ = sf_get_time(chartInstance->S);
-  for (c14_i = 0; c14_i < 2; c14_i++) {
-    c14_dv[c14_i] = (*chartInstance->c14_q)[c14_i];
-  }
-
-  c14_eML_blk_kernel(chartInstance, c14_dv, c14_dv1);
-  for (c14_i1 = 0; c14_i1 < 4; c14_i1++) {
-    (*chartInstance->c14_y)[c14_i1] = c14_dv1[c14_i1];
-  }
-
+  c14_eML_blk_kernel(chartInstance, *chartInstance->c14_q, *chartInstance->c14_y);
   c14_do_animation_call_c14_sliding_controller_rbdl(chartInstance);
 }
 
@@ -232,18 +220,12 @@ const mxArray *sf_c14_sliding_controller_rbdl_get_eml_resolved_functions_info()
 static void c14_eML_blk_kernel(SFc14_sliding_controller_rbdlInstanceStruct
   *chartInstance, real_T c14_b_q[2], real_T c14_b_y[4])
 {
-  const mxArray *c14_c_y = NULL;
   c14_b_y[0] = -0.324 * muDoubleScalarCos(c14_b_q[0]) + -0.39 *
     muDoubleScalarCos(c14_b_q[0] + c14_b_q[1]);
   c14_b_y[2] = -0.39 * muDoubleScalarCos(c14_b_q[0] + c14_b_q[1]);
   c14_b_y[1] = 0.324 * muDoubleScalarSin(c14_b_q[0]) - -0.39 * muDoubleScalarSin
     (c14_b_q[0] + c14_b_q[1]);
   c14_b_y[3] = 0.39 * muDoubleScalarSin(c14_b_q[0] + c14_b_q[1]);
-  sf_mex_printf("%s =\\n", "y");
-  c14_c_y = NULL;
-  sf_mex_assign(&c14_c_y, sf_mex_create("y", c14_b_y, 0, 0U, 1U, 0U, 2, 2, 2),
-                false);
-  sf_mex_call(chartInstance->c14_fEmlrtCtx, NULL, "disp", 0U, 1U, 14, c14_c_y);
 }
 
 static void c14_emlrt_marshallIn(SFc14_sliding_controller_rbdlInstanceStruct
@@ -323,10 +305,10 @@ static void init_simulink_io_address(SFc14_sliding_controller_rbdlInstanceStruct
 /* SFunction Glue Code */
 void sf_c14_sliding_controller_rbdl_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2965247799U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3859325211U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(4199429006U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2699768530U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3208814403U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1847626501U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1295231836U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3741339232U);
 }
 
 mxArray *sf_c14_sliding_controller_rbdl_third_party_uses_info(void)
@@ -379,7 +361,7 @@ static const mxArray *sf_get_sim_state_info_c14_sliding_controller_rbdl(void)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "srLlN0UU1TI2nTLqVx7w7ZD";
+  return "ssmRfXq9CBjMy4cUjljV2w";
 }
 
 static void sf_opaque_initialize_c14_sliding_controller_rbdl(void
@@ -491,27 +473,27 @@ const char* sf_c14_sliding_controller_rbdl_get_post_codegen_info(void)
 {
   int i;
   const char* encStrCodegen [18] = {
-    "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",
+    "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",
     ""
   };
 
-  static char newstr [1257] = "";
+  static char newstr [1261] = "";
   newstr[0] = '\0';
   for (i = 0; i < 18; i++) {
     strcat(newstr, encStrCodegen[i]);
@@ -524,10 +506,10 @@ static void mdlSetWorkWidths_c14_sliding_controller_rbdl(SimStruct *S)
 {
   const char* newstr = sf_c14_sliding_controller_rbdl_get_post_codegen_info();
   sf_set_work_widths(S, newstr);
-  ssSetChecksum0(S,(1210528530U));
-  ssSetChecksum1(S,(1921380462U));
-  ssSetChecksum2(S,(593772477U));
-  ssSetChecksum3(S,(568524024U));
+  ssSetChecksum0(S,(1409597562U));
+  ssSetChecksum1(S,(4255001064U));
+  ssSetChecksum2(S,(4269927000U));
+  ssSetChecksum3(S,(2069470647U));
 }
 
 static void mdlRTW_c14_sliding_controller_rbdl(SimStruct *S)

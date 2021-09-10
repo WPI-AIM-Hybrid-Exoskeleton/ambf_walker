@@ -11,18 +11,25 @@ Km_ankle = 100;
 
 human_sat = 20;
 
-% model 1 gains
-Dm1= [Dm_hip, 0.0, 0.0, 0.0, 0.0,0; 
-         0,  Dm_knee, 0.0,  0.0, 0.0,0;
-         0.0, 0.0, Dm_ankle,  0.0, 0.0,0;
-         0,0,0,Dm_hip,0,0;
-         0,0,0,0,Dm_knee,0;
-         0,0,0,0,0,Dm_ankle];     
+% % model 1 gains
+% Dm1= [Dm_hip, 0.0, 0.0, 0.0, 0.0,0; 
+%          0,  Dm_knee, 0.0,  0.0, 0.0,0;
+%          0.0, 0.0, Dm_ankle,  0.0, 0.0,0;
+%          0,0,0,Dm_hip,0,0;
+%          0,0,0,0,Dm_knee,0;
+%          0,0,0,0,0,Dm_ankle];     
+% 
+% 
+% Km1= [Km_hip, 0.0, 0.0,  0.0, 0.0,0; 
+%          0,  Km_knee, 0.0,  0.0, 0.0,0;
+%          0.0, 0.0, Km_ankle, 0.0, 0.0,0;
+%          0,0,0,Km_hip,0,0;
+%          0,0,0,0,Km_knee,0;
+%          0,0,0,0,0,Km_ankle];     
 
 
-Km1= [Km_hip, 0.0, 0.0,  0.0, 0.0,0; 
-         0,  Km_knee, 0.0,  0.0, 0.0,0;
-         0.0, 0.0, Km_ankle, 0.0, 0.0,0;
-         0,0,0,Km_hip,0,0;
-         0,0,0,0,Km_knee,0;
-         0,0,0,0,0,Km_ankle];     
+
+params = load('PD_const.mat');
+
+Dm1 = params.PD_const
+

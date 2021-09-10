@@ -10,13 +10,13 @@ typedef struct c16_SL_Bus_ROSVariableLengthArrayInfo_tag
 
 #endif                                 /* typedef_c16_SL_Bus_ROSVariableLengthArrayInfo */
 
-#ifndef typedef_c16_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfbsq
-#define typedef_c16_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfbsq
+#ifndef typedef_c16_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_yqm
+#define typedef_c16_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_yqm
 
-typedef struct c16_b_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfb
-  c16_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfbsq;
+typedef struct c16_b_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_y
+  c16_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_yqm;
 
-#endif                                 /* typedef_c16_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfbsq */
+#endif                                 /* typedef_c16_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_yqm */
 
 struct SFc16_sliding_controller_rbdlInstanceStruct;
 
@@ -40,32 +40,30 @@ typedef c16_SL_Bus_ROSVariableLengthArrayInfo_tag
 
 #endif                                 /* typedef_c16_SL_Bus_ROSVariableLengthArrayInfo */
 
-#ifndef struct_c16_b_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfb
-#define struct_c16_b_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfb
+#ifndef struct_c16_b_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_y
+#define struct_c16_b_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_y
 
-struct c16_b_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfb
+struct c16_b_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_y
 {
+  uint8_T ModelName[4];
+  c16_SL_Bus_ROSVariableLengthArrayInfo ModelName_SL_Info;
   real_T Q[7];
   c16_SL_Bus_ROSVariableLengthArrayInfo Q_SL_Info;
   real_T Qd[7];
   c16_SL_Bus_ROSVariableLengthArrayInfo Qd_SL_Info;
   real_T Qdd[7];
   c16_SL_Bus_ROSVariableLengthArrayInfo Qdd_SL_Info;
-  uint8_T Controller[4];
-  c16_SL_Bus_ROSVariableLengthArrayInfo Controller_SL_Info;
-  real_T Other[7];
-  c16_SL_Bus_ROSVariableLengthArrayInfo Other_SL_Info;
 };
 
-#endif                                 /* struct_c16_b_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfb */
+#endif                                 /* struct_c16_b_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_y */
 
-#ifndef typedef_c16_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfbsq
-#define typedef_c16_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfbsq
+#ifndef typedef_c16_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_yqm
+#define typedef_c16_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_yqm
 
-typedef c16_b_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfb
-  c16_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfbsq;
+typedef c16_b_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_y
+  c16_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_yqm;
 
-#endif                                 /* typedef_c16_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfbsq */
+#endif                                 /* typedef_c16_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_yqm */
 
 #ifndef typedef_c16_sliding_controller_rbdlStackData
 #define typedef_c16_sliding_controller_rbdlStackData
@@ -86,8 +84,8 @@ struct SFc16_sliding_controller_rbdlInstanceStruct
   uint8_T c16_JITStateAnimation[1];
   uint8_T c16_JITTransitionAnimation[1];
   void *c16_fEmlrtCtx;
-  c16_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfbsq *c16_blankMsg;
-  c16_SL_Bus_sliding_controller_rbdl_DesiredJointsCmdRequest_rfbsq *c16_msg;
+  c16_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_yqm *c16_blankMsg;
+  c16_SL_Bus_sliding_controller_rbdl_RBDLInverseDynamicsReques_yqm *c16_msg;
 };
 
 #endif                                 /* struct_SFc16_sliding_controller_rbdlInstanceStruct */
