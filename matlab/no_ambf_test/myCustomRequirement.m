@@ -39,11 +39,11 @@ human_vel = data.Nominal.human_vel.Data;
 
 
 e_exo = ( exo - ref).^2;
-exo_pos_error = sum( sqrt(sum(e_exo) / length(e_exo) ) );
+exo_pos_error = sqrt(sum(e_exo) / length(e_exo) ) ;
 
 
 ed_exo = ( exo_vel - ref_vel).^2;
-exo_vel_error = sum( sqrt(sum(ed_exo) / length(ed_exo) ) );
+exo_vel_error =sqrt(sum(ed_exo) / length(ed_exo) ) ;
 
 
 e_human = ( human - ref).^2;
@@ -53,8 +53,8 @@ human_pos_error = sum( sqrt(sum(e_human) / length(e_human) ) );
 ed_human = ( human_vel - ref_vel).^2;
 human_vel_error = sum( sqrt(sum(ed_human) / length(ed_human) ) );
 
-
-vals =  exo_pos_error + exo_vel_error + human_pos_error + human_vel_error;
+%+ exo_vel_error + human_pos_error + human_vel_error
+vals =  sum(exo_pos_error + exo_vel_error,2) ;
 
 
 end
