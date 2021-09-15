@@ -24,8 +24,9 @@ struct SFc23_sliding_controller2InstanceStruct
   uint8_T c23_JITStateAnimation[1];
   uint8_T c23_JITTransitionAnimation[1];
   void *c23_fEmlrtCtx;
-  real_T (*c23_u)[7];
+  real_T (*c23_u)[6];
   real_T (*c23_y)[7];
+  real_T (*c23_gpu_y)[7];
 };
 
 #endif                                 /* struct_SFc23_sliding_controller2InstanceStruct */

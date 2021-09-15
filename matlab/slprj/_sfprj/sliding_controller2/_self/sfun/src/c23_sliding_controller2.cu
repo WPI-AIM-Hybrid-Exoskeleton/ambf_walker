@@ -2,6 +2,7 @@
 
 #include "sliding_controller2_sfun.h"
 #include "c23_sliding_controller2.h"
+#include "MWCudaDimUtility.hpp"
 #ifdef utFree
 #undef utFree
 #endif
@@ -64,7 +65,7 @@ static void mdl_cleanup_runtime_resources_c23_sliding_controller2
 static void initSimStructsc23_sliding_controller2
   (SFc23_sliding_controller2InstanceStruct *chartInstance);
 static void c23_eML_blk_kernel(SFc23_sliding_controller2InstanceStruct
-  *chartInstance, real_T c23_b_u[7], real_T c23_b_y[7]);
+  *chartInstance, real_T c23_b_u[6], real_T c23_b_y[7]);
 static void c23_emlrt_marshallIn(SFc23_sliding_controller2InstanceStruct
   *chartInstance, const mxArray *c23_b_y, const char_T *c23_identifier, real_T
   c23_c_y[7]);
@@ -76,6 +77,7 @@ static uint8_T c23_c_emlrt_marshallIn(SFc23_sliding_controller2InstanceStruct
   char_T *c23_identifier);
 static uint8_T c23_d_emlrt_marshallIn(SFc23_sliding_controller2InstanceStruct
   *chartInstance, const mxArray *c23_b_u, const emlrtMsgIdentifier *c23_parentId);
+static __global__ void c23_eML_blk_kernel_kernel1(real_T c23_b_y[7]);
 static void init_dsm_address_info(SFc23_sliding_controller2InstanceStruct
   *chartInstance);
 static void init_simulink_io_address(SFc23_sliding_controller2InstanceStruct
@@ -91,6 +93,7 @@ static void initialize_c23_sliding_controller2
   _sfTime_ = sf_get_time(chartInstance->S);
   chartInstance->c23_is_active_c23_sliding_controller2 = 0U;
   cudaGetLastError();
+  cudaMalloc(&chartInstance->c23_gpu_y, 56UL);
 }
 
 static void initialize_params_c23_sliding_controller2
@@ -162,9 +165,21 @@ static void set_sim_state_c23_sliding_controller2
 static void sf_gateway_c23_sliding_controller2
   (SFc23_sliding_controller2InstanceStruct *chartInstance)
 {
+  real_T c23_dv1[7];
+  real_T c23_dv[6];
+  int32_T c23_i;
+  int32_T c23_i1;
   chartInstance->c23_JITTransitionAnimation[0] = 0U;
   _sfTime_ = sf_get_time(chartInstance->S);
-  c23_eML_blk_kernel(chartInstance, *chartInstance->c23_u, *chartInstance->c23_y);
+  for (c23_i = 0; c23_i < 6; c23_i++) {
+    c23_dv[c23_i] = (*chartInstance->c23_u)[c23_i];
+  }
+
+  c23_eML_blk_kernel(chartInstance, c23_dv, c23_dv1);
+  for (c23_i1 = 0; c23_i1 < 7; c23_i1++) {
+    (*chartInstance->c23_y)[c23_i1] = c23_dv1[c23_i1];
+  }
+
   c23_do_animation_call_c23_sliding_controller2(chartInstance);
 }
 
@@ -177,6 +192,7 @@ static void mdl_terminate_c23_sliding_controller2
   (SFc23_sliding_controller2InstanceStruct *chartInstance)
 {
   cudaError_t c23_errCode;
+  cudaFree(*chartInstance->c23_gpu_y);
   c23_errCode = cudaGetLastError();
   if (c23_errCode != cudaSuccess) {
     emlrtThinCUDAError((uint32_T)c23_errCode, (char_T *)cudaGetErrorName
@@ -214,10 +230,19 @@ const mxArray *sf_c23_sliding_controller2_get_eml_resolved_functions_info()
 }
 
 static void c23_eML_blk_kernel(SFc23_sliding_controller2InstanceStruct
-  *chartInstance, real_T c23_b_u[7], real_T c23_b_y[7])
+  *chartInstance, real_T c23_b_u[6], real_T c23_b_y[7])
 {
+  const mxArray *c23_c_y = NULL;
+  c23_eML_blk_kernel_kernel1<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
+    (*chartInstance->c23_gpu_y);
+  cudaMemcpy(c23_b_y, *chartInstance->c23_gpu_y, 56UL, cudaMemcpyDeviceToHost);
   c23_b_y[0] = c23_b_u[3];
-  c23_b_y[1] = c23_b_u[6];
+  c23_b_y[1] = 0.0;
+  sf_mex_printf("%s =\\n", "reordered");
+  c23_c_y = NULL;
+  sf_mex_assign(&c23_c_y, sf_mex_create("y", c23_b_y, 0, 0U, 1U, 0U, 2, 1, 7),
+                false);
+  sf_mex_call(chartInstance->c23_fEmlrtCtx, NULL, "disp", 0U, 1U, 14, c23_c_y);
   c23_b_y[2] = c23_b_u[0];
   c23_b_y[3] = c23_b_u[1];
   c23_b_y[4] = c23_b_u[4];
@@ -279,6 +304,18 @@ static uint8_T c23_d_emlrt_marshallIn(SFc23_sliding_controller2InstanceStruct
   return c23_b_y;
 }
 
+static __global__ __launch_bounds__(32, 1) void c23_eML_blk_kernel_kernel1
+  (real_T c23_b_y[7])
+{
+  uint64_T c23_threadId;
+  int32_T c23_i;
+  c23_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
+  c23_i = (int32_T)c23_threadId;
+  if (c23_i < 7) {
+    c23_b_y[c23_i] = 0.0;
+  }
+}
+
 static void init_dsm_address_info(SFc23_sliding_controller2InstanceStruct
   *chartInstance)
 {
@@ -288,7 +325,7 @@ static void init_simulink_io_address(SFc23_sliding_controller2InstanceStruct
   *chartInstance)
 {
   chartInstance->c23_fEmlrtCtx = (void *)sfrtGetEmlrtCtx(chartInstance->S);
-  chartInstance->c23_u = (real_T (*)[7])ssGetInputPortSignal_wrapper
+  chartInstance->c23_u = (real_T (*)[6])ssGetInputPortSignal_wrapper
     (chartInstance->S, 0);
   chartInstance->c23_y = (real_T (*)[7])ssGetOutputPortSignal_wrapper
     (chartInstance->S, 1);
@@ -301,10 +338,10 @@ static void init_simulink_io_address(SFc23_sliding_controller2InstanceStruct
 /* SFunction Glue Code */
 void sf_c23_sliding_controller2_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3007509169U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1926089682U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2239166282U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3770191902U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1104270009U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(4002144469U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1451542329U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1457894201U);
 }
 
 mxArray *sf_c23_sliding_controller2_third_party_uses_info(void)
@@ -357,7 +394,7 @@ static const mxArray *sf_get_sim_state_info_c23_sliding_controller2(void)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "sdegTANPF1GH9p3UVy5QBRH";
+  return "scU9zZ5H1kMhWDkDI28BpgD";
 }
 
 static void sf_opaque_initialize_c23_sliding_controller2(void *chartInstanceVar)
@@ -466,27 +503,27 @@ const char* sf_c23_sliding_controller2_get_post_codegen_info(void)
 {
   int i;
   const char* encStrCodegen [18] = {
-    "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",
+    "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",
     ""
   };
 
-  static char newstr [1257] = "";
+  static char newstr [1261] = "";
   newstr[0] = '\0';
   for (i = 0; i < 18; i++) {
     strcat(newstr, encStrCodegen[i]);
@@ -499,10 +536,10 @@ static void mdlSetWorkWidths_c23_sliding_controller2(SimStruct *S)
 {
   const char* newstr = sf_c23_sliding_controller2_get_post_codegen_info();
   sf_set_work_widths(S, newstr);
-  ssSetChecksum0(S,(3042383101U));
-  ssSetChecksum1(S,(4119015307U));
-  ssSetChecksum2(S,(1566679822U));
-  ssSetChecksum3(S,(505804526U));
+  ssSetChecksum0(S,(2492201493U));
+  ssSetChecksum1(S,(2946340087U));
+  ssSetChecksum2(S,(892768965U));
+  ssSetChecksum3(S,(3267729885U));
 }
 
 static void mdlRTW_c23_sliding_controller2(SimStruct *S)

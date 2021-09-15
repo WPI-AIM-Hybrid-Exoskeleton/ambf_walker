@@ -9,7 +9,7 @@ NVCC = nvcc
  
 MODEL     = sliding_controller2
 TARGET      = sfun
-MODULE_SRCS   = c1_sliding_controller2.cu c2_sliding_controller2.cu c6_sliding_controller2.cu c7_sliding_controller2.cu c8_sliding_controller2.cu c9_sliding_controller2.cu c10_sliding_controller2.cu c11_sliding_controller2.cu c12_sliding_controller2.cu c13_sliding_controller2.cu c14_sliding_controller2.cu c15_sliding_controller2.cu c16_sliding_controller2.cu c17_sliding_controller2.cu c18_sliding_controller2.cu c19_sliding_controller2.cu c20_sliding_controller2.cu c21_sliding_controller2.cu c22_sliding_controller2.cu c28_sliding_controller2.cu c29_sliding_controller2.cu half_type.cpp
+MODULE_SRCS   = c1_sliding_controller2.cu c2_sliding_controller2.cu c6_sliding_controller2.cu c7_sliding_controller2.cu c8_sliding_controller2.cu c9_sliding_controller2.cu c10_sliding_controller2.cu c11_sliding_controller2.cu c12_sliding_controller2.cu c13_sliding_controller2.cu c14_sliding_controller2.cu c17_sliding_controller2.cu c18_sliding_controller2.cu c19_sliding_controller2.cu c20_sliding_controller2.cu c21_sliding_controller2.cu c22_sliding_controller2.cu c23_sliding_controller2.cu c24_sliding_controller2.cu c28_sliding_controller2.cu c29_sliding_controller2.cu half_type.cpp
 MODEL_SRC  = sliding_controller2_sfun.cu
 MODEL_REG = sliding_controller2_sfun_registry.cu
 MAKEFILE    = sliding_controller2_sfun.mku

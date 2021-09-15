@@ -2,6 +2,7 @@
 
 #include "sliding_controller2_sfun.h"
 #include "c21_sliding_controller2.h"
+#include "MWCudaDimUtility.hpp"
 #ifdef utFree
 #undef utFree
 #endif
@@ -64,7 +65,7 @@ static void mdl_cleanup_runtime_resources_c21_sliding_controller2
 static void initSimStructsc21_sliding_controller2
   (SFc21_sliding_controller2InstanceStruct *chartInstance);
 static void c21_eML_blk_kernel(SFc21_sliding_controller2InstanceStruct
-  *chartInstance, real_T c21_b_u[7], real_T c21_b_y[7]);
+  *chartInstance, real_T c21_b_u[6], real_T c21_b_y[7]);
 static void c21_emlrt_marshallIn(SFc21_sliding_controller2InstanceStruct
   *chartInstance, const mxArray *c21_b_y, const char_T *c21_identifier, real_T
   c21_c_y[7]);
@@ -76,6 +77,7 @@ static uint8_T c21_c_emlrt_marshallIn(SFc21_sliding_controller2InstanceStruct
   char_T *c21_identifier);
 static uint8_T c21_d_emlrt_marshallIn(SFc21_sliding_controller2InstanceStruct
   *chartInstance, const mxArray *c21_b_u, const emlrtMsgIdentifier *c21_parentId);
+static __global__ void c21_eML_blk_kernel_kernel1(real_T c21_b_y[7]);
 static void init_dsm_address_info(SFc21_sliding_controller2InstanceStruct
   *chartInstance);
 static void init_simulink_io_address(SFc21_sliding_controller2InstanceStruct
@@ -91,6 +93,7 @@ static void initialize_c21_sliding_controller2
   _sfTime_ = sf_get_time(chartInstance->S);
   chartInstance->c21_is_active_c21_sliding_controller2 = 0U;
   cudaGetLastError();
+  cudaMalloc(&chartInstance->c21_gpu_y, 56UL);
 }
 
 static void initialize_params_c21_sliding_controller2
@@ -162,9 +165,21 @@ static void set_sim_state_c21_sliding_controller2
 static void sf_gateway_c21_sliding_controller2
   (SFc21_sliding_controller2InstanceStruct *chartInstance)
 {
+  real_T c21_dv1[7];
+  real_T c21_dv[6];
+  int32_T c21_i;
+  int32_T c21_i1;
   chartInstance->c21_JITTransitionAnimation[0] = 0U;
   _sfTime_ = sf_get_time(chartInstance->S);
-  c21_eML_blk_kernel(chartInstance, *chartInstance->c21_u, *chartInstance->c21_y);
+  for (c21_i = 0; c21_i < 6; c21_i++) {
+    c21_dv[c21_i] = (*chartInstance->c21_u)[c21_i];
+  }
+
+  c21_eML_blk_kernel(chartInstance, c21_dv, c21_dv1);
+  for (c21_i1 = 0; c21_i1 < 7; c21_i1++) {
+    (*chartInstance->c21_y)[c21_i1] = c21_dv1[c21_i1];
+  }
+
   c21_do_animation_call_c21_sliding_controller2(chartInstance);
 }
 
@@ -177,6 +192,7 @@ static void mdl_terminate_c21_sliding_controller2
   (SFc21_sliding_controller2InstanceStruct *chartInstance)
 {
   cudaError_t c21_errCode;
+  cudaFree(*chartInstance->c21_gpu_y);
   c21_errCode = cudaGetLastError();
   if (c21_errCode != cudaSuccess) {
     emlrtThinCUDAError((uint32_T)c21_errCode, (char_T *)cudaGetErrorName
@@ -214,10 +230,19 @@ const mxArray *sf_c21_sliding_controller2_get_eml_resolved_functions_info()
 }
 
 static void c21_eML_blk_kernel(SFc21_sliding_controller2InstanceStruct
-  *chartInstance, real_T c21_b_u[7], real_T c21_b_y[7])
+  *chartInstance, real_T c21_b_u[6], real_T c21_b_y[7])
 {
+  const mxArray *c21_c_y = NULL;
+  c21_eML_blk_kernel_kernel1<<<dim3(1U, 1U, 1U), dim3(32U, 1U, 1U)>>>
+    (*chartInstance->c21_gpu_y);
+  cudaMemcpy(c21_b_y, *chartInstance->c21_gpu_y, 56UL, cudaMemcpyDeviceToHost);
   c21_b_y[0] = c21_b_u[3];
-  c21_b_y[1] = c21_b_u[6];
+  c21_b_y[1] = 0.0;
+  sf_mex_printf("%s =\\n", "reordered");
+  c21_c_y = NULL;
+  sf_mex_assign(&c21_c_y, sf_mex_create("y", c21_b_y, 0, 0U, 1U, 0U, 2, 1, 7),
+                false);
+  sf_mex_call(chartInstance->c21_fEmlrtCtx, NULL, "disp", 0U, 1U, 14, c21_c_y);
   c21_b_y[2] = c21_b_u[0];
   c21_b_y[3] = c21_b_u[1];
   c21_b_y[4] = c21_b_u[4];
@@ -279,6 +304,18 @@ static uint8_T c21_d_emlrt_marshallIn(SFc21_sliding_controller2InstanceStruct
   return c21_b_y;
 }
 
+static __global__ __launch_bounds__(32, 1) void c21_eML_blk_kernel_kernel1
+  (real_T c21_b_y[7])
+{
+  uint64_T c21_threadId;
+  int32_T c21_i;
+  c21_threadId = (uint64_T)mwGetGlobalThreadIndexInXDimension();
+  c21_i = (int32_T)c21_threadId;
+  if (c21_i < 7) {
+    c21_b_y[c21_i] = 0.0;
+  }
+}
+
 static void init_dsm_address_info(SFc21_sliding_controller2InstanceStruct
   *chartInstance)
 {
@@ -288,7 +325,7 @@ static void init_simulink_io_address(SFc21_sliding_controller2InstanceStruct
   *chartInstance)
 {
   chartInstance->c21_fEmlrtCtx = (void *)sfrtGetEmlrtCtx(chartInstance->S);
-  chartInstance->c21_u = (real_T (*)[7])ssGetInputPortSignal_wrapper
+  chartInstance->c21_u = (real_T (*)[6])ssGetInputPortSignal_wrapper
     (chartInstance->S, 0);
   chartInstance->c21_y = (real_T (*)[7])ssGetOutputPortSignal_wrapper
     (chartInstance->S, 1);
@@ -301,10 +338,10 @@ static void init_simulink_io_address(SFc21_sliding_controller2InstanceStruct
 /* SFunction Glue Code */
 void sf_c21_sliding_controller2_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3007509169U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1926089682U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2239166282U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3770191902U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1104270009U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(4002144469U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1451542329U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1457894201U);
 }
 
 mxArray *sf_c21_sliding_controller2_third_party_uses_info(void)
@@ -357,7 +394,7 @@ static const mxArray *sf_get_sim_state_info_c21_sliding_controller2(void)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "sdegTANPF1GH9p3UVy5QBRH";
+  return "scU9zZ5H1kMhWDkDI28BpgD";
 }
 
 static void sf_opaque_initialize_c21_sliding_controller2(void *chartInstanceVar)
@@ -466,23 +503,23 @@ const char* sf_c21_sliding_controller2_get_post_codegen_info(void)
 {
   int i;
   const char* encStrCodegen [18] = {
-    "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",
+    "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",
     ""
   };
 
@@ -499,10 +536,10 @@ static void mdlSetWorkWidths_c21_sliding_controller2(SimStruct *S)
 {
   const char* newstr = sf_c21_sliding_controller2_get_post_codegen_info();
   sf_set_work_widths(S, newstr);
-  ssSetChecksum0(S,(3042383101U));
-  ssSetChecksum1(S,(4119015307U));
-  ssSetChecksum2(S,(1566679822U));
-  ssSetChecksum3(S,(505804526U));
+  ssSetChecksum0(S,(2492201493U));
+  ssSetChecksum1(S,(2946340087U));
+  ssSetChecksum2(S,(892768965U));
+  ssSetChecksum3(S,(3267729885U));
 }
 
 static void mdlRTW_c21_sliding_controller2(SimStruct *S)

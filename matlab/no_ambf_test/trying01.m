@@ -77,7 +77,7 @@ lambda2 = [lambda_hip, 0, 0, 0, 0, 0;
             
      
      
-exo_sat = 30;
+exo_sat = 45;
 interaction_sat = 6;
 human_sat = 20;
 
@@ -101,7 +101,7 @@ Bn0_knee = 0.7508; % params.all_cost_parameters(1,1).Value(2);
 Bn0_ankle = 20.508; % 508.8125; %params.all_cost_parameters(1,1).Value(2);
 
 
-beta = zeros(6,1) + params.all_cost_parameters(6,1).Value(1);
+beta = 0.25  %zeros(6,1) + 0.25 % params.all_cost_parameters(6,1).Value(1);
 
 Kp0 = [Kp0_hip Kp0_knee Kp0_ankle Kp0_hip Kp0_knee Kp0_ankle ];
 Kn0 = [Kn0_hip Kn0_knee Kn0_ankle Kn0_hip Kn0_knee Kn0_ankle ];
@@ -112,5 +112,6 @@ alpha = params.all_cost_parameters(5,1).Value;
 alpha = [15  15]
 gamma = params.all_cost_parameters(7,1).Value;
 gamma = [15   15]
+delay = .00049
 % spring = [10, 0; 0, 10];
 % dampener = [10, 0; 0, 10];

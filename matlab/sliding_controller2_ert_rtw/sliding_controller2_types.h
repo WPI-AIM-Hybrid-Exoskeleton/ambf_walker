@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sliding_controller2'.
 //
-// Model version                  : 1.224
+// Model version                  : 1.240
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Fri Sep  3 16:19:00 2021
+// C/C++ source code generated on : Tue Sep 14 13:45:43 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -21,17 +21,6 @@
 #include "rtwtypes.h"
 
 // Model Code Variants
-#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_std_msgs_Float64_
-#define DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_std_msgs_Float64_
-
-// MsgType=std_msgs/Float64
-struct SL_Bus_sliding_controller2_std_msgs_Float64
-{
-  real_T Data;
-};
-
-#endif
-
 #ifndef DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_ros_time_Time_
 #define DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_ros_time_Time_
 
@@ -159,45 +148,6 @@ struct SL_Bus_sliding_controller2_RBDLInverseDynamicsReques_b5z6ex
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_DesiredJointsCmdRequest_9kimzz_
-#define DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_DesiredJointsCmdRequest_9kimzz_
-
-// MsgType=ambf_walker/DesiredJointsCmdRequest
-struct SL_Bus_sliding_controller2_DesiredJointsCmdRequest_9kimzz
-{
-  // IsVarLen=1:VarLenCategory=data:VarLenElem=Q_SL_Info:TruncateAction=warn
-  real_T Q[7];
-
-  // IsVarLen=1:VarLenCategory=length:VarLenElem=Q
-  SL_Bus_ROSVariableLengthArrayInfo Q_SL_Info;
-
-  // IsVarLen=1:VarLenCategory=data:VarLenElem=Qd_SL_Info:TruncateAction=warn
-  real_T Qd[7];
-
-  // IsVarLen=1:VarLenCategory=length:VarLenElem=Qd
-  SL_Bus_ROSVariableLengthArrayInfo Qd_SL_Info;
-
-  // IsVarLen=1:VarLenCategory=data:VarLenElem=Qdd_SL_Info:TruncateAction=warn
-  real_T Qdd[7];
-
-  // IsVarLen=1:VarLenCategory=length:VarLenElem=Qdd
-  SL_Bus_ROSVariableLengthArrayInfo Qdd_SL_Info;
-
-  // PrimitiveROSType=string:IsVarLen=1:VarLenCategory=data:VarLenElem=Controller_SL_Info:TruncateAction=warn 
-  uint8_T Controller[4];
-
-  // IsVarLen=1:VarLenCategory=length:VarLenElem=Controller
-  SL_Bus_ROSVariableLengthArrayInfo Controller_SL_Info;
-
-  // IsVarLen=1:VarLenCategory=data:VarLenElem=Other_SL_Info:TruncateAction=warn 
-  real_T Other[7];
-
-  // IsVarLen=1:VarLenCategory=length:VarLenElem=Other
-  SL_Bus_ROSVariableLengthArrayInfo Other_SL_Info;
-};
-
-#endif
-
 #ifndef DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_std_msgs_Bool_
 #define DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_std_msgs_Bool_
 
@@ -234,25 +184,25 @@ struct SL_Bus_sliding_controller2_ambf_walker_DesiredJoints
   SL_Bus_sliding_controller2_std_msgs_Header Header;
 
   // IsVarLen=1:VarLenCategory=data:VarLenElem=Q_SL_Info:TruncateAction=warn
-  real_T Q[7];
+  real_T Q[6];
 
   // IsVarLen=1:VarLenCategory=length:VarLenElem=Q
   SL_Bus_ROSVariableLengthArrayInfo Q_SL_Info;
 
   // IsVarLen=1:VarLenCategory=data:VarLenElem=Qd_SL_Info:TruncateAction=warn
-  real_T Qd[7];
+  real_T Qd[6];
 
   // IsVarLen=1:VarLenCategory=length:VarLenElem=Qd
   SL_Bus_ROSVariableLengthArrayInfo Qd_SL_Info;
 
   // IsVarLen=1:VarLenCategory=data:VarLenElem=Qdd_SL_Info:TruncateAction=warn
-  real_T Qdd[7];
+  real_T Qdd[6];
 
   // IsVarLen=1:VarLenCategory=length:VarLenElem=Qdd
   SL_Bus_ROSVariableLengthArrayInfo Qdd_SL_Info;
 
   // IsVarLen=1:VarLenCategory=data:VarLenElem=Other_SL_Info:TruncateAction=warn 
-  real_T Other[7];
+  real_T Other[6];
 
   // IsVarLen=1:VarLenCategory=length:VarLenElem=Other
   SL_Bus_ROSVariableLengthArrayInfo Other_SL_Info;
@@ -262,34 +212,6 @@ struct SL_Bus_sliding_controller2_ambf_walker_DesiredJoints
 
   // IsVarLen=1:VarLenCategory=length:VarLenElem=Controller
   SL_Bus_ROSVariableLengthArrayInfo Controller_SL_Info;
-};
-
-#endif
-
-#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_std_srvs_SetBoolRequest_
-#define DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_std_srvs_SetBoolRequest_
-
-// MsgType=std_srvs/SetBoolRequest
-struct SL_Bus_sliding_controller2_std_srvs_SetBoolRequest
-{
-  boolean_T Data;
-};
-
-#endif
-
-#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_std_srvs_SetBoolResponse_
-#define DEFINED_TYPEDEF_FOR_SL_Bus_sliding_controller2_std_srvs_SetBoolResponse_
-
-// MsgType=std_srvs/SetBoolResponse
-struct SL_Bus_sliding_controller2_std_srvs_SetBoolResponse
-{
-  boolean_T Success;
-
-  // PrimitiveROSType=string:IsVarLen=1:VarLenCategory=data:VarLenElem=Message_SL_Info:TruncateAction=warn 
-  uint8_T Message[128];
-
-  // IsVarLen=1:VarLenCategory=length:VarLenElem=Message
-  SL_Bus_ROSVariableLengthArrayInfo Message_SL_Info;
 };
 
 #endif
@@ -340,16 +262,6 @@ struct ros_slros_internal_block_Curr_T
 };
 
 #endif                                // struct_ros_slros_internal_block_Curr_T
-
-#ifndef struct_ExampleHelperSimulationRateCo_T
-#define struct_ExampleHelperSimulationRateCo_T
-
-struct ExampleHelperSimulationRateCo_T
-{
-  int32_T isInitialized;
-};
-
-#endif                                // struct_ExampleHelperSimulationRateCo_T
 
 #ifndef struct_ros_slroscpp_internal_block_k_T
 #define struct_ros_slroscpp_internal_block_k_T

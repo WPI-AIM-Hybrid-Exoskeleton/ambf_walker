@@ -24,8 +24,9 @@ struct SFc18_sliding_controller2InstanceStruct
   uint8_T c18_JITStateAnimation[1];
   uint8_T c18_JITTransitionAnimation[1];
   void *c18_fEmlrtCtx;
-  real_T (*c18_u)[7];
+  real_T (*c18_u)[6];
   real_T (*c18_y)[7];
+  real_T (*c18_gpu_y)[7];
 };
 
 #endif                                 /* struct_SFc18_sliding_controller2InstanceStruct */
