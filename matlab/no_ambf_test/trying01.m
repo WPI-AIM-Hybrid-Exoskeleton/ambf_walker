@@ -77,7 +77,7 @@ lambda2 = [lambda_hip, 0, 0, 0, 0, 0;
             
      
      
-exo_sat = 45;
+exo_sat = 30;
 interaction_sat = 6;
 human_sat = 20;
 
