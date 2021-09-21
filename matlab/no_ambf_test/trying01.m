@@ -15,7 +15,7 @@ myR = eye(6); % diag([0.001 0.001 0.00 0.00]);
 
 % Addmittance Controller
 
-Md = 10*eye(6);
+Md = 5*eye(6);
 invMd = inv(Md);
 
 
@@ -54,7 +54,7 @@ rho2 = [rho_hip, 0.0, 0.0, 0.0, 0.0, 0.0;
          0.0, 0.0, rho_ankle  0.0, 0.0,0;
          0,0,0,rho_hip,0,0;
          0,0,0,0,rho_knee,0;
-         0,0,0,0,0,rho_ankle]+0.001;     
+         0,0,0,0,0,rho_ankle];    
 
 lambda_hip = 1.1277; %params.all_cost_parameters(9,1).Value(1,1);
 lambda_knee =1.2389; %params.all_cost_parameters(9,1).Value(2,2);
@@ -73,13 +73,13 @@ lambda2 = [lambda_hip, 0, 0, 0, 0, 0;
             0, 0, lambda_ankle, 0, 0, 0;
             0, 0, 0, lambda_hip,0, 0;
             0, 0, 0, 0, lambda_knee, 0;
-            0, 0, 0, 0, 0, lambda_ankle]+0.001;
+            0, 0, 0, 0, 0, lambda_ankle]
             
      
      
-exo_sat = 30;
-interaction_sat = 6;
-human_sat = 20;
+exo_sat = 60;
+interaction_sat = 15;
+human_sat = 5;
 
 spring = [0.30, 0; 0, 0.30];
 dampener =[0.30, 0; 0, 0.30];
@@ -101,7 +101,7 @@ Bn0_knee = 0.7508; % params.all_cost_parameters(1,1).Value(2);
 Bn0_ankle = 20.508; % 508.8125; %params.all_cost_parameters(1,1).Value(2);
 
 
-beta = 0.25  %zeros(6,1) + 0.25 % params.all_cost_parameters(6,1).Value(1);
+beta = 0.05  %zeros(6,1) + 0.25 % params.all_cost_parameters(6,1).Value(1);
 
 Kp0 = [Kp0_hip Kp0_knee Kp0_ankle Kp0_hip Kp0_knee Kp0_ankle ];
 Kn0 = [Kn0_hip Kn0_knee Kn0_ankle Kn0_hip Kn0_knee Kn0_ankle ];
@@ -112,6 +112,6 @@ alpha = params.all_cost_parameters(5,1).Value;
 alpha = [15  15]
 gamma = params.all_cost_parameters(7,1).Value;
 gamma = [15   15]
-delay = .00049
+delay = .0049
 % spring = [10, 0; 0, 10];
 % dampener = [10, 0; 0, 10];

@@ -13,7 +13,6 @@
 #include "c13_sliding_controller_rbdl.h"
 #include "c14_sliding_controller_rbdl.h"
 #include "c15_sliding_controller_rbdl.h"
-#include "c16_sliding_controller_rbdl.h"
 #include "c17_sliding_controller_rbdl.h"
 #include "c18_sliding_controller_rbdl.h"
 #include "c19_sliding_controller_rbdl.h"
@@ -111,11 +110,6 @@ unsigned int sf_sliding_controller_rbdl_method_dispatcher(SimStruct
 
   if (chartFileNumber==15) {
     c15_sliding_controller_rbdl_method_dispatcher(simstructPtr, method, data);
-    return 1;
-  }
-
-  if (chartFileNumber==16) {
-    c16_sliding_controller_rbdl_method_dispatcher(simstructPtr, method, data);
     return 1;
   }
 
@@ -307,14 +301,6 @@ unsigned int sf_sliding_controller_rbdl_process_check_sum_call( int nlhs,
           extern void sf_c15_sliding_controller_rbdl_get_check_sum(mxArray *
             plhs[]);
           sf_c15_sliding_controller_rbdl_get_check_sum(plhs);
-          break;
-        }
-
-       case 16:
-        {
-          extern void sf_c16_sliding_controller_rbdl_get_check_sum(mxArray *
-            plhs[]);
-          sf_c16_sliding_controller_rbdl_get_check_sum(plhs);
           break;
         }
 
@@ -634,19 +620,6 @@ unsigned int sf_sliding_controller_rbdl_get_eml_resolved_functions_info( int
             *sf_c15_sliding_controller_rbdl_get_eml_resolved_functions_info(void);
           mxArray *persistentMxArray = (mxArray *)
             sf_c15_sliding_controller_rbdl_get_eml_resolved_functions_info();
-          plhs[0] = mxDuplicateArray(persistentMxArray);
-          mxDestroyArray(persistentMxArray);
-          break;
-        }
-      }
-
-     case 16:
-      {
-        if (strcmp(instanceChksum, "sku70yXmmpvw9wiNyjwFDG") == 0) {
-          extern const mxArray
-            *sf_c16_sliding_controller_rbdl_get_eml_resolved_functions_info(void);
-          mxArray *persistentMxArray = (mxArray *)
-            sf_c16_sliding_controller_rbdl_get_eml_resolved_functions_info();
           plhs[0] = mxDuplicateArray(persistentMxArray);
           mxDestroyArray(persistentMxArray);
           break;
@@ -990,16 +963,6 @@ unsigned int sf_sliding_controller_rbdl_third_party_uses_info( int nlhs, mxArray
         }
       }
 
-     case 16:
-      {
-        if (strcmp(tpChksum, "sku70yXmmpvw9wiNyjwFDG") == 0) {
-          extern mxArray *sf_c16_sliding_controller_rbdl_third_party_uses_info
-            (void);
-          plhs[0] = sf_c16_sliding_controller_rbdl_third_party_uses_info();
-          break;
-        }
-      }
-
      case 17:
       {
         if (strcmp(tpChksum, "siB67nyLXRLMbo1kYaCR9pH") == 0) {
@@ -1272,15 +1235,6 @@ unsigned int sf_sliding_controller_rbdl_jit_fallback_info( int nlhs, mxArray *
         if (strcmp(tpChksum, "sI1iUPGK3ymmR5QqRIigpLG") == 0) {
           extern mxArray *sf_c15_sliding_controller_rbdl_jit_fallback_info(void);
           plhs[0] = sf_c15_sliding_controller_rbdl_jit_fallback_info();
-          break;
-        }
-      }
-
-     case 16:
-      {
-        if (strcmp(tpChksum, "sku70yXmmpvw9wiNyjwFDG") == 0) {
-          extern mxArray *sf_c16_sliding_controller_rbdl_jit_fallback_info(void);
-          plhs[0] = sf_c16_sliding_controller_rbdl_jit_fallback_info();
           break;
         }
       }
@@ -1566,17 +1520,6 @@ unsigned int sf_sliding_controller_rbdl_get_post_codegen_info( int nlhs, mxArray
           const char *sf_c15_sliding_controller_rbdl_get_post_codegen_info(void);
           const char* encoded_post_codegen_info =
             sf_c15_sliding_controller_rbdl_get_post_codegen_info();
-          plhs[0] = sf_mex_decode(encoded_post_codegen_info);
-          break;
-        }
-      }
-
-     case 16:
-      {
-        if (strcmp(tpChksum, "sku70yXmmpvw9wiNyjwFDG") == 0) {
-          const char *sf_c16_sliding_controller_rbdl_get_post_codegen_info(void);
-          const char* encoded_post_codegen_info =
-            sf_c16_sliding_controller_rbdl_get_post_codegen_info();
           plhs[0] = sf_mex_decode(encoded_post_codegen_info);
           break;
         }
@@ -1880,16 +1823,6 @@ unsigned int sf_sliding_controller_rbdl_updateBuildInfo_args_info( int nlhs,
           extern mxArray
             *sf_c15_sliding_controller_rbdl_updateBuildInfo_args_info(void);
           plhs[0] = sf_c15_sliding_controller_rbdl_updateBuildInfo_args_info();
-          break;
-        }
-      }
-
-     case 16:
-      {
-        if (strcmp(tpChksum, "sku70yXmmpvw9wiNyjwFDG") == 0) {
-          extern mxArray
-            *sf_c16_sliding_controller_rbdl_updateBuildInfo_args_info(void);
-          plhs[0] = sf_c16_sliding_controller_rbdl_updateBuildInfo_args_info();
           break;
         }
       }
