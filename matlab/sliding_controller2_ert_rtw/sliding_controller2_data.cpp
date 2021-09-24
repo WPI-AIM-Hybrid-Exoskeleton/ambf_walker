@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sliding_controller2'.
 //
-// Model version                  : 1.240
+// Model version                  : 1.241
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Tue Sep 14 13:45:43 2021
+// C/C++ source code generated on : Wed Sep 22 10:27:22 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -30,8 +30,7 @@ sliding_controller2ModelClass::P_sliding_controller2_T
   // Variable: beta
   //  Referenced by: '<S31>/surface width SMC'
 
-  { 0.50881249047401234, 0.50881249047401234, 0.50881249047401234,
-    0.50881249047401234, 0.50881249047401234, 0.50881249047401234 },
+  { 0.05, 0.05, 0.05, 0.05, 0.05, 0.05 },
 
   // Variable: gamma
   //  Referenced by: '<S29>/Constant5'
@@ -5071,16 +5070,6 @@ sliding_controller2ModelClass::P_sliding_controller2_T
 
   // Expression: 0
   //  Referenced by: '<S29>/Integrator'
-
-  0.0,
-
-  // Expression: 0
-  //  Referenced by: '<S40>/Constant'
-
-  0.0,
-
-  // Expression: 0
-  //  Referenced by: '<S41>/Constant'
 
   0.0,
 

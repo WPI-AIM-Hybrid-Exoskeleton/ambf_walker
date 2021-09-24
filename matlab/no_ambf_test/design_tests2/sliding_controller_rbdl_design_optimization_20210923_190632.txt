@@ -1,0 +1,982 @@
+=== Design Optimization (Elapsed: 2:41 min) ===
+    Error:Error(s) computing gradients using the PARPOOL.
+    Error:MATLAB System block 'sliding_controller_rbdl/Controller/Publish2/SinkBlock' error occurred when invoking 'setupImpl' method of 'ros.slroscpp.internal.block.Publisher'. The error was thrown from '
+     '/usr/local/MATLAB/R2021a/toolbox/ros/slroscpp/+ros/+slroscpp/+internal/+block/Publisher.m' at line 127
+     '/usr/local/MATLAB/R2021a/toolbox/simulink/simulationinput_desktop/+Simulink/+Simulation/+internal/DesktopSimHelper.p' at line 0
+     '/usr/local/MATLAB/R2021a/toolbox/simulink/simulationinput_desktop/+Simulink/+Simulation/+internal/DesktopSimHelper.p' at line 0
+     '/usr/local/MATLAB/R2021a/toolbox/simulink/simulationinput/+Simulink/SimulationInput.p' at line 0
+     '/usr/local/MATLAB/R2021a/toolbox/shared/slcontrollib/+sdo/SimulationTest.m' at line 748
+     '/usr/local/MATLAB/R2021a/toolbox/sldo/sldoguis/+sldodialogs/+data/@DesignData/getCurrentResponse.m' at line 134
+     '/usr/local/MATLAB/R2021a/toolbox/sldo/sldoguis/+sldodialogs/+responseoptimization/@OptimizationSection/optimize.m' at line 392
+     '/usr/local/MATLAB/R2021a/toolbox/sldo/sldoguis/+sldodialogs/+responseoptimization/@OptimizationSection/optimize.m' at line 591
+     '/usr/local/MATLAB/R2021a/toolbox/sldo/sldo/+sdo/+solvers/absSolver.m' at line 361
+     '/usr/local/MATLAB/R2021a/toolbox/sldo/sldo/+sdo/+solvers/fmincon.m' at line 285
+     '/usr/local/MATLAB/R2021a/toolbox/sldo/sldo/+sdo/+solvers/fmincon.m' at line 542
+     '/usr/local/MATLAB/R2021a/toolbox/sldo/sldo/+sdo/+solvers/fmincon.m' at line 681
+     '/usr/local/MATLAB/R2021a/toolbox/sldo/sldo/+sdo/+solvers/fmincon.m' at line 709
+     '/usr/local/MATLAB/R2021a/toolbox/sldo/sldo/+sdo/+solvers/fmincon.m' at line 441
+     '/usr/local/MATLAB/R2021a/toolbox/multisim/+MultiSim/+internal/runSingleSim.p' at line 0
+     '/usr/local/MATLAB/R2021a/toolbox/multisim/+MultiSim/+internal/SimulationRunnerParallelLocal.p' at line 0
+     '/usr/local/MATLAB/R2021a/toolbox/parallel/cluster/+parallel/+internal/+queue/evaluateRequest.m' at line 39'.
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message3/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message7/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Blank Message9/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message2/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/Blank Message5/Constant'. 
+    Callback string is 'ros.slros.internal.block.MessageBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Controller/sliding mode controller/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Error evaluating 'InitFcn' callback of Constant block 'sliding_controller_rbdl/Subsystem/Call Service2/Constant'. 
+    Callback string is 'ros.slros.internal.block.ServiceCallBlockMask.dispatch('constantBlkInitFcn', gcb);'
+    Error:Unable to read MAT-file /home/nathanielgoldfarb/.matlab/R2021a/matlabprefs.mat. File might be corrupt.
+    Error:Failure in initial objective function evaluation. FMINCON cannot continue.

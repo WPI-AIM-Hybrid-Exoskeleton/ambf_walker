@@ -77,9 +77,9 @@ lambda2 = [lambda_hip, 0, 0, 0, 0, 0;
             
      
      
-exo_sat = 60;
-interaction_sat = 15;
-human_sat = 5;
+exo_sat = 30;
+interaction_sat = 6;
+human_sat = 20;
 
 spring = [0.30, 0; 0, 0.30];
 dampener =[0.30, 0; 0, 0.30];

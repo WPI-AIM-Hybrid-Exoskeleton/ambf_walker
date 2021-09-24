@@ -72,7 +72,7 @@ alpha = params(7,1).Value;
 
 
 params = load('/home/nathanielgoldfarb/pendulm_model/double_pend/testing_system/modifed_model/tests/all_cost/parameters.mat')
-beta = zeros(6,1) + params.all_cost_parameters(6,1).Value(1);
+beta = zeros(6,1) +  0.05; %params.all_cost_parameters(6,1).Value(1);
 
 gamma = params.all_cost_parameters(7,1).Value;
 % spring = [2000, 0; 0, 2000];

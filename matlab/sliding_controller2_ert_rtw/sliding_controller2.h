@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'sliding_controller2'.
 //
-// Model version                  : 1.240
+// Model version                  : 1.241
 // Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
-// C/C++ source code generated on : Tue Sep 14 13:45:43 2021
+// C/C++ source code generated on : Wed Sep 22 10:27:22 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -239,59 +239,63 @@ class sliding_controller2ModelClass {
     uint8_T b_varargout_2_Header_FrameId[128];
     SL_Bus_sliding_controller2_RBDLInverseDynamicsRespon_9vsb2h b_varargout_1;
     real_T Position[7];
-    real_T b_varargout_2_Position[7];
-    real_T b_varargout_2_Velocity[7];
     real_T b_varargout_2_Effort[7];
     real_T y_d[7];                     // '<S5>/MATLAB Function2'
-    real_T y_g[7];                     // '<S31>/MATLAB Function3'
-    real_T Velocity[7];
+    real_T rtb_y_n_g[7];
+    real_T rtb_Velocity_g[7];
+    real_T y_m[7];                     // '<S31>/MATLAB Function3'
     real_T Sum[6];                     // '<S29>/Sum'
     real_T Q[6];
+    real_T humansateration[7];         // '<S5>/human sateration'
     real_T qd_add[6];                  // '<S29>/Integrator'
     real_T exosateration[7];           // '<S5>/exo sateration'
-    real_T humansateration[7];         // '<S5>/human sateration'
     real_T qd_add_n[6];                // '<S29>/addmittance gain'
     real_T y[7];                       // '<S31>/MATLAB Function2'
     real_T y_e[7];                     // '<S31>/MATLAB Function1'
     real_T K[36];                      // '<S29>/MATLAB Function'
     real_T B[36];                      // '<S29>/MATLAB Function'
-    real_T y_n[7];                     // '<S5>/MATLAB Function1'
     real_T b_x[6];
-    real_T B_g[6];
+    real_T B_n[6];
     real_T A[6];
-    real_T rtb_Saturation_m[6];
-    real_T rtb_Add1_nz[6];
-    real_T filtered[6];                // '<S30>/Add2'
+    real_T rtb_Saturation_p[6];
+    real_T rtb_Add1_l[6];
     real_T work[6];
     real_T vn1[6];
     real_T vn2[6];
-    real_T rtb_y_f_p[4];
+    real_T rtb_y_f_j[4];
     char_T b_zeroDelimTopic[24];
     char_T b_zeroDelimTopic_tmp[24];
     int32_T jpvt[6];
-    char_T b_zeroDelimTopic_l[23];
-    char_T b_zeroDelimTopic_j[21];
-    char_T b_zeroDelimTopic_d[18];
-    char_T b_zeroDelimTopic_tmp_g[18];
+    char_T b_zeroDelimTopic_d[23];
+    char_T b_zeroDelimTopic_g[21];
+    char_T b_zeroDelimTopic_l[18];
+    char_T b_zeroDelimTopic_tmp_d[18];
     char_T b_zeroDelimServiceName[17];
-    SL_Bus_sliding_controller2_ros_time_Time rtb_CurrentTime_l;
-    real_T rtb_danke_g_d[2];
-    real_T rtb_Add_h_d[2];
-    real_T rtb_Product2_l[2];
-    real_T rtb_knee_o[2];
+    SL_Bus_sliding_controller2_ros_time_Time rtb_CurrentTime_d;
+    real_T rtb_danke_g_l[2];
+    real_T rtb_Product2_o[2];
+    real_T rtb_knee_bj[2];
+    real_T rtb_ankle_n[2];
+    real_T rtb_dknee_b[2];
+    real_T rtb_knee_b_l[2];
+    real_T rtb_Add_c_h[2];
     real_T rtb_Add_e_b[2];
-    real_T rtb_Subtract1_n[2];
-    real_T Add_m[2];                   // '<S41>/Add'
-    real_T Subtract2_e[2];             // '<S37>/Subtract2'
-    real_T Subtract2_l[2];             // '<S38>/Subtract2'
     real_T wj;
     real_T b_varargout_2_Header_Stamp_Sec;
-    real_T rtb_Subtract2_idx_0;
-    real_T rtb_Subtract2_idx_1;
+    real_T rtb_Saturation_tmp;
+    real_T unnamed_idx_0;
+    real_T rtb_Add_e_idx_0;
     real_T rtb_Add_e_idx_1;
-    real_T rtb_knee_idx_1;
+    real_T rtb_danke_g_idx_0;
+    real_T rtb_danke_g_idx_1;
+    real_T rtb_dknee_idx_0;
+    real_T rtb_knee_b_idx_0;
+    real_T rtb_dknee_idx_1;
+    real_T rtb_knee_b_idx_1;
+    real_T rtb_Add_e_tmp_tmp;
+    real_T unnamed_idx_0_tmp;
     real_T rtb_Saturation_tmp_tmp;
-    real_T rtb_Saturation_tmp_tmp_b;
+    real_T rtb_danke_g_idx_1_tmp;
     real_T smax;
     real_T beta1;
     real_T scale;
@@ -314,13 +318,13 @@ class sliding_controller2ModelClass {
     int32_T e;
     uint32_T b_varargout_2_Header_Seq;
     uint32_T b_varargout_2_Header_FrameId_SL;
-    uint32_T b_varargout_2_Header_FrameId__h;
+    uint32_T b_varargout_2_Header_FrameId__e;
     uint32_T b_varargout_2_Name_SL_Info_Curr;
     uint32_T b_varargout_2_Name_SL_Info_Rece;
     uint32_T b_varargout_2_Position_SL_Info_;
-    uint32_T b_varargout_2_Position_SL_Inf_b;
+    uint32_T b_varargout_2_Position_SL_Inf_a;
     uint32_T b_varargout_2_Velocity_SL_Info_;
-    uint32_T b_varargout_2_Velocity_SL_Inf_f;
+    uint32_T b_varargout_2_Velocity_SL_Inf_j;
     boolean_T LogicalOperator;         // '<Root>/Logical Operator'
     boolean_T SourceBlock_o1_i;        // '<S15>/SourceBlock'
     boolean_T SourceBlock_o1_hm;       // '<S14>/SourceBlock'
@@ -481,12 +485,6 @@ class sliding_controller2ModelClass {
     real_T Integrator_IC;              // Expression: 0
                                           //  Referenced by: '<S29>/Integrator'
 
-    real_T Constant_Value_f;           // Expression: 0
-                                          //  Referenced by: '<S40>/Constant'
-
-    real_T Constant_Value_k;           // Expression: 0
-                                          //  Referenced by: '<S41>/Constant'
-
     boolean_T Constant_Value_i1;       // Expression: true
                                           //  Referenced by: '<S5>/Constant'
 
@@ -625,6 +623,18 @@ class sliding_controller2ModelClass {
 //-
 //  These blocks were eliminated from the model due to optimizations:
 //
+//  Block '<S40>/Add' : Unused code path elimination
+//  Block '<S40>/Constant' : Unused code path elimination
+//  Block '<S40>/Product1' : Unused code path elimination
+//  Block '<S40>/Product2' : Unused code path elimination
+//  Block '<S40>/Transpose1' : Unused code path elimination
+//  Block '<S40>/Transpose2' : Unused code path elimination
+//  Block '<S41>/Add' : Unused code path elimination
+//  Block '<S41>/Constant' : Unused code path elimination
+//  Block '<S41>/Product1' : Unused code path elimination
+//  Block '<S41>/Product2' : Unused code path elimination
+//  Block '<S41>/Transpose1' : Unused code path elimination
+//  Block '<S41>/Transpose2' : Unused code path elimination
 //  Block '<S5>/Scope' : Unused code path elimination
 //  Block '<S5>/Scope1' : Unused code path elimination
 //  Block '<S5>/Scope2' : Unused code path elimination

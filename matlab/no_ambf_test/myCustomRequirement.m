@@ -54,7 +54,7 @@ ed_human = ( human_vel - ref_vel).^2;
 human_vel_error = sum( sqrt(sum(ed_human) / length(ed_human) ) );
 
 %+ exo_vel_error + human_pos_error + human_vel_error
-vals =  sum(exo_pos_error + exo_vel_error,2) ;
+vals =  sum(exo_pos_error,2) ;
 
 
 end
