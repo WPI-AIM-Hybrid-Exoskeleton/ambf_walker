@@ -5836,8 +5836,8 @@ JOINT Hip-Crutches:
     y: 0.387
     z: 0.54
   joint limits:
-    high: 1.2
-    low: -1.2
+    high: 0.5
+    low: -0.5
   enable feedback: false
   passive: false
   detached: true

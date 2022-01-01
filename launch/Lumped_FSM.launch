@@ -2,8 +2,8 @@
 <launch>
 
 
-         <node  pkg="ambf_walker" name="dynamic_server" type="dynamic_server" output="screen" />
-      <node  pkg="ambf_walker" name="lumped_controller_server" type="lumped_controller_server" output="screen" />
+    <node  pkg="ambf_walker" name="dynamic_server" type="dynamic_server" output="screen" />
+    <node  pkg="ambf_walker" name="lumped_controller_server" type="lumped_controller_server" output="screen" />
     <node pkg="ambf_walker" name="Lumped_Controller" type="Lumped_FSM.py" output="screen"/>
 
 <!--     <node pkg="ambf_walker" name="FSMNode" type="FSMNode.py" output="screen"/>-->

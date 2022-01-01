@@ -27,17 +27,25 @@ function vals=myCustomRequirement(data)
 % function.
 %
 
-ref = data.Nominal.ref.Data;
-vel = data.Nominal.vel.Data;
-exo = data.Nominal.exo.Data;
-exo_vel = data.Nominal.exo.Data;
-human = data.Nominal.human.Data;
-% human = reshape(human',2,1,[]); % reshape magic
+    ref = data.Nominal.q_desired.Data;
+    vel = data.Nominal.qd_desired.Data;
+    exo = data.Nominal.q_exo.Data;
+    exo_vel = data.Nominal.qd_exo.Data;
+    human = data.Nominal.q_human.Data;
+    human_vel = data.Nominal.qd_human.Data;
+    % human = reshape(human',2,1,[]); % reshape magic
+    norm = sqrt(1/length(ref));
 
-e_ref = sqrt(( exo - ref).^2);
-e_vel = sqrt(( vel - exo_vel).^2);
-e_human = sqrt( ( human - exo).^2);
-joint_error = sum(e_ref,3)+ sum(e_human,3); %+ sum(e_vel,3);
-vals = sum(joint_error);
+    e_exo_pos = ( exo - ref).^2 ;
+    e_exo_vel = ( vel - exo_vel).^2;
+
+    e_human_pos =  (human - ref).^2 ;
+    e_human_vel = ( vel - human_vel).^2;
+
+    human_error = norm*( sqrt(sum(sum(e_human_pos,3))) + sqrt(sum(sum(e_human_vel,3)))   ) ;
+    exo_error = norm*( sqrt(sum(sum(e_exo_pos,3))) + sqrt(sum(sum(e_exo_vel,3)))   ) ;
+
+
+    vals = human_error + exo_error;
 
 end

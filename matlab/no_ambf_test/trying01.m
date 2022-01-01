@@ -1,5 +1,5 @@
 
-params = load('/home/nathanielgoldfarb/pendulm_model/double_pend/testing_system/modifed_model/tests/all_cost/parameters.mat')
+%params = load('/home/nathanielgoldfarb/pendulm_model/double_pend/testing_system/modifed_model/tests/all_cost/parameters.mat')
 
 
 
@@ -108,9 +108,9 @@ Kn0 = [Kn0_hip Kn0_knee Kn0_ankle Kn0_hip Kn0_knee Kn0_ankle ];
 Bn0 = [Bn0_hip Bn0_knee Bn0_ankle Bn0_hip Bn0_knee Bn0_ankle ];
 Bp0 = [Bp0_hip Bp0_knee Bp0_ankle Bp0_hip Bp0_knee Bp0_ankle ];
 
-alpha = params.all_cost_parameters(5,1).Value;
+%alpha = params.all_cost_parameters(5,1).Value;
 alpha = [15  15]
-gamma = params.all_cost_parameters(7,1).Value;
+%gamma = params.all_cost_parameters(7,1).Value;
 gamma = [15   15]
 delay = .0049
 % spring = [10, 0; 0, 10];

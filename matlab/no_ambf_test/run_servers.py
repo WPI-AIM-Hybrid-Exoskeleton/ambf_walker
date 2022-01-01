@@ -8,7 +8,13 @@ if __name__ == '__main__':
     rospy.init_node("main_server")
     exo_file_path ="/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/lumped/lumped.yaml"
     #human_file_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/human_lumped/lumped.yaml"
-    human_file_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/human2/default.yaml"
+    human_file_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/human/human.yaml"
+
+    #
+    exo_file_path ="/home/nathanielgoldfarb/simulink_legs/single_leg/models/lumped.yaml"
+    # #human_file_path = "/home/nathanielgoldfarb/catkin_ws/src/ambf_walker/ambf_models/human_lumped/lumped.yaml"
+    human_file_path = "/home/nathanielgoldfarb/simulink_legs/single_leg/models/human.yaml"
+
 
     try:
         print("making model")

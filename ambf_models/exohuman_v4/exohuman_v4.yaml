@@ -5355,13 +5355,13 @@ JOINT ExoHipCrutches:
     y: 0.387
     z: 0.54
   joint limits:
-    high: 3.0
-    low: 0.0
+    high: 0.75
+    low: -0.75
   enable feedback: false
   passive: false
   detached: true
   type: prismatic
-  damping: 0.0
+  damping: 0.1
 JOINT ExoLeftKnee:
   name: ExoLeftKnee
   parent: BODY ExoLeftThigh

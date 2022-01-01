@@ -4,7 +4,7 @@ import smach
 import smach_ros
 import rospy
 
-import InitializeState, WalkInitState, WalkState, MainState, LowerState, iLQRState, RaiseLegState, ForwardLegState
+import InitializeState, WalkInitState, WalkState, MainState, LowerState, iLQRState, RaiseLegState, ForwardLegState, StepState
 
 
 class ExoFSM():
@@ -16,14 +16,19 @@ class ExoFSM():
         with sm:
             smach.StateMachine.add('Initialize', InitializeState.InitializeState("exo"), transitions={'Initialized': 'Main'})
             
-            smach.StateMachine.add('Main', MainState.MainState(["Walk", "Lower", "Done", "ilqr", "raise"] ),
+            smach.StateMachine.add('Main', MainState.MainState(["Walk", "Lower", "Done", "ilqr", "raise","step"] ),
                             transitions={'Walk': 'Sub_Walk', 
                                         'Lower': 'LowerBody',
                                         "ilqr":"Sub_ILQR",
                                         "Done": "Done" ,
-                                        "raise": "LeftRaiseLeg"})
+                                        "raise": "LeftRaiseLeg",
+                                         "step": "TakeStep"})
 
-            
+
+            smach.StateMachine.add('TakeStep', StepState.StepState("exo", "Dyn"),
+                                   transitions={'Stepped': 'Main'})
+
+
             smach.StateMachine.add('LowerBody', LowerState.LowerState("exo"),
                                     transitions={'Lowered': 'Main'})
 

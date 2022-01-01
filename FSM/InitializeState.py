@@ -26,7 +26,7 @@ class InitializeState(smach.State):
         self.hip, self.knee, self.ankle = trajectories.stance_trajectory()
         self.joint_cb = rospy.Subscriber(model_name + "_jointstate", JointState, self.joint_callback)
         self.pub_joints = rospy.Publisher(self._model_name + "_set_points", DesiredJoints, queue_size=1)
-        self.pub_pos = rospy.Publisher(self._model_name + "_set_pos_cmd", DesiredPosCmd, queue_size=1)
+        self.pub_pos = rospy.Publisher(self._model_name + "_set_body_pos", DesiredPosCmd, queue_size=1)
         self.total = tf / dt
         self.count = 0
     
@@ -37,7 +37,7 @@ class InitializeState(smach.State):
         msg_pos.pos.x = 0.0
         msg_pos.pos.y = 0.0
         msg_pos.pos.z = 0.1
-        msg_pos.rpy.x = -0.25
+        msg_pos.rpy.x = 0.3
         msg_pos.rpy.y = 0.0
         msg_pos.rpy.z = 0.0
 
