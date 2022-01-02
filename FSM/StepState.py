@@ -11,7 +11,7 @@ from std_srvs.srv import SetBool, SetBoolResponse
 
 class StepState(smach.State):
 
-    def __init__(self, model_name, controller_name, outcomes=["Stepped"]):
+    def __init__(self, model_name, controller_name, outcomes=["Stepped"],input_keys=['q', 'qd']):
         smach.State.__init__(self, outcomes=outcomes)
         self.runner = self._get_walker()
         self.model_name = model_name
@@ -30,27 +30,29 @@ class StepState(smach.State):
     def execute(self, userdata):
 
         start = []
-        for q in userdata.q[0:6]:
+        for q in self.joint_state.position[0:3]:
             start.append(np.array([q]))
 
-        self.runner.update_start(start)
+        self.runner.update_start( np.radians(start))
 
         while self.count < self.runner.get_length():
             #rospy.loginfo(self.model_name + " is at " + str(self.count) )
             self.runner.step()
             msg = DesiredJoints()
-            q = self.runner.x
-            qd = self.runner.dx
-            qdd = self.runner.ddx
+            q =  np.radians(self.runner.x)
+            qd = np.radians(self.runner.dx)
+            qdd = np.radians(self.runner.ddx)
+            q = q.flatten()
             size_diff = abs(len(q) - len(self.joint_state.position))
-            current_q = self.joint_state.position
-            q = np.append([q[0],q[1],q[2], current_q[3], current_q[5],current_q[6] ] , size_diff*[0.0])
 
             current_q = self.joint_state.position
-            qd = np.append([qd[0],qd[1],qd[2], current_qd[3], current_qd[5],current_qd[6] ] , size_diff*[0.0])
+            q = np.append([q[0], q[1], q[2], -0.5, 0.5, -0.2 ] , size_diff*[0.0])
+            print(q)
+            current_qd = self.joint_state.velocity
+            qd = np.append([qd[0], qd[1], qd[2], 0.0, 0.0, 0.0 ] , size_diff*[0.0])
 
-            current_qdd = self.joint_state.position
-            qdd = np.append([qdd[0],qdd[1],qdd[2], current_qdd[3], current_qdd[5],current_qdd[6] ] , size_diff*[0.0])
+            current_qdd = self.joint_state.effort
+            qdd = np.append([qdd[0], qdd[1], qdd[2], 0.0, 0.0, 0.0] , size_diff*[0.0])
 
             msg.q = q
             msg.qd = qd
@@ -59,7 +61,6 @@ class StepState(smach.State):
             self.pub.publish(msg)
             self.count += 1
             # print(count)
-            userdata.human = False
             self.rate.sleep()
 
         return "Stepped"

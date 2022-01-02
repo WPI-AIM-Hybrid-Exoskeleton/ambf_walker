@@ -13,7 +13,7 @@ class LowerState(smach.State):
         self.step = 0.01
         self.pub_pos = rospy.Publisher(self.model_name + "_set_body_pos", DesiredPosCmd, queue_size=1)
         self.pub_force = rospy.Publisher(self.model_name + "_set_body_force", Wrench, queue_size=1)
-        self.final_height = 0.20
+        self.final_height = 0
 
     def execute(self, userdata):
 
@@ -35,6 +35,6 @@ class LowerState(smach.State):
         msg_force = Wrench()
         msg_force.force.x = 0
         msg_force.force.y = 0
-        msg_force.force.z = 0.1
+        msg_force.force.z = 0
         self.pub_force.publish(msg_force)
         return "Lowered"

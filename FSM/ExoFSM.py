@@ -26,7 +26,8 @@ class ExoFSM():
 
 
             smach.StateMachine.add('TakeStep', StepState.StepState("exo", "Dyn"),
-                                   transitions={'Stepped': 'Main'})
+                                   transitions={'Stepped': 'Main'},
+                                   remapping={'q':'q', 'qd':'qd'})
 
 
             smach.StateMachine.add('LowerBody', LowerState.LowerState("exo"),

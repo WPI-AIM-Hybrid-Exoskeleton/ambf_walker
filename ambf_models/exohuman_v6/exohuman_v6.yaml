@@ -368,11 +368,11 @@ BODY ExoLeftFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.75
-    static: 0.75
+    rolling: 0.9
+    static: 0.9
   restitution: 0.1
   damping:
-    angular: 0.1
+    angular: 0.5
     linear: 0.5
   collision groups:
     - 7
@@ -569,11 +569,11 @@ BODY ExoRightFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.75
-    static: 0.75
+    rolling: 0.9
+    static: 0.9
   restitution: 0.1
   damping:
-    angular: 0.1
+    angular: 0.5
     linear: 0.5
   collision groups:
     - 17
