@@ -124,12 +124,12 @@ int main(int argc, char **argv)
 
 
 
-    FF_Kp(0,0) = 500.0; 
+    FF_Kp(0,0) = 500.0;
     FF_Kp(1,1) = 00.0; 
     FF_Kp(2,2) = 0.0;  // 510 left hip
     FF_Kp(3,3) = 000.0;  // 250 left knee
-    FF_Kp(4,4) = 230.0; 
-    FF_Kp(5,5) = 200.0; 
+    FF_Kp(4,4) = 230.0;
+    FF_Kp(5,5) = 200.0;
     FF_Kp(6,6) = 00.0; // 220 left ankle
 
 
@@ -140,6 +140,26 @@ int main(int argc, char **argv)
     FF_Kd(4,4) = 0.00; 
     FF_Kd(5,5) = 1.000; 
     FF_Kd(6,6) = 1.000; //1.10 right ankle.750; 
+    FF_Kd(6,6) = 0.0; //1.10 right ankle
+
+
+
+    FF_Kp(0,0) = 500.0;
+    FF_Kp(1,1) = 00.0;
+    FF_Kp(2,2) = 0.0;  // 510 left hip
+    FF_Kp(3,3) = 000.0;  // 250 left knee
+    FF_Kp(4,4) = 150.0;
+    FF_Kp(5,5) = 100.0;
+    FF_Kp(6,6) = 00.0; // 220 left ankle
+
+
+    FF_Kd(0,0) = 1.75000;
+    FF_Kd(1,1) = 0.00;
+    FF_Kd(2,2) = 0.0;  //1.15 left hip
+    FF_Kd(3,3) = 0.0; //1.15 left knee
+    FF_Kd(4,4) = 0.00;
+    FF_Kd(5,5) = 1.7500;
+    FF_Kd(6,6) = 1.7500; //1.10 right ankle.750;
     FF_Kd(6,6) = 0.0; //1.10 right ankle
 
     ControllerManager manager = ControllerManager(&n);
