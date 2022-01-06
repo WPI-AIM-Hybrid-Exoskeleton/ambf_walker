@@ -33,10 +33,9 @@ class ForwardLegState(smach.State):
 
         self.count = 0
         pos = self.joint_state.position
-        print(len(pos))
-        pos = self.joint_state.position
+
         if self.side == 0:
-            Lhip, Lknee, Lankle, Rhip, Rknee, Rankle = trajectories.lower_right_leg_traj(pos)
+            Lhip, Lknee, Lankle, Rhip, Rknee, Rankle = trajectories.lower_left_leg_traj(pos)
 
         elif self.side == 1:
             Lhip, Lknee, Lankle, Rhip, Rknee, Rankle = trajectories.lower_right_leg_traj(pos)

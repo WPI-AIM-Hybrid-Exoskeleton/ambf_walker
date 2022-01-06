@@ -48,6 +48,29 @@ int main(int argc, char **argv)
     exo_Kd(6,6) = 20.0;
 
 
+
+
+    Eigen::MatrixXd exo_Kp2 = Eigen::MatrixXd::Zero(7,7);
+    Eigen::MatrixXd exo_Kd2 = Eigen::MatrixXd::Zero(7,7);
+
+    exo_Kp2(0,0) = 850.0;
+    exo_Kp2(1,1) = 850.0;
+    exo_Kp2(2,2) = 850.0;
+    exo_Kp2(3,3) = 850.0;
+    exo_Kp2(4,4) = 850.0;
+    exo_Kp2(5,5) = 1800.0;
+    exo_Kp2(6,6) = 1800.0;
+
+    exo_Kd2(0,0) = 20.0;
+    exo_Kd2(1,1) = 20.0;
+    exo_Kd2(2,2) = 20.0;
+    exo_Kd2(3,3) = 20.0;
+    exo_Kd2(4,4) = 20.0;
+    exo_Kd2(5,5) = 20.0;
+    exo_Kd2(6,6) = 20.0;
+
+
+
     Eigen::MatrixXd FF_Kp = Eigen::MatrixXd::Zero(7,7);
     Eigen::MatrixXd FF_Kd = Eigen::MatrixXd::Zero(7,7);
   
@@ -165,11 +188,17 @@ int main(int argc, char **argv)
     ControllerManager manager = ControllerManager(&n);
     PDController exo(exo_Kp, exo_Kd);
     boost::shared_ptr<ControllerBase> Dyn_controller(new  DynController("exo", &n, &exo) );
+
+    PDController exo2(exo_Kp2, exo_Kd2);
+    boost::shared_ptr<ControllerBase> Dyn_controller2(new  DynController("exo", &n, &exo2) );
+
     boost::shared_ptr<ControllerBase> FF_controller(new  PDController(FF_Kp, FF_Kd ) );
     boost::shared_ptr<ControllerBase> PD_controller(new  PDController(FF_Kp, FF_Kd ) );
 
 
     manager.addController("Dyn", Dyn_controller);
+    manager.addController("Dyn2", Dyn_controller2);
+
     manager.addController("FF", FF_controller);
     manager.addController("PD", PD_controller);
 

@@ -74,7 +74,7 @@ class InitializeState(smach.State):
             msg.q = q
             msg.qd = qd
             msg.qdd = qdd
-            msg.controller = "Dyn"
+            msg.controller = "Dyn2"
             self.pub_joints.publish(msg)
             self.rate.sleep()
 

@@ -33,6 +33,7 @@ class RaiseLegState(smach.State):
 
         self.count = 0
         pos = self.joint_state.position
+
         if self.side == 0:
             Lhip, Lknee, Lankle, Rhip, Rknee, Rankle = trajectories.raise_left_leg_traj(pos)
 
