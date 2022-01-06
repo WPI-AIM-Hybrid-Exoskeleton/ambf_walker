@@ -69,11 +69,11 @@ BODY Crutches:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.1
+    rolling: 0.5
     static: 0.5
   restitution: 0.1
   damping:
-    angular: 0.1
+    angular: 0.5
     linear: 0.5
   collision groups:
     - 18
@@ -368,11 +368,11 @@ BODY ExoLeftFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.9
-    static: 0.9
+    rolling: 0.5
+    static: 0.5
   restitution: 0.1
   damping:
-    angular: 0.5
+    angular: 0.1
     linear: 0.5
   collision groups:
     - 7
@@ -569,11 +569,11 @@ BODY ExoRightFoot:
   publish joint names: false
   publish joint positions: false
   friction:
-    rolling: 0.9
-    static: 0.9
+    rolling: 0.5
+    static: 0.5
   restitution: 0.1
   damping:
-    angular: 0.5
+    angular: 0.1
     linear: 0.5
   collision groups:
     - 17
@@ -1185,7 +1185,7 @@ JOINT ExoHipCrutches:
     z: 1.0
   parent pivot:
     x: -0.1227
-    y: -0.1536
+    y: -0.2  #-0.1536
     z: -0.1441
   child axis:
     x: 0.0

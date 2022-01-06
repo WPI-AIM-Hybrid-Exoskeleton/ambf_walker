@@ -203,6 +203,7 @@ class Model(object):
 
     def set_body_force(self, msg):
         self.handle.set_force(msg.force.x, msg.force.y, msg.force.z)
+        self.handle.set_torque(0.0,0.0,0.0)
         
 
 # def runge_integrator(model, t, y, h, tau):

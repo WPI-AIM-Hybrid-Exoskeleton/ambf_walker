@@ -9,7 +9,7 @@
 <!--     <node pkg="ambf_walker" name="FSMNode" type="FSMNode.py" output="screen"/>-->
      <node pkg="ambf_walker" name="TransformFrames" type="TransformFrames.py" output="screen"/>
 
-     <!-- <node pkg="ambf_walker" name="TransformPointCloud" type="rotate_point_cloud" output="screen"/> -->
+     <node pkg="ambf_walker" name="TransformPointCloud" type="rotate_point_cloud" output="screen"/>
 
 </launch>
 

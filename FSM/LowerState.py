@@ -2,6 +2,7 @@ import smach
 from ambf_walker.msg import DesiredPosCmd
 import rospy
 from geometry_msgs.msg import Wrench
+from geometry_msgs.msg import Point
 
 class LowerState(smach.State):
 
@@ -13,19 +14,20 @@ class LowerState(smach.State):
         self.step = 0.01
         self.pub_pos = rospy.Publisher(self.model_name + "_set_body_pos", DesiredPosCmd, queue_size=1)
         self.pub_force = rospy.Publisher(self.model_name + "_set_body_force", Wrench, queue_size=1)
-        self.final_height = 0
+        self.sub = rospy.Subscriber("/hip_pos", Point, self.pos_callback)
+        self.final_height = -0.42
 
     def execute(self, userdata):
 
         self.rate.sleep()
         current = 1.0
 
-        while current > self.final_height:
-            current-=self.step
+        while self.position.z > self.final_height:
+            # current-=self.step
             msg_pos = DesiredPosCmd() 
             msg_pos.pos.x = 1.0
             msg_pos.pos.y = 1.0
-            msg_pos.pos.z = current
+            msg_pos.pos.z = self.position.z-self.step
             msg_pos.rpy.x = 0.25
             msg_pos.rpy.y = 0.0
             msg_pos.rpy.z = 0.0
@@ -38,3 +40,7 @@ class LowerState(smach.State):
         msg_force.force.z = 0
         self.pub_force.publish(msg_force)
         return "Lowered"
+
+
+    def pos_callback(self,msg):
+        self.position = msg

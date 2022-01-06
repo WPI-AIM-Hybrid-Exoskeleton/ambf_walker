@@ -14,6 +14,7 @@ from rbdl_server.srv import RBDLInverseDynamics
 from . import Model
 from std_srvs.srv import SetBool, SetBoolResponse
 from std_msgs.msg import Float32
+from geometry_msgs.msg import Point as rosPoint
 from os.path import dirname, join
 
 
@@ -47,6 +48,7 @@ class ModelServer(Model.Model):
         self._use_gravity = False
         self.simulink_sub = rospy.Subscriber(model_name + "_simulink_torque", JointState, self.simulink_controller)
         self.pub_sim_loop_rate = rospy.Publisher("/sim_loop_dt", Float32, queue_size=1)
+        self.pub_pos = rospy.Publisher("/hip_pos", rosPoint, queue_size=1)
         self.loop_rate = 500
         self.last_simulink_time = -1
 
@@ -131,6 +133,7 @@ class ModelServer(Model.Model):
         while 1:
             self.q = self.handle.get_all_joint_pos()
             self.qd = self.handle.get_all_joint_vel()
+            self.pos = self.handle.get_pos_command()
             # self.joint_effort = self.handle.get_all_joint_effort()
             self.state = (self.q, self.qd)
             self._joint_num = self.q.size
@@ -158,6 +161,7 @@ class ModelServer(Model.Model):
 
             state_msg.effort = tau
             self.q_pub.publish(state_msg)
+            self.pub_pos.publish(self.pos)
             rate.sleep()
 
 
